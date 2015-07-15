@@ -1,4 +1,4 @@
-package media30.pl.zamowieniapubliczne;
+package pl.media30.zamowieniapubliczne;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

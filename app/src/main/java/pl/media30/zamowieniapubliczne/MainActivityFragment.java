@@ -1,4 +1,4 @@
-package media30.pl.zamowieniapubliczne;
+package pl.media30.zamowieniapubliczne;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
