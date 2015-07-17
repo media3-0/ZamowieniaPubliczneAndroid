@@ -5,8 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by Adrian on 2015-07-17.
  */
-public class BaseListClass {
-    @SerializedName("search")
-    public SearchClass searchClass;
-    //public PaginationClass paginationClass;
+public class PerformanceClass {
+    @SerializedName("took")
+    public int took;
 }

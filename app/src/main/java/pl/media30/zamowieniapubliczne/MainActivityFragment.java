@@ -94,9 +94,8 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void success(BaseListClass blc, Response response) {
                 // Log.d("tester", blc.paginationClass.count + "");
-                mAdapter = new MyAdapter(new String[]{"1", "2"});
+                mAdapter = new MyAdapter(new String[]{blc.searchClass.paginationClass.total+"", "Performance: "+ blc.searchClass.performanceClass.took+""});
                 mRecyclerView.setAdapter(mAdapter);
-
             }
 
             @Override
