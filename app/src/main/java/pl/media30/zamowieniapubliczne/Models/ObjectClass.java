@@ -8,5 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class ObjectClass {
     @SerializedName("data")
     public Zamowienie zamowienie;
+    @SerializedName("global_id")
+    public String global_id;
 
 }

@@ -99,6 +99,9 @@ public class MainActivityFragment extends Fragment {
               //  Log.d("A LISTA TO:::::::", "lista: "+blc.searchClass.dataObjectClass.listaZamowien);
 
                 Log.d("DZIALA!!!!!!!!", "tAAAAKKKKK");
+                Log.d("DZIALA!!!!!!!!", "Wynik to: ");
+                mAdapter = new MyAdapter(new String[]{blc.searchClass.dataobjects.get(0).zamowienie.kod_pocztowy_id+"" , "Performance: "+ blc.searchClass.performanceClass.took+""});
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             @Override
