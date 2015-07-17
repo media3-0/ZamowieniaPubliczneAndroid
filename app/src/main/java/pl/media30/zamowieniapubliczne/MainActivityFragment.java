@@ -10,19 +10,13 @@ import android.view.ViewGroup;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
+import pl.media30.zamowieniapubliczne.Models.ObjectClass;
+import pl.media30.zamowieniapubliczne.Models.Zamowienie;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-import retrofit.http.Body;
-import retrofit.http.GET;
-import retrofit.http.POST;
-import retrofit.http.Path;
-import retrofit.http.Query;
 
 
 /**
@@ -78,6 +72,8 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void success(Zamowienie zamowienie, Response response) {
                 Log.d("test", zamowienie.toString());
+                ObjectClass oc = new ObjectClass();
+                Log.d("jsoooon", oc.toString());
             }
 
             @Override

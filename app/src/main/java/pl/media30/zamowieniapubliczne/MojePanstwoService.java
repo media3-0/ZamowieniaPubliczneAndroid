@@ -1,10 +1,8 @@
 package pl.media30.zamowieniapubliczne;
 
-import java.util.List;
-
+import pl.media30.zamowieniapubliczne.Models.Zamowienie;
 import retrofit.Callback;
 import retrofit.http.GET;
-import retrofit.http.POST;
 import retrofit.http.Path;
 
 /**

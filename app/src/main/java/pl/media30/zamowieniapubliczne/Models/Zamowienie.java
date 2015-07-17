@@ -1,4 +1,4 @@
-package pl.media30.zamowieniapubliczne;
+package pl.media30.zamowieniapubliczne.Models;
 
 /**
  * Created by Adrian on 2015-07-16.
