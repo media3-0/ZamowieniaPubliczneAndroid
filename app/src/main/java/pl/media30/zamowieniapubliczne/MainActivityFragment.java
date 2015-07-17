@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
+import pl.media30.zamowieniapubliczne.Models.BaseClass;
 import pl.media30.zamowieniapubliczne.Models.ObjectClass;
 import pl.media30.zamowieniapubliczne.Models.Zamowienie;
 import retrofit.Callback;
@@ -68,12 +69,20 @@ public class MainActivityFragment extends Fragment {
                 .setEndpoint("https://api.mojepanstwo.pl/dane")
                 .build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-        service.listOrders(1, new Callback<Zamowienie>() {
+        service.listOrders(1, new Callback<BaseClass>() {
             @Override
-            public void success(Zamowienie zamowienie, Response response) {
-                Log.d("test", zamowienie.toString());
-                ObjectClass oc = new ObjectClass();
-                Log.d("jsoooon", oc.toString());
+            public void success(BaseClass bc, Response response) {
+
+                Log.d("tester", bc.objectClass.zamowienie.kod_pocztowy_id);
+
+               // BaseClass bc = new BaseClass();
+               // bc.objectClass =
+               // ObjectClass oc = new ObjectClass();
+            //    Log.d("jsoooon", oc.toString());
+
+                mAdapter = new MyAdapter(new String[]{"adrian","rafa","Kod Kodu pocztowego: " +  bc.objectClass.zamowienie.kod_pocztowy_id.toString(), "Strona www: "+ bc.objectClass.zamowienie.zamawiajacy_www.toString(), "kolejny"});
+                mRecyclerView.setAdapter(mAdapter);
+
             }
 
             @Override
