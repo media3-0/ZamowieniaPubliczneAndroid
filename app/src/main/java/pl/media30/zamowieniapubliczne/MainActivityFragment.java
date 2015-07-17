@@ -12,6 +12,7 @@ import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
 import pl.media30.zamowieniapubliczne.Models.BaseClass;
+import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
 import pl.media30.zamowieniapubliczne.Models.ObjectClass;
 import pl.media30.zamowieniapubliczne.Models.Zamowienie;
 import retrofit.Callback;
@@ -58,37 +59,50 @@ public class MainActivityFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-
-
-
         mAdapter = new MyAdapter(new String[]{"adrian","rafa","andrzej"});
         mRecyclerView.setAdapter(mAdapter);
 
 
+
+/*Wyswietlenie pojedynczego przetargu. Wyswietlony kod kodu pocztowego i strona www.
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://api.mojepanstwo.pl/dane")
+                .setEndpoint("https://api.mojepanstwo.pl/dane/")
                 .build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-        service.listOrders(1, new Callback<BaseClass>() {
+
+            service.singleOrder(1, new Callback<BaseClass>() {
 
 
-/*Wyœwietlenie pojedyñczego przetargu. Tutaj wyœwietla kod kodu pocztowego oraz stronê www.
             @Override
             public void success(BaseClass bc, Response response) {
                 Log.d("tester", bc.objectClass.zamowienie.kod_pocztowy_id);
                 mAdapter = new MyAdapter(new String[]{"adrian","rafa","Kod Kodu pocztowego: " +  bc.objectClass.zamowienie.kod_pocztowy_id.toString(), "Strona www: "+ bc.objectClass.zamowienie.zamawiajacy_www.toString(), "kolejny"});
                 mRecyclerView.setAdapter(mAdapter);
             }
+
 */
+
+
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("https://api.mojepanstwo.pl/dane/")
+                .build();
+        MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
+
+        service.listOrders(new Callback<BaseListClass>() {
+
+
             @Override
-            public void success(BaseClass bc, Response response) {
-                Log.d("tester", bc.objectClass.zamowienie.kod_pocztowy_id);
-                mAdapter = new MyAdapter(new String[]{"adrian","rafa","Kod Kodu pocztowego: " +  bc.objectClass.zamowienie.kod_pocztowy_id.toString(), "Strona www: "+ bc.objectClass.zamowienie.zamawiajacy_www.toString(), "kolejny"});
+            public void success(BaseListClass blc, Response response) {
+                // Log.d("tester", blc.paginationClass.count + "");
+                mAdapter = new MyAdapter(new String[]{"1", "2"});
                 mRecyclerView.setAdapter(mAdapter);
+
             }
+
             @Override
             public void failure(RetrofitError retrofitError) {
                 // Log error here since request failed
+                Log.d("niedziala!!!!!!!!", "no niestety");
             }
         });
 
