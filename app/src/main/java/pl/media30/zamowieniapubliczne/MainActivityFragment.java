@@ -70,21 +70,22 @@ public class MainActivityFragment extends Fragment {
                 .build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         service.listOrders(1, new Callback<BaseClass>() {
+
+
+/*Wyœwietlenie pojedyñczego przetargu. Tutaj wyœwietla kod kodu pocztowego oraz stronê www.
             @Override
             public void success(BaseClass bc, Response response) {
-
                 Log.d("tester", bc.objectClass.zamowienie.kod_pocztowy_id);
-
-               // BaseClass bc = new BaseClass();
-               // bc.objectClass =
-               // ObjectClass oc = new ObjectClass();
-            //    Log.d("jsoooon", oc.toString());
-
                 mAdapter = new MyAdapter(new String[]{"adrian","rafa","Kod Kodu pocztowego: " +  bc.objectClass.zamowienie.kod_pocztowy_id.toString(), "Strona www: "+ bc.objectClass.zamowienie.zamawiajacy_www.toString(), "kolejny"});
                 mRecyclerView.setAdapter(mAdapter);
-
             }
-
+*/
+            @Override
+            public void success(BaseClass bc, Response response) {
+                Log.d("tester", bc.objectClass.zamowienie.kod_pocztowy_id);
+                mAdapter = new MyAdapter(new String[]{"adrian","rafa","Kod Kodu pocztowego: " +  bc.objectClass.zamowienie.kod_pocztowy_id.toString(), "Strona www: "+ bc.objectClass.zamowienie.zamawiajacy_www.toString(), "kolejny"});
+                mRecyclerView.setAdapter(mAdapter);
+            }
             @Override
             public void failure(RetrofitError retrofitError) {
                 // Log error here since request failed
