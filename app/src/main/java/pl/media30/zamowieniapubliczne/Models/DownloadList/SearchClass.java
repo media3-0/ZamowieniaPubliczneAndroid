@@ -17,6 +17,6 @@ public class SearchClass {
     public PerformanceClass performanceClass;
 
     @SerializedName("dataobjects")
-    public List<ObjectClass> dataobjects;
+    public List<DataObjectClass> dataobjects;
 
 }

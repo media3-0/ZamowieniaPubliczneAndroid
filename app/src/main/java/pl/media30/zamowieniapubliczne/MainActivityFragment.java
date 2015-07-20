@@ -12,6 +12,7 @@ import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
@@ -25,7 +26,7 @@ import retrofit.client.Response;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class MainActivityFragment extends Fragment implements View.OnClickListener {
 
     UltimateRecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
@@ -37,13 +38,21 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-
-
-
-
         return inflater.inflate(R.layout.fragment_main, container, false);
+    }
+
+    @Override
+    public void onClick(View v) {
+        try {
+            int itemPosition = mRecyclerView.indexOfChild(v);  //getChildPosition(v);
+            Log.e("Clicked : ", String.valueOf(itemPosition) + "");
+        }catch(Exception e){
+            Log.e("OnClickError: ", e + "");
+        }
+        // Toast.makeText(getActivity(),"Text!",Toast.LENGTH_SHORT).show();
+        Log.e("OnClickError: ", "sss");
+
+
     }
 
     @Override
@@ -60,8 +69,8 @@ public class MainActivityFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(new String[]{"Trwa wczytywanie danych"});
-        mRecyclerView.setAdapter(mAdapter);
+       // mAdapter = new MyAdapter(new String[]{"Trwa wczytywanie danych"});
+ //       mRecyclerView.setAdapter(mAdapter);
 
 
 
@@ -91,23 +100,22 @@ public class MainActivityFragment extends Fragment {
 
             @Override
             public void success(BaseListClass blc, Response response) {
-                ArrayList<DataObjectClass> dataObjectList = new ArrayList<DataObjectClass>();
+                List<DataObjectClass> dataObjectList = blc.searchClass.dataobjects; //new ArrayList<DataObjectClass>();
                 //List<DataObjectClass> lista = new List<DataObjectClass>();
-                String output="";
+                String output = "";
                 int maxLength = 50;
-                for (int i =0; i<=19; i++){
-                    if (blc.searchClass.dataobjects.get(i).dataClass.nazwa.length()>maxLength) {
+             /*   for (int i = 0; i <= 19; i++) {
+                    if (blc.searchClass.dataobjects.get(i). dataClass.nazwa.length() > maxLength) {
                         output += blc.searchClass.dataobjects.get(i).dataClass.nazwa.substring(0, maxLength) + "...\n\n";
-                    }else{
+                    } else {
                         output += blc.searchClass.dataobjects.get(i).dataClass.nazwa + "\n\n";
                     }
-                }
+                }*/
 
-
-
-
-                mAdapter = new MyAdapter(new List<DataObjectClass> {dataObjectList});
-                mRecyclerView.setAdapter(mAdapter);
+                Log.d("!!!!!!!!",dataObjectList.get(0).global_id );
+               // Logger. ("geee: "+dataObjectList.size());
+                 mAdapter = new MyAdapter(dataObjectList);
+                mRecyclerView.setAdapter(mAdapter);//Streing[] {}
             }
 
             @Override

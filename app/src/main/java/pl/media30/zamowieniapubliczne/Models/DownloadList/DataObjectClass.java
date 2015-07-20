@@ -14,6 +14,9 @@ public class DataObjectClass {
     public String global_id;
     @SerializedName("id")
     public String id;
+    @SerializedName("slug")
+    public String slug;
+
     @SerializedName("dataobjects")
     public List<BaseClass> dataset;
 

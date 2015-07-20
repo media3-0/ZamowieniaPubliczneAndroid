@@ -37,5 +37,6 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.google.code.gson:gson:2.3'
+    compile 'com.orhanobut:logger:1.10'
 
 }

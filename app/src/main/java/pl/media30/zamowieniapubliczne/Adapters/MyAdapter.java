@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import pl.media30.zamowieniapubliczne.MainActivityFragment;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -38,6 +39,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(android.R.layout.simple_list_item_1, parent, false);
+        v.setOnClickListener(new MainActivityFragment());
+
         // set the view's size, margins, paddings and layout parameters
         //...//co podpisuje pod widok
         TextView tv = (TextView)v.findViewById(android.R.id.text1);
@@ -50,7 +53,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset.get(position).id);
+       // holder.mTextView.setText(mDataset.get(position).id);
+        holder.mTextView.setText(mDataset.get(position).slug);
 
     }
 
