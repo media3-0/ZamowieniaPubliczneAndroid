@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -18,12 +19,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
         public TextView mTextView;
-        public ViewHolder(TextView v) {
+        public ViewHolder(View v, TextView vh) {
             super(v);
-            mTextView = v;
+            v.setOnClickListener((View.OnClickListener) this);
+            mTextView = vh;
+        }
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(view.getContext(), "position = " + getPosition(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -39,12 +45,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(android.R.layout.simple_list_item_1, parent, false);
-        v.setOnClickListener(new MainActivityFragment());
 
         // set the view's size, margins, paddings and layout parameters
         //...//co podpisuje pod widok
         TextView tv = (TextView)v.findViewById(android.R.id.text1);
-        ViewHolder vh = new ViewHolder(tv);
+        ViewHolder vh = new ViewHolder(v, tv);
         return vh;
     }
 

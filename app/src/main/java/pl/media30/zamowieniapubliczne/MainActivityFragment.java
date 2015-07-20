@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
@@ -26,12 +28,19 @@ import retrofit.client.Response;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment implements View.OnClickListener {
+public class MainActivityFragment extends Fragment  {
 
     UltimateRecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
     MyAdapter mAdapter;
 
+
+/*
+    @Override
+    public void onClick(View view) {
+        Toast.makeText(view.getContext(), "position = " + getPosition(), Toast.LENGTH_SHORT).show();
+    }
+    */
     public MainActivityFragment() {
     }
 
@@ -41,19 +50,11 @@ public class MainActivityFragment extends Fragment implements View.OnClickListen
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
-    @Override
-    public void onClick(View v) {
-        try {
-            int itemPosition = mRecyclerView.indexOfChild(v);  //getChildPosition(v);
-            Log.e("Clicked : ", String.valueOf(itemPosition) + "");
-        }catch(Exception e){
-            Log.e("OnClickError: ", e + "");
-        }
-        // Toast.makeText(getActivity(),"Text!",Toast.LENGTH_SHORT).show();
-        Log.e("OnClickError: ", "sss");
 
 
-    }
+
+
+
 
     @Override
     public void onStart() {
