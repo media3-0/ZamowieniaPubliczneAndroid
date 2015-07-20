@@ -10,9 +10,12 @@ import android.view.ViewGroup;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
+import java.util.ArrayList;
+
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
 import pl.media30.zamowieniapubliczne.Models.BaseClass;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
+import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.ObjectClass;
 import pl.media30.zamowieniapubliczne.Models.Zamowienie;
 import retrofit.Callback;
@@ -100,7 +103,15 @@ public class MainActivityFragment extends Fragment {
 
                 Log.d("DZIALA!!!!!!!!", "tAAAAKKKKK");
                 Log.d("DZIALA!!!!!!!!", "Wynik to: ");
-                mAdapter = new MyAdapter(new String[]{blc.searchClass.dataobjects.get(0).zamowienie.kod_pocztowy_id+"" , "Performance: "+ blc.searchClass.performanceClass.took+""});
+                ArrayList<DataObjectClass> dataObjectList = new ArrayList<DataObjectClass>();
+
+                String output="";
+                for (int i =0; i<=19; i++){
+                    output+=blc.searchClass.dataobjects.get(i).zamowienie.kod_pocztowy_id+"\n";
+                }
+
+
+                mAdapter = new MyAdapter(new String[]{output , "Performance: "+ blc.searchClass.performanceClass.took+""});
                 mRecyclerView.setAdapter(mAdapter);
             }
 
