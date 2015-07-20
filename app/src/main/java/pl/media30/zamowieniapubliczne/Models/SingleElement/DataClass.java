@@ -1,13 +1,13 @@
-package pl.media30.zamowieniapubliczne.Models;
+package pl.media30.zamowieniapubliczne.Models.SingleElement;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Adrian on 2015-07-16.
  */
-public class Zamowienie {
+public class DataClass {
 
-    Zamowienie data;
+    DataClass data;
     @SerializedName("zamowienia_publiczne.kod_pocztowy_id")
     public String kod_pocztowy_id;
 

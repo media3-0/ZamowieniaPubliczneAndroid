@@ -15,10 +15,4 @@ public class PaginationClass {
     @SerializedName("to")
     public int to;
 
-    /*
-     "count":20,
-    "total":1282998,
-    "from":1,
-    "to":20
-     */
 }

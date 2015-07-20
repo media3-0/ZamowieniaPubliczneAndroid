@@ -1,4 +1,4 @@
-package pl.media30.zamowieniapubliczne.Models;
+package pl.media30.zamowieniapubliczne.Models.SingleElement;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class ObjectClass {
     @SerializedName("data")
-    public Zamowienie zamowienie;
+    public DataClass dataClass;
     @SerializedName("global_id")
     public String global_id;
 

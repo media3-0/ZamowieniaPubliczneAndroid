@@ -1,4 +1,4 @@
-package pl.media30.zamowieniapubliczne.Models;
+package pl.media30.zamowieniapubliczne.Models.SingleElement;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,5 +8,4 @@ import com.google.gson.annotations.SerializedName;
 public class BaseClass {
     @SerializedName("object")
     public ObjectClass objectClass;
-    //public Zamowienie zamowienie;
 }

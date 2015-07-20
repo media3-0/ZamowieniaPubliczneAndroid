@@ -8,5 +8,4 @@ import com.google.gson.annotations.SerializedName;
 public class BaseListClass {
     @SerializedName("search")
     public SearchClass searchClass;
-    //public PaginationClass paginationClass;
 }
