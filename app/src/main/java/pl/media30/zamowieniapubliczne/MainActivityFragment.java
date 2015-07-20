@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
@@ -91,12 +92,21 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void success(BaseListClass blc, Response response) {
                 ArrayList<DataObjectClass> dataObjectList = new ArrayList<DataObjectClass>();
-
+                //List<DataObjectClass> lista = new List<DataObjectClass>();
                 String output="";
+                int maxLength = 50;
                 for (int i =0; i<=19; i++){
-                    output+=blc.searchClass.dataobjects.get(i).dataClass.kod_pocztowy_id+"\n";
+                    if (blc.searchClass.dataobjects.get(i).dataClass.nazwa.length()>maxLength) {
+                        output += blc.searchClass.dataobjects.get(i).dataClass.nazwa.substring(0, maxLength) + "...\n\n";
+                    }else{
+                        output += blc.searchClass.dataobjects.get(i).dataClass.nazwa + "\n\n";
+                    }
                 }
-                mAdapter = new MyAdapter(new String[]{output});
+
+
+
+
+                mAdapter = new MyAdapter(new List<DataObjectClass> {dataObjectList});
                 mRecyclerView.setAdapter(mAdapter);
             }
 
