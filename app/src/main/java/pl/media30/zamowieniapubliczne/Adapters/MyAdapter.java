@@ -1,6 +1,7 @@
 package pl.media30.zamowieniapubliczne.Adapters;
 
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import pl.media30.zamowieniapubliczne.MainActivityFragment;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
+import pl.media30.zamowieniapubliczne.ZamowienieActivity;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<DataObjectClass> mDataset;
@@ -30,6 +32,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         @Override
         public void onClick(View view) {
             Toast.makeText(view.getContext(), "position = " + getPosition(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(view.getContext(), ZamowienieActivity.class);
+            view.getContext().startActivity(intent);
+
         }
     }
 
@@ -52,6 +57,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         ViewHolder vh = new ViewHolder(v, tv);
         return vh;
     }
+
+
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
