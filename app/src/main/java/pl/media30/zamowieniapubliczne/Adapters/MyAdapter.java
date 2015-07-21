@@ -2,6 +2,7 @@ package pl.media30.zamowieniapubliczne.Adapters;
 
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import java.util.List;
 import pl.media30.zamowieniapubliczne.MainActivityFragment;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.ZamowienieActivity;
+import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<DataObjectClass> mDataset;
@@ -21,7 +23,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
         public TextView mTextView;
         public ViewHolder(View v, TextView vh) {
@@ -31,9 +33,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
         @Override
         public void onClick(View view) {
+
             Toast.makeText(view.getContext(), "position = " + getPosition(), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(view.getContext(), ZamowienieActivity.class);
+            Bundle koszyk = new Bundle();
+            String wpisanyTekst = mDataset.get(getPosition()).id+"";
+            koszyk.putString("dane", wpisanyTekst);
+
+
+
+            Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
+            intent.putExtras(koszyk);
             view.getContext().startActivity(intent);
+
+
 
         }
     }
