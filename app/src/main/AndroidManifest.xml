@@ -22,6 +22,10 @@
             android:name=".ZamowienieActivity"
             android:label="@string/title_activity_zamowienie" >
         </activity>
+        <activity
+            android:name=".ZamowienieActivityFragment"
+            android:label="@string/title_activity_zamowienie" >
+        </activity>
     </application>
 
 </manifest>

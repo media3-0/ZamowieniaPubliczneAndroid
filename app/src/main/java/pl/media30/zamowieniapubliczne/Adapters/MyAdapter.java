@@ -36,12 +36,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
             Toast.makeText(view.getContext(), "position = " + getPosition(), Toast.LENGTH_SHORT).show();
             Bundle koszyk = new Bundle();
+
             String wpisanyTekst = mDataset.get(getPosition()).id+"";
             koszyk.putString("dane", wpisanyTekst);
 
 
 
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
+
             intent.putExtras(koszyk);
             view.getContext().startActivity(intent);
 
