@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.DataClass;
 
 /**
  * Created by Adrian on 2015-07-17.
@@ -16,6 +17,9 @@ public class DataObjectClass {
     public String id;
     @SerializedName("slug")
     public String slug;
+
+    @SerializedName("data")
+    public DataClass dataClass;
 
     @SerializedName("dataobjects")
     public List<BaseClass> dataset;

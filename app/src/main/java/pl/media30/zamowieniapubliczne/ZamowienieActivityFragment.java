@@ -46,7 +46,7 @@ public class ZamowienieActivityFragment extends Activity {
             }
             DataObjectClass myObject = new Gson().fromJson(jsonMyObject, DataObjectClass.class);
 
-            //rezultat.setText(myObject.data.get(1).objectClass.dataClass.nazwa);
+            rezultat.setText(myObject.dataClass.zamawiajacy_miejscowosc.toString());
         }
 
     }
