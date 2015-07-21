@@ -38,7 +38,7 @@ public class ZamowienieActivityFragment extends Activity {
 
             rezultat.setText(przekazanytekst);
 //parsowanie obj
-            /*
+
             String jsonMyObject="";
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
@@ -46,7 +46,7 @@ public class ZamowienieActivityFragment extends Activity {
             }
             DataObjectClass myObject = new Gson().fromJson(jsonMyObject, DataObjectClass.class);
 
-            rezultat.setText(myObject.dataset.get(1).objectClass.dataClass.nazwa.);*/
+            //rezultat.setText(myObject.data.get(1).objectClass.dataClass.nazwa);
         }
 
     }

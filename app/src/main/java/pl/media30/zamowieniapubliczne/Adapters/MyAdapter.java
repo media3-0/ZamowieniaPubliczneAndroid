@@ -43,7 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             Toast.makeText(view.getContext(), "position = " + getPosition(), Toast.LENGTH_SHORT).show();
             Bundle koszyk = new Bundle();
 
-            String wpisanyTekst = mDataset.get(getPosition()).id+"";
+            String wpisanyTekst = mDataset.get(getPosition()).dataClass.zamawiajacy_nazwa+"";
             koszyk.putString("dane", wpisanyTekst);
 /*
             Bundle przetarg = new Bundle();
@@ -59,7 +59,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             String objToStr= new Gson().toJson(dataObjectClass);
             Bundle objClass = new Bundle();
             objClass.putString("myObject", objToStr);
-          //  intent.putExtras(objClass);
+            intent.putExtras(objClass);
             intent.putExtras(koszyk);
             view.getContext().startActivity(intent);
 
@@ -96,7 +96,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
        // holder.mTextView.setText(mDataset.get(position).id);
-        holder.mTextView.setText(mDataset.get(position).slug);
+        holder.mTextView.setText(mDataset.get(position).dataClass.nazwa+"\n");
 
     }
 
