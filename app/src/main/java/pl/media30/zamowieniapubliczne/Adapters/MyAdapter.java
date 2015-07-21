@@ -10,10 +10,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 import pl.media30.zamowieniapubliczne.MainActivityFragment;
+import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.DataClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 import pl.media30.zamowieniapubliczne.ZamowienieActivity;
 import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 
@@ -39,11 +45,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
             String wpisanyTekst = mDataset.get(getPosition()).id+"";
             koszyk.putString("dane", wpisanyTekst);
-
-
-
+/*
+            Bundle przetarg = new Bundle();
+            ObjectClass dataset = mDataset.get(getPosition()).dataset.get(getPosition()).objectClass.dataClass"";
+            przetarg.view.getContext().
+                    Intent activity = new Intent(MainActivityFragment.this,ZamowienieActivityFragment.class);
+            activity.putExtra("myObject", new Gson().toJson(myobject));
+            startActivity(activity);*/
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
-
+                                 //mDataset.get(getPosition()).id+"";
+            DataObjectClass dataObjectClass = mDataset.get(getPosition());
+            //BaseClass baseClass = mDataset.get(getPosition()).dataset.get(getPosition());
+            String objToStr= new Gson().toJson(dataObjectClass);
+            Bundle objClass = new Bundle();
+            objClass.putString("myObject", objToStr);
+          //  intent.putExtras(objClass);
             intent.putExtras(koszyk);
             view.getContext().startActivity(intent);
 

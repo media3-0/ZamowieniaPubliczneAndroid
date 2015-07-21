@@ -9,6 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
+import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.DataClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
+
 
 /**
  * A placeholder fragment containing a simple view.
@@ -30,6 +37,16 @@ public class ZamowienieActivityFragment extends Activity {
             String przekazanytekst = przekazanedane.getString("dane");
 
             rezultat.setText(przekazanytekst);
+//parsowanie obj
+            /*
+            String jsonMyObject="";
+            Bundle extras = getIntent().getExtras();
+            if (extras != null) {
+                jsonMyObject = extras.getString("myObject");
+            }
+            DataObjectClass myObject = new Gson().fromJson(jsonMyObject, DataObjectClass.class);
+
+            rezultat.setText(myObject.dataset.get(1).objectClass.dataClass.nazwa.);*/
         }
 
     }
