@@ -68,6 +68,13 @@ public class MainActivityFragment extends Fragment  {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
+            @Override
+            public void onLoadMore(int current_page) {
+                Log.d("Koniec listy", "No tak");
+            }
+        });
+
 
         // specify an adapter (see also next example)
        // mAdapter = new MyAdapter(new String[]{"Trwa wczytywanie danych"});

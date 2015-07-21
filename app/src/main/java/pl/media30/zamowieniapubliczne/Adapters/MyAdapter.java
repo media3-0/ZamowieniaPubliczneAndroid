@@ -41,26 +41,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public void onClick(View view) {
 
             Toast.makeText(view.getContext(), "position = " + getPosition(), Toast.LENGTH_SHORT).show();
-            Bundle koszyk = new Bundle();
 
-            String wpisanyTekst = mDataset.get(getPosition()).dataClass.zamawiajacy_nazwa+"";
-            koszyk.putString("dane", wpisanyTekst);
-/*
-            Bundle przetarg = new Bundle();
-            ObjectClass dataset = mDataset.get(getPosition()).dataset.get(getPosition()).objectClass.dataClass"";
-            przetarg.view.getContext().
-                    Intent activity = new Intent(MainActivityFragment.this,ZamowienieActivityFragment.class);
-            activity.putExtra("myObject", new Gson().toJson(myobject));
-            startActivity(activity);*/
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
-                                 //mDataset.get(getPosition()).id+"";
             DataObjectClass dataObjectClass = mDataset.get(getPosition());
-            //BaseClass baseClass = mDataset.get(getPosition()).dataset.get(getPosition());
             String objToStr= new Gson().toJson(dataObjectClass);
             Bundle objClass = new Bundle();
             objClass.putString("myObject", objToStr);
             intent.putExtras(objClass);
-            intent.putExtras(koszyk);
             view.getContext().startActivity(intent);
 
 
