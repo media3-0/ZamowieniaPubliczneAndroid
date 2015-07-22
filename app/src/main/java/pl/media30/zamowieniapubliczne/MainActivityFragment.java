@@ -33,6 +33,8 @@ public class MainActivityFragment extends Fragment {
     UltimateRecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
     MyAdapter mAdapter;
+    int strona = 1;
+    boolean wczytane = false;
 
     public MainActivityFragment() {
     }
@@ -62,12 +64,14 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onLoadMore(int current_page) {
                 Log.d("Koniec listy", "No tak");
-                service.listOrders(2, new Callback<BaseListClass>() {
+                service.listOrders(strona, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().setBaseListClass(blc);
-                        mAdapter = new MyAdapter(RepositoryClass.getInstance().getBaseListClass().searchClass.dataobjects);
+                        mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
                         mRecyclerView.setAdapter(mAdapter);
+                        strona++;
+                        Log.d("Aktualna strona: ", strona+"" );
                     }
 
                     @Override
@@ -79,22 +83,25 @@ public class MainActivityFragment extends Fragment {
             }
         });
         // specify an adapter (see also next example)
+        if (wczytane=false) {
+            service.listOrders(1, new Callback<BaseListClass>() {
+                @Override
+                public void success(BaseListClass blc, Response response) {
+                    RepositoryClass.getInstance().setBaseListClass(blc);
+                    mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
+                    mRecyclerView.setAdapter(mAdapter);
+                    strona++;
+                    Log.d("wykonano", "dla testu strona: " + strona);
+                    wczytane=true;
+                }
 
-        service.listOrders(1, new Callback<BaseListClass>() {
-            @Override
-            public void success(BaseListClass blc, Response response) {
-                RepositoryClass.getInstance().setBaseListClass(blc);
-                mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
-                mRecyclerView.setAdapter(mAdapter);
-            }
-
-            @Override
-            public void failure(RetrofitError retrofitError) {
-                // Log error here since request failed
-                Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
-            }
-        });
-
+                @Override
+                public void failure(RetrofitError retrofitError) {
+                    // Log error here since request failed
+                    Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
+                }
+            });
+        }
     }
 
 }
