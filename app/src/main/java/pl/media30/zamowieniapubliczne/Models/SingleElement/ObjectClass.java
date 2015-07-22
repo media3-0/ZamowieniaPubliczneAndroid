@@ -14,7 +14,7 @@ public class ObjectClass {
         this.objectClass = objectClass;
     }
 
-    ObjectClass objectClass;
+    private ObjectClass objectClass;
 
     @SerializedName("data")
     public DataClass dataClass;

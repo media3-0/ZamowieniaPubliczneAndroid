@@ -15,7 +15,7 @@ public class PerformanceClass {
         this.performanceClass = performanceClass;
     }
 
-    PerformanceClass performanceClass;
+    private PerformanceClass performanceClass;
 
 
     @SerializedName("took")

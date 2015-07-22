@@ -19,7 +19,7 @@ public class SearchClass {
         this.searchClass = searchClass;
     }
 
-    SearchClass searchClass;
+    private SearchClass searchClass;
 
     @SerializedName("pagination")
     public PaginationClass paginationClass;

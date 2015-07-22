@@ -14,7 +14,7 @@ public class BaseClass {
         this.baseClass = baseClass;
     }
 
-    BaseClass baseClass;
+    private BaseClass baseClass;
 
     @SerializedName("object")
     public ObjectClass objectClass;

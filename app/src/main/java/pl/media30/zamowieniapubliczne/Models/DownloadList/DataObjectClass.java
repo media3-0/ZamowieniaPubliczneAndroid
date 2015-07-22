@@ -12,7 +12,7 @@ import pl.media30.zamowieniapubliczne.Models.SingleElement.DataClass;
  */
 public class DataObjectClass {
 
-    DataObjectClass dataObjectClass;
+    private DataObjectClass dataObjectClass;
 
     public DataObjectClass getDataObjectClass() {
         return dataObjectClass;

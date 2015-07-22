@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class BaseListClass {
 
-    BaseListClass baseListClass;
+    private BaseListClass baseListClass;
 
     public BaseListClass getBaseListClass() {
         return baseListClass;

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class PaginationClass {
 
-    PaginationClass paginationClass;
+    private PaginationClass paginationClass;
 
     public PaginationClass getPaginationClass() {
         return paginationClass;

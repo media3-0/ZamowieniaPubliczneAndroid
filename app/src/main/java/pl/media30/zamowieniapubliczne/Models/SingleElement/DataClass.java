@@ -15,7 +15,7 @@ public class DataClass {
         this.data = data;
     }
 
-    DataClass data;
+    private DataClass data;
 
 
 
