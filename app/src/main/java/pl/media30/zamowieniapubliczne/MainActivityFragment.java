@@ -49,6 +49,8 @@ public class MainActivityFragment extends Fragment {
         final RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://api.mojepanstwo.pl/dane/")
                 .build();
+        final MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
+
         mRecyclerView = (UltimateRecyclerView) getView().findViewById(R.id.ultimate_recycler_view);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -60,9 +62,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onLoadMore(int current_page) {
                 Log.d("Koniec listy", "No tak");
-                /*
-                MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-                service.listOrders(new Callback<BaseListClass>() {
+                service.listOrders(2, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().setBaseListClass(blc);
@@ -75,17 +75,16 @@ public class MainActivityFragment extends Fragment {
                         // Log error here since request failed
                         Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
                     }
-                });*/
+                });
             }
         });
         // specify an adapter (see also next example)
 
-        MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-        service.listOrders(new Callback<BaseListClass>() {
+        service.listOrders(1, new Callback<BaseListClass>() {
             @Override
             public void success(BaseListClass blc, Response response) {
                 RepositoryClass.getInstance().setBaseListClass(blc);
-                mAdapter = new MyAdapter(RepositoryClass.getInstance().getBaseListClass().searchClass.dataobjects);
+                mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
                 mRecyclerView.setAdapter(mAdapter);
             }
 

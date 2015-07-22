@@ -27,12 +27,26 @@ public class RepositoryClass {
 
 
     public void setBaseListClass(BaseListClass baseListClass) {
+
+        //.getBaseListClass().searchClass.dataobjects);
         this.baseListClass = baseListClass;
+        //   dataObjectList.add(baseListClass.searchClass.dataobjects.get(i));
+            if (dataObjectList == null){
+                dataObjectList = baseListClass.searchClass.dataobjects;
+
+            }else{
+                for(int i=0;i<baseListClass.searchClass.dataobjects.size();i++) {
+                    dataObjectList.add(baseListClass.searchClass.dataobjects.get(i));
+                }
+            }
+          //  Log.d("Liczba iteracji: ", i+"");
+
     }
 
     public BaseListClass getBaseListClass() {
         return baseListClass;
     }
+
 
     public List<DataObjectClass> getList() {
         return dataObjectList;
@@ -40,28 +54,9 @@ public class RepositoryClass {
 
 
 
+
+
     private RepositoryClass() {
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://api.mojepanstwo.pl/dane/")
-                .build();
-        MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-
-        service.listOrders(new Callback<BaseListClass>() {
-
-            @Override
-            public void success(BaseListClass blc, Response response) {
-                dataObjectList = blc.searchClass.dataobjects; //new ArrayList<DataObjectClass>();
-                //  dol=dataObjectList;
-                Log.d("!!!!!!!!", dataObjectList.get(0).global_id);
-
-            }
-
-            @Override
-            public void failure(RetrofitError retrofitError) {
-                // Log error here since request failed
-                Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
-            }
-        });
     }
 
     public static RepositoryClass getInstance() {

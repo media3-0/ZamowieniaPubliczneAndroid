@@ -5,6 +5,7 @@ import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
 import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;
+import retrofit.http.Query;
 
 /**
  * Created by Adrian on 2015-07-16.
@@ -13,6 +14,8 @@ public interface MojePanstwoService {
     @GET("/zamowienia_publiczne/{id}.json")
     void singleOrder(@Path("id") int id, Callback<BaseClass> cb);
 
-    @GET("/dataset/zamowienia_publiczne/search")
-    void listOrders(Callback<BaseListClass> clb);
+    //https://api.mojepanstwo.pl/dane/dataset/zamowienia_publiczne/search?page=2.json
+    @GET("/dataset/zamowienia_publiczne/search") //@Query("sort") String sort
+    void listOrders(@Query("page") int page, Callback<BaseListClass> clb);
+    // void getPositionByZip(@Query("address") String address, Callback<String> cb);
 }
