@@ -34,7 +34,7 @@ public class MainActivityFragment extends Fragment {
     UltimateRecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
     MyAdapter mAdapter;
-    int strona = 1;
+    int strona = 2;
     boolean wczytane = false;
 
     public MainActivityFragment() {
@@ -61,7 +61,7 @@ public class MainActivityFragment extends Fragment {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
+      mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
                 Log.d("Koniec listy", "No tak");
@@ -69,8 +69,8 @@ public class MainActivityFragment extends Fragment {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().setBaseListClass(blc);
-                        mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
-                        mRecyclerView.scrollVerticallyTo(10);// setAdapter(mAdapter);
+                        //              mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
+                        mAdapter.dodajKolejnyElement();
                         mRecyclerView.setAdapter(mAdapter);
                         strona++;
                         Log.d("Aktualna strona: ", strona + "");
@@ -93,7 +93,6 @@ public class MainActivityFragment extends Fragment {
                     RepositoryClass.getInstance().setBaseListClass(blc);
                     mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
                     mRecyclerView.setAdapter(mAdapter);
-                    strona++;
                     Log.d("wykonano", "dla testu strona: " + strona);
                     wczytane=true;
                 }

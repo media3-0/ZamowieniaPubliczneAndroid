@@ -4,6 +4,7 @@ package pl.media30.zamowieniapubliczne.Adapters;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.DataClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
+import pl.media30.zamowieniapubliczne.RepositoryClass;
 import pl.media30.zamowieniapubliczne.ZamowienieActivity;
 import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 
@@ -55,6 +57,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyAdapter(List<DataObjectClass> myDataset) {
         mDataset = myDataset;
+    }
+    public void dodajKolejnyElement(){
+        for(int i=0 ;i< RepositoryClass.getInstance().getBaseListClass().searchClass.dataobjects.size();i++){
+            mDataset.add(RepositoryClass.getInstance().getBaseListClass().searchClass.dataobjects.get(i));
+            //Log.d("element listy to", i+"");
+
+        }
     }
 
     // Create new views (invoked by the layout manager)
