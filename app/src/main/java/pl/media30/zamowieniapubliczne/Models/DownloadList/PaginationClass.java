@@ -6,6 +6,17 @@ import com.google.gson.annotations.SerializedName;
  * Created by Adrian on 2015-07-17.
  */
 public class PaginationClass {
+
+    PaginationClass paginationClass;
+
+    public PaginationClass getPaginationClass() {
+        return paginationClass;
+    }
+
+    public void setPaginationClass(PaginationClass paginationClass) {
+        this.paginationClass = paginationClass;
+    }
+
     @SerializedName("count")
     public int count;
     @SerializedName("total")
