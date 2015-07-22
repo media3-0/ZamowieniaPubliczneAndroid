@@ -49,9 +49,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             objClass.putString("myObject", objToStr);
             intent.putExtras(objClass);
             view.getContext().startActivity(intent);
-
-
-
         }
     }
 
@@ -69,7 +66,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 .inflate(android.R.layout.simple_list_item_1, parent, false);
 
         // set the view's size, margins, paddings and layout parameters
-        //...//co podpisuje pod widok
         TextView tv = (TextView)v.findViewById(android.R.id.text1);
         ViewHolder vh = new ViewHolder(v, tv);
         return vh;
@@ -82,8 +78,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-       // holder.mTextView.setText(mDataset.get(position).id);
-        holder.mTextView.setText(mDataset.get(position).dataClass.nazwa+"\n");
+        holder.mTextView.setText((position+1) + ". " + mDataset.get(position).dataClass.nazwa+"\n");
 
     }
 
