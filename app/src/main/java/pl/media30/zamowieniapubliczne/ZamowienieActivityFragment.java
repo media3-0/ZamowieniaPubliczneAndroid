@@ -32,11 +32,16 @@ public class ZamowienieActivityFragment extends Activity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.fragment_zamowienie);
 
-            TextView rezultat = (TextView) findViewById(R.id.textView1);
+            TextView nazwa = (TextView) findViewById(R.id.textViewNazwa);
+            TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
+            TextView zamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
+            TextView zamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
+
             Bundle przekazanedane = getIntent().getExtras();
             String przekazanytekst = przekazanedane.getString("dane");
 
-            rezultat.setText(przekazanytekst);
+            nazwa.setText(przekazanytekst);
+
 //parsowanie obj
 
             String jsonMyObject="";
@@ -46,7 +51,10 @@ public class ZamowienieActivityFragment extends Activity {
             }
             DataObjectClass myObject = new Gson().fromJson(jsonMyObject, DataObjectClass.class);
 
-            rezultat.setText(myObject.dataClass.zamawiajacy_miejscowosc.toString());
+            nazwa.setText(myObject.dataClass.nazwa.toString());
+            zamawiajacyNazwa.setText(myObject.dataClass.zamawiajacy_nazwa.toString());
+            zamawiajacyMiejscowosc.setText(myObject.dataClass.zamawiajacy_miejscowosc.toString());
+            zamawiajacyUlica.setText(myObject.dataClass.zamawiajacy_ulica.toString());
         }
 
     }
