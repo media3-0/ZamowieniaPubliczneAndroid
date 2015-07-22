@@ -36,6 +36,17 @@ public class ZamowienieActivityFragment extends Activity {
             TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
             TextView zamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
             TextView zamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
+            TextView zamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
+            TextView zamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
+            TextView zamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
+            TextView zamawiajacyKodPocztowy = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowy);
+            TextView zamawiajacyIDKoduPocztowego = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowego);
+            TextView zamawiajacyNrDomu = (TextView) findViewById(R.id.textViewZamawiajacyNrDomu);
+            TextView zamawiajacyNrMIeszkania = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkania);
+            TextView zamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
+            TextView zamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
+            TextView zamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
+            TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
 
             Bundle przekazanedane = getIntent().getExtras();
             String przekazanytekst = przekazanedane.getString("dane");
@@ -55,6 +66,17 @@ public class ZamowienieActivityFragment extends Activity {
             zamawiajacyNazwa.setText(myObject.dataClass.zamawiajacy_nazwa.toString());
             zamawiajacyMiejscowosc.setText(myObject.dataClass.zamawiajacy_miejscowosc.toString());
             zamawiajacyUlica.setText(myObject.dataClass.zamawiajacy_ulica.toString());
+            zamawiajacyWojewodztwo.setText(myObject.dataClass.zamawiajacy_wojewodztwo.toString());
+            zamawiajacyID.setText(myObject.dataClass.zamawiajacy_id.toString());
+            zamawiajacyRegon.setText(myObject.dataClass.zamawiajacy_regon.toString());
+            zamawiajacyKodPocztowy.setText(myObject.dataClass.zamawiajacy_kod_poczt.toString());
+            zamawiajacyIDKoduPocztowego.setText(myObject.dataClass.zamawiajacyKod_pocztowy_id.toString());
+            zamawiajacyNrDomu.setText(myObject.dataClass.zamawiajacy_nr_domu.toString());
+            zamawiajacyNrMIeszkania.setText(myObject.dataClass.zamawiajacy_nr_miesz.toString());
+            zamawiajacyEmail.setText(myObject.dataClass.zamawiajacy_email.toString());
+            zamawiajacyTelefon.setText(myObject.dataClass.zamawiajacy_tel.toString());
+            zamawiajacyFax.setText(myObject.dataClass.zamawiajacy_fax.toString());
+            zamawiajacyWWW.setText(myObject.dataClass.zamawiajacy_www.toString());
         }
 
     }
