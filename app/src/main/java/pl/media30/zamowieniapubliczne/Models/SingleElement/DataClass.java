@@ -7,18 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class DataClass {
 
-    public DataClass getData() {
-        return data;
-    }
-
-    public void setData(DataClass data) {
-        this.data = data;
-    }
-
-    private DataClass data;
-
-
-
+    
     @SerializedName("zamowienia_publiczne.kod_pocztowy_id")
     public String kod_pocztowy_id;
 

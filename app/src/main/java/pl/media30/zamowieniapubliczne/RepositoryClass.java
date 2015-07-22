@@ -32,11 +32,11 @@ public class RepositoryClass {
         this.baseListClass = baseListClass;
         //   dataObjectList.add(baseListClass.searchClass.dataobjects.get(i));
             if (dataObjectList == null){
-                dataObjectList = baseListClass.searchClass.dataobjects;
+                dataObjectList = baseListClass.getSearchClass().getDataObjectClass();
 
             }else{
-                for(int i=0;i<baseListClass.searchClass.dataobjects.size();i++) {
-                    dataObjectList.add(baseListClass.searchClass.dataobjects.get(i));
+                for(int i=0;i<baseListClass.getSearchClass().getDataObjectClass().size();i++) {
+                    dataObjectList.add(baseListClass.getSearchClass().getDataObjectClass().get(i));
                 }
             }
           //  Log.d("Liczba iteracji: ", i+"");

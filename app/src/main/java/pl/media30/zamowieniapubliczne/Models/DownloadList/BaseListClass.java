@@ -7,16 +7,10 @@ import com.google.gson.annotations.SerializedName;
  */
 public class BaseListClass {
 
-    private BaseListClass baseListClass;
-
-    public BaseListClass getBaseListClass() {
-        return baseListClass;
-    }
-
-    public void setBaseListClass(BaseListClass baseListClass) {
-        this.baseListClass = baseListClass;
-    }
-
     @SerializedName("search")
     public SearchClass searchClass;
+
+    public SearchClass getSearchClass(){
+        return searchClass;
+    }
 }

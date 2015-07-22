@@ -7,17 +7,6 @@ import com.google.gson.annotations.SerializedName;
  */
 public class PerformanceClass {
 
-    public PerformanceClass getPerformanceClass() {
-        return performanceClass;
-    }
-
-    public void setPerformanceClass(PerformanceClass performanceClass) {
-        this.performanceClass = performanceClass;
-    }
-
-    private PerformanceClass performanceClass;
-
-
     @SerializedName("took")
     public int took;
 }

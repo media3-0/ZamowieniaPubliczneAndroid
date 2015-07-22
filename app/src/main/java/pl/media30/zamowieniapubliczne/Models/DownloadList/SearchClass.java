@@ -11,16 +11,6 @@ import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
  */
 public class SearchClass {
 
-    public SearchClass getSearchClass() {
-        return searchClass;
-    }
-
-    public void setSearchClass(SearchClass searchClass) {
-        this.searchClass = searchClass;
-    }
-
-    private SearchClass searchClass;
-
     @SerializedName("pagination")
     public PaginationClass paginationClass;
 
@@ -29,5 +19,9 @@ public class SearchClass {
 
     @SerializedName("dataobjects")
     public List<DataObjectClass> dataobjects;
+
+    public List<DataObjectClass> getDataObjectClass(){
+        return dataobjects;
+    }
 
 }

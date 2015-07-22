@@ -7,16 +7,6 @@ import com.google.gson.annotations.SerializedName;
  */
 public class PaginationClass {
 
-    private PaginationClass paginationClass;
-
-    public PaginationClass getPaginationClass() {
-        return paginationClass;
-    }
-
-    public void setPaginationClass(PaginationClass paginationClass) {
-        this.paginationClass = paginationClass;
-    }
-
     @SerializedName("count")
     public int count;
     @SerializedName("total")

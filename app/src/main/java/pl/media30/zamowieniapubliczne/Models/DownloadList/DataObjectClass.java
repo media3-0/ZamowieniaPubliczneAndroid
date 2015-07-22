@@ -12,15 +12,6 @@ import pl.media30.zamowieniapubliczne.Models.SingleElement.DataClass;
  */
 public class DataObjectClass {
 
-    private DataObjectClass dataObjectClass;
-
-    public DataObjectClass getDataObjectClass() {
-        return dataObjectClass;
-    }
-
-    public void setDataObjectClass(DataObjectClass dataObjectClass) {
-        this.dataObjectClass = dataObjectClass;
-    }
 
     @SerializedName("global_id")
     public String global_id;
