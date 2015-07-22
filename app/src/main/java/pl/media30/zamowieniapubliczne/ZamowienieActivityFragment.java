@@ -44,6 +44,9 @@ public class ZamowienieActivityFragment extends Activity {
             TextView zamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
             TextView zamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
             TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
+            TextView zamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
+            TextView zamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
+            TextView zamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
 
             //Bundle przekazanedane = getIntent().getExtras();
             //String przekazanytekst = przekazanedane.getString("dane");
@@ -74,6 +77,9 @@ public class ZamowienieActivityFragment extends Activity {
             zamawiajacyTelefon.setText(myObject.dataClass.zamawiajacy_tel.toString());
             zamawiajacyFax.setText(myObject.dataClass.zamawiajacy_fax.toString());
             zamawiajacyWWW.setText(myObject.dataClass.zamawiajacy_www.toString());
+            zamawiajacyIDPowiatu.setText(myObject.dataClass.powiat_id.toString());
+            zamawiajacyIDGminy.setText(myObject.dataClass.gmina_id.toString());
+            zamawiajacyIDWojewodztwa.setText(myObject.dataClass.wojewodztwo_id.toString());
         }
 
     }

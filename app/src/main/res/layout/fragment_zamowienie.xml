@@ -55,7 +55,7 @@
              android:layout_height="wrap_content"
              android:text="Miejscowość: "
              android:id="@+id/textView4"
-             android:layout_below="@+id/textViewZamawiajacyWojewodztwo"
+             android:layout_below="@+id/textViewZamawiajacyIDGminy"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
@@ -343,6 +343,76 @@
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID powiatu: "
+        android:id="@+id/textView19"
+        android:layout_below="@+id/textViewZamawiajacyIDWojewodztwa"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:textColor="#ffff0000"
+        android:layout_marginTop="5dp" />
 
-     </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZamawiajacyIDPowiatu"
+        android:id="@+id/textViewZamawiajacyIDPowiatu"
+        android:layout_below="@+id/textView19"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#ffffffff"
+        android:layout_marginTop="5dp"
+        android:singleLine="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID gminy: "
+        android:id="@+id/textView"
+        android:layout_below="@+id/textViewZamawiajacyIDPowiatu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:textColor="#ffff0000"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZamawiajacyIDGminy"
+        android:id="@+id/textViewZamawiajacyIDGminy"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#ffffffff"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID województwa: "
+        android:id="@+id/textView20"
+        android:layout_below="@+id/textViewZamawiajacyWojewodztwo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:textColor="#ffff0000"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZamawiajacyIDWojewodztwa"
+        android:id="@+id/textViewZamawiajacyIDWojewodztwa"
+        android:layout_below="@+id/textView20"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#ffffffff"
+        android:layout_marginTop="5dp" />
+
+
+</RelativeLayout>
 </ScrollView>
