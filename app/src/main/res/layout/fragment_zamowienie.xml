@@ -20,38 +20,17 @@
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
-         <TextView
+    <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="Nazwa"
-             android:id="@+id/textViewNazwa"
-             android:layout_below="@+id/textView1"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Nazwa zamówienia:"
-             android:id="@+id/textView1"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:textColor="#ffff0000"
-             android:textStyle="bold"/>
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Dane zamawiającego:"
+             android:text="Identyfikatory zamawiającego:"
              android:id="@+id/textView2"
-             android:layout_below="@+id/textViewNazwa"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
+             android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
              android:textColor="#ffff0000"
-             android:textStyle="bold" />
+             android:textStyle="bold"
+             android:layout_alignParentLeft="false"
+             android:layout_centerHorizontal="true" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -175,14 +154,15 @@
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="Dane adresowe: "
+             android:text="Dane adresowe zamawiającego: "
              android:id="@+id/textView9"
              android:layout_below="@+id/textViewZamawiajacyRegon"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
+             android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:layout_alignParentLeft="false"
+             android:layout_centerHorizontal="true" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -269,14 +249,15 @@
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="Dane kontaktowe:"
+             android:text="Dane kontaktowe zamawiającego:"
              android:id="@+id/textView14"
              android:layout_below="@+id/textViewZamawiajacyNrMieszkania"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
+             android:layout_alignParentLeft="false"
+             android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:layout_centerHorizontal="true" />
 
          <TextView
              android:layout_width="wrap_content"
