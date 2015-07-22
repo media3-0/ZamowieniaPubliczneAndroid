@@ -1,5 +1,6 @@
 package pl.media30.zamowieniapubliczne;
 
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -69,9 +70,10 @@ public class MainActivityFragment extends Fragment {
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().setBaseListClass(blc);
                         mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
+                        mRecyclerView.scrollVerticallyTo(10);// setAdapter(mAdapter);
                         mRecyclerView.setAdapter(mAdapter);
                         strona++;
-                        Log.d("Aktualna strona: ", strona+"" );
+                        Log.d("Aktualna strona: ", strona + "");
                     }
 
                     @Override
@@ -82,8 +84,9 @@ public class MainActivityFragment extends Fragment {
                 });
             }
         });
+
         // specify an adapter (see also next example)
-        if (wczytane=false) {
+        if (wczytane==false) {
             service.listOrders(1, new Callback<BaseListClass>() {
                 @Override
                 public void success(BaseListClass blc, Response response) {
