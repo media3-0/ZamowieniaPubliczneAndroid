@@ -28,19 +28,12 @@ import retrofit.client.Response;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment  {
+public class MainActivityFragment extends Fragment {
 
     UltimateRecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
     MyAdapter mAdapter;
 
-
-/*
-    @Override
-    public void onClick(View view) {
-        Toast.makeText(view.getContext(), "position = " + getPosition(), Toast.LENGTH_SHORT).show();
-    }
-    */
     public MainActivityFragment() {
     }
 
@@ -50,21 +43,16 @@ public class MainActivityFragment extends Fragment  {
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
-
-
-
-
-
-
     @Override
     public void onStart() {
         super.onStart();
+        final RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("https://api.mojepanstwo.pl/dane/")
+                .build();
         mRecyclerView = (UltimateRecyclerView) getView().findViewById(R.id.ultimate_recycler_view);
-
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
-
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -72,16 +60,59 @@ public class MainActivityFragment extends Fragment  {
             @Override
             public void onLoadMore(int current_page) {
                 Log.d("Koniec listy", "No tak");
+                /*
+                MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
+                service.listOrders(new Callback<BaseListClass>() {
+                    @Override
+                    public void success(BaseListClass blc, Response response) {
+                        RepositoryClass.getInstance().setBaseListClass(blc);
+                        mAdapter = new MyAdapter(RepositoryClass.getInstance().getBaseListClass().searchClass.dataobjects);
+                        mRecyclerView.setAdapter(mAdapter);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError retrofitError) {
+                        // Log error here since request failed
+                        Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
+                    }
+                });*/
+            }
+        });
+        // specify an adapter (see also next example)
+
+        MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
+        service.listOrders(new Callback<BaseListClass>() {
+            @Override
+            public void success(BaseListClass blc, Response response) {
+                RepositoryClass.getInstance().setBaseListClass(blc);
+                mAdapter = new MyAdapter(RepositoryClass.getInstance().getBaseListClass().searchClass.dataobjects);
+                mRecyclerView.setAdapter(mAdapter);
+            }
+
+            @Override
+            public void failure(RetrofitError retrofitError) {
+                // Log error here since request failed
+                Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
             }
         });
 
+    }
 
-        // specify an adapter (see also next example)
-       // mAdapter = new MyAdapter(new String[]{"Trwa wczytywanie danych"});
- //       mRecyclerView.setAdapter(mAdapter);
-
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+//Toast.makeText(getActivity().getApplicationContext(),RepositoryClass.getInstance().getString(), Toast.LENGTH_SHORT).show();
 /*Wyswietlenie pojedynczego przetargu. Wyswietlony kod kodu pocztowego i strona www.
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://api.mojepanstwo.pl/dane/")
@@ -98,42 +129,3 @@ public class MainActivityFragment extends Fragment  {
             }
 
 */
-
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://api.mojepanstwo.pl/dane/")
-                .build();
-        MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-
-        service.listOrders(new Callback<BaseListClass>() {
-
-            @Override
-            public void success(BaseListClass blc, Response response) {
-                List<DataObjectClass> dataObjectList = blc.searchClass.dataobjects; //new ArrayList<DataObjectClass>();
-                //List<DataObjectClass> lista = new List<DataObjectClass>();
-                String output = "";
-                int maxLength = 50;
-             /*   for (int i = 0; i <= 19; i++) {
-                    if (blc.searchClass.dataobjects.get(i). dataClass.nazwa.length() > maxLength) {
-                        output += blc.searchClass.dataobjects.get(i).dataClass.nazwa.substring(0, maxLength) + "...\n\n";
-                    } else {
-                        output += blc.searchClass.dataobjects.get(i).dataClass.nazwa + "\n\n";
-                    }
-                }*/
-
-                Log.d("!!!!!!!!",dataObjectList.get(0).global_id );
-               // Logger. ("geee: "+dataObjectList.size());
-                 mAdapter = new MyAdapter(dataObjectList);
-                mRecyclerView.setAdapter(mAdapter);//Streing[] {}
-            }
-
-            @Override
-            public void failure(RetrofitError retrofitError) {
-                // Log error here since request failed
-                Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
-            }
-        });
-
-    }
-
-}
-
