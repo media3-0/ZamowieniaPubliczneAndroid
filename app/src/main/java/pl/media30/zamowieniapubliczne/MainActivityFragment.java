@@ -69,10 +69,12 @@ public class MainActivityFragment extends Fragment {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().setBaseListClass(blc);
-                        //              mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
+                        
+                        mLayoutManager.scrollToPositionWithOffset(20*(strona-1), 20);
+                        strona++;
                         mAdapter.dodajKolejnyElement();
                         mRecyclerView.setAdapter(mAdapter);
-                        strona++;
+
                         Log.d("Aktualna strona: ", strona + "");
                     }
 
