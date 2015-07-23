@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,18 +65,23 @@ public class MainActivityFragment extends Fragment {
       mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
-                Log.d("Koniec listy", "No tak");
+                Log.d("Koniec listy", "Doczytanie danych...");
                 service.listOrders(strona, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().setBaseListClass(blc);
-                        
-                        mLayoutManager.scrollToPositionWithOffset(20*(strona-1), 20);
-                        strona++;
-                        mAdapter.dodajKolejnyElement();
-                        mRecyclerView.setAdapter(mAdapter);
 
+                        mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
+
+                      //  mAdapter.dodajKolejnyElement();
+                        mRecyclerView.setAdapter(mAdapter);
+                        //mLayoutManager.getFocusedChild();
+                        View view;
+                        mLayoutManager.scrollToPositionWithOffset(20 * (strona - 1), 20);
+                //        mLayoutManager.getPosition(mAdapter);
                         Log.d("Aktualna strona: ", strona + "");
+                        strona++;
+
                     }
 
                     @Override
@@ -95,7 +101,7 @@ public class MainActivityFragment extends Fragment {
                     RepositoryClass.getInstance().setBaseListClass(blc);
                     mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
                     mRecyclerView.setAdapter(mAdapter);
-                    Log.d("wykonano", "dla testu strona: " + strona);
+                    Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz");
                     wczytane=true;
                 }
 
