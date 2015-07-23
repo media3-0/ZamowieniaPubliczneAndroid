@@ -27,6 +27,7 @@ import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<DataObjectClass> mDataset;
+    static int position;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -51,6 +52,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             objClass.putString("myObject", objToStr);
             intent.putExtras(objClass);
             view.getContext().startActivity(intent);
+            MyAdapter.position = getPosition();
+        }
+
+        public int getPos(){
+            return getPosition();
         }
     }
 
@@ -61,8 +67,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void dodajKolejnyElement(){
         for(int i=0 ;i< RepositoryClass.getInstance().getBaseListClass().searchClass.dataobjects.size();i++){
             mDataset.add(RepositoryClass.getInstance().getBaseListClass().searchClass.dataobjects.get(i));
-            //Log.d("element listy to", i+"");
-
         }
     }
 
@@ -77,10 +81,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // set the view's size, margins, paddings and layout parameters
         TextView tv = (TextView)v.findViewById(android.R.id.text1);
         ViewHolder vh = new ViewHolder(v, tv);
+        position = vh.getPos();
         return vh;
     }
-
-
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
@@ -88,9 +91,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mTextView.setText((position+1) + ". " + mDataset.get(position).dataClass.nazwa+"\n");
-
     }
 
+    public int getPos(){
+        return position;
+    }
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {

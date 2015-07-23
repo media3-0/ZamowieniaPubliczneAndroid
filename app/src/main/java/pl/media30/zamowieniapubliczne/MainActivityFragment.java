@@ -1,6 +1,7 @@
 package pl.media30.zamowieniapubliczne;
 
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,13 +38,80 @@ public class MainActivityFragment extends Fragment {
     MyAdapter mAdapter;
     int strona = 2;
     boolean wczytane = false;
+    int position = 10;
 
     public MainActivityFragment() {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        position = mAdapter.getPos();
+        outState.putInt("getPos", position);
+        Log.d("wartosc", position + "");
+    }
+
+   /* @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        try{
+            if (savedInstanceState.getInt("getPos")==-1){
+                position = 1;
+            }else {
+                position = savedInstanceState.getInt("getPos");
+            }
+            Log.d("wartosc to", position+"");
+            //mLayoutManager.scrollToPosition(20);
+            //mLayoutManager.item
+        }catch(Exception e){
+            position = 1;
+            Log.d("nie dziala", "no niestety");
+        }
+        mLayoutManager = new LinearLayoutManager(this.getActivity());
+        mLayoutManager.scrollToPosition(position);
+
+    } */
+
+  /*  @Override
+    public void onResume() {
+        try {
+            if (savedInstanceState.getInt("getPos") == -1) {
+                //position = 10;
+            } else {
+                position = savedInstanceState.getInt("getPos");
+            }
+            Log.d("wartosc to", position + "");
+            //mLayoutManager.scrollToPosition(20);
+            //mLayoutManager.item
+        } catch (Exception e) {
+            //position = 10;
+            Log.d("nie dziala", "no niestety");
+        }
+        mLayoutManager = new LinearLayoutManager(this.getActivity());
+        mLayoutManager.scrollToPosition(position);
+    } */
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        try {
+            if (savedInstanceState.getInt("getPos") == -1) {
+                //position = 10;
+            } else {
+                position = savedInstanceState.getInt("getPos");
+            }
+            Log.d("wartosc to", position + "");
+            //mLayoutManager.scrollToPosition(20);
+            //mLayoutManager.item
+        } catch (Exception e) {
+            //position = 10;
+            Log.d("nie dziala", "no niestety");
+        }
+        mLayoutManager = new LinearLayoutManager(this.getActivity());
+        mLayoutManager.scrollToPosition(position);
+
+
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
@@ -62,7 +130,7 @@ public class MainActivityFragment extends Fragment {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-      mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
+        mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
                 Log.d("Koniec listy", "Doczytanie danych...");
@@ -73,12 +141,12 @@ public class MainActivityFragment extends Fragment {
 
                         mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
 
-                      //  mAdapter.dodajKolejnyElement();
+                        //  mAdapter.dodajKolejnyElement();
                         mRecyclerView.setAdapter(mAdapter);
                         //mLayoutManager.getFocusedChild();
                         View view;
-                        mLayoutManager.scrollToPositionWithOffset(20 * (strona - 1), 20);
-                //        mLayoutManager.getPosition(mAdapter);
+                        mLayoutManager.scrollToPositionWithOffset(position, 20);
+                        //        mLayoutManager.getPosition(mAdapter);
                         Log.d("Aktualna strona: ", strona + "");
                         strona++;
 
@@ -94,7 +162,7 @@ public class MainActivityFragment extends Fragment {
         });
 
         // specify an adapter (see also next example)
-        if (wczytane==false) {
+        if (wczytane == false) {
             service.listOrders(1, new Callback<BaseListClass>() {
                 @Override
                 public void success(BaseListClass blc, Response response) {
@@ -102,7 +170,7 @@ public class MainActivityFragment extends Fragment {
                     mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
                     mRecyclerView.setAdapter(mAdapter);
                     Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz");
-                    wczytane=true;
+                    wczytane = true;
                 }
 
                 @Override
@@ -115,17 +183,6 @@ public class MainActivityFragment extends Fragment {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 //Toast.makeText(getActivity().getApplicationContext(),RepositoryClass.getInstance().getString(), Toast.LENGTH_SHORT).show();
