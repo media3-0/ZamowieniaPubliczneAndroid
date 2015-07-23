@@ -39,10 +39,12 @@ public class MainActivityFragment extends Fragment {
     int strona = 2;
     boolean wczytane = false;
     int position = 10;
+    Bundle bundle = new Bundle();
+
 
     public MainActivityFragment() {
     }
-
+/*
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -50,8 +52,8 @@ public class MainActivityFragment extends Fragment {
         outState.putInt("getPos", position);
         Log.d("wartosc", position + "");
     }
-
-   /* @Override
+*/
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         try{
@@ -70,7 +72,7 @@ public class MainActivityFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mLayoutManager.scrollToPosition(position);
 
-    } */
+    }
 
   /*  @Override
     public void onResume() {
@@ -92,9 +94,31 @@ public class MainActivityFragment extends Fragment {
     } */
 
     @Override
+    public void onResume() {
+        super.onResume();
+        //Log.i("onStop", bundle.getInt("lkj")+"");
+        if (bundle.getInt("getPos") == -1) {
+            position = 1;
+        } else {
+            position = bundle.getInt("getPos");
+        }
+        Log.d("wartosc to", position + "");
+        mLayoutManager.scrollToPosition(position);
+        //mLayoutManager.scrollToPosition(20);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        position = mAdapter.getPos();
+        bundle.putInt("getPos", position);
+        Log.d("Wart do kt sie prze", position + "");
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+/*
         try {
             if (savedInstanceState.getInt("getPos") == -1) {
                 //position = 10;
@@ -102,6 +126,7 @@ public class MainActivityFragment extends Fragment {
                 position = savedInstanceState.getInt("getPos");
             }
             Log.d("wartosc to", position + "");
+            Log.d("Jestem w", "onCreateView");
             //mLayoutManager.scrollToPosition(20);
             //mLayoutManager.item
         } catch (Exception e) {
@@ -110,7 +135,7 @@ public class MainActivityFragment extends Fragment {
         }
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mLayoutManager.scrollToPosition(position);
-
+*/
 
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
