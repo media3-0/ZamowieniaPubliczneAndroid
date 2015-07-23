@@ -11,5 +11,7 @@ public class ObjectClass {
     public DataClass dataClass;
     @SerializedName("global_id")
     public String global_id;
+    @SerializedName("layers")
+    public String layers;
 
 }
