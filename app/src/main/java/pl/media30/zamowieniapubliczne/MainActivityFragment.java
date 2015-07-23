@@ -145,7 +145,7 @@ public class MainActivityFragment extends Fragment {
                         mRecyclerView.setAdapter(mAdapter);
                         //mLayoutManager.getFocusedChild();
                         View view;
-                        mLayoutManager.scrollToPositionWithOffset(position, 20);
+                        mLayoutManager.scrollToPositionWithOffset(20*(strona-1)-6, 20);
                         //        mLayoutManager.getPosition(mAdapter);
                         Log.d("Aktualna strona: ", strona + "");
                         strona++;
