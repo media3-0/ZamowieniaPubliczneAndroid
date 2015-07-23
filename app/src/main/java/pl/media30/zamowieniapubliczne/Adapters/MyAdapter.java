@@ -28,6 +28,7 @@ import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<DataObjectClass> mDataset;
     static int position;
+    public boolean xxx =true;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -53,6 +54,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             intent.putExtras(objClass);
             view.getContext().startActivity(intent);
             MyAdapter.position = getPosition();
+
         }
 
         public int getPos(){
@@ -64,11 +66,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public MyAdapter(List<DataObjectClass> myDataset) {
         mDataset = myDataset;
     }
-    public void dodajKolejnyElement(){
-        for(int i=0 ;i< RepositoryClass.getInstance().getBaseListClass().searchClass.dataobjects.size();i++){
-            mDataset.add(RepositoryClass.getInstance().getBaseListClass().searchClass.dataobjects.get(i));
-        }
-    }
+
 
     // Create new views (invoked by the layout manager)
     @Override
@@ -101,4 +99,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public int getItemCount() {
         return  mDataset.size();
     }
+
+
 }

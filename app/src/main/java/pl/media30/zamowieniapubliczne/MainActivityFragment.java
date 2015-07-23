@@ -104,6 +104,7 @@ public class MainActivityFragment extends Fragment {
         }
         Log.d("wartosc to", position + "");
         mLayoutManager.scrollToPosition(position);
+        Log.d("onResume", "!!!");
         //mLayoutManager.scrollToPosition(20);
     }
     @Override
@@ -111,12 +112,18 @@ public class MainActivityFragment extends Fragment {
         super.onStop();
         position = mAdapter.getPos();
         bundle.putInt("getPos", position);
+        bundle.putBoolean("getWczytaj", wczytane);
         Log.d("Wart do kt sie prze", position + "");
+        Log.d("onStop", "!!!");
+        Log.d("bundle", bundle.getBoolean("getWczytaj")+"");
+        Log.d("wart wczytan.", wczytane+"");
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d("onCreateView", "!!!");
 
 /*
         try {
@@ -162,18 +169,19 @@ public class MainActivityFragment extends Fragment {
                 service.listOrders(strona, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
+                        int rozmiar = mAdapter.getItemCount();
                         RepositoryClass.getInstance().setBaseListClass(blc);
-
                         mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
 
                         //  mAdapter.dodajKolejnyElement();
                         mRecyclerView.setAdapter(mAdapter);
                         //mLayoutManager.getFocusedChild();
                         View view;
-                        mLayoutManager.scrollToPositionWithOffset(20*(strona-1)-6, 20);
+                        //mLayoutManager.scrollToPositionWithOffset(20 * (strona - 1) - 6, 20);
                         //        mLayoutManager.getPosition(mAdapter);
                         Log.d("Aktualna strona: ", strona + "");
                         strona++;
+                        mLayoutManager.scrollToPosition(rozmiar-6);
 
                     }
 
@@ -187,7 +195,9 @@ public class MainActivityFragment extends Fragment {
         });
 
         // specify an adapter (see also next example)
-        if (wczytane == false) {
+        wczytane=bundle.getBoolean("getWczytaj");
+
+        if (wczytane==false) {
             service.listOrders(1, new Callback<BaseListClass>() {
                 @Override
                 public void success(BaseListClass blc, Response response) {
