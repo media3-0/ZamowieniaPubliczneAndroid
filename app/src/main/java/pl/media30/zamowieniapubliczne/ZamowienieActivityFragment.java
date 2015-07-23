@@ -24,10 +24,12 @@ public class ZamowienieActivityFragment extends Activity {
 
     public ZamowienieActivityFragment() {
     }
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.fragment_zamowienie);
+
 
             //TextView nazwa = (TextView) findViewById(R.id.textViewNazwa);
             TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
@@ -48,12 +50,13 @@ public class ZamowienieActivityFragment extends Activity {
             TextView zamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
             TextView zamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
 
+
             //Bundle przekazanedane = getIntent().getExtras();
             //String przekazanytekst = przekazanedane.getString("dane");
 
             //nazwa.setText(przekazanytekst);
 
-//parsowanie obj
+            //parsowanie obj
 
             String jsonMyObject="";
             Bundle extras = getIntent().getExtras();
@@ -80,8 +83,42 @@ public class ZamowienieActivityFragment extends Activity {
             zamawiajacyIDPowiatu.setText(myObject.dataClass.powiat_id.toString());
             zamawiajacyIDGminy.setText(myObject.dataClass.gmina_id.toString());
             zamawiajacyIDWojewodztwa.setText(myObject.dataClass.wojewodztwo_id.toString());
+
+
+            TextView textView6 = (TextView) findViewById(R.id.textView6);
+            textView6.setVisibility(View.GONE);
+            TextView textViewZamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
+            textViewZamawiajacyNazwa.setVisibility(View.GONE);
+
+            TextView textView7 = (TextView) findViewById(R.id.textView7);
+            textView7.setVisibility(View.GONE);
+            TextView textViewZamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
+            textViewZamawiajacyID.setVisibility(View.GONE);
+
+            TextView textView8 = (TextView) findViewById(R.id.textView8);
+            textView8.setVisibility(View.GONE);
+            TextView textViewZamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
+            textViewZamawiajacyRegon.setVisibility(View.GONE);
+
         }
 
+    public void chowanieIdentyfikatory(View v){
+        TextView textView6 = (TextView) findViewById(R.id.textView6);
+        textView6.setVisibility(textView6.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
+        textViewZamawiajacyNazwa.setVisibility(textViewZamawiajacyNazwa.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textView7 = (TextView) findViewById(R.id.textView7);
+        textView7.setVisibility(textView7.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
+        textViewZamawiajacyID.setVisibility(textViewZamawiajacyID.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textView8 = (TextView) findViewById(R.id.textView8);
+        textView8.setVisibility(textView8.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
+        textViewZamawiajacyRegon.setVisibility(textViewZamawiajacyRegon.isShown() ? View.GONE : View.VISIBLE);
     }
+
+}
 
 

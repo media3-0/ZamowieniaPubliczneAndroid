@@ -24,6 +24,8 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Identyfikatory zamawiającego:"
+             android:clickable="true"
+             android:onClick="chowanieIdentyfikatory"
              android:id="@+id/textView2"
              android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
@@ -412,7 +414,6 @@
         android:layout_alignParentStart="true"
         android:textColor="#ffffffff"
         android:layout_marginTop="5dp" />
-
 
 </RelativeLayout>
 </ScrollView>
