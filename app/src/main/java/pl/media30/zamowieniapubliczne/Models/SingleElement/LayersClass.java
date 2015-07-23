@@ -12,7 +12,7 @@ import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 public class LayersClass {
 
     @SerializedName("details")
-    public String details;
+    public DetailsClass detailsClass;
 
     @SerializedName("sources")
     public List<SourcesClass> sources;
@@ -21,7 +21,7 @@ public class LayersClass {
     public List<CzesciClass> czesci; //Narazie klasa jest pusta, poniewa¿ nie moge znaleŸæ przetargu w którym jest to wype³nione
 */
     @SerializedName("dataset")
-    public String dataset;
+    public String dataset; // czy String
 
 
 
