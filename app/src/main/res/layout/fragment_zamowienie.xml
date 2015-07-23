@@ -1,6 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#000000">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -16,7 +16,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiającyNazwa"
              android:id="@+id/textViewZamawiajacyNazwa"
-             android:layout_below="@+id/textView6"
+             android:layout_below="@+id/textViewZamawiajacyNazwaLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -39,7 +39,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyMiejscowosc"
              android:id="@+id/textViewZamawiajacyMiejscowosc"
-             android:layout_below="@+id/textView4"
+             android:layout_below="@+id/textViewZamawiajacyMiejscowoscLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -48,7 +48,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyUlica"
              android:id="@+id/textViewZamawiajacyUlica"
-             android:layout_below="@+id/textView5"
+             android:layout_below="@+id/textViewZamawiajacyUlicaLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -56,7 +56,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Miejscowość: "
-             android:id="@+id/textView4"
+             android:id="@+id/textViewZamawiajacyMiejscowoscLabel"
              android:layout_below="@+id/textViewZamawiajacyIDGminy"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -68,7 +68,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Ulica: "
-             android:id="@+id/textView5"
+             android:id="@+id/textViewZamawiajacyUlicaLabel"
              android:layout_below="@+id/textViewZamawiajacyIDKoduPocztowego"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="false"
@@ -80,7 +80,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Nazwa: "
-             android:id="@+id/textView6"
+             android:id="@+id/textViewZamawiajacyNazwaLabel"
              android:layout_below="@+id/textView2"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -92,7 +92,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Województwo: "
-             android:id="@+id/textView3"
+             android:id="@+id/textViewZamawiajacyWojewodztwoLabel"
              android:layout_below="@+id/textView9"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -105,7 +105,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyWojewodztwo"
              android:id="@+id/textViewZamawiajacyWojewodztwo"
-             android:layout_below="@+id/textView3"
+             android:layout_below="@+id/textViewZamawiajacyWojewodztwoLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -113,7 +113,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="ID: "
-             android:id="@+id/textView7"
+             android:id="@+id/textViewZamawiajacyIDLabel"
              android:layout_below="@+id/textViewZamawiajacyNazwa"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -127,7 +127,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyID"
              android:id="@+id/textViewZamawiajacyID"
-             android:layout_below="@+id/textView7"
+             android:layout_below="@+id/textViewZamawiajacyIDLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -135,7 +135,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Regon: "
-             android:id="@+id/textView8"
+             android:id="@+id/textViewZamawiajacyRegonLabel"
              android:layout_below="@+id/textViewZamawiajacyID"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -149,7 +149,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyRegon"
              android:id="@+id/textViewZamawiajacyRegon"
-             android:layout_below="@+id/textView8"
+             android:layout_below="@+id/textViewZamawiajacyRegonLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -158,6 +158,8 @@
              android:layout_height="wrap_content"
              android:text="Dane adresowe zamawiającego: "
              android:id="@+id/textView9"
+             android:clickable="true"
+             android:onClick="chowanieDaneAdresowe"
              android:layout_below="@+id/textViewZamawiajacyRegon"
              android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
@@ -170,7 +172,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Kod pocztowy: "
-             android:id="@+id/textView10"
+             android:id="@+id/textViewZamawiajacyKodPocztowyLabel"
              android:layout_below="@+id/textViewZamawiajacyMiejscowosc"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
@@ -181,7 +183,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyKodPocztowy"
              android:id="@+id/textViewZamawiajacyKodPocztowy"
-             android:layout_below="@+id/textView10"
+             android:layout_below="@+id/textViewZamawiajacyKodPocztowyLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -189,7 +191,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="ID Kodu pocztowego: "
-             android:id="@+id/textView11"
+             android:id="@+id/textViewZamawiajacyIDKoduPocztowegoLabel"
              android:layout_below="@+id/textViewZamawiajacyKodPocztowy"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -202,7 +204,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyIDKoduPoczt"
              android:id="@+id/textViewZamawiajacyIDKoduPocztowego"
-             android:layout_below="@+id/textView11"
+             android:layout_below="@+id/textViewZamawiajacyIDKoduPocztowegoLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -210,7 +212,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Nr domu: "
-             android:id="@+id/textView12"
+             android:id="@+id/textViewZamawiajacyNrDomuLabel"
              android:layout_below="@+id/textViewZamawiajacyUlica"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -223,7 +225,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyNrDomu"
              android:id="@+id/textViewZamawiajacyNrDomu"
-             android:layout_below="@+id/textView12"
+             android:layout_below="@+id/textViewZamawiajacyNrDomuLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -231,7 +233,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Nr mieszkania: "
-             android:id="@+id/textView13"
+             android:id="@+id/textViewZamawiajacyNrMieszkaniaLabel"
              android:layout_below="@+id/textViewZamawiajacyNrDomu"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -244,7 +246,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyNrMieszkania"
              android:id="@+id/textViewZamawiajacyNrMieszkania"
-             android:layout_below="@+id/textView13"
+             android:layout_below="@+id/textViewZamawiajacyNrMieszkaniaLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -252,8 +254,10 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Dane kontaktowe zamawiającego:"
-             android:id="@+id/textView14"
+             android:id="@+id/textViewDaneKontaktoweZamawiajacegoLabel"
              android:layout_below="@+id/textViewZamawiajacyNrMieszkania"
+             android:clickable="true"
+             android:onClick="chowanieDaneKontaktowe"
              android:layout_alignParentLeft="false"
              android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
@@ -265,8 +269,8 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Email: "
-             android:id="@+id/textView15"
-             android:layout_below="@+id/textView14"
+             android:id="@+id/textViewZamawiajacyEmailLabel"
+             android:layout_below="@+id/textViewDaneKontaktoweZamawiajacegoLabel"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
@@ -278,7 +282,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyEmail"
              android:id="@+id/textViewZamawiajacyEmail"
-             android:layout_below="@+id/textView15"
+             android:layout_below="@+id/textViewZamawiajacyEmailLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -286,7 +290,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Telefon: "
-             android:id="@+id/textView16"
+             android:id="@+id/textViewZamawiajacyTelefonLabel"
              android:layout_below="@+id/textViewZamawiajacyEmail"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -299,7 +303,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyTelefon"
              android:id="@+id/textViewZamawiajacyTelefon"
-             android:layout_below="@+id/textView16"
+             android:layout_below="@+id/textViewZamawiajacyTelefonLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -307,7 +311,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Fax: "
-             android:id="@+id/textView17"
+             android:id="@+id/textViewZamawiajacyFaxLabel"
              android:layout_below="@+id/textViewZamawiajacyTelefon"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -320,7 +324,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyFax"
              android:id="@+id/textViewZamawiajacyFax"
-             android:layout_below="@+id/textView17"
+             android:layout_below="@+id/textViewZamawiajacyFaxLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -328,7 +332,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="WWW: "
-             android:id="@+id/textView18"
+             android:id="@+id/textViewZamawiajacyWWWLabel"
              android:layout_below="@+id/textViewZamawiajacyFax"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
@@ -341,7 +345,7 @@
              android:layout_height="wrap_content"
              android:text="ZamawiajacyWWW"
              android:id="@+id/textViewZamawiajacyWWW"
-             android:layout_below="@+id/textView18"
+             android:layout_below="@+id/textViewZamawiajacyWWWLabel"
              android:layout_marginTop="5dp"
              android:textColor="#ffffffff" />
 
@@ -349,7 +353,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ID powiatu: "
-        android:id="@+id/textView19"
+        android:id="@+id/textViewZamawiajacyIDPowiatuLabel"
         android:layout_below="@+id/textViewZamawiajacyIDWojewodztwa"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -362,7 +366,7 @@
         android:layout_height="wrap_content"
         android:text="ZamawiajacyIDPowiatu"
         android:id="@+id/textViewZamawiajacyIDPowiatu"
-        android:layout_below="@+id/textView19"
+        android:layout_below="@+id/textViewZamawiajacyIDPowiatuLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="#ffffffff"
@@ -373,7 +377,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ID gminy: "
-        android:id="@+id/textView"
+        android:id="@+id/textViewZamawiajacyIDGminyLabel"
         android:layout_below="@+id/textViewZamawiajacyIDPowiatu"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -386,7 +390,7 @@
         android:layout_height="wrap_content"
         android:text="ZamawiajacyIDGminy"
         android:id="@+id/textViewZamawiajacyIDGminy"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/textViewZamawiajacyIDGminyLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="#ffffffff"
@@ -396,7 +400,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ID województwa: "
-        android:id="@+id/textView20"
+        android:id="@+id/textViewZamawiajacyIDWojewodztwaLabel"
         android:layout_below="@+id/textViewZamawiajacyWojewodztwo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -409,7 +413,7 @@
         android:layout_height="wrap_content"
         android:text="ZamawiajacyIDWojewodztwa"
         android:id="@+id/textViewZamawiajacyIDWojewodztwa"
-        android:layout_below="@+id/textView20"
+        android:layout_below="@+id/textViewZamawiajacyIDWojewodztwaLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="#ffffffff"
