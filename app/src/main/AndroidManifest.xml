@@ -27,6 +27,10 @@
             android:name=".ZamowienieActivityFragment"
             android:label="@string/title_activity_zamowienie" >
         </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/search" >
+        </activity>
     </application>
 
 </manifest>
