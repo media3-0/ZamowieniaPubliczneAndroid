@@ -18,94 +18,59 @@ import retrofit.client.Response;
 
 import static java.lang.Integer.parseInt;
 
-
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ZamowienieActivityFragment extends Activity {
-    public ZamowienieActivityFragment() {
-    }
-
+public class ZamowienieActivityFragment extends Activity
+{
+    public ZamowienieActivityFragment(){}
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_zamowienie);
         String jsonMyObject = "";
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
+        if (extras != null)
+        {
             jsonMyObject = extras.getString("myObject");
         }
         DataObjectClass myObject = new Gson().fromJson(jsonMyObject, DataObjectClass.class);
         //dostêp do layers
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://api.mojepanstwo.pl/dane/")
-                .build();
+        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         service.singleOrder(parseInt(myObject.dataClass.zamawiajacy_id), new Callback<BaseClass>() {
                     @Override
                     public void success(BaseClass baseClass, Response response) {
-                        Toast.makeText(getApplicationContext(), baseClass.objectClass.layers.detailsClass.przedmiot, Toast.LENGTH_LONG).show();
-
-
+                        //Toast.makeText(getApplicationContext(), baseClass.objectClass.layers.detailsClass.przedmiot, Toast.LENGTH_LONG).show();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         Log.d("error: ", error.getMessage() + "");
-
                     }
                 }
         );
-
         //koniec dostêpu do layers
-
-        TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
-        TextView zamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
-        TextView zamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
-        TextView zamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
-        TextView zamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
-        TextView zamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
-        TextView zamawiajacyKodPocztowy = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowy);
-        TextView zamawiajacyIDKoduPocztowego = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowego);
-        TextView zamawiajacyNrDomu = (TextView) findViewById(R.id.textViewZamawiajacyNrDomu);
-        TextView zamawiajacyNrMIeszkania = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkania);
-        TextView zamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
-        TextView zamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
-        TextView zamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
-        TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
-        TextView zamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
-        TextView zamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
-        TextView zamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
-        TextView zamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
 
         //Bundle przekazanedane = getIntent().getExtras();
         //String przekazanytekst = przekazanedane.getString("dane");
         //nazwa.setText(przekazanytekst);
         //parsowanie obj
 
+//REGION IDENTYFIKATORY ZAMAWIAJACEGO
 
-
-
+        TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
         zamawiajacyNazwa.setText(myObject.dataClass.zamawiajacy_nazwa.toString());
-        zamawiajacyMiejscowosc.setText(myObject.dataClass.zamawiajacy_miejscowosc.toString());
-        zamawiajacyUlica.setText(myObject.dataClass.zamawiajacy_ulica.toString());
-        zamawiajacyWojewodztwo.setText(myObject.dataClass.zamawiajacy_wojewodztwo.toString());
+
+        TextView zamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
         zamawiajacyID.setText(myObject.dataClass.zamawiajacy_id.toString());
-        zamawiajacyRegon.setText(myObject.dataClass.zamawiajacy_regon.toString());
-        zamawiajacyKodPocztowy.setText(myObject.dataClass.zamawiajacy_kod_poczt.toString());
-        zamawiajacyIDKoduPocztowego.setText(myObject.dataClass.zamawiajacyKod_pocztowy_id.toString());
-        zamawiajacyNrDomu.setText(myObject.dataClass.zamawiajacy_nr_domu.toString());
-        zamawiajacyNrMIeszkania.setText(myObject.dataClass.zamawiajacy_nr_miesz.toString());
-        zamawiajacyEmail.setText(myObject.dataClass.zamawiajacy_email.toString());
-        zamawiajacyTelefon.setText(myObject.dataClass.zamawiajacy_tel.toString());
-        zamawiajacyFax.setText(myObject.dataClass.zamawiajacy_fax.toString());
-        zamawiajacyWWW.setText(myObject.dataClass.zamawiajacy_www.toString());
-        zamawiajacyIDPowiatu.setText(myObject.dataClass.powiat_id.toString());
-        zamawiajacyIDGminy.setText(myObject.dataClass.gmina_id.toString());
-        zamawiajacyIDWojewodztwa.setText(myObject.dataClass.wojewodztwo_id.toString());
+
+        TextView zamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
         zamawiajacyRodzaj.setText(myObject.dataClass.zamawiajacy_rodzaj.toString());
 
-//REGION CHOWANIE IDENTYFIKATOROW
+        TextView zamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
+        zamawiajacyRegon.setText(myObject.dataClass.zamawiajacy_regon.toString());
 
         TextView textViewZamawiajacyNazwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNazwaLabel);
         textViewZamawiajacyNazwaLabel.setVisibility(View.GONE);
@@ -128,7 +93,37 @@ public class ZamowienieActivityFragment extends Activity {
         textViewZamawiajacyRegon.setVisibility(View.GONE);
 
 //ENDREGION
-//REGION CHOWANIE DANYCH ADRESOWYCH
+//REGION DANE ADRESOWE ZAMAWIAJACEGO
+
+        TextView zamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
+        zamawiajacyWojewodztwo.setText(myObject.dataClass.zamawiajacy_wojewodztwo.toString());
+
+        TextView zamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
+        zamawiajacyIDWojewodztwa.setText(myObject.dataClass.wojewodztwo_id.toString());
+
+        TextView zamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
+        zamawiajacyIDPowiatu.setText(myObject.dataClass.powiat_id.toString());
+
+        TextView zamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
+        zamawiajacyIDGminy.setText(myObject.dataClass.gmina_id.toString());
+
+        TextView zamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
+        zamawiajacyMiejscowosc.setText(myObject.dataClass.zamawiajacy_miejscowosc.toString());
+
+        TextView zamawiajacyKodPocztowy = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowy);
+        zamawiajacyKodPocztowy.setText(myObject.dataClass.zamawiajacy_kod_poczt.toString());
+
+        TextView zamawiajacyIDKoduPocztowego = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowego);
+        zamawiajacyIDKoduPocztowego.setText(myObject.dataClass.zamawiajacyKod_pocztowy_id.toString());
+
+        TextView zamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
+        zamawiajacyUlica.setText(myObject.dataClass.zamawiajacy_ulica.toString());
+
+        TextView zamawiajacyNrDomu = (TextView) findViewById(R.id.textViewZamawiajacyNrDomu);
+        zamawiajacyNrDomu.setText(myObject.dataClass.zamawiajacy_nr_domu.toString());
+
+        TextView zamawiajacyNrMIeszkania = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkania);
+        zamawiajacyNrMIeszkania.setText(myObject.dataClass.zamawiajacy_nr_miesz.toString());
 
         TextView textViewZamawiajacyWojewodztwoLabel = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwoLabel);
         textViewZamawiajacyWojewodztwoLabel.setVisibility(View.GONE);
@@ -181,7 +176,19 @@ public class ZamowienieActivityFragment extends Activity {
         textViewZamawiajacyNrMieszkania.setVisibility(View.GONE);
 
 //ENDREGION
-//REGION CHOWANIE DANYCH ADRESOWYCH
+//REGION DANE KONTAKTOWE ZAMAWIAJACEGO
+
+        TextView zamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
+        zamawiajacyEmail.setText(myObject.dataClass.zamawiajacy_email.toString());
+
+        TextView zamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
+        zamawiajacyTelefon.setText(myObject.dataClass.zamawiajacy_tel.toString());
+
+        TextView zamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
+        zamawiajacyFax.setText(myObject.dataClass.zamawiajacy_fax.toString());
+
+        TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
+        zamawiajacyWWW.setText(myObject.dataClass.zamawiajacy_www.toString());
 
         TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
         textViewZamawiajacyEmailLabel.setVisibility(View.GONE);
@@ -202,6 +209,89 @@ public class ZamowienieActivityFragment extends Activity {
         textViewZamawiajacyWWWLabel.setVisibility(View.GONE);
         TextView textViewZamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
         textViewZamawiajacyWWW.setVisibility(View.GONE);
+
+//ENDREGION
+//REGION INFORMACJE O ZAMOWIENIU
+
+        TextView zamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
+        zamowienieNazwa.setText(myObject.dataClass.nazwa.toString());
+
+        TextView zamowienieNr = (TextView) findViewById(R.id.textViewZamowienieNr);
+        zamowienieNr.setText(myObject.dataClass.id.toString());
+
+        TextView zamowienieTyp = (TextView) findViewById(R.id.textViewZamowienieTyp);
+        zamowienieTyp.setText(myObject.dataClass.typyNazwa.toString());
+
+        TextView zamowienieTypSymbol = (TextView) findViewById(R.id.textViewZamowienieTypSymbol);
+        zamowienieTypSymbol.setText(myObject.dataClass.typySymbol.toString());
+
+        TextView zamowienieRodzaj = (TextView) findViewById(R.id.textViewZamowienieRodzaj);
+        zamowienieRodzaj.setText(myObject.dataClass.rodzajeNazwa.toString());
+
+        TextView zamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
+        zamowienieDataPublikacji.setText(myObject.dataClass.data_publikacji.toString());
+
+        TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
+        zamowienieSzacowanaWartosc.setText(Integer.toString(myObject.dataClass.wartosc_szacowana));
+
+        TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
+        zamowienieCenaWybranejOferty.setText(Integer.toString(myObject.dataClass.wartosc_cena));
+
+        TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
+        zamowienieNajtanszaOferta.setText(myObject.dataClass.wartosc_cena_min.toString());
+
+        TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
+        zamowienieNajdrozszaOferta.setText(Integer.toString(myObject.dataClass.wartosc_cena_max));
+
+        TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
+        textViewZamowienieNazwaLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
+        textViewZamowienieNazwa.setVisibility(View.GONE);
+
+       TextView textViewZamowienieNrLabel = (TextView) findViewById(R.id.textViewZamowienieNrLabel);
+        textViewZamowienieNrLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieNr = (TextView) findViewById(R.id.textViewZamowienieNr);
+        textViewZamowienieNr.setVisibility(View.GONE);
+
+        TextView textViewZamowienieTypLabel = (TextView) findViewById(R.id.textViewZamowienieTypLabel);
+        textViewZamowienieTypLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieTyp = (TextView) findViewById(R.id.textViewZamowienieTyp);
+        textViewZamowienieTyp.setVisibility(View.GONE);
+
+        TextView textViewZamowienieTypSymbolLabel = (TextView) findViewById(R.id.textViewZamowienieTypSymbolLabel);
+        textViewZamowienieTypSymbolLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieTypSymbol = (TextView) findViewById(R.id.textViewZamowienieTypSymbol);
+        textViewZamowienieTypSymbol.setVisibility(View.GONE);
+
+        TextView textViewZamowienieRodzajLabel = (TextView) findViewById(R.id.textViewZamowienieRodzajLabel);
+        textViewZamowienieRodzajLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieRodzaj = (TextView) findViewById(R.id.textViewZamowienieRodzaj);
+        textViewZamowienieRodzaj.setVisibility(View.GONE);
+
+        TextView textViewZamowienieDataPublikacjiLabel = (TextView) findViewById(R.id.textViewZamowienieDataPublikacjiLabel);
+        textViewZamowienieDataPublikacjiLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
+        textViewZamowienieDataPublikacji.setVisibility(View.GONE);
+
+        TextView textViewZamowienieSzacowanaWartoscLabel = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartoscLabel);
+        textViewZamowienieSzacowanaWartoscLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
+        textViewZamowienieSzacowanaWartosc.setVisibility(View.GONE);
+
+        TextView textViewZamowienieCenaWybranejOfertyLabel = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOfertyLabel);
+        textViewZamowienieCenaWybranejOfertyLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
+        textViewZamowienieCenaWybranejOferty.setVisibility(View.GONE);
+
+        TextView textViewZamowienieNajtanszaOfertaLabel = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOfertaLabel);
+        textViewZamowienieNajtanszaOfertaLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
+        textViewZamowienieNajtanszaOferta.setVisibility(View.GONE);
+
+        TextView textViewZamowienieNajdrozszaOfertaLabel = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOfertaLabel);
+        textViewZamowienieNajdrozszaOfertaLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
+        textViewZamowienieNajdrozszaOferta.setVisibility(View.GONE);
 
 //ENDREGION
     }
@@ -300,6 +390,58 @@ public class ZamowienieActivityFragment extends Activity {
         textViewZamawiajacyWWWLabel.setVisibility(textViewZamawiajacyWWWLabel.isShown() ? View.GONE : View.VISIBLE);
         TextView textViewZamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
         textViewZamawiajacyWWW.setVisibility(textViewZamawiajacyWWW.isShown() ? View.GONE : View.VISIBLE);
+    }
+
+    public void chowanieInformacjeOZamowieniu(View v) {
+        TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
+        textViewZamowienieNazwaLabel.setVisibility(textViewZamowienieNazwaLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
+        textViewZamowienieNazwa.setVisibility(textViewZamowienieNazwa.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamowienieNrLabel = (TextView) findViewById(R.id.textViewZamowienieNrLabel);
+        textViewZamowienieNrLabel.setVisibility(textViewZamowienieNrLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieNr = (TextView) findViewById(R.id.textViewZamowienieNr);
+        textViewZamowienieNr.setVisibility(textViewZamowienieNr.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamowienieTypLabel = (TextView) findViewById(R.id.textViewZamowienieTypLabel);
+        textViewZamowienieTypLabel.setVisibility(textViewZamowienieTypLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieTyp = (TextView) findViewById(R.id.textViewZamowienieTyp);
+        textViewZamowienieTyp.setVisibility(textViewZamowienieTyp.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamowienieTypSymbolLabel = (TextView) findViewById(R.id.textViewZamowienieTypSymbolLabel);
+        textViewZamowienieTypSymbolLabel.setVisibility(textViewZamowienieTypSymbolLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieTypSymbol = (TextView) findViewById(R.id.textViewZamowienieTypSymbol);
+        textViewZamowienieTypSymbol.setVisibility(textViewZamowienieTypSymbol.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamowienieRodzajLabel = (TextView) findViewById(R.id.textViewZamowienieRodzajLabel);
+        textViewZamowienieRodzajLabel.setVisibility(textViewZamowienieRodzajLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieRodzaj = (TextView) findViewById(R.id.textViewZamowienieRodzaj);
+        textViewZamowienieRodzaj.setVisibility(textViewZamowienieRodzaj.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamowienieDataPublikacjiLabel = (TextView) findViewById(R.id.textViewZamowienieDataPublikacjiLabel);
+        textViewZamowienieDataPublikacjiLabel.setVisibility(textViewZamowienieDataPublikacjiLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
+        textViewZamowienieDataPublikacji.setVisibility(textViewZamowienieDataPublikacji.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamowienieSzacowanaWartoscLabel = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartoscLabel);
+        textViewZamowienieSzacowanaWartoscLabel.setVisibility(textViewZamowienieSzacowanaWartoscLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
+        textViewZamowienieSzacowanaWartosc.setVisibility(textViewZamowienieSzacowanaWartosc.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamowienieCenaWybranejOfertyLabel = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOfertyLabel);
+        textViewZamowienieCenaWybranejOfertyLabel.setVisibility(textViewZamowienieCenaWybranejOfertyLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
+        textViewZamowienieCenaWybranejOferty.setVisibility(textViewZamowienieCenaWybranejOferty.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamowienieNajtanszaOfertaLabel = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOfertaLabel);
+        textViewZamowienieNajtanszaOfertaLabel.setVisibility(textViewZamowienieNajtanszaOfertaLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
+        textViewZamowienieNajtanszaOferta.setVisibility(textViewZamowienieNajtanszaOferta.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamowienieNajdrozszaOfertaLabel = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOfertaLabel);
+        textViewZamowienieNajdrozszaOfertaLabel.setVisibility(textViewZamowienieNajdrozszaOfertaLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
+        textViewZamowienieNajdrozszaOferta.setVisibility(textViewZamowienieNajdrozszaOferta.isShown() ? View.GONE : View.VISIBLE);
     }
 }
 
