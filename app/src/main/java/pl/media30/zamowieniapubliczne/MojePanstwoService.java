@@ -14,8 +14,6 @@ public interface MojePanstwoService {
     @GET("/zamowienia_publiczne/{id}?layers=details,czesci,sources.json")
     void singleOrder(@Path("id") int id, Callback<BaseClass> cb);
 
-    //https://api.mojepanstwo.pl/dane/dataset/zamowienia_publiczne/search?page=2.json
-    @GET("/dataset/zamowienia_publiczne/search") //@Query("sort") String sort
+    @GET("/dataset/zamowienia_publiczne/search?limit=100")
     void listOrders(@Query("page") int page, Callback<BaseListClass> clb);
-    // void getPositionByZip(@Query("address") String address, Callback<String> cb);
 }

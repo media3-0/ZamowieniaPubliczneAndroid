@@ -44,15 +44,7 @@ public class MainActivityFragment extends Fragment {
 
     public MainActivityFragment() {
     }
-/*
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        position = mAdapter.getPos();
-        outState.putInt("getPos", position);
-        Log.d("wartosc", position + "");
-    }
-*/
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -63,40 +55,17 @@ public class MainActivityFragment extends Fragment {
                 position = savedInstanceState.getInt("getPos");
             }
             Log.d("wartosc to", position+"");
-            //mLayoutManager.scrollToPosition(20);
-            //mLayoutManager.item
         }catch(Exception e){
             position = 1;
             Log.d("nie dziala", "no niestety");
         }
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mLayoutManager.scrollToPosition(position);
-
     }
-
-  /*  @Override
-    public void onResume() {
-        try {
-            if (savedInstanceState.getInt("getPos") == -1) {
-                //position = 10;
-            } else {
-                position = savedInstanceState.getInt("getPos");
-            }
-            Log.d("wartosc to", position + "");
-            //mLayoutManager.scrollToPosition(20);
-            //mLayoutManager.item
-        } catch (Exception e) {
-            //position = 10;
-            Log.d("nie dziala", "no niestety");
-        }
-        mLayoutManager = new LinearLayoutManager(this.getActivity());
-        mLayoutManager.scrollToPosition(position);
-    } */
 
     @Override
     public void onResume() {
         super.onResume();
-        //Log.i("onStop", bundle.getInt("lkj")+"");
         if (bundle.getInt("getPos") == -1) {
             position = 1;
         } else {
@@ -105,7 +74,6 @@ public class MainActivityFragment extends Fragment {
         Log.d("wartosc to", position + "");
         mLayoutManager.scrollToPosition(position);
         Log.d("onResume", "!!!");
-        //mLayoutManager.scrollToPosition(20);
     }
     @Override
     public void onStop() {
@@ -124,26 +92,6 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d("onCreateView", "!!!");
-
-/*
-        try {
-            if (savedInstanceState.getInt("getPos") == -1) {
-                //position = 10;
-            } else {
-                position = savedInstanceState.getInt("getPos");
-            }
-            Log.d("wartosc to", position + "");
-            Log.d("Jestem w", "onCreateView");
-            //mLayoutManager.scrollToPosition(20);
-            //mLayoutManager.item
-        } catch (Exception e) {
-            //position = 10;
-            Log.d("nie dziala", "no niestety");
-        }
-        mLayoutManager = new LinearLayoutManager(this.getActivity());
-        mLayoutManager.scrollToPosition(position);
-*/
-
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
@@ -171,18 +119,12 @@ public class MainActivityFragment extends Fragment {
                     public void success(BaseListClass blc, Response response) {
                         int rozmiar = mAdapter.getItemCount();
                         RepositoryClass.getInstance().setBaseListClass(blc);
-                        mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
-
-                        //  mAdapter.dodajKolejnyElement();
+                        mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);
                         mRecyclerView.setAdapter(mAdapter);
-                        //mLayoutManager.getFocusedChild();
                         View view;
-                        //mLayoutManager.scrollToPositionWithOffset(20 * (strona - 1) - 6, 20);
-                        //        mLayoutManager.getPosition(mAdapter);
                         Log.d("Aktualna strona: ", strona + "");
                         strona++;
                         mLayoutManager.scrollToPosition(rozmiar);
-
                     }
 
                     @Override

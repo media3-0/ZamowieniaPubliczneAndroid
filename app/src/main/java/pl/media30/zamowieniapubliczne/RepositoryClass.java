@@ -29,10 +29,7 @@ public class RepositoryClass {
 
 
     public void setBaseListClass(BaseListClass baseListClass) {
-
-        //.getBaseListClass().searchClass.dataobjects);
         this.baseListClass = baseListClass;
-        //   dataObjectList.add(baseListClass.searchClass.dataobjects.get(i));
             if (dataObjectList == null){
                 dataObjectList = baseListClass.getSearchClass().getDataObjectClass();
 
@@ -41,33 +38,21 @@ public class RepositoryClass {
                     dataObjectList.add(baseListClass.getSearchClass().getDataObjectClass().get(i));
                 }
             }
-          //  Log.d("Liczba iteracji: ", i+"");
-
     }
 
     public void setBaseClass(BaseClass baseClass) {
 
-        //.getBaseListClass().searchClass.dataobjects);
         this.baseClass = baseClass;
-        //   dataObjectList.add(baseListClass.searchClass.dataobjects.get(i));
-
-        //  Log.d("Liczba iteracji: ", i+"");
 
     }
-
 
     public BaseListClass getBaseListClass() {
         return baseListClass;
     }
 
-
     public List<DataObjectClass> getList() {
         return dataObjectList;
     }
-
-
-
-
 
     private RepositoryClass() {
     }
@@ -78,16 +63,6 @@ public class RepositoryClass {
         }
         return mInstance;
     }
-/*
-        public String getString(){
-            return this.mString;
-        }
-
-        public void setString(String value){
-            mString = value;
-        }
-*/
-
 }
 
 
