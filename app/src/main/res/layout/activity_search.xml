@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:text="@string/searchButton"
             android:id="@+id/button"
+            android:onClick="onClick"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 

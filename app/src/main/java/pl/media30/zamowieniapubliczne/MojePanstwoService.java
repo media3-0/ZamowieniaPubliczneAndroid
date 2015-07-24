@@ -17,3 +17,4 @@ public interface MojePanstwoService {
     @GET("/dataset/zamowienia_publiczne/search?limit=100")
     void listOrders(@Query("page") int page, Callback<BaseListClass> clb);
 }
+// @Query("conditions[zamowienia_publiczne.zamawiajacy_miejscowosc]") String zapytanie,
