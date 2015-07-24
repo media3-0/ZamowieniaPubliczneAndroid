@@ -1,5 +1,7 @@
 package pl.media30.zamowieniapubliczne;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -40,6 +42,7 @@ public class MainActivityFragment extends Fragment {
     boolean wczytane = false;
     int position = 10;
     Bundle bundle = new Bundle();
+
 
 
     public MainActivityFragment() {
@@ -98,6 +101,9 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        //ProgressDialog dialog = ProgressDialog.show(getActivity().getApplicationContext(), "Loading", "Please wait...");
+        final ProgressDialog dialog =
+                ProgressDialog.show(this.getActivity().getWindow().getContext(), "Trwa wczytywanie danych", "Please Wait...");
         final RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://api.mojepanstwo.pl/dane/")
                 .build();
@@ -114,6 +120,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onLoadMore(int current_page) {
                 Log.d("Koniec listy", "Doczytanie danych...");
+                dialog.show();
                 service.listOrders(strona, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
@@ -125,12 +132,16 @@ public class MainActivityFragment extends Fragment {
                         Log.d("Aktualna strona: ", strona + "");
                         strona++;
                         mLayoutManager.scrollToPosition(rozmiar);
+                        dialog.dismiss();
+
+
                     }
 
                     @Override
                     public void failure(RetrofitError retrofitError) {
                         // Log error here since request failed
                         Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
+                        dialog.dismiss();
                     }
                 });
             }
@@ -148,14 +159,18 @@ public class MainActivityFragment extends Fragment {
                     mRecyclerView.setAdapter(mAdapter);
                     Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz");
                     wczytane = true;
+                    dialog.dismiss();
                 }
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
                     // Log error here since request failed
                     Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
+                    dialog.dismiss();
                 }
             });
+        }else{
+            dialog.dismiss();
         }
     }
 
