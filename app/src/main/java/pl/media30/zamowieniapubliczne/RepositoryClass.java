@@ -7,6 +7,7 @@ import java.util.List;
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -24,6 +25,7 @@ public class RepositoryClass {
     private String mString;
     public List<DataObjectClass> dataObjectList;
     private BaseListClass baseListClass;
+    public BaseClass baseClass;
 
 
     public void setBaseListClass(BaseListClass baseListClass) {
@@ -42,6 +44,17 @@ public class RepositoryClass {
           //  Log.d("Liczba iteracji: ", i+"");
 
     }
+
+    public void setBaseClass(BaseClass baseClass) {
+
+        //.getBaseListClass().searchClass.dataobjects);
+        this.baseClass = baseClass;
+        //   dataObjectList.add(baseListClass.searchClass.dataobjects.get(i));
+
+        //  Log.d("Liczba iteracji: ", i+"");
+
+    }
+
 
     public BaseListClass getBaseListClass() {
         return baseListClass;

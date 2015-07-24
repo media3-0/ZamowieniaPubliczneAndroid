@@ -12,6 +12,6 @@ public class ObjectClass {
     @SerializedName("global_id")
     public String global_id;
     @SerializedName("layers")
-    public String layers;
+    public LayersClass layers;
 
 }
