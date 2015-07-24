@@ -181,7 +181,7 @@ public class MainActivityFragment extends Fragment {
                         //        mLayoutManager.getPosition(mAdapter);
                         Log.d("Aktualna strona: ", strona + "");
                         strona++;
-                        mLayoutManager.scrollToPosition(rozmiar-6);
+                        mLayoutManager.scrollToPosition(rozmiar);
 
                     }
 
