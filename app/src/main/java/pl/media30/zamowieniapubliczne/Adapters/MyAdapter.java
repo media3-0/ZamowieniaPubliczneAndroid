@@ -4,7 +4,6 @@ package pl.media30.zamowieniapubliczne.Adapters;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,20 +14,12 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
-import pl.media30.zamowieniapubliczne.MainActivityFragment;
-import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
-import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
-import pl.media30.zamowieniapubliczne.Models.SingleElement.DataClass;
-import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
-import pl.media30.zamowieniapubliczne.RepositoryClass;
-import pl.media30.zamowieniapubliczne.ZamowienieActivity;
 import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<DataObjectClass> mDataset;
     static int position;
-    public boolean xxx =true;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -44,21 +35,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         @Override
         public void onClick(View view) {
 
-            Toast.makeText(view.getContext(), "position = " + getPosition(), Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
-            DataObjectClass dataObjectClass = mDataset.get(getPosition());
+            DataObjectClass dataObjectClass = mDataset.get(getAdapterPosition());
             String objToStr= new Gson().toJson(dataObjectClass);
             Bundle objClass = new Bundle();
             objClass.putString("myObject", objToStr);
             intent.putExtras(objClass);
             view.getContext().startActivity(intent);
-            MyAdapter.position = getPosition();
+            MyAdapter.position = getAdapterPosition();
 
         }
 
         public int getPos(){
-            return getPosition();
+            return getAdapterPosition();
         }
     }
 
@@ -67,7 +57,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         mDataset = myDataset;
     }
 
-
     // Create new views (invoked by the layout manager)
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
@@ -75,14 +64,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(android.R.layout.simple_list_item_1, parent, false);
-
         // set the view's size, margins, paddings and layout parameters
         TextView tv = (TextView)v.findViewById(android.R.id.text1);
         ViewHolder vh = new ViewHolder(v, tv);
         position = vh.getPos();
         return vh;
     }
-
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
@@ -90,7 +77,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         holder.mTextView.setText((position+1) + ". " + mDataset.get(position).dataClass.nazwa+"\n");
     }
-
     public int getPos(){
         return position;
     }
@@ -99,6 +85,4 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public int getItemCount() {
         return  mDataset.size();
     }
-
-
 }

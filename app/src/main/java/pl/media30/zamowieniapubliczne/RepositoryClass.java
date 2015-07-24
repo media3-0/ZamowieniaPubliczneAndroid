@@ -1,20 +1,10 @@
 package pl.media30.zamowieniapubliczne;
 
-import android.util.Log;
-
 import java.util.List;
-
-import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
-import retrofit.Callback;
-import retrofit.RestAdapter;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
-import android.app.Application;
-import android.util.Log;
 
 /**
  * Created by Adrian on 2015-07-21.
@@ -22,36 +12,36 @@ import android.util.Log;
 public class RepositoryClass {
 
     private static RepositoryClass mInstance = null;
-    private String mString;
-    public List<DataObjectClass> dataObjectList;
+    private List<DataObjectClass> dataObjectList;
     private BaseListClass baseListClass;
-    public BaseClass baseClass;
-
+    private BaseClass baseClass;
 
     public void setBaseListClass(BaseListClass baseListClass) {
         this.baseListClass = baseListClass;
             if (dataObjectList == null){
                 dataObjectList = baseListClass.getSearchClass().getDataObjectClass();
-
             }else{
                 for(int i=0;i<baseListClass.getSearchClass().getDataObjectClass().size();i++) {
                     dataObjectList.add(baseListClass.getSearchClass().getDataObjectClass().get(i));
                 }
             }
     }
-
-    public void setBaseClass(BaseClass baseClass) {
-
-        this.baseClass = baseClass;
-
-    }
-
     public BaseListClass getBaseListClass() {
         return baseListClass;
     }
 
-    public List<DataObjectClass> getList() {
+    public void setBaseClass(BaseClass baseClass) {
+        this.baseClass = baseClass;
+    }
+    public BaseClass getBaseClass(){
+        return baseClass;
+    }
+
+    public List<DataObjectClass> getDataObjectList() {
         return dataObjectList;
+    }
+    public void setDataObjectList(List<DataObjectClass> dataObjectList){
+        this.dataObjectList=dataObjectList;
     }
 
     private RepositoryClass() {

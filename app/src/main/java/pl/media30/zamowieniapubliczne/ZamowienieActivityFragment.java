@@ -36,7 +36,7 @@ public class ZamowienieActivityFragment extends Activity
             jsonMyObject = extras.getString("myObject");
         }
         DataObjectClass myObject = new Gson().fromJson(jsonMyObject, DataObjectClass.class);
-        //dostêp do layers
+        //dostep do layers
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         service.singleOrder(parseInt(myObject.dataClass.zamawiajacy_id), new Callback<BaseClass>() {
@@ -51,7 +51,7 @@ public class ZamowienieActivityFragment extends Activity
                     }
                 }
         );
-        //koniec dostêpu do layers
+        //koniec dostepu do layers
 
         //Bundle przekazanedane = getIntent().getExtras();
         //String przekazanytekst = przekazanedane.getString("dane");

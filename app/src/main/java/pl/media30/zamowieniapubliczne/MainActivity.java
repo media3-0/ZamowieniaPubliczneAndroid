@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.search) {
-            Toast.makeText(this, "dziala", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
             startActivity(intent);
             return true;

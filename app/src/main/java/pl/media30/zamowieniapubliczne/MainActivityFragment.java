@@ -1,29 +1,17 @@
 package pl.media30.zamowieniapubliczne;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
-
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
-import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -43,11 +31,8 @@ public class MainActivityFragment extends Fragment {
     int position = 10;
     Bundle bundle = new Bundle();
 
-
-
     public MainActivityFragment() {
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -57,10 +42,8 @@ public class MainActivityFragment extends Fragment {
             }else {
                 position = savedInstanceState.getInt("getPos");
             }
-            Log.d("wartosc to", position+"");
         }catch(Exception e){
             position = 1;
-            Log.d("nie dziala", "no niestety");
         }
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mLayoutManager.scrollToPosition(position);
@@ -74,9 +57,7 @@ public class MainActivityFragment extends Fragment {
         } else {
             position = bundle.getInt("getPos");
         }
-        Log.d("wartosc to", position + "");
         mLayoutManager.scrollToPosition(position);
-        Log.d("onResume", "!!!");
     }
     @Override
     public void onStop() {
@@ -84,24 +65,17 @@ public class MainActivityFragment extends Fragment {
         position = mAdapter.getPos();
         bundle.putInt("getPos", position);
         bundle.putBoolean("getWczytaj", wczytane);
-        Log.d("Wart do kt sie prze", position + "");
-        Log.d("onStop", "!!!");
-        Log.d("bundle", bundle.getBoolean("getWczytaj")+"");
-        Log.d("wart wczytan.", wczytane+"");
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("onCreateView", "!!!");
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        //ProgressDialog dialog = ProgressDialog.show(getActivity().getApplicationContext(), "Loading", "Please wait...");
         final ProgressDialog dialog =
                 ProgressDialog.show(this.getActivity().getWindow().getContext(), "Trwa wczytywanie danych", "Please Wait...");
         final RestAdapter restAdapter = new RestAdapter.Builder()
@@ -119,34 +93,27 @@ public class MainActivityFragment extends Fragment {
         mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
-                Log.d("Koniec listy", "Doczytanie danych...");
                 dialog.show();
                 service.listOrders(strona, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         int rozmiar = mAdapter.getItemCount();
                         RepositoryClass.getInstance().setBaseListClass(blc);
-                        mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);
+                        mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                         mRecyclerView.setAdapter(mAdapter);
-                        View view;
-                        Log.d("Aktualna strona: ", strona + "");
                         strona++;
                         mLayoutManager.scrollToPosition(rozmiar);
                         dialog.dismiss();
-
-
                     }
 
                     @Override
                     public void failure(RetrofitError retrofitError) {
                         // Log error here since request failed
-                        Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
                         dialog.dismiss();
                     }
                 });
             }
         });
-
         // specify an adapter (see also next example)
         wczytane=bundle.getBoolean("getWczytaj");
 
@@ -155,7 +122,7 @@ public class MainActivityFragment extends Fragment {
                 @Override
                 public void success(BaseListClass blc, Response response) {
                     RepositoryClass.getInstance().setBaseListClass(blc);
-                    mAdapter = new MyAdapter(RepositoryClass.getInstance().dataObjectList);  //.getBaseListClass().searchClass.dataobjects);
+                    mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());  //.getBaseListClass().searchClass.dataobjects);
                     mRecyclerView.setAdapter(mAdapter);
                     Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz");
                     wczytane = true;
@@ -165,7 +132,6 @@ public class MainActivityFragment extends Fragment {
                 @Override
                 public void failure(RetrofitError retrofitError) {
                     // Log error here since request failed
-                    Log.d("Wystapil blad", "!!!!!!!!!!!!!!!!!!!!!");
                     dialog.dismiss();
                 }
             });
@@ -175,22 +141,3 @@ public class MainActivityFragment extends Fragment {
     }
 
 }
-
-
-//Toast.makeText(getActivity().getApplicationContext(),RepositoryClass.getInstance().getString(), Toast.LENGTH_SHORT).show();
-/*Wyswietlenie pojedynczego przetargu. Wyswietlony kod kodu pocztowego i strona www.
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://api.mojepanstwo.pl/dane/")
-                .build();
-        MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-
-            service.singleOrder(1, new Callback<BaseClass>() {
-            @Override
-            public void success(BaseClass bc, Response response) {
-                Log.d("tester", bc.objectClass.dataClass.kod_pocztowy_id);
-                mAdapter = new MyAdapter(new String[]{"adrian","rafa","Kod Kodu pocztowego: " +  bc.objectClass.dataClass.kod_pocztowy_id.toString(), "Strona www: "+ bc.objectClass.dataClass.zamawiajacy_www.toString(), "kolejny"});
-                mAdapter = new MyAdapter(new String[]{"adrian","rafa","Kod Kodu pocztowego: " +  bc.objectClass.dataClass.kod_pocztowy_id.toString(), "Strona www: "+ bc.objectClass.dataClassdata.zamawiajacy_www.toString(), "kolejny"});
-                mRecyclerView.setAdapter(mAdapter);
-            }
-
-*/

@@ -18,7 +18,7 @@ public class LayersClass {
     public List<SourcesClass> sources;
 /*
     @SerializedName("czesci")
-    public List<CzesciClass> czesci; //Narazie klasa jest pusta, poniewa¿ nie moge znaleŸæ przetargu w którym jest to wype³nione
+    public List<CzesciClass> czesci; //Narazie klasa jest pusta, poniewaz nie moge znalezc przetargu w ktorym jest to wypelnione
 */
     @SerializedName("dataset")
     public String dataset; // czy String
