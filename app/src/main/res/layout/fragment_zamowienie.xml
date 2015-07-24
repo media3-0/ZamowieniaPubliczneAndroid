@@ -136,7 +136,7 @@
              android:layout_height="wrap_content"
              android:text="Regon: "
              android:id="@+id/textViewZamawiajacyRegonLabel"
-             android:layout_below="@+id/textViewZamawiajacyID"
+             android:layout_below="@+id/textViewZamawiajacyRodzaj"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
@@ -416,6 +416,113 @@
         android:layout_below="@+id/textViewZamawiajacyIDWojewodztwaLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:textColor="#ffffffff"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rodzaj zamawiającego: "
+        android:id="@+id/textViewZamawiajacyRodzajLabel"
+        android:layout_below="@+id/textViewZamawiajacyID"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:textColor="#ffff0000"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZamawiajacyRodzaj"
+        android:id="@+id/textViewZamawiajacyRodzaj"
+        android:layout_below="@+id/textViewZamawiajacyRodzajLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#ffffffff"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Informacje o zamówieniu:"
+        android:id="@+id/textView"
+        android:layout_below="@+id/textViewZamawiajacyWWW"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="false"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textColor="#ffff0000"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentRight="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nazwa zamówienia: "
+        android:id="@+id/textViewZamowienieNazwaLabel"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:textColor="#ffff0000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZamowienieNazwa"
+        android:id="@+id/textViewZamowienieNazwa"
+        android:layout_below="@+id/textViewZamowienieNazwaLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#ffffffff"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Typ zamówienia:"
+        android:id="@+id/textViewZamowienieTypLabel"
+        android:layout_below="@+id/textViewZamowienieNazwa"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:textColor="#ffff0000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZamowienieTyp"
+        android:id="@+id/textViewZamowienieTyp"
+        android:layout_below="@+id/textViewZamowienieTypLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColor="#ffffffff"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Symbol typu zamówienia:"
+        android:id="@+id/textViewZamowienieTypSymbolLabel"
+        android:layout_below="@+id/textViewZamowienieTyp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:textColor="#ffff0000"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ZamowienieTypSymbol"
+        android:id="@+id/textViewTypSymbol"
+        android:layout_below="@+id/textViewZamowienieTypSymbolLabel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
         android:textColor="#ffffffff"
         android:layout_marginTop="5dp" />
 

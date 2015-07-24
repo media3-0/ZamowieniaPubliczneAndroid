@@ -23,7 +23,7 @@ public class ZamowienieActivityFragment extends Activity
             super.onCreate(savedInstanceState);
             setContentView(R.layout.fragment_zamowienie);
 
-            //TextView nazwa = (TextView) findViewById(R.id.textViewNazwa);
+
             TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
             TextView zamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
             TextView zamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
@@ -41,6 +41,7 @@ public class ZamowienieActivityFragment extends Activity
             TextView zamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
             TextView zamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
             TextView zamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
+            TextView zamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
 
             //Bundle przekazanedane = getIntent().getExtras();
             //String przekazanytekst = przekazanedane.getString("dane");
@@ -55,7 +56,7 @@ public class ZamowienieActivityFragment extends Activity
             }
             DataObjectClass myObject = new Gson().fromJson(jsonMyObject, DataObjectClass.class);
 
-            //nazwa.setText(myObject.dataClass.nazwa.toString());
+
             zamawiajacyNazwa.setText(myObject.dataClass.zamawiajacy_nazwa.toString());
             zamawiajacyMiejscowosc.setText(myObject.dataClass.zamawiajacy_miejscowosc.toString());
             zamawiajacyUlica.setText(myObject.dataClass.zamawiajacy_ulica.toString());
@@ -73,6 +74,7 @@ public class ZamowienieActivityFragment extends Activity
             zamawiajacyIDPowiatu.setText(myObject.dataClass.powiat_id.toString());
             zamawiajacyIDGminy.setText(myObject.dataClass.gmina_id.toString());
             zamawiajacyIDWojewodztwa.setText(myObject.dataClass.wojewodztwo_id.toString());
+            zamawiajacyRodzaj.setText(myObject.dataClass.zamawiajacy_rodzaj.toString());
 
 //REGION CHOWANIE IDENTYFIKATOROW
 
@@ -85,6 +87,11 @@ public class ZamowienieActivityFragment extends Activity
             textViewZamawiajacyIDLabel.setVisibility(View.GONE);
             TextView textViewZamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
             textViewZamawiajacyID.setVisibility(View.GONE);
+
+            TextView textViewZamawiajacyRodzajLabel = (TextView) findViewById(R.id.textViewZamawiajacyRodzajLabel);
+            textViewZamawiajacyRodzajLabel.setVisibility(View.GONE);
+            TextView textViewZamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
+            textViewZamawiajacyRodzaj.setVisibility(View.GONE);
 
             TextView textViewZamawiajacyRegonLabel = (TextView) findViewById(R.id.textViewZamawiajacyRegonLabel);
             textViewZamawiajacyRegonLabel.setVisibility(View.GONE);
@@ -181,6 +188,11 @@ public class ZamowienieActivityFragment extends Activity
         textViewZamawiajacyIDLabel.setVisibility(textViewZamawiajacyIDLabel.isShown() ? View.GONE : View.VISIBLE);
         TextView textViewZamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
         textViewZamawiajacyID.setVisibility(textViewZamawiajacyID.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamawiajacyRodzajLabel = (TextView) findViewById(R.id.textViewZamawiajacyRodzajLabel);
+        textViewZamawiajacyRodzajLabel.setVisibility(textViewZamawiajacyRodzajLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
+        textViewZamawiajacyRodzaj.setVisibility(textViewZamawiajacyRodzaj.isShown() ? View.GONE : View.VISIBLE);
 
         TextView textViewZamawiajacyRegonLabel = (TextView) findViewById(R.id.textViewZamawiajacyRegonLabel);
         textViewZamawiajacyRegonLabel.setVisibility(textViewZamawiajacyRegonLabel.isShown() ? View.GONE : View.VISIBLE);
