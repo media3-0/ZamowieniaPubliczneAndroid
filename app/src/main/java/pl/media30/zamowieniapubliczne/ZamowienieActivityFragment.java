@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -40,9 +39,9 @@ public class ZamowienieActivityFragment extends Activity
         //dostep do layers
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-        final ProgressDialog dialog =
-                ProgressDialog.show(this, "Trwa wczytywanie danych", "Please Wait...");
-        service.singleOrder(parseInt(myObject.id), new Callback<BaseClass>() {
+        final ProgressDialog dialog = ProgressDialog.show(this, "Trwa wczytywanie danych", "Please Wait...");
+        service.singleOrder(parseInt(myObject.id), new Callback<BaseClass>()
+                {
                     @Override
                     public void success(BaseClass baseClass, Response response)
                     {
@@ -76,11 +75,6 @@ public class ZamowienieActivityFragment extends Activity
                 }
         );
         //koniec dostepu do layers
-
-        //Bundle przekazanedane = getIntent().getExtras();
-        //String przekazanytekst = przekazanedane.getString("dane");
-        //nazwa.setText(przekazanytekst);
-        //parsowanie obj
 
 //REGION IDENTYFIKATORY ZAMAWIAJACEGO
 
@@ -537,7 +531,7 @@ public class ZamowienieActivityFragment extends Activity
     }
 
 //ENDREGION
-//REGION CHOWANIE 2 STOPNIA
+//REGION CHOWANIE 2 STOPNIEN
 
     public void chowanieZamowieniePrzedmiot(View v)
     {
