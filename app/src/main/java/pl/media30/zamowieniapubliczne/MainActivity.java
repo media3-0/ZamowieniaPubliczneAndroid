@@ -19,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ActivityResultBus.getInstance().postQueue(
+                new ActivityResultEvent(requestCode, resultCode, data));
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -26,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -37,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(getApplicationContext(), WykresyActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,1);
             return true;
         }
 
         if (id == R.id.search) {
             Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,2);
             return true;
         }
 

@@ -1,6 +1,7 @@
 package pl.media30.zamowieniapubliczne;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -9,7 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
+import com.squareup.otto.Subscribe;
+
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
 import retrofit.Callback;
@@ -30,19 +34,44 @@ public class MainActivityFragment extends Fragment {
     boolean wczytane = false;
     int position = 10;
     Bundle bundle = new Bundle();
+    String pamametr = "";
 
     public MainActivityFragment() {
     }
+
+
+    private Object mActivityResultSubscriber = new Object() {
+        @Subscribe
+        public void onActivityResultReceived(ActivityResultEvent event) {
+            int requestCode = event.getRequestCode();
+            int resultCode = event.getResultCode();
+            Intent data = event.getData();
+            onActivityResult(requestCode, resultCode, data);
+        }
+    };
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // Don't forget to check requestCode before continuing your job
+        if (requestCode == 2) {
+            // Do your job
+            pamametr = data.getStringExtra("wartoscPobrana");
+            Log.d("tekst", data.getStringExtra("wartoscPobrana"));
+        }
+    }
+
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        try{
-            if (savedInstanceState.getInt("getPos")==-1){
+        try {
+            if (savedInstanceState.getInt("getPos") == -1) {
                 position = 1;
-            }else {
+            } else {
                 position = savedInstanceState.getInt("getPos");
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             position = 1;
         }
         mLayoutManager = new LinearLayoutManager(this.getActivity());
@@ -59,9 +88,11 @@ public class MainActivityFragment extends Fragment {
         }
         mLayoutManager.scrollToPosition(position);
     }
+
     @Override
     public void onStop() {
         super.onStop();
+        ActivityResultBus.getInstance().unregister(mActivityResultSubscriber);
         position = mAdapter.getPos();
         bundle.putInt("getPos", position);
         bundle.putBoolean("getWczytaj", wczytane);
@@ -76,6 +107,8 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        ActivityResultBus.getInstance().register(mActivityResultSubscriber);
+
         final ProgressDialog dialog =
                 ProgressDialog.show(this.getActivity().getWindow().getContext(), "Trwa wczytywanie danych", "Please Wait...");
         final RestAdapter restAdapter = new RestAdapter.Builder()
@@ -115,9 +148,9 @@ public class MainActivityFragment extends Fragment {
             }
         });
         // specify an adapter (see also next example)
-        wczytane=bundle.getBoolean("getWczytaj");
+        wczytane = bundle.getBoolean("getWczytaj");
 
-        if (wczytane==false) {
+        if (wczytane == false) {
             service.listOrders(1, new Callback<BaseListClass>() {
                 @Override
                 public void success(BaseListClass blc, Response response) {
@@ -135,7 +168,7 @@ public class MainActivityFragment extends Fragment {
                     dialog.dismiss();
                 }
             });
-        }else{
+        } else {
             dialog.dismiss();
         }
     }

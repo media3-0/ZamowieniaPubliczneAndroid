@@ -24,13 +24,24 @@ public class SearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        editText = (EditText)findViewById(R.id.editText);
-        button = (Button)findViewById(R.id.button);
+        editText = (EditText) findViewById(R.id.editText);
+        button = (Button) findViewById(R.id.button);
         button.setOnClickListener(myhandler1);
     }
+
     View.OnClickListener myhandler1 = new View.OnClickListener() {
         public void onClick(View v) {
             Toast.makeText(getApplicationContext(), editText.getText().toString(), Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent();
+            if (!(editText.getText().toString().equals(""))) {
+                intent.putExtra("wartoscPobrana", editText.getText().toString());
+            }
+            else{
+                intent.putExtra("wartoscPobrana", "*");
+            }
+            setResult(RESULT_OK, intent);
+            finish();
         }
     };
 }
