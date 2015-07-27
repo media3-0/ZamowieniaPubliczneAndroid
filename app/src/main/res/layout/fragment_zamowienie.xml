@@ -32,7 +32,8 @@
              android:textColor="#ffff0000"
              android:textStyle="bold"
              android:layout_alignParentLeft="false"
-             android:layout_centerHorizontal="true" />
+             android:layout_centerHorizontal="true"
+        android:textSize="17sp"/>
 
          <TextView
              android:layout_width="wrap_content"
@@ -62,7 +63,8 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -74,7 +76,8 @@
              android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -86,7 +89,8 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textColor="#ffff0000"
-             android:textStyle="bold" />
+             android:textStyle="bold"
+             android:textSize="16sp"/>
 
          <TextView
              android:layout_width="wrap_content"
@@ -98,7 +102,8 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -120,7 +125,8 @@
              android:layout_marginTop="5dp"
              android:layout_marginLeft="0dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:textSize="16sp"/>
 
          <TextView
              android:layout_width="wrap_content"
@@ -142,7 +148,8 @@
              android:layout_marginTop="5dp"
              android:layout_marginLeft="0dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -166,7 +173,8 @@
              android:textStyle="bold"
              android:textColor="#ffff0000"
              android:layout_alignParentLeft="false"
-             android:layout_centerHorizontal="true" />
+             android:layout_centerHorizontal="true"
+             android:textSize="17sp"/>
 
          <TextView
              android:layout_width="wrap_content"
@@ -176,7 +184,8 @@
              android:layout_below="@+id/textViewZamawiajacyMiejscowosc"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -197,7 +206,8 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -218,7 +228,8 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -239,7 +250,8 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000" />
+             android:textColor="#ffff0000"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -263,7 +275,8 @@
              android:layout_marginTop="5dp"
              android:textStyle="bold"
              android:textColor="#ffff0000"
-             android:layout_centerHorizontal="true" />
+             android:layout_centerHorizontal="true"
+             android:textSize="17sp"/>
 
          <TextView
              android:layout_width="wrap_content"
@@ -275,7 +288,8 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textColor="#ffff0000"
-             android:textStyle="bold" />
+             android:textStyle="bold"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -296,7 +310,8 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textColor="#ffff0000"
-             android:textStyle="bold" />
+             android:textStyle="bold"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -317,7 +332,8 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textColor="#ffff0000"
-             android:textStyle="bold" />
+             android:textStyle="bold"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -338,7 +354,8 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textColor="#ffff0000"
-             android:textStyle="bold" />
+             android:textStyle="bold"
+             android:textSize="16sp" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -359,7 +376,8 @@
         android:layout_alignParentStart="true"
         android:textStyle="bold"
         android:textColor="#ffff0000"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -383,7 +401,8 @@
         android:layout_alignParentStart="true"
         android:textStyle="bold"
         android:textColor="#ffff0000"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -406,7 +425,8 @@
         android:layout_alignParentStart="true"
         android:textStyle="bold"
         android:textColor="#ffff0000"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -429,7 +449,8 @@
         android:layout_alignParentStart="true"
         android:textStyle="bold"
         android:textColor="#ffff0000"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -457,7 +478,8 @@
         android:textStyle="bold"
         android:textColor="#ffff0000"
         android:layout_alignParentEnd="false"
-        android:layout_alignParentRight="false" />
+        android:layout_alignParentRight="false"
+        android:textSize="17sp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -469,7 +491,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -492,7 +515,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -515,7 +539,8 @@
     android:layout_alignParentStart="true"
     android:layout_marginTop="5dp"
     android:textColor="#ffff0000"
-    android:textStyle="bold" />
+    android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -527,7 +552,8 @@
         android:layout_alignParentStart="true"
         android:textStyle="bold"
         android:textColor="#ffff0000"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -561,7 +587,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -584,7 +611,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -607,7 +635,8 @@
          android:layout_alignParentStart="true"
          android:layout_marginTop="5dp"
          android:textColor="#ffff0000"
-         android:textStyle="bold" />
+         android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -630,7 +659,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -653,7 +683,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -676,7 +707,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -704,7 +736,8 @@
         android:textStyle="bold"
         android:textColor="#ffff0000"
         android:layout_alignParentEnd="false"
-        android:layout_alignParentRight="false" />
+        android:layout_alignParentRight="false"
+        android:textSize="17sp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -718,7 +751,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -743,7 +777,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -768,7 +803,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -793,7 +829,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -818,7 +855,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -843,7 +881,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
         android:textColor="#ffff0000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -854,7 +893,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
         android:textColor="#ffffffff"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"/>
 
 </RelativeLayout>
 </ScrollView>

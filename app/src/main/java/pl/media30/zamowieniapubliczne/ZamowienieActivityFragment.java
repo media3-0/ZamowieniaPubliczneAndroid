@@ -45,7 +45,6 @@ public class ZamowienieActivityFragment extends Activity
                     @Override
                     public void success(BaseClass baseClass, Response response)
                     {
-
                         TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
                         zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
                         
@@ -349,7 +348,8 @@ public class ZamowienieActivityFragment extends Activity
 
 //REGION CHOWANIE 1 STOPIEN
     
-    public void chowanieIdentyfikatory(View v) {
+    public void chowanieIdentyfikatory(View v)
+    {
         TextView textViewZamawiajacyNazwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNazwaLabel);
         textViewZamawiajacyNazwaLabel.setVisibility(textViewZamawiajacyNazwaLabel.isShown() ? View.GONE : View.VISIBLE);
         TextView textViewZamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
@@ -371,7 +371,8 @@ public class ZamowienieActivityFragment extends Activity
         textViewZamawiajacyRegon.setVisibility(textViewZamawiajacyRegon.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieDaneAdresowe(View v) {
+    public void chowanieDaneAdresowe(View v)
+    {
         TextView textViewZamawiajacyWojewodztwoLabel = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwoLabel);
         textViewZamawiajacyWojewodztwoLabel.setVisibility(textViewZamawiajacyWojewodztwoLabel.isShown() ? View.GONE : View.VISIBLE);
         TextView textViewZamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
@@ -423,7 +424,8 @@ public class ZamowienieActivityFragment extends Activity
         textViewZamawiajacyNrMieszkania.setVisibility(textViewZamawiajacyNrMieszkania.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieDaneKontaktowe(View v) {
+    public void chowanieDaneKontaktowe(View v)
+    {
         TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
         textViewZamawiajacyEmailLabel.setVisibility(textViewZamawiajacyEmailLabel.isShown() ? View.GONE : View.VISIBLE);
         TextView textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
@@ -445,7 +447,8 @@ public class ZamowienieActivityFragment extends Activity
         textViewZamawiajacyWWW.setVisibility(textViewZamawiajacyWWW.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieInformacjeOZamowieniu(View v) {
+    public void chowanieInformacjeOZamowieniu(View v)
+    {
         TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
         textViewZamowienieNazwaLabel.setVisibility(textViewZamowienieNazwaLabel.isShown() ? View.GONE : View.VISIBLE);
         TextView textViewZamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
