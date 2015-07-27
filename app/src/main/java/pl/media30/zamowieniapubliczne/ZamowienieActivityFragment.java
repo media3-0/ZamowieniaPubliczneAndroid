@@ -41,12 +41,30 @@ public class ZamowienieActivityFragment extends Activity
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         service.singleOrder(parseInt(myObject.dataClass.zamawiajacy_id), new Callback<BaseClass>() {
                     @Override
-                    public void success(BaseClass baseClass, Response response) {
-                        //Toast.makeText(getApplicationContext(), baseClass.objectClass.layers.detailsClass.przedmiot, Toast.LENGTH_LONG).show();
+                    public void success(BaseClass baseClass, Response response)
+                    {
+                        TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+                        zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
+                        
+                        TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+                        zamowienieUprawnienie.setText(baseClass.objectClass.layers.detailsClass.uprawnienie.toString());
+
+                        TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+                        zamowienieWiedza.setText(baseClass.objectClass.layers.detailsClass.wiedza.toString());
+
+                        TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+                        zamowieniePotencjal.setText(baseClass.objectClass.layers.detailsClass.potencjal.toString());
+
+                        TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+                        zamowienieOsobyZdolne.setText(baseClass.objectClass.layers.detailsClass.osoby_zdolne.toString());
+
+                        TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+                        zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
                     }
 
                     @Override
-                    public void failure(RetrofitError error) {
+                    public void failure(RetrofitError error) 
+                    {
                         Log.d("error: ", error.getMessage() + "");
                     }
                 }
@@ -248,7 +266,7 @@ public class ZamowienieActivityFragment extends Activity
         TextView textViewZamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
         textViewZamowienieNazwa.setVisibility(View.GONE);
 
-       TextView textViewZamowienieNrLabel = (TextView) findViewById(R.id.textViewZamowienieNrLabel);
+        TextView textViewZamowienieNrLabel = (TextView) findViewById(R.id.textViewZamowienieNrLabel);
         textViewZamowienieNrLabel.setVisibility(View.GONE);
         TextView textViewZamowienieNr = (TextView) findViewById(R.id.textViewZamowienieNr);
         textViewZamowienieNr.setVisibility(View.GONE);
@@ -294,8 +312,43 @@ public class ZamowienieActivityFragment extends Activity
         textViewZamowienieNajdrozszaOferta.setVisibility(View.GONE);
 
 //ENDREGION
+//REGION CHOWANIE SZCZEGOLOW ZAMOWIENIA
+
+        TextView textViewZamowieniePrzedmiotLabel = (TextView) findViewById(R.id.textViewZamowieniePrzedmiotLabel);
+        textViewZamowieniePrzedmiotLabel.setVisibility(View.GONE);
+        TextView textViewZamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+        textViewZamowieniePrzedmiot.setVisibility(View.GONE);
+
+        TextView textViewZamowienieUprawnienieLabel = (TextView) findViewById(R.id.textViewZamowienieUprawnienieLabel);
+        textViewZamowienieUprawnienieLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+        textViewZamowienieUprawnienie.setVisibility(View.GONE);
+
+        TextView textViewZamowienieWiedzaLabel = (TextView) findViewById(R.id.textViewZamowienieWiedzaLabel);
+        textViewZamowienieWiedzaLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+        textViewZamowienieWiedza.setVisibility(View.GONE);
+
+        TextView textViewZamowieniePotencjalLabel = (TextView) findViewById(R.id.textViewZamowieniePotencjalLabel);
+        textViewZamowieniePotencjalLabel.setVisibility(View.GONE);
+        TextView textViewZamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+        textViewZamowieniePotencjal.setVisibility(View.GONE);
+
+        TextView textViewZamowienieOsobyZdolneLabel = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolneLabel);
+        textViewZamowienieOsobyZdolneLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+        textViewZamowienieOsobyZdolne.setVisibility(View.GONE);
+
+        TextView textViewZamowienieSytuacjaEkonomicznaLabel = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomicznaLabel);
+        textViewZamowienieSytuacjaEkonomicznaLabel.setVisibility(View.GONE);
+        TextView textViewZamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+        textViewZamowienieSytuacjaEkonomiczna.setVisibility(View.GONE);
+        
+//ENDREGION
     }
 
+//REGION CHOWANIE 1 STOPIEN
+    
     public void chowanieIdentyfikatory(View v) {
         TextView textViewZamawiajacyNazwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNazwaLabel);
         textViewZamawiajacyNazwaLabel.setVisibility(textViewZamawiajacyNazwaLabel.isShown() ? View.GONE : View.VISIBLE);
@@ -443,6 +496,80 @@ public class ZamowienieActivityFragment extends Activity
         TextView textViewZamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
         textViewZamowienieNajdrozszaOferta.setVisibility(textViewZamowienieNajdrozszaOferta.isShown() ? View.GONE : View.VISIBLE);
     }
+    
+    public void chowanieSzczegolowZamowienia(View v)
+    {
+        TextView textViewZamowieniePrzedmiotLabel = (TextView) findViewById(R.id.textViewZamowieniePrzedmiotLabel);
+        textViewZamowieniePrzedmiotLabel.setVisibility(textViewZamowieniePrzedmiotLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+        textViewZamowieniePrzedmiot.setVisibility(textViewZamowieniePrzedmiot.isShown() ? View.GONE : View.GONE);
+
+        TextView textViewZamowienieUprawnienieLabel = (TextView) findViewById(R.id.textViewZamowienieUprawnienieLabel);
+        textViewZamowienieUprawnienieLabel.setVisibility(textViewZamowienieUprawnienieLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+        textViewZamowienieUprawnienie.setVisibility(textViewZamowienieUprawnienie.isShown() ? View.GONE : View.GONE);
+
+        TextView textViewZamowienieWiedzaLabel = (TextView) findViewById(R.id.textViewZamowienieWiedzaLabel);
+        textViewZamowienieWiedzaLabel.setVisibility(textViewZamowienieWiedzaLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+        textViewZamowienieWiedza.setVisibility(textViewZamowienieWiedza.isShown() ? View.GONE : View.GONE);
+
+        TextView textViewZamowieniePotencjalLabel = (TextView) findViewById(R.id.textViewZamowieniePotencjalLabel);
+        textViewZamowieniePotencjalLabel.setVisibility(textViewZamowieniePotencjalLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+        textViewZamowieniePotencjal.setVisibility(textViewZamowieniePotencjal.isShown() ? View.GONE : View.GONE);
+
+        TextView textViewZamowienieOsobyZdolneLabel = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolneLabel);
+        textViewZamowienieOsobyZdolneLabel.setVisibility(textViewZamowienieOsobyZdolneLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+        textViewZamowienieOsobyZdolne.setVisibility(textViewZamowienieOsobyZdolne.isShown() ? View.GONE : View.GONE);
+
+        TextView textViewZamowienieSytuacjaEkonomicznaLabel = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomicznaLabel);
+        textViewZamowienieSytuacjaEkonomicznaLabel.setVisibility(textViewZamowienieSytuacjaEkonomicznaLabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+        textViewZamowienieSytuacjaEkonomiczna.setVisibility(textViewZamowienieSytuacjaEkonomiczna.isShown() ? View.GONE : View.GONE);
+    }
+
+//ENDREGION
+//REGION CHOWANIE 2 STOPNIA
+
+    public void chowanieZamowieniePrzedmiot(View v)
+    {
+        TextView textViewZamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+        textViewZamowieniePrzedmiot.setVisibility(textViewZamowieniePrzedmiot.isShown() ? View.GONE : View.VISIBLE);
+    }
+
+    public void chowanieZamowienieUprawnienie(View v)
+    {
+        TextView textViewZamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+        textViewZamowienieUprawnienie.setVisibility(textViewZamowienieUprawnienie.isShown() ? View.GONE : View.VISIBLE);
+    }
+
+    public void chowanieZamowienieWiedza(View v)
+    {
+        TextView textViewZamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+        textViewZamowienieWiedza.setVisibility(textViewZamowienieWiedza.isShown() ? View.GONE : View.VISIBLE);
+    }
+
+    public void chowanieZamowieniePotencjal(View v)
+    {
+        TextView textViewZamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+        textViewZamowieniePotencjal.setVisibility(textViewZamowieniePotencjal.isShown() ? View.GONE : View.VISIBLE);
+    }
+
+    public void chowanieZamowienieOsobyZdolne(View v)
+    {
+        TextView textViewZamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+        textViewZamowienieOsobyZdolne.setVisibility(textViewZamowienieOsobyZdolne.isShown() ? View.GONE : View.VISIBLE);
+    }
+
+    public void chowanieZamowienieSytuacjaEkonomiczna(View v)
+    {
+        TextView textViewZamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+        textViewZamowienieSytuacjaEkonomiczna.setVisibility(textViewZamowienieSytuacjaEkonomiczna.isShown() ? View.GONE : View.VISIBLE);
+    }
+
+//ENDREGION
 }
 
 
