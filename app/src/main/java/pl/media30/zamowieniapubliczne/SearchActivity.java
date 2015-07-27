@@ -20,6 +20,26 @@ public class SearchActivity extends Activity {
     EditText editText;
     Button button;
 
+
+    public String parseText(String str) {
+        if (str.length() >= 2) {
+            str = str.toLowerCase();
+            str = str.substring(0, 1).toUpperCase() + str.substring(1);
+        }
+        return str;
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        Intent intent = new Intent();
+        intent.putExtra("wartoscPobrana", "*");
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +55,8 @@ public class SearchActivity extends Activity {
 
             Intent intent = new Intent();
             if (!(editText.getText().toString().equals(""))) {
-                intent.putExtra("wartoscPobrana", editText.getText().toString());
-            }
-            else{
+                intent.putExtra("wartoscPobrana", "&conditions[zamowienia_publiczne.zamawiajacy_miejscowosc]=" + parseText(editText.getText().toString()));
+            } else {
                 intent.putExtra("wartoscPobrana", "*");
             }
             setResult(RESULT_OK, intent);

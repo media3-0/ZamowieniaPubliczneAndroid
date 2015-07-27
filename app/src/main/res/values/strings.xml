@@ -10,11 +10,11 @@
 
     <string name="action_example">Example action</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Wykresy</string>
+    <string name="title_activity_main">Zamówienia publiczne</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_zamowienie">ZamowienieActivity</string>
-    <string name="search">Search</string>
+    <string name="search">Szukaj</string>
     <string name="searchInfo">Wpisz frazę do wyszukiwania</string>
     <string name="searchButton">Szukaj</string>
     <string name="title_activity_wykresy">WykresyActivity</string>

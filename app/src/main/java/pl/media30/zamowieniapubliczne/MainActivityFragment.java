@@ -41,8 +41,10 @@ public class MainActivityFragment extends Fragment {
 
 
     private Object mActivityResultSubscriber = new Object() {
+
         @Subscribe
         public void onActivityResultReceived(ActivityResultEvent event) {
+
             int requestCode = event.getRequestCode();
             int resultCode = event.getResultCode();
             Intent data = event.getData();
@@ -53,9 +55,8 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // Don't forget to check requestCode before continuing your job
+
         if (requestCode == 2) {
-            // Do your job
             pamametr = data.getStringExtra("wartoscPobrana");
             Log.d("tekst", data.getStringExtra("wartoscPobrana"));
         }
@@ -81,6 +82,7 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         if (bundle.getInt("getPos") == -1) {
             position = 1;
         } else {
@@ -141,13 +143,12 @@ public class MainActivityFragment extends Fragment {
 
                     @Override
                     public void failure(RetrofitError retrofitError) {
-                        // Log error here since request failed
                         dialog.dismiss();
                     }
                 });
             }
         });
-        // specify an adapter (see also next example)
+
         wczytane = bundle.getBoolean("getWczytaj");
 
         if (wczytane == false) {
@@ -164,7 +165,6 @@ public class MainActivityFragment extends Fragment {
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
-                    // Log error here since request failed
                     dialog.dismiss();
                 }
             });
