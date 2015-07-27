@@ -44,6 +44,10 @@ public class RepositoryClass {
         this.dataObjectList=dataObjectList;
     }
 
+    public void deleteDataObjectList(List<DataObjectClass> dataObjectList){
+        dataObjectList.clear();
+    }
+
     private RepositoryClass() {
     }
 

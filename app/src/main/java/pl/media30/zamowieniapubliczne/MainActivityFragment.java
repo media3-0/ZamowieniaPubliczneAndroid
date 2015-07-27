@@ -34,7 +34,7 @@ public class MainActivityFragment extends Fragment {
     boolean wczytane = false;
     int position = 10;
     Bundle bundle = new Bundle();
-    String pamametr = "";
+    String parametr = "Katowice";
 
     public MainActivityFragment() {
     }
@@ -56,8 +56,8 @@ public class MainActivityFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 2) {
-            pamametr = data.getStringExtra("wartoscPobrana");
+        if (requestCode == 2) { //jak ró¿ny od *
+            parametr = data.getStringExtra("wartoscPobrana");
             Log.d("tekst", data.getStringExtra("wartoscPobrana"));
         }
     }
@@ -129,7 +129,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onLoadMore(int current_page) {
                 dialog.show();
-                service.listOrders(strona, new Callback<BaseListClass>() {
+                service.listOrders(strona, parametr, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         int rozmiar = mAdapter.getItemCount();
@@ -152,11 +152,11 @@ public class MainActivityFragment extends Fragment {
         wczytane = bundle.getBoolean("getWczytaj");
 
         if (wczytane == false) {
-            service.listOrders(1, new Callback<BaseListClass>() {
+            service.listOrders(1, parametr, new Callback<BaseListClass>() {
                 @Override
                 public void success(BaseListClass blc, Response response) {
                     RepositoryClass.getInstance().setBaseListClass(blc);
-                    mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());  //.getBaseListClass().searchClass.dataobjects);
+                    mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                     mRecyclerView.setAdapter(mAdapter);
                     Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz");
                     wczytane = true;

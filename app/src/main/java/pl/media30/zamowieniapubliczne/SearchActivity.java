@@ -55,7 +55,7 @@ public class SearchActivity extends Activity {
 
             Intent intent = new Intent();
             if (!(editText.getText().toString().equals(""))) {
-                intent.putExtra("wartoscPobrana", "&conditions[zamowienia_publiczne.zamawiajacy_miejscowosc]=" + parseText(editText.getText().toString()));
+                intent.putExtra("wartoscPobrana", "conditions[zamowienia_publiczne.zamawiajacy_miejscowosc]=" + parseText(editText.getText().toString()));
             } else {
                 intent.putExtra("wartoscPobrana", "*");
             }
