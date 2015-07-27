@@ -36,7 +36,7 @@ public class DataClass {
     public String zamawiajacy_nazwa;
 
     @SerializedName("zamowienia_publiczne.wartosc_cena_max")
-    public int wartosc_cena_max;
+    public long wartosc_cena_max;
 
     @SerializedName("zamowienia_publiczne.pozycja")
     public int pozycja;
@@ -207,7 +207,7 @@ public class DataClass {
     public String data_publikacji_zamowienia;
 
     @SerializedName("zamowienia_publiczne.wartosc_szacowana")
-    public int wartosc_szacowana;
+    public long wartosc_szacowana;
 
     @SerializedName("zamowienia_publiczne.wariant")
     public String wariant;
@@ -228,7 +228,7 @@ public class DataClass {
     public String oferty_godz;
 
     @SerializedName("zamowienia_publiczne.wartosc_cena")
-    public int wartosc_cena;
+    public long wartosc_cena;
 
     @SerializedName("zamowienia_publiczne.zamowienie_ue")
     public String zamowienie_ue;

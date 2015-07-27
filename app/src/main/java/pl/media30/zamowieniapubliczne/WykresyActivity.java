@@ -1,10 +1,14 @@
 package pl.media30.zamowieniapubliczne;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -12,6 +16,17 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
+import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
+import static java.lang.Integer.parseInt;
 
 
 public class WykresyActivity extends ActionBarActivity {
@@ -19,31 +34,69 @@ public class WykresyActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Context context = this;
+        final Context context = this;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wykresy);
-        ArrayList<BarEntry> entries = new ArrayList<>();
+        final ArrayList<BarEntry> entries = new ArrayList<>();
+        final ArrayList<String> labels = new ArrayList<String>();
+        final BarChart chart = new BarChart(context);
+
+        /*
         entries.add(new BarEntry(4f, 0));
         entries.add(new BarEntry(8f, 1));
         entries.add(new BarEntry(6f, 2));
         entries.add(new BarEntry(12f, 3));
         entries.add(new BarEntry(18f, 4));
         entries.add(new BarEntry(9f, 5));
-        BarDataSet dataset = new BarDataSet(entries, "# of Calls");
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("January");
-        labels.add("February");
-        labels.add("March");
-        labels.add("April");
-        labels.add("May");
-        labels.add("June");
-        BarChart chart = new BarChart(context);
-        setContentView(chart);
+        */
 
-        BarData data = new BarData(labels, dataset);
-        chart.setData(data);
-        chart.setDescription("Najwieksze zamowienia");
+
+        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
+        MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
+        final ProgressDialog dialog =
+                ProgressDialog.show(this, "Trwa wczytywanie danych", "Please Wait...");
+        service.najwiekszeZamowienia(new Callback<BaseListClass>() {
+            @Override
+            public void success(BaseListClass baseListClass, Response response) {
+                List<DataObjectClass> dataObjectList = baseListClass.searchClass.dataobjects;
+                Toast.makeText(getApplicationContext(),dataObjectList.get(0).dataClass.id, Toast.LENGTH_SHORT).show();
+
+                entries.add(new BarEntry((float)(dataObjectList.get(0).dataClass.wartosc_cena), 0));
+                entries.add(new BarEntry((float)(dataObjectList.get(1).dataClass.wartosc_cena), 1));
+                entries.add(new BarEntry((float)(dataObjectList.get(2).dataClass.wartosc_cena), 2));
+                entries.add(new BarEntry((float)(dataObjectList.get(3).dataClass.wartosc_cena), 3));
+                entries.add(new BarEntry((float)(dataObjectList.get(4).dataClass.wartosc_cena), 4));
+                entries.add(new BarEntry((float)(dataObjectList.get(5).dataClass.wartosc_cena), 5));
+
+
+                BarDataSet dataset = new BarDataSet(entries, "Najwieksze zamowienia");
+
+                labels.add(dataObjectList.get(0).dataClass.nazwa);
+                labels.add(dataObjectList.get(1).dataClass.nazwa);
+                labels.add(dataObjectList.get(2).dataClass.nazwa);
+                labels.add(dataObjectList.get(3).dataClass.nazwa);
+                labels.add(dataObjectList.get(4).dataClass.nazwa);
+                labels.add(dataObjectList.get(5).dataClass.nazwa);
+                setContentView(chart);
+
+                BarData data = new BarData(labels, dataset);
+                chart.setData(data);
+                chart.setDescription("");
+
+
+                dialog.dismiss();
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d("ERROR", "ERROR w retroficie");
+                Log.d("Erroe to:", error.getMessage()+"");
+
+            }
+        });
+
 
     }
 

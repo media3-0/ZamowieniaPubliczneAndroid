@@ -16,5 +16,11 @@ public interface MojePanstwoService {
 
     @GET("/dataset/zamowienia_publiczne/search?limit=100")
     void listOrders(@Query("page") int page, Callback<BaseListClass> clb);
+
+    @GET("/dataset/zamowienia_publiczne/search?order=zamowienia_publiczne.wartosc_cena%20desc")
+   // https://api.mojepanstwo.pl/dane/dataset/zamowienia_publiczne/search?limit=10&order=zamowienia_publiczne.wartosc_cena%20desc
+    void najwiekszeZamowienia(Callback<BaseListClass> cbx);
+
+    //https://api.mojepanstwo.pl/dane/dataset/zamowienia_publiczne/search?order=zamowienia_publiczne.wartosc_cena
 }
 // @Query("conditions[zamowienia_publiczne.zamawiajacy_miejscowosc]") String zapytanie,
