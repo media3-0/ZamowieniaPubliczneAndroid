@@ -1,6 +1,7 @@
 package pl.media30.zamowieniapubliczne;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,10 +40,13 @@ public class ZamowienieActivityFragment extends Activity
         //dostep do layers
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-        service.singleOrder(parseInt(myObject.dataClass.zamawiajacy_id), new Callback<BaseClass>() {
+        final ProgressDialog dialog =
+                ProgressDialog.show(this, "Trwa wczytywanie danych", "Please Wait...");
+        service.singleOrder(parseInt(myObject.id), new Callback<BaseClass>() {
                     @Override
                     public void success(BaseClass baseClass, Response response)
                     {
+
                         TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
                         zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
                         
@@ -60,6 +64,8 @@ public class ZamowienieActivityFragment extends Activity
 
                         TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
                         zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
+
+                        dialog.dismiss();
                     }
 
                     @Override

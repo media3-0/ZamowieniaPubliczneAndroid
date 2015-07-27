@@ -17,4 +17,5 @@
     <string name="search">Search</string>
     <string name="searchInfo">Wpisz frazę do wyszukiwania</string>
     <string name="searchButton">Szukaj</string>
+    <string name="title_activity_wykresy">WykresyActivity</string>
 </resources>
