@@ -15,6 +15,7 @@ public class RepositoryClass {
     private List<DataObjectClass> dataObjectList;
     private BaseListClass baseListClass;
     private BaseClass baseClass;
+    private String parametrDoWyszukiwania;
 
     public void setBaseListClass(BaseListClass baseListClass) {
         this.baseListClass = baseListClass;
@@ -46,6 +47,13 @@ public class RepositoryClass {
 
     public void deleteDataObjectList(){
         dataObjectList.clear();
+    }
+
+    public void setParametrDoWyszukiwania(String parametrDoWyszukiwania){
+        this.parametrDoWyszukiwania=parametrDoWyszukiwania;
+    }
+    public String getParametrDoWyszukiwania(){
+        return parametrDoWyszukiwania;
     }
 
     private RepositoryClass() {

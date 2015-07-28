@@ -34,7 +34,7 @@ public class MainActivityFragment extends Fragment {
     boolean wczytane = false;
     int position = 10;
     Bundle bundle = new Bundle();
-    String parametr = "Katowice";
+
 
     public MainActivityFragment() {
     }
@@ -58,8 +58,11 @@ public class MainActivityFragment extends Fragment {
 
         if (requestCode == 2) { //jak ró¿ny od *
             try {
-                parametr = data.getStringExtra("wartoscPobrana");
+                //parametr = data.getStringExtra("wartoscPobrana");
+                //RepositoryClass.getInstance().test=parametr;
+                String parametr = data.getStringExtra("wartoscPobrana");
                 bundle.putString("getParametr", parametr);
+                RepositoryClass.getInstance().setParametrDoWyszukiwania(parametr);
 
                 RepositoryClass.getInstance().deleteDataObjectList();
                 Intent intent = getActivity().getIntent();
@@ -70,10 +73,11 @@ public class MainActivityFragment extends Fragment {
 
                 getActivity().overridePendingTransition(0, 0);
                 startActivity(intent);
-
+                strona=1;
 
             } catch (NullPointerException e) {
-                parametr = "*";
+                //parametr = "*";
+                RepositoryClass.getInstance().setParametrDoWyszukiwania("*");
             }
         }
     }
@@ -94,7 +98,8 @@ public class MainActivityFragment extends Fragment {
 
 
         try {
-            parametr = savedInstanceState.getString("getParametr");
+            //parametr = savedInstanceState.getString("getParametr");
+            RepositoryClass.getInstance().setParametrDoWyszukiwania(savedInstanceState.getString("getParametr"));
         } catch (Exception e) {
         }
 
@@ -149,11 +154,12 @@ public class MainActivityFragment extends Fragment {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+      //  parametr=RepositoryClass.getInstance().test;
         mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
                 dialog.show();
-                service.listOrdersWithParameter(strona, parametr, new Callback<BaseListClass>() {
+                service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getParametrDoWyszukiwania(), new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         int rozmiar = mAdapter.getItemCount();
@@ -163,6 +169,7 @@ public class MainActivityFragment extends Fragment {
                         strona++;
                         mLayoutManager.scrollToPosition(rozmiar);
                         dialog.dismiss();
+//                        Log.d("Parametr: ", parametr);
                     }
 
                     @Override
@@ -185,6 +192,7 @@ public class MainActivityFragment extends Fragment {
                     Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz");
                     wczytane = true;
                     dialog.dismiss();
+
                 }
 
                 @Override
