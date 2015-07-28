@@ -1,7 +1,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-    android:background="#000000">
+    android:layout_height="match_parent">
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
          xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
@@ -18,7 +17,7 @@
              android:id="@+id/textViewZamawiajacyNazwa"
              android:layout_below="@+id/textViewZamawiajacyNazwaLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
     <TextView
              android:layout_width="wrap_content"
@@ -29,7 +28,7 @@
              android:id="@+id/textView2"
              android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textStyle="bold"
              android:layout_alignParentLeft="false"
              android:layout_centerHorizontal="true"
@@ -42,7 +41,7 @@
              android:id="@+id/textViewZamawiajacyMiejscowosc"
              android:layout_below="@+id/textViewZamawiajacyMiejscowoscLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -51,7 +50,7 @@
              android:id="@+id/textViewZamawiajacyUlica"
              android:layout_below="@+id/textViewZamawiajacyUlicaLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -63,7 +62,7 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textSize="16sp" />
 
          <TextView
@@ -76,7 +75,7 @@
              android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textSize="16sp" />
 
          <TextView
@@ -88,7 +87,7 @@
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textStyle="bold"
              android:textSize="16sp"/>
 
@@ -102,7 +101,7 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textSize="16sp" />
 
          <TextView
@@ -112,7 +111,7 @@
              android:id="@+id/textViewZamawiajacyWojewodztwo"
              android:layout_below="@+id/textViewZamawiajacyWojewodztwoLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -125,7 +124,7 @@
              android:layout_marginTop="5dp"
              android:layout_marginLeft="0dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textSize="16sp"/>
 
          <TextView
@@ -135,7 +134,7 @@
              android:id="@+id/textViewZamawiajacyID"
              android:layout_below="@+id/textViewZamawiajacyIDLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -148,7 +147,7 @@
              android:layout_marginTop="5dp"
              android:layout_marginLeft="0dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textSize="16sp" />
 
          <TextView
@@ -158,7 +157,7 @@
              android:id="@+id/textViewZamawiajacyRegon"
              android:layout_below="@+id/textViewZamawiajacyRegonLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -171,7 +170,7 @@
              android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:layout_alignParentLeft="false"
              android:layout_centerHorizontal="true"
              android:textSize="17sp"/>
@@ -184,7 +183,7 @@
              android:layout_below="@+id/textViewZamawiajacyMiejscowosc"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textSize="16sp" />
 
          <TextView
@@ -194,7 +193,7 @@
              android:id="@+id/textViewZamawiajacyKodPocztowy"
              android:layout_below="@+id/textViewZamawiajacyKodPocztowyLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -206,7 +205,7 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textSize="16sp" />
 
          <TextView
@@ -216,7 +215,7 @@
              android:id="@+id/textViewZamawiajacyIDKoduPocztowego"
              android:layout_below="@+id/textViewZamawiajacyIDKoduPocztowegoLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -228,7 +227,7 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textSize="16sp" />
 
          <TextView
@@ -238,7 +237,7 @@
              android:id="@+id/textViewZamawiajacyNrDomu"
              android:layout_below="@+id/textViewZamawiajacyNrDomuLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -250,7 +249,7 @@
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textSize="16sp" />
 
          <TextView
@@ -260,7 +259,7 @@
              android:id="@+id/textViewZamawiajacyNrMieszkania"
              android:layout_below="@+id/textViewZamawiajacyNrMieszkaniaLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -274,7 +273,7 @@
              android:layout_alignParentStart="false"
              android:layout_marginTop="5dp"
              android:textStyle="bold"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:layout_centerHorizontal="true"
              android:textSize="17sp"/>
 
@@ -287,7 +286,7 @@
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textStyle="bold"
              android:textSize="16sp" />
 
@@ -298,7 +297,7 @@
              android:id="@+id/textViewZamawiajacyEmail"
              android:layout_below="@+id/textViewZamawiajacyEmailLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -309,7 +308,7 @@
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textStyle="bold"
              android:textSize="16sp" />
 
@@ -320,7 +319,7 @@
              android:id="@+id/textViewZamawiajacyTelefon"
              android:layout_below="@+id/textViewZamawiajacyTelefonLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -331,7 +330,7 @@
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textStyle="bold"
              android:textSize="16sp" />
 
@@ -342,7 +341,7 @@
              android:id="@+id/textViewZamawiajacyFax"
              android:layout_below="@+id/textViewZamawiajacyFaxLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
          <TextView
              android:layout_width="wrap_content"
@@ -353,7 +352,7 @@
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
-             android:textColor="#ffff0000"
+             android:textColor="#ff2d86f0"
              android:textStyle="bold"
              android:textSize="16sp" />
 
@@ -364,7 +363,7 @@
              android:id="@+id/textViewZamawiajacyWWW"
              android:layout_below="@+id/textViewZamawiajacyWWWLabel"
              android:layout_marginTop="5dp"
-             android:textColor="#ffffffff" />
+             android:textColor="#000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -375,7 +374,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textStyle="bold"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:layout_marginTop="5dp"
         android:textSize="16sp" />
 
@@ -387,7 +386,7 @@
         android:layout_below="@+id/textViewZamawiajacyIDPowiatuLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp"
         android:singleLine="true" />
 
@@ -400,7 +399,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textStyle="bold"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:layout_marginTop="5dp"
         android:textSize="16sp" />
 
@@ -412,7 +411,7 @@
         android:layout_below="@+id/textViewZamawiajacyIDGminyLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -424,7 +423,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textStyle="bold"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:layout_marginTop="5dp"
         android:textSize="16sp" />
 
@@ -436,7 +435,7 @@
         android:layout_below="@+id/textViewZamawiajacyIDWojewodztwaLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -448,7 +447,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textStyle="bold"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:layout_marginTop="5dp"
         android:textSize="16sp" />
 
@@ -460,7 +459,7 @@
         android:layout_below="@+id/textViewZamawiajacyRodzajLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -476,7 +475,7 @@
         android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:layout_alignParentEnd="false"
         android:layout_alignParentRight="false"
         android:textSize="17sp"/>
@@ -490,7 +489,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -502,7 +501,7 @@
         android:layout_below="@+id/textViewZamowienieNazwaLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -514,7 +513,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -526,20 +525,20 @@
         android:layout_below="@+id/textViewZamowienieTypLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Symbol typu zamówienia:"
-    android:id="@+id/textViewZamowienieTypSymbolLabel"
-    android:layout_below="@+id/textViewZamowienieTyp"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginTop="5dp"
-    android:textColor="#ffff0000"
-    android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Symbol typu zamówienia:"
+        android:id="@+id/textViewZamowienieTypSymbolLabel"
+        android:layout_below="@+id/textViewZamowienieTyp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:textColor="#ff2d86f0"
+        android:textStyle="bold"
         android:textSize="16sp" />
 
     <TextView
@@ -551,7 +550,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textStyle="bold"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:layout_marginTop="5dp"
         android:textSize="16sp" />
 
@@ -563,7 +562,7 @@
         android:layout_below="@+id/textViewZamowienieNrLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -574,7 +573,7 @@
         android:layout_below="@+id/textViewZamowienieTypSymbolLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -586,7 +585,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -598,7 +597,7 @@
         android:layout_below="@+id/textViewZamowienieRodzajLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -610,7 +609,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -622,7 +621,7 @@
         android:layout_below="@+id/textViewZamowienieDataPublikacjiLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -634,7 +633,7 @@
          android:layout_alignParentLeft="true"
          android:layout_alignParentStart="true"
          android:layout_marginTop="5dp"
-         android:textColor="#ffff0000"
+         android:textColor="#ff2d86f0"
          android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -646,7 +645,7 @@
         android:layout_below="@+id/textViewZamowienieSzacowanaWartoscLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -658,7 +657,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -670,7 +669,7 @@
         android:layout_below="@+id/textViewZamowienieCenaWybranejOfertyLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -682,7 +681,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -694,7 +693,7 @@
         android:layout_below="@+id/textViewZamowienieNajtanszaOfertaLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -706,7 +705,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -718,7 +717,7 @@
         android:layout_below="@+id/textViewZamowienieNajdrozszaOfertaLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -734,7 +733,7 @@
         android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:layout_alignParentEnd="false"
         android:layout_alignParentRight="false"
         android:textSize="17sp"/>
@@ -750,7 +749,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -762,7 +761,7 @@
         android:layout_below="@+id/textViewZamowieniePrzedmiotLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -776,7 +775,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -788,7 +787,7 @@
         android:layout_below="@+id/textViewZamowienieUprawnienieLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -802,7 +801,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -814,7 +813,7 @@
         android:layout_below="@+id/textViewZamowienieWiedzaLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -828,7 +827,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -840,7 +839,7 @@
         android:layout_below="@+id/textViewZamowieniePotencjalLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -854,7 +853,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -866,7 +865,7 @@
         android:layout_below="@+id/textViewZamowienieOsobyZdolneLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -880,7 +879,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#ffff0000"
+        android:textColor="#ff2d86f0"
         android:textStyle="bold"
         android:textSize="16sp" />
 
@@ -892,7 +891,7 @@
         android:layout_below="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="false"
-        android:textColor="#ffffffff"
+        android:textColor="#000000"
         android:layout_marginTop="5dp"/>
 
 </RelativeLayout>
