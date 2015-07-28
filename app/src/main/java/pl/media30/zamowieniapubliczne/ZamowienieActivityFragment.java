@@ -23,6 +23,19 @@ import static java.lang.Integer.parseInt;
  */
 public class ZamowienieActivityFragment extends Activity
 {
+    public boolean tryParseInt(String value)
+    {
+        try
+        {
+            Integer.parseInt(value);
+            return true;
+        }
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+    }
+
     public ZamowienieActivityFragment(){}
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -249,16 +262,23 @@ public class ZamowienieActivityFragment extends Activity
         zamowienieDataPublikacji.setText(myObject.dataClass.data_publikacji.toString());
 //
         TextView zamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
-        switch(myObject.dataClass.zamowienie_ue.toString())
+        if(tryParseInt(myObject.dataClass.zamowienie_ue))
         {
-            case "0":
-                zamowienieUE.setText("Nie");
-                break;
-            case "1":
-                zamowienieUE.setText("Tak");
-                break;
-            default:
-                zamowienieUE.setText(myObject.dataClass.zamowienie_ue.toString());
+            switch(Integer.parseInt(myObject.dataClass.zamowienie_ue))
+            {
+                case 0:
+                    zamowienieUE.setText("Nie");
+                    break;
+                case 1:
+                    zamowienieUE.setText("Tak");
+                    break;
+                default:
+                    zamowienieUE.setText(myObject.dataClass.zamowienie_ue.toString());
+            }
+        }
+        else
+        {
+            zamowienieUE.setText(myObject.dataClass.zamowienie_ue.toString());
         }
 //
         TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
