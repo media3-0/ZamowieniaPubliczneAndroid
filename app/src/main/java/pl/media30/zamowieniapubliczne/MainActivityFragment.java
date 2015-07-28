@@ -57,10 +57,23 @@ public class MainActivityFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 2) { //jak ró¿ny od *
-            try{
+            try {
                 parametr = data.getStringExtra("wartoscPobrana");
-            }catch(NullPointerException e){
-                parametr="";
+                bundle.putString("getParametr", parametr);
+
+                RepositoryClass.getInstance().deleteDataObjectList();
+                Intent intent = getActivity().getIntent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
+                        | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                getActivity().overridePendingTransition(0, 0);
+                getActivity().finish();
+
+                getActivity().overridePendingTransition(0, 0);
+                startActivity(intent);
+
+
+            } catch (NullPointerException e) {
+                parametr = "*";
             }
         }
     }
@@ -78,6 +91,14 @@ public class MainActivityFragment extends Fragment {
         } catch (Exception e) {
             position = 1;
         }
+
+
+        try {
+            parametr = savedInstanceState.getString("getParametr");
+        } catch (Exception e) {
+        }
+
+
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mLayoutManager.scrollToPosition(position);
     }
@@ -132,7 +153,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onLoadMore(int current_page) {
                 dialog.show();
-                service.listOrdersWithParameter(strona, parametr,  new Callback<BaseListClass>() {
+                service.listOrdersWithParameter(strona, parametr, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         int rozmiar = mAdapter.getItemCount();
