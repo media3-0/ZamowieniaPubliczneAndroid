@@ -57,8 +57,11 @@ public class MainActivityFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 2) { //jak ró¿ny od *
-            parametr = data.getStringExtra("wartoscPobrana");
-            Log.d("tekst", data.getStringExtra("wartoscPobrana"));
+            try{
+                parametr = data.getStringExtra("wartoscPobrana");
+            }catch(NullPointerException e){
+                parametr="";
+            }
         }
     }
 
@@ -129,7 +132,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onLoadMore(int current_page) {
                 dialog.show();
-                service.listOrders(strona, parametr, new Callback<BaseListClass>() {
+                service.listOrders(strona,  new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         int rozmiar = mAdapter.getItemCount();
@@ -152,7 +155,7 @@ public class MainActivityFragment extends Fragment {
         wczytane = bundle.getBoolean("getWczytaj");
 
         if (wczytane == false) {
-            service.listOrders(1, parametr, new Callback<BaseListClass>() {
+            service.listOrders(1, new Callback<BaseListClass>() {
                 @Override
                 public void success(BaseListClass blc, Response response) {
                     RepositoryClass.getInstance().setBaseListClass(blc);
