@@ -16,6 +16,7 @@ public class RepositoryClass {
     private BaseListClass baseListClass;
     private BaseClass baseClass;
     private String parametrDoWyszukiwania="*";
+    public boolean pobierzJedenRaz = true;
 
     public void setBaseListClass(BaseListClass baseListClass) {
         this.baseListClass = baseListClass;

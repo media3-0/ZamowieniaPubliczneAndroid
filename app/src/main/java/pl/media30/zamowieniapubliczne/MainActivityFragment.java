@@ -73,7 +73,7 @@ public class MainActivityFragment extends Fragment {
 
                 getActivity().overridePendingTransition(0, 0);
                 startActivity(intent);
-                strona=1;
+                strona = 1;
 
             } catch (NullPointerException e) {
                 //parametr = "*";
@@ -100,6 +100,7 @@ public class MainActivityFragment extends Fragment {
         try {
             //parametr = savedInstanceState.getString("getParametr");
             RepositoryClass.getInstance().setParametrDoWyszukiwania(savedInstanceState.getString("getParametr"));
+            wczytane=false;
         } catch (Exception e) {
         }
 
@@ -142,6 +143,7 @@ public class MainActivityFragment extends Fragment {
 
         final ProgressDialog dialog =
                 ProgressDialog.show(this.getActivity().getWindow().getContext(), "Trwa wczytywanie danych", "Please Wait...");
+        dialog.dismiss();
         final RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://api.mojepanstwo.pl/dane/")
                 .build();
@@ -154,13 +156,13 @@ public class MainActivityFragment extends Fragment {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-      //  parametr=RepositoryClass.getInstance().test;
+        //  parametr=RepositoryClass.getInstance().test;
         mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
                 dialog.show();
                 String parametr = RepositoryClass.getInstance().getParametrDoWyszukiwania();
-                if (parametr.length()<2){
+                if (parametr.length() < 2) {
                     service.listOrders(strona, new Callback<BaseListClass>() {
                         @Override
                         public void success(BaseListClass blc, Response response) {
@@ -180,7 +182,7 @@ public class MainActivityFragment extends Fragment {
                             dialog.dismiss();
                         }
                     });
-                }else{
+                } else {
                     service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getParametrDoWyszukiwania(), new Callback<BaseListClass>() {
                         @Override
                         public void success(BaseListClass blc, Response response) {
@@ -192,7 +194,7 @@ public class MainActivityFragment extends Fragment {
                             mLayoutManager.scrollToPosition(rozmiar);
                             dialog.dismiss();
 //                        Log.d("Parametr: ", parametr);
-                            Log.d("Strona","param strona: "+ strona);
+                            Log.d("Strona", "param strona: " + strona);
                         }
 
                         @Override
@@ -206,28 +208,49 @@ public class MainActivityFragment extends Fragment {
         });
 
         wczytane = bundle.getBoolean("getWczytaj");
-
         if (wczytane == false) {
-            service.listOrders(1, new Callback<BaseListClass>() {
-                @Override
-                public void success(BaseListClass blc, Response response) {
-                    RepositoryClass.getInstance().setBaseListClass(blc);
-                    mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
-                    mRecyclerView.setAdapter(mAdapter);
-                    Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz");
-                    wczytane = true;
-                    dialog.dismiss();
+            dialog.show();
+            if (RepositoryClass.getInstance().getParametrDoWyszukiwania().length() < 2) {
+                service.listOrders(1, new Callback<BaseListClass>() {
+                    @Override
+                    public void success(BaseListClass blc, Response response) {
+                        RepositoryClass.getInstance().setBaseListClass(blc);
+                        mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
+                        mRecyclerView.setAdapter(mAdapter);
+                        Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz");
+                        wczytane = true;
+                        dialog.dismiss();
+                    }
 
-                }
+                    @Override
+                    public void failure(RetrofitError retrofitError) {
+                        dialog.dismiss();
+                    }
+                });
+            } else {
+                service.listOrdersWithParameter(1, RepositoryClass.getInstance().getParametrDoWyszukiwania(), new Callback<BaseListClass>() {
+                    @Override
+                    public void success(BaseListClass blc, Response response) {
+                       // int rozmiar = mAdapter.getItemCount();
+                        RepositoryClass.getInstance().setBaseListClass(blc);
+                        mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
+                        mRecyclerView.setAdapter(mAdapter);
+                        Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz");
+                        wczytane = true;
+                        dialog.dismiss();
+//                        Log.d("Parametr: ", parametr);
+                        Log.d("Strona", "param strona: " + strona);
+                    }
 
-                @Override
-                public void failure(RetrofitError retrofitError) {
-                    dialog.dismiss();
-                }
-            });
-        } else {
-            dialog.dismiss();
+                    @Override
+                    public void failure(RetrofitError retrofitError) {
+                        dialog.dismiss();
+                    }
+                });
+            }
         }
+
+
     }
 
 }
