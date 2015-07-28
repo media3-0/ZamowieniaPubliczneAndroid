@@ -47,7 +47,7 @@ public class ZamowienieActivityFragment extends Activity
                     {
                         TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
                         zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
-                        
+
                         TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
                         zamowienieUprawnienie.setText(baseClass.objectClass.layers.detailsClass.uprawnienie.toString());
 
@@ -67,7 +67,7 @@ public class ZamowienieActivityFragment extends Activity
                     }
 
                     @Override
-                    public void failure(RetrofitError error) 
+                    public void failure(RetrofitError error)
                     {
                         Log.d("error: ", error.getMessage() + "");
                     }
@@ -247,7 +247,20 @@ public class ZamowienieActivityFragment extends Activity
 
         TextView zamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
         zamowienieDataPublikacji.setText(myObject.dataClass.data_publikacji.toString());
-
+//
+        TextView zamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
+        switch(myObject.dataClass.zamowienie_ue.toString())
+        {
+            case "0":
+                zamowienieUE.setText("Nie");
+                break;
+            case "1":
+                zamowienieUE.setText("Tak");
+                break;
+            default:
+                zamowienieUE.setText(myObject.dataClass.zamowienie_ue.toString());
+        }
+//
         TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
         zamowienieSzacowanaWartosc.setText(Long.toString(myObject.dataClass.wartosc_szacowana));
 
@@ -290,6 +303,11 @@ public class ZamowienieActivityFragment extends Activity
         TextView textViewZamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
         textViewZamowienieDataPublikacji.setVisibility(View.GONE);
 
+        TextView textViewZamowienieUELabel = (TextView) findViewById(R.id.textViewZamowienieUELabel);
+        textViewZamowienieUELabel.setVisibility(View.GONE);
+        TextView textViewZamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
+        textViewZamowienieUE.setVisibility(View.GONE);
+        
         TextView textViewZamowienieSzacowanaWartoscLabel = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartoscLabel);
         textViewZamowienieSzacowanaWartoscLabel.setVisibility(View.GONE);
         TextView textViewZamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
@@ -478,6 +496,11 @@ public class ZamowienieActivityFragment extends Activity
         textViewZamowienieDataPublikacjiLabel.setVisibility(textViewZamowienieDataPublikacjiLabel.isShown() ? View.GONE : View.VISIBLE);
         TextView textViewZamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
         textViewZamowienieDataPublikacji.setVisibility(textViewZamowienieDataPublikacji.isShown() ? View.GONE : View.VISIBLE);
+
+        TextView textViewZamowienieUELabel = (TextView) findViewById(R.id.textViewZamowienieUELabel);
+        textViewZamowienieUELabel.setVisibility(textViewZamowienieUELabel.isShown() ? View.GONE : View.VISIBLE);
+        TextView textViewZamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
+        textViewZamowienieUE.setVisibility(textViewZamowienieUE.isShown() ? View.GONE : View.VISIBLE);
 
         TextView textViewZamowienieSzacowanaWartoscLabel = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartoscLabel);
         textViewZamowienieSzacowanaWartoscLabel.setVisibility(textViewZamowienieSzacowanaWartoscLabel.isShown() ? View.GONE : View.VISIBLE);

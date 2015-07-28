@@ -2,13 +2,13 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-         xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-         android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-         android:paddingRight="@dimen/activity_horizontal_margin"
-         android:paddingTop="@dimen/activity_vertical_margin"
-         android:paddingBottom="@dimen/activity_vertical_margin"
-         tools:context="pl.media30.zamowieniapubliczne.ZamowienieActivityFragment">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="pl.media30.zamowieniapubliczne.ZamowienieActivityFragment">
 
          <TextView
              android:layout_width="wrap_content"
@@ -19,20 +19,20 @@
              android:layout_marginTop="5dp"
              android:textColor="#000000" />
 
-    <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Identyfikatory zamawiającego:"
-             android:clickable="true"
-             android:onClick="chowanieIdentyfikatory"
-             android:id="@+id/textView2"
-             android:layout_alignParentStart="false"
-             android:layout_marginTop="5dp"
-             android:textColor="#ff2d86f0"
-             android:textStyle="bold"
-             android:layout_alignParentLeft="false"
-             android:layout_centerHorizontal="true"
-        android:textSize="17sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Identyfikatory zamawiającego:"
+            android:clickable="true"
+            android:onClick="chowanieIdentyfikatory"
+            android:id="@+id/textView2"
+            android:layout_alignParentStart="false"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="false"
+            android:layout_centerHorizontal="true"
+            android:textSize="17sp"/>
 
          <TextView
              android:layout_width="wrap_content"
@@ -365,534 +365,557 @@
              android:layout_marginTop="5dp"
              android:textColor="#000000" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ID powiatu: "
-        android:id="@+id/textViewZamawiajacyIDPowiatuLabel"
-        android:layout_below="@+id/textViewZamawiajacyIDWojewodztwa"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold"
-        android:textColor="#ff2d86f0"
-        android:layout_marginTop="5dp"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID powiatu: "
+            android:id="@+id/textViewZamawiajacyIDPowiatuLabel"
+            android:layout_below="@+id/textViewZamawiajacyIDWojewodztwa"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold"
+            android:textColor="#ff2d86f0"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamawiajacyIDPowiatu"
-        android:id="@+id/textViewZamawiajacyIDPowiatu"
-        android:layout_below="@+id/textViewZamawiajacyIDPowiatuLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp"
-        android:singleLine="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamawiajacyIDPowiatu"
+            android:id="@+id/textViewZamawiajacyIDPowiatu"
+            android:layout_below="@+id/textViewZamawiajacyIDPowiatuLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp"
+            android:singleLine="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ID gminy: "
-        android:id="@+id/textViewZamawiajacyIDGminyLabel"
-        android:layout_below="@+id/textViewZamawiajacyIDPowiatu"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold"
-        android:textColor="#ff2d86f0"
-        android:layout_marginTop="5dp"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID gminy: "
+            android:id="@+id/textViewZamawiajacyIDGminyLabel"
+            android:layout_below="@+id/textViewZamawiajacyIDPowiatu"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold"
+            android:textColor="#ff2d86f0"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamawiajacyIDGminy"
-        android:id="@+id/textViewZamawiajacyIDGminy"
-        android:layout_below="@+id/textViewZamawiajacyIDGminyLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamawiajacyIDGminy"
+            android:id="@+id/textViewZamawiajacyIDGminy"
+            android:layout_below="@+id/textViewZamawiajacyIDGminyLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ID województwa: "
-        android:id="@+id/textViewZamawiajacyIDWojewodztwaLabel"
-        android:layout_below="@+id/textViewZamawiajacyWojewodztwo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold"
-        android:textColor="#ff2d86f0"
-        android:layout_marginTop="5dp"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID województwa: "
+            android:id="@+id/textViewZamawiajacyIDWojewodztwaLabel"
+            android:layout_below="@+id/textViewZamawiajacyWojewodztwo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold"
+            android:textColor="#ff2d86f0"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamawiajacyIDWojewodztwa"
-        android:id="@+id/textViewZamawiajacyIDWojewodztwa"
-        android:layout_below="@+id/textViewZamawiajacyIDWojewodztwaLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamawiajacyIDWojewodztwa"
+            android:id="@+id/textViewZamawiajacyIDWojewodztwa"
+            android:layout_below="@+id/textViewZamawiajacyIDWojewodztwaLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rodzaj zamawiającego: "
-        android:id="@+id/textViewZamawiajacyRodzajLabel"
-        android:layout_below="@+id/textViewZamawiajacyID"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold"
-        android:textColor="#ff2d86f0"
-        android:layout_marginTop="5dp"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rodzaj zamawiającego: "
+            android:id="@+id/textViewZamawiajacyRodzajLabel"
+            android:layout_below="@+id/textViewZamawiajacyID"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold"
+            android:textColor="#ff2d86f0"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamawiajacyRodzaj"
-        android:id="@+id/textViewZamawiajacyRodzaj"
-        android:layout_below="@+id/textViewZamawiajacyRodzajLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamawiajacyRodzaj"
+            android:id="@+id/textViewZamawiajacyRodzaj"
+            android:layout_below="@+id/textViewZamawiajacyRodzajLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Informacje o zamówieniu:"
-        android:clickable="true"
-        android:onClick="chowanieInformacjeOZamowieniu"
-        android:id="@+id/textView"
-        android:layout_below="@+id/textViewZamawiajacyWWW"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="false"
-        android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:textColor="#ff2d86f0"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentRight="false"
-        android:textSize="17sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Informacje o zamówieniu:"
+            android:clickable="true"
+            android:onClick="chowanieInformacjeOZamowieniu"
+            android:id="@+id/textView"
+            android:layout_below="@+id/textViewZamawiajacyWWW"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentLeft="false"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textColor="#ff2d86f0"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="false"
+            android:textSize="17sp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nazwa zamówienia: "
-        android:id="@+id/textViewZamowienieNazwaLabel"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nazwa zamówienia: "
+            android:id="@+id/textViewZamowienieNazwaLabel"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieNazwa"
-        android:id="@+id/textViewZamowienieNazwa"
-        android:layout_below="@+id/textViewZamowienieNazwaLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieNazwa"
+            android:id="@+id/textViewZamowienieNazwa"
+            android:layout_below="@+id/textViewZamowienieNazwaLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Typ zamówienia:"
-        android:id="@+id/textViewZamowienieTypLabel"
-        android:layout_below="@+id/textViewZamowienieNr"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Typ zamówienia:"
+            android:id="@+id/textViewZamowienieTypLabel"
+            android:layout_below="@+id/textViewZamowienieNr"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieTyp"
-        android:id="@+id/textViewZamowienieTyp"
-        android:layout_below="@+id/textViewZamowienieTypLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieTyp"
+            android:id="@+id/textViewZamowienieTyp"
+            android:layout_below="@+id/textViewZamowienieTypLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Symbol typu zamówienia:"
-        android:id="@+id/textViewZamowienieTypSymbolLabel"
-        android:layout_below="@+id/textViewZamowienieTyp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Symbol typu zamówienia:"
+            android:id="@+id/textViewZamowienieTypSymbolLabel"
+            android:layout_below="@+id/textViewZamowienieTyp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nr zamówienia:"
-        android:id="@+id/textViewZamowienieNrLabel"
-        android:layout_below="@+id/textViewZamowienieNazwa"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textStyle="bold"
-        android:textColor="#ff2d86f0"
-        android:layout_marginTop="5dp"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nr zamówienia:"
+            android:id="@+id/textViewZamowienieNrLabel"
+            android:layout_below="@+id/textViewZamowienieNazwa"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textStyle="bold"
+            android:textColor="#ff2d86f0"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieNr"
-        android:id="@+id/textViewZamowienieNr"
-        android:layout_below="@+id/textViewZamowienieNrLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieNr"
+            android:id="@+id/textViewZamowienieNr"
+            android:layout_below="@+id/textViewZamowienieNrLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieTypSymbol"
-        android:id="@+id/textViewZamowienieTypSymbol"
-        android:layout_below="@+id/textViewZamowienieTypSymbolLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieTypSymbol"
+            android:id="@+id/textViewZamowienieTypSymbol"
+            android:layout_below="@+id/textViewZamowienieTypSymbolLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rodzaj zamówienia:"
-        android:id="@+id/textViewZamowienieRodzajLabel"
-        android:layout_below="@+id/textViewZamowienieTypSymbol"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rodzaj zamówienia:"
+            android:id="@+id/textViewZamowienieRodzajLabel"
+            android:layout_below="@+id/textViewZamowienieTypSymbol"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieRodzaj"
-        android:id="@+id/textViewZamowienieRodzaj"
-        android:layout_below="@+id/textViewZamowienieRodzajLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieRodzaj"
+            android:id="@+id/textViewZamowienieRodzaj"
+            android:layout_below="@+id/textViewZamowienieRodzajLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Data publikacji:"
-        android:id="@+id/textViewZamowienieDataPublikacjiLabel"
-        android:layout_below="@+id/textViewZamowienieRodzaj"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data publikacji:"
+            android:id="@+id/textViewZamowienieDataPublikacjiLabel"
+            android:layout_below="@+id/textViewZamowienieRodzaj"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieDataPublikacji"
-        android:id="@+id/textViewZamowienieDataPublikacji"
-        android:layout_below="@+id/textViewZamowienieDataPublikacjiLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieDataPublikacji"
+            android:id="@+id/textViewZamowienieDataPublikacji"
+            android:layout_below="@+id/textViewZamowienieDataPublikacjiLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="Szacowana wartość zamówienia:"
-         android:id="@+id/textViewZamowienieSzacowanaWartoscLabel"
-         android:layout_below="@+id/textViewZamowienieDataPublikacji"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentStart="true"
-         android:layout_marginTop="5dp"
-         android:textColor="#ff2d86f0"
-         android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finansowanie ze środków UE:"
+            android:id="@+id/textViewZamowienieUELabel"
+            android:layout_below="@+id/textViewZamowienieDataPublikacji"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieSzacowanaWartosc"
-        android:id="@+id/textViewZamowienieSzacowanaWartosc"
-        android:layout_below="@+id/textViewZamowienieSzacowanaWartoscLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieSzacowanaWartosc"
+            android:id="@+id/textViewZamowienieUE"
+            android:layout_below="@+id/textViewZamowienieUELabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cena wybranej oferty:"
-        android:id="@+id/textViewZamowienieCenaWybranejOfertyLabel"
-        android:layout_below="@+id/textViewZamowienieSzacowanaWartosc"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Szacowana wartość zamówienia:"
+             android:id="@+id/textViewZamowienieSzacowanaWartoscLabel"
+             android:layout_below="@+id/textViewZamowienieUE"
+             android:layout_alignParentLeft="true"
+             android:layout_alignParentStart="true"
+             android:layout_marginTop="5dp"
+             android:textColor="#ff2d86f0"
+             android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieCenaWybranejOferty"
-        android:id="@+id/textViewZamowienieCenaWybranejOferty"
-        android:layout_below="@+id/textViewZamowienieCenaWybranejOfertyLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieSzacowanaWartosc"
+            android:id="@+id/textViewZamowienieSzacowanaWartosc"
+            android:layout_below="@+id/textViewZamowienieSzacowanaWartoscLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Najtańsza oferta:"
-        android:id="@+id/textViewZamowienieNajtanszaOfertaLabel"
-        android:layout_below="@+id/textViewZamowienieCenaWybranejOferty"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cena wybranej oferty:"
+            android:id="@+id/textViewZamowienieCenaWybranejOfertyLabel"
+            android:layout_below="@+id/textViewZamowienieSzacowanaWartosc"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieNajtanszaOferta"
-        android:id="@+id/textViewZamowienieNajtanszaOferta"
-        android:layout_below="@+id/textViewZamowienieNajtanszaOfertaLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieCenaWybranejOferty"
+            android:id="@+id/textViewZamowienieCenaWybranejOferty"
+            android:layout_below="@+id/textViewZamowienieCenaWybranejOfertyLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Najdroższa oferta:"
-        android:id="@+id/textViewZamowienieNajdrozszaOfertaLabel"
-        android:layout_below="@+id/textViewZamowienieNajtanszaOferta"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Najtańsza oferta:"
+            android:id="@+id/textViewZamowienieNajtanszaOfertaLabel"
+            android:layout_below="@+id/textViewZamowienieCenaWybranejOferty"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieNajdrozszaOferta"
-        android:id="@+id/textViewZamowienieNajdrozszaOferta"
-        android:layout_below="@+id/textViewZamowienieNajdrozszaOfertaLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieNajtanszaOferta"
+            android:id="@+id/textViewZamowienieNajtanszaOferta"
+            android:layout_below="@+id/textViewZamowienieNajtanszaOfertaLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Szczegóły zamówienia:"
-        android:clickable="true"
-        android:onClick="chowanieSzczegolowZamowienia"
-        android:id="@+id/textViewSzczegolyZamowienia"
-        android:layout_below="@+id/textViewZamowienieNajdrozszaOferta"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="false"
-        android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:textColor="#ff2d86f0"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentRight="false"
-        android:textSize="17sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Najdroższa oferta:"
+            android:id="@+id/textViewZamowienieNajdrozszaOfertaLabel"
+            android:layout_below="@+id/textViewZamowienieNajtanszaOferta"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Przedmiot zamówienia:"
-        android:clickable="true"
-        android:onClick="chowanieZamowieniePrzedmiot"
-        android:id="@+id/textViewZamowieniePrzedmiotLabel"
-        android:layout_below="@+id/textViewSzczegolyZamowienia"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieNajdrozszaOferta"
+            android:id="@+id/textViewZamowienieNajdrozszaOferta"
+            android:layout_below="@+id/textViewZamowienieNajdrozszaOfertaLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowieniePrzedmiot"
-        android:id="@+id/textViewZamowieniePrzedmiot"
-        android:layout_below="@+id/textViewZamowieniePrzedmiotLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Szczegóły zamówienia:"
+            android:clickable="true"
+            android:onClick="chowanieSzczegolowZamowienia"
+            android:id="@+id/textViewSzczegolyZamowienia"
+            android:layout_below="@+id/textViewZamowienieNajdrozszaOferta"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentLeft="false"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textColor="#ff2d86f0"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="false"
+            android:textSize="17sp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Uprawnienia:"
-        android:clickable="true"
-        android:onClick="chowanieZamowienieUprawnienie"
-        android:id="@+id/textViewZamowienieUprawnienieLabel"
-        android:layout_below="@+id/textViewZamowieniePrzedmiot"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Przedmiot zamówienia:"
+            android:clickable="true"
+            android:onClick="chowanieZamowieniePrzedmiot"
+            android:id="@+id/textViewZamowieniePrzedmiotLabel"
+            android:layout_below="@+id/textViewSzczegolyZamowienia"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieUprawnienie"
-        android:id="@+id/textViewZamowienieUprawnienie"
-        android:layout_below="@+id/textViewZamowienieUprawnienieLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowieniePrzedmiot"
+            android:id="@+id/textViewZamowieniePrzedmiot"
+            android:layout_below="@+id/textViewZamowieniePrzedmiotLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wiedza:"
-        android:clickable="true"
-        android:onClick="chowanieZamowienieWiedza"
-        android:id="@+id/textViewZamowienieWiedzaLabel"
-        android:layout_below="@+id/textViewZamowienieUprawnienie"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uprawnienia:"
+            android:clickable="true"
+            android:onClick="chowanieZamowienieUprawnienie"
+            android:id="@+id/textViewZamowienieUprawnienieLabel"
+            android:layout_below="@+id/textViewZamowieniePrzedmiot"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieWiedza"
-        android:id="@+id/textViewZamowienieWiedza"
-        android:layout_below="@+id/textViewZamowienieWiedzaLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieUprawnienie"
+            android:id="@+id/textViewZamowienieUprawnienie"
+            android:layout_below="@+id/textViewZamowienieUprawnienieLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Potencjał:"
-        android:clickable="true"
-        android:onClick="chowanieZamowieniePotencjal"
-        android:id="@+id/textViewZamowieniePotencjalLabel"
-        android:layout_below="@+id/textViewZamowienieWiedza"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wiedza:"
+            android:clickable="true"
+            android:onClick="chowanieZamowienieWiedza"
+            android:id="@+id/textViewZamowienieWiedzaLabel"
+            android:layout_below="@+id/textViewZamowienieUprawnienie"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowieniePotencjal"
-        android:id="@+id/textViewZamowieniePotencjal"
-        android:layout_below="@+id/textViewZamowieniePotencjalLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieWiedza"
+            android:id="@+id/textViewZamowienieWiedza"
+            android:layout_below="@+id/textViewZamowienieWiedzaLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Osoby zdolne:"
-        android:clickable="true"
-        android:onClick="chowanieZamowienieOsobyZdolne"
-        android:id="@+id/textViewZamowienieOsobyZdolneLabel"
-        android:layout_below="@+id/textViewZamowieniePotencjal"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Potencjał:"
+            android:clickable="true"
+            android:onClick="chowanieZamowieniePotencjal"
+            android:id="@+id/textViewZamowieniePotencjalLabel"
+            android:layout_below="@+id/textViewZamowienieWiedza"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieOsobyZdolne"
-        android:id="@+id/textViewZamowienieOsobyZdolne"
-        android:layout_below="@+id/textViewZamowienieOsobyZdolneLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowieniePotencjal"
+            android:id="@+id/textViewZamowieniePotencjal"
+            android:layout_below="@+id/textViewZamowieniePotencjalLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sytuacja ekonomiczna:"
-        android:clickable="true"
-        android:onClick="chowanieZamowienieSytuacjaEkonomiczna"
-        android:id="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
-        android:layout_below="@+id/textViewZamowienieOsobyZdolne"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:textColor="#ff2d86f0"
-        android:textStyle="bold"
-        android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Osoby zdolne:"
+            android:clickable="true"
+            android:onClick="chowanieZamowienieOsobyZdolne"
+            android:id="@+id/textViewZamowienieOsobyZdolneLabel"
+            android:layout_below="@+id/textViewZamowieniePotencjal"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ZamowienieSytuacjaEkonomiczna"
-        android:id="@+id/textViewZamowienieSytuacjaEkonomiczna"
-        android:layout_below="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="false"
-        android:textColor="#000000"
-        android:layout_marginTop="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieOsobyZdolne"
+            android:id="@+id/textViewZamowienieOsobyZdolne"
+            android:layout_below="@+id/textViewZamowienieOsobyZdolneLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp" />
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sytuacja ekonomiczna:"
+            android:clickable="true"
+            android:onClick="chowanieZamowienieSytuacjaEkonomiczna"
+            android:id="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
+            android:layout_below="@+id/textViewZamowienieOsobyZdolne"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#ff2d86f0"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieSytuacjaEkonomiczna"
+            android:id="@+id/textViewZamowienieSytuacjaEkonomiczna"
+            android:layout_below="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#000000"
+            android:layout_marginTop="5dp"/>
+    </RelativeLayout>
 </ScrollView>
