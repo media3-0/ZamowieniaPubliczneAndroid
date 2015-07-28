@@ -132,7 +132,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onLoadMore(int current_page) {
                 dialog.show();
-                service.listOrders(strona,  new Callback<BaseListClass>() {
+                service.listOrdersWithParameter(strona, parametr,  new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         int rozmiar = mAdapter.getItemCount();
