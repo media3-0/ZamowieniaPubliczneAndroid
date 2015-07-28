@@ -15,7 +15,7 @@ public class RepositoryClass {
     private List<DataObjectClass> dataObjectList;
     private BaseListClass baseListClass;
     private BaseClass baseClass;
-    private String parametrDoWyszukiwania;
+    private String parametrDoWyszukiwania="*";
 
     public void setBaseListClass(BaseListClass baseListClass) {
         this.baseListClass = baseListClass;

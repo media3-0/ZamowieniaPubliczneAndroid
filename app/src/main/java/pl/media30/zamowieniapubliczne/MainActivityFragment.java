@@ -159,24 +159,49 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onLoadMore(int current_page) {
                 dialog.show();
-                service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getParametrDoWyszukiwania(), new Callback<BaseListClass>() {
-                    @Override
-                    public void success(BaseListClass blc, Response response) {
-                        int rozmiar = mAdapter.getItemCount();
-                        RepositoryClass.getInstance().setBaseListClass(blc);
-                        mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
-                        mRecyclerView.setAdapter(mAdapter);
-                        strona++;
-                        mLayoutManager.scrollToPosition(rozmiar);
-                        dialog.dismiss();
+                String parametr = RepositoryClass.getInstance().getParametrDoWyszukiwania();
+                if (parametr.length()<2){
+                    service.listOrders(strona, new Callback<BaseListClass>() {
+                        @Override
+                        public void success(BaseListClass blc, Response response) {
+                            int rozmiar = mAdapter.getItemCount();
+                            RepositoryClass.getInstance().setBaseListClass(blc);
+                            mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
+                            mRecyclerView.setAdapter(mAdapter);
+                            strona++;
+                            mLayoutManager.scrollToPosition(rozmiar);
+                            dialog.dismiss();
+                            Log.d("Strona", " bez param strona: " + strona);
 //                        Log.d("Parametr: ", parametr);
-                    }
+                        }
 
-                    @Override
-                    public void failure(RetrofitError retrofitError) {
-                        dialog.dismiss();
-                    }
-                });
+                        @Override
+                        public void failure(RetrofitError retrofitError) {
+                            dialog.dismiss();
+                        }
+                    });
+                }else{
+                    service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getParametrDoWyszukiwania(), new Callback<BaseListClass>() {
+                        @Override
+                        public void success(BaseListClass blc, Response response) {
+                            int rozmiar = mAdapter.getItemCount();
+                            RepositoryClass.getInstance().setBaseListClass(blc);
+                            mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
+                            mRecyclerView.setAdapter(mAdapter);
+                            strona++;
+                            mLayoutManager.scrollToPosition(rozmiar);
+                            dialog.dismiss();
+//                        Log.d("Parametr: ", parametr);
+                            Log.d("Strona","param strona: "+ strona);
+                        }
+
+                        @Override
+                        public void failure(RetrofitError retrofitError) {
+                            dialog.dismiss();
+                        }
+                    });
+                }
+
             }
         });
 
