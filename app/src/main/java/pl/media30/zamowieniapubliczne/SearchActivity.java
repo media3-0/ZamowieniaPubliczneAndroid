@@ -25,7 +25,6 @@ public class SearchActivity extends Activity {
 
     Spinner spinner;
     EditText editText;
-    EditText editText2;
     EditText editText3;
     EditText editText4;
     Button button;
@@ -87,7 +86,7 @@ public class SearchActivity extends Activity {
 
     View.OnClickListener myhandler1 = new View.OnClickListener() {
         public void onClick(View v) {
-            Toast.makeText(getApplicationContext(), editText.getText().toString()+" "+"\n"+editText2.getText().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), editText.getText().toString()+" "+"\n", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent();
             if (!(editText.getText().toString().equals(""))) {
@@ -96,7 +95,7 @@ public class SearchActivity extends Activity {
                 intent.putExtra("wartoscPobrana", "*");
             }
 
-            if (!(spinner.getSelectedItem().toString().equals("Ignoruj kryterium"))) {
+            if (!(spinner.getSelectedItem().toString().equals("ignoruj kryterium"))) {
                 intent.putExtra("woj", (spinner.getSelectedItem().toString()));
                 Toast.makeText(getApplicationContext(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
             } else {
