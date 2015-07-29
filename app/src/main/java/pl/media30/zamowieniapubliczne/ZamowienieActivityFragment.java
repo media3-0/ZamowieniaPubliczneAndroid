@@ -2,6 +2,8 @@ package pl.media30.zamowieniapubliczne;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +25,10 @@ import static java.lang.Integer.parseInt;
  */
 public class ZamowienieActivityFragment extends Activity
 {
+
+    TextView textViewZamawiajacyTelefon;
+    TextView textViewZamawiajacyWWW;
+    TextView textViewZamawiajacyEmail;
     public boolean tryParseInt(String value)
     {
         try
@@ -222,12 +228,12 @@ public class ZamowienieActivityFragment extends Activity
 
         TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
         textViewZamawiajacyEmailLabel.setVisibility(View.GONE);
-        TextView textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
+        textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
         textViewZamawiajacyEmail.setVisibility(View.GONE);
 
         TextView textViewZamawiajacyTelefonLabel = (TextView) findViewById(R.id.textViewZamawiajacyTelefonLabel);
         textViewZamawiajacyTelefonLabel.setVisibility(View.GONE);
-        TextView textViewZamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
+        textViewZamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
         textViewZamawiajacyTelefon.setVisibility(View.GONE);
 
         TextView textViewZamawiajacyFaxLabel = (TextView) findViewById(R.id.textViewZamawiajacyFaxLabel);
@@ -237,7 +243,7 @@ public class ZamowienieActivityFragment extends Activity
 
         TextView textViewZamawiajacyWWWLabel = (TextView) findViewById(R.id.textViewZamawiajacyWWWLabel);
         textViewZamawiajacyWWWLabel.setVisibility(View.GONE);
-        TextView textViewZamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
+        textViewZamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
         textViewZamawiajacyWWW.setVisibility(View.GONE);
 
 //ENDREGION
@@ -578,6 +584,42 @@ public class ZamowienieActivityFragment extends Activity
 
 //ENDREGION
 //REGION CHOWANIE 2 STOPNIEN
+
+    public void zadzwon(View v){
+
+        try {
+            String number = "tel:" + textViewZamawiajacyTelefon.getText().toString().trim();
+            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
+            startActivity(callIntent);
+        }catch(Exception e){
+            Log.d("zadzwon", e.getMessage());
+        }
+    }
+
+    public void otworzStrone(View v){
+        try {
+            String www = "http://"+textViewZamawiajacyWWW.getText().toString().trim();
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(www));
+            startActivity(browserIntent);
+        }catch(Exception e){
+            Log.d("otworzStrone", e.getMessage());
+        }
+    }
+
+    public void napiszEmail(View v){
+        try {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("plain/text");
+            String email = textViewZamawiajacyEmail.getText().toString().trim();
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+            intent.putExtra(Intent.EXTRA_SUBJECT, "");
+            intent.putExtra(Intent.EXTRA_TEXT, "");
+            startActivity(Intent.createChooser(intent, ""));
+        }catch(Exception e){
+            Log.d("napiszEmail", e.getMessage());
+        }
+    }
+
 
     public void chowanieZamowieniePrzedmiot(View v)
     {

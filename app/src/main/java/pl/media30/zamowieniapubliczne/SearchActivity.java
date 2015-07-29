@@ -78,7 +78,7 @@ public class SearchActivity extends Activity {
 
         editText = (EditText) findViewById(R.id.editText);
         editText3 = (EditText) findViewById(R.id.editText3);
-        
+
         editText4 = (EditText) findViewById(R.id.editText4);
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(myhandler1);
