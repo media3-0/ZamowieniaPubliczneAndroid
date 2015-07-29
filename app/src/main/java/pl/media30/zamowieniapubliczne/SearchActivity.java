@@ -21,6 +21,7 @@ public class SearchActivity extends Activity {
     EditText editText;
     EditText editText2;
     EditText editText3;
+    EditText editText4;
     Button button;
 
 
@@ -43,6 +44,7 @@ public class SearchActivity extends Activity {
         intent.putExtra("wartoscPobrana", "*");
         intent.putExtra("woj","*");
         intent.putExtra("kodPoczt", "*");
+        intent.putExtra("zamawNazwa", "*");
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -55,6 +57,7 @@ public class SearchActivity extends Activity {
         editText = (EditText) findViewById(R.id.editText);
         editText2 = (EditText) findViewById(R.id.editText2);
         editText3 = (EditText) findViewById(R.id.editText3);
+        editText4 = (EditText) findViewById(R.id.editText4);
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(myhandler1);
     }
@@ -82,6 +85,13 @@ public class SearchActivity extends Activity {
                 Toast.makeText(getApplicationContext(), editText3.getText().toString(), Toast.LENGTH_SHORT).show();
             } else {
                 intent.putExtra("kodPoczt","*");
+            }
+
+            if (!(editText4.getText().toString().equals(""))) {
+                intent.putExtra("zamawNazwa", (editText4.getText().toString()));
+                Toast.makeText(getApplicationContext(), editText4.getText().toString(), Toast.LENGTH_SHORT).show();
+            } else {
+                intent.putExtra("zamawNazwa","*");
             }
             setResult(RESULT_OK, intent);
             finish();

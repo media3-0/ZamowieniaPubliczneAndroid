@@ -18,6 +18,7 @@ public class RepositoryClass {
     private String parametrDoWyszukiwania=null;
     private String wyszukiwanieWojew=null;
     private String wyszukiwanieKodowPoczt = null;
+    private String wyszukiwanieZamawNazwa = null;
 
     public boolean pobierzJedenRaz = true;
 
@@ -72,6 +73,13 @@ public class RepositoryClass {
     }
     public String getWyszukiwanieKodowPoczt(){
         return wyszukiwanieKodowPoczt;
+    }
+
+    public void setWyszukiwanieZamawNazwa(String wyszukiwanieZamawNazwa){
+        this.wyszukiwanieZamawNazwa=wyszukiwanieZamawNazwa;
+    }
+    public String getWyszukiwanieZamawNazwa(){
+        return wyszukiwanieZamawNazwa;
     }
 
     private RepositoryClass() {
