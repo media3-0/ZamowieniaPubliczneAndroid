@@ -15,7 +15,10 @@ public class RepositoryClass {
     private List<DataObjectClass> dataObjectList;
     private BaseListClass baseListClass;
     private BaseClass baseClass;
-    private String parametrDoWyszukiwania="*";
+    private String parametrDoWyszukiwania=null;
+    private String wyszukiwanieWojew=null;
+    private String wyszukiwanieKodowPoczt = null;
+
     public boolean pobierzJedenRaz = true;
 
     public void setBaseListClass(BaseListClass baseListClass) {
@@ -55,6 +58,20 @@ public class RepositoryClass {
     }
     public String getParametrDoWyszukiwania(){
         return parametrDoWyszukiwania;
+    }
+
+    public void setWyszukiwanieWojew(String wyszukiwanieWojew){
+        this.wyszukiwanieWojew=wyszukiwanieWojew;
+    }
+    public String getWyszukiwanieWojew(){
+        return wyszukiwanieWojew;
+    }
+
+    public void setWyszukiwanieKodowPoczt(String wyszukiwanieKodowPoczt){
+        this.wyszukiwanieKodowPoczt=wyszukiwanieKodowPoczt;
+    }
+    public String getWyszukiwanieKodowPoczt(){
+        return wyszukiwanieKodowPoczt;
     }
 
     private RepositoryClass() {
