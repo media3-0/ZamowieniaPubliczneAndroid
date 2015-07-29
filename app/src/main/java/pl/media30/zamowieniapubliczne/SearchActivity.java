@@ -31,6 +31,7 @@ public class SearchActivity extends Activity {
     EditText editText3;
     EditText editText4;
     Button button;
+    boolean usuwanie = false;
 
 
     public String parseText(String str) {
@@ -82,6 +83,34 @@ public class SearchActivity extends Activity {
         editText4 = (EditText) findViewById(R.id.editText4);
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(myhandler1);
+
+
+        editText3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (editText3.length() == 2 && usuwanie==false){
+                    editText3.setText(editText3.getText()+"-");
+                    editText3.setSelection(3);
+                    usuwanie = true;
+                }else if (editText3.length()  == 2 ){
+                    usuwanie = false;
+                  //  String text = editText3.getText().toString();
+                    editText3.setText(editText3.getText().toString().substring(0, editText3.length()-1));
+                    editText3.setSelection(1);
+
+                }
+            }
+        });
 
 
 
