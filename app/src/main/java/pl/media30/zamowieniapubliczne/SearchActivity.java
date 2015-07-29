@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +24,7 @@ import android.widget.Toast;
 public class SearchActivity extends Activity {
 
 
-    String[] wojewodztwa = {"Ignoruj kryterium","dolnośląskie", "kujawsko-pomorskie", "lubelskie", "lubuskie", "łódzkie", "małopolskie", "mazowieckie", "opolskie", "podkarpackie", "podlaskie", "pomorskie", "śląskie", "świętokrzyskie", "warmińsko-mazurskie", "wielkopolskie", "zachodniopomorskie"};
+    String[] wojewodztwa = {"ignoruj kryterium","dolnośląskie", "kujawsko-pomorskie", "lubelskie", "lubuskie", "łódzkie", "małopolskie", "mazowieckie", "opolskie", "podkarpackie", "podlaskie", "pomorskie", "śląskie", "świętokrzyskie", "warmińsko-mazurskie", "wielkopolskie", "zachodniopomorskie"};
 
     Spinner spinner;
     EditText editText;
@@ -30,11 +33,8 @@ public class SearchActivity extends Activity {
     Button button;
 
 
-
-
     public String parseText(String str) {
         if (str.length() >= 2) {
-            str = str.toLowerCase();
             str = str.substring(0, 1).toUpperCase() + str.substring(1);
             str.trim();
         }
@@ -46,10 +46,10 @@ public class SearchActivity extends Activity {
     {
         super.onBackPressed();
         Intent intent = new Intent();
-        intent.putExtra("wartoscPobrana", "*");
-        intent.putExtra("woj","*");
-        intent.putExtra("kodPoczt", "*");
-        intent.putExtra("zamawNazwa", "*");
+        intent.putExtra("wartoscMiasto", "*");
+        intent.putExtra("wartoscWoj", "*");
+        intent.putExtra("wartoscKod", "*");
+        intent.putExtra("wartoscNazwa", "*");
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -73,16 +73,21 @@ public class SearchActivity extends Activity {
 
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
-
             }
         });
 
         editText = (EditText) findViewById(R.id.editText);
         editText3 = (EditText) findViewById(R.id.editText3);
+        
         editText4 = (EditText) findViewById(R.id.editText4);
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(myhandler1);
+
+
+
     }
+
+
 
     View.OnClickListener myhandler1 = new View.OnClickListener() {
         public void onClick(View v) {
@@ -90,30 +95,33 @@ public class SearchActivity extends Activity {
 
             Intent intent = new Intent();
             if (!(editText.getText().toString().equals(""))) {
-                intent.putExtra("wartoscPobrana", parseText(editText.getText().toString()));
+                intent.putExtra("wartoscMiasto", parseText(editText.getText().toString()));
             } else {
-                intent.putExtra("wartoscPobrana", "*");
+                intent.putExtra("wartoscMiasto", "*");
             }
 
             if (!(spinner.getSelectedItem().toString().equals("ignoruj kryterium"))) {
-                intent.putExtra("woj", (spinner.getSelectedItem().toString()));
+                intent.putExtra("wartoscWoj", (spinner.getSelectedItem().toString()));
                 Toast.makeText(getApplicationContext(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
             } else {
-                intent.putExtra("woj","*");
+                intent.putExtra("wartoscWoj","*");
             }
 
             if (!(editText3.getText().toString().equals(""))) {
-                intent.putExtra("kodPoczt", (editText3.getText().toString()));
-                Toast.makeText(getApplicationContext(), editText3.getText().toString(), Toast.LENGTH_SHORT).show();
+                intent.putExtra("wartoscKod", (editText3.getText().toString()));
+                Toast.makeText(getApplicationContext(), editText3.getText().toString().trim(), Toast.LENGTH_SHORT).show();
             } else {
-                intent.putExtra("kodPoczt","*");
+                intent.putExtra("wartoscKod","*");
             }
 
+
+
+
             if (!(editText4.getText().toString().equals(""))) {
-                intent.putExtra("zamawNazwa", (editText4.getText().toString()));
-                Toast.makeText(getApplicationContext(), editText4.getText().toString(), Toast.LENGTH_SHORT).show();
+                intent.putExtra("wartoscNazwa", (editText4.getText().toString()));
+                Toast.makeText(getApplicationContext(), editText4.getText().toString().trim(), Toast.LENGTH_SHORT).show();
             } else {
-                intent.putExtra("zamawNazwa","*");
+                intent.putExtra("wartoscNazwa","*");
             }
             setResult(RESULT_OK, intent);
             finish();

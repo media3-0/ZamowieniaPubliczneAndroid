@@ -55,29 +55,28 @@ public class MainActivityFragment extends Fragment {
 
         if (requestCode == 2) { //jak rozny od *
             try {
-                String parametr = data.getStringExtra("wartoscPobrana");
-
+                String parametr = data.getStringExtra("wartoscMiasto");
                 if (parametr.equals("*"))
                     parametr = null;
-                bundle.putString("getParametr", parametr);
+                bundle.putString("wartoscMiasto", parametr);
                 RepositoryClass.getInstance().setParametrDoWyszukiwania(parametr);
 
-                parametr = data.getStringExtra("woj");
+                parametr = data.getStringExtra("wartoscWoj");
                 if (parametr.equals("*"))
                     parametr = null;
-                bundle.putString("woj", parametr);
+                bundle.putString("wartoscWoj", parametr);
                 RepositoryClass.getInstance().setWyszukiwanieWojew(parametr);
 
-                parametr = data.getStringExtra("kodPoczt");
+                parametr = data.getStringExtra("wartoscKod");
                 if (parametr.equals("*"))
                     parametr = null;
-                bundle.putString("kodPoczt", parametr);
+                bundle.putString("wartoscKod", parametr);
                 RepositoryClass.getInstance().setWyszukiwanieKodowPoczt(parametr);
 
-                parametr = data.getStringExtra("zamawNazwa");
+                parametr = data.getStringExtra("wartoscNazwa");
                 if (parametr.equals("*"))
                     parametr = null;
-                bundle.putString("zamawNazwa", parametr);
+                bundle.putString("wartoscNazwa", parametr);
                 RepositoryClass.getInstance().setWyszukiwanieZamawNazwa(parametr);
 
 
@@ -93,12 +92,10 @@ public class MainActivityFragment extends Fragment {
                 strona = 1;
 
             } catch (NullPointerException e) {
-                //parametr = "*";
-                RepositoryClass.getInstance().setParametrDoWyszukiwania(null);//("*");
-                RepositoryClass.getInstance().setWyszukiwanieWojew(null);//("*");
+                RepositoryClass.getInstance().setParametrDoWyszukiwania(null);
+                RepositoryClass.getInstance().setWyszukiwanieWojew(null);
                 RepositoryClass.getInstance().setWyszukiwanieKodowPoczt(null);
                 RepositoryClass.getInstance().setWyszukiwanieZamawNazwa(null);
-                Log.d("OOOO", e.getMessage());
             }
         }
     }
@@ -117,13 +114,13 @@ public class MainActivityFragment extends Fragment {
         }
 
         try {
-            if(savedInstanceState.getString("getParametr").equals("*"))
+            if(savedInstanceState.getString("wartoscMiasto").equals("*"))
                 RepositoryClass.getInstance().setParametrDoWyszukiwania(null);
-            if(savedInstanceState.getString("woj").equals("*"))
+            if(savedInstanceState.getString("wartoscWoj").equals("*"))
                 RepositoryClass.getInstance().setParametrDoWyszukiwania(null);
-            if(savedInstanceState.getString("kodPoczt").equals("*"))
+            if(savedInstanceState.getString("wartoscKod").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieKodowPoczt(null);
-            if(savedInstanceState.getString("zamawNazwa").equals("*"))
+            if(savedInstanceState.getString("wartoscNazwa").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieZamawNazwa(null);
             wczytane=false;
         } catch (Exception e) {

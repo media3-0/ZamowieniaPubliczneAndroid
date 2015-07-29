@@ -43,6 +43,7 @@
             android:id="@+id/spinner" />
 
         <TextView
+            android:inputType="number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Zamawiający Kod Pocztowy"
