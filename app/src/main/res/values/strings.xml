@@ -10,7 +10,7 @@
 
     <string name="action_example">Example action</string>
 
-    <string name="action_settings">Wykresy</string>
+    <string name="action_settings">Największe zamówienia</string>
     <string name="title_activity_main">Zamówienia publiczne</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_zamowienie">ZamowienieActivity</string>

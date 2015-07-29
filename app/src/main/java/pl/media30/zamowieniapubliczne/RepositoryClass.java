@@ -15,7 +15,7 @@ public class RepositoryClass {
     private List<DataObjectClass> dataObjectList;
     private BaseListClass baseListClass;
     private BaseClass baseClass;
-    private String parametrDoWyszukiwania=null;
+    private String wyszukiwanieMiasta=null;
     private String wyszukiwanieWojew=null;
     private String wyszukiwanieKodowPoczt = null;
     private String wyszukiwanieZamawNazwa = null;
@@ -54,11 +54,11 @@ public class RepositoryClass {
         dataObjectList.clear();
     }
 
-    public void setParametrDoWyszukiwania(String parametrDoWyszukiwania){
-        this.parametrDoWyszukiwania=parametrDoWyszukiwania;
+    public void setWyszukiwanieMiasta(String wyszukiwanieMiasta){
+        this.wyszukiwanieMiasta=wyszukiwanieMiasta;
     }
-    public String getParametrDoWyszukiwania(){
-        return parametrDoWyszukiwania;
+    public String getWyszukiwanieMiasta(){
+        return wyszukiwanieMiasta;
     }
 
     public void setWyszukiwanieWojew(String wyszukiwanieWojew){

@@ -59,7 +59,7 @@ public class MainActivityFragment extends Fragment {
                 if (parametr.equals("*"))
                     parametr = null;
                 bundle.putString("wartoscMiasto", parametr);
-                RepositoryClass.getInstance().setParametrDoWyszukiwania(parametr);
+                RepositoryClass.getInstance().setWyszukiwanieMiasta(parametr);
 
                 parametr = data.getStringExtra("wartoscWoj");
                 if (parametr.equals("*"))
@@ -79,8 +79,6 @@ public class MainActivityFragment extends Fragment {
                 bundle.putString("wartoscNazwa", parametr);
                 RepositoryClass.getInstance().setWyszukiwanieZamawNazwa(parametr);
 
-
-
                 RepositoryClass.getInstance().deleteDataObjectList();
                 Intent intent = getActivity().getIntent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
@@ -92,7 +90,7 @@ public class MainActivityFragment extends Fragment {
                 strona = 1;
 
             } catch (NullPointerException e) {
-                RepositoryClass.getInstance().setParametrDoWyszukiwania(null);
+                RepositoryClass.getInstance().setWyszukiwanieMiasta(null);
                 RepositoryClass.getInstance().setWyszukiwanieWojew(null);
                 RepositoryClass.getInstance().setWyszukiwanieKodowPoczt(null);
                 RepositoryClass.getInstance().setWyszukiwanieZamawNazwa(null);
@@ -115,9 +113,9 @@ public class MainActivityFragment extends Fragment {
 
         try {
             if(savedInstanceState.getString("wartoscMiasto").equals("*"))
-                RepositoryClass.getInstance().setParametrDoWyszukiwania(null);
+                RepositoryClass.getInstance().setWyszukiwanieMiasta(null);
             if(savedInstanceState.getString("wartoscWoj").equals("*"))
-                RepositoryClass.getInstance().setParametrDoWyszukiwania(null);
+                RepositoryClass.getInstance().setWyszukiwanieMiasta(null);
             if(savedInstanceState.getString("wartoscKod").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieKodowPoczt(null);
             if(savedInstanceState.getString("wartoscNazwa").equals("*"))
@@ -125,7 +123,6 @@ public class MainActivityFragment extends Fragment {
             wczytane=false;
         } catch (Exception e) {
         }
-
 
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mLayoutManager.scrollToPosition(position);
@@ -182,7 +179,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onLoadMore(int current_page) {
                 dialog.show();
-                if((RepositoryClass.getInstance().getParametrDoWyszukiwania() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null)){
+                if((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null)){
                     service.listOrders(strona, new Callback<BaseListClass>() {
                         @Override
                         public void success(BaseListClass blc, Response response) {
@@ -194,7 +191,6 @@ public class MainActivityFragment extends Fragment {
                             mLayoutManager.scrollToPosition(rozmiar);
                             dialog.dismiss();
                             Log.d("Strona", " bez param strona loadmore: " + strona);
-//                        Log.d("Parametr: ", parametr);
                         }
                         @Override
                         public void failure(RetrofitError retrofitError) {
@@ -203,7 +199,7 @@ public class MainActivityFragment extends Fragment {
                     });
                 } else {
                     dialog.show();
-                    service.listOrdersWithParameter(strona,RepositoryClass.getInstance().getParametrDoWyszukiwania(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), new Callback<BaseListClass>() {
+                    service.listOrdersWithParameter(strona,RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), new Callback<BaseListClass>() {
                         @Override
                         public void success(BaseListClass blc, Response response) {
                             int rozmiar = mAdapter.getItemCount();
@@ -213,9 +209,8 @@ public class MainActivityFragment extends Fragment {
                             strona++;
                             mLayoutManager.scrollToPosition(rozmiar);
                             dialog.dismiss();
-//                        Log.d("Parametr: ", parametr);
                             Log.d("Strona", "param strona loadmore: " + strona);
-                            Log.d("dddd", "ptessxt: " + RepositoryClass.getInstance().getParametrDoWyszukiwania());
+                            Log.d("dddd", "ptessxt: " + RepositoryClass.getInstance().getWyszukiwanieMiasta());
                         }
                         @Override
                         public void failure(RetrofitError retrofitError) {
@@ -230,7 +225,7 @@ public class MainActivityFragment extends Fragment {
         if (wczytane == false) {
             dialog.show();
             RepositoryClass.getInstance();
-            if((RepositoryClass.getInstance().getParametrDoWyszukiwania() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt()==null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() ==null)){
+            if((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt()==null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() ==null)){
                 service.listOrders(1, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
@@ -249,7 +244,7 @@ public class MainActivityFragment extends Fragment {
                     }
                 });
             } else {
-                service.listOrdersWithParameter(1, RepositoryClass.getInstance().getParametrDoWyszukiwania(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), new Callback<BaseListClass>() {
+                service.listOrdersWithParameter(1, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().deleteDataObjectList();

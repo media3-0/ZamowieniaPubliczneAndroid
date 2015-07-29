@@ -33,7 +33,6 @@ public class SearchActivity extends Activity {
     Button button;
     boolean usuwanie = false;
 
-
     public String parseText(String str) {
         if (str.length() >= 2) {
             str = str.substring(0, 1).toUpperCase() + str.substring(1);
@@ -120,8 +119,6 @@ public class SearchActivity extends Activity {
 
     View.OnClickListener myhandler1 = new View.OnClickListener() {
         public void onClick(View v) {
-            Toast.makeText(getApplicationContext(), editText.getText().toString()+" "+"\n", Toast.LENGTH_SHORT).show();
-
             Intent intent = new Intent();
             if (!(editText.getText().toString().equals(""))) {
                 intent.putExtra("wartoscMiasto", parseText(editText.getText().toString()));
@@ -131,14 +128,12 @@ public class SearchActivity extends Activity {
 
             if (!(spinner.getSelectedItem().toString().equals("ignoruj kryterium"))) {
                 intent.putExtra("wartoscWoj", (spinner.getSelectedItem().toString()));
-                Toast.makeText(getApplicationContext(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
             } else {
                 intent.putExtra("wartoscWoj","*");
             }
 
             if (!(editText3.getText().toString().equals(""))) {
                 intent.putExtra("wartoscKod", (editText3.getText().toString()));
-                Toast.makeText(getApplicationContext(), editText3.getText().toString().trim(), Toast.LENGTH_SHORT).show();
             } else {
                 intent.putExtra("wartoscKod","*");
             }
@@ -148,7 +143,6 @@ public class SearchActivity extends Activity {
 
             if (!(editText4.getText().toString().equals(""))) {
                 intent.putExtra("wartoscNazwa", (editText4.getText().toString()));
-                Toast.makeText(getApplicationContext(), editText4.getText().toString().trim(), Toast.LENGTH_SHORT).show();
             } else {
                 intent.putExtra("wartoscNazwa","*");
             }

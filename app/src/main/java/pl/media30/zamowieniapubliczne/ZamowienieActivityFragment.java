@@ -288,16 +288,16 @@ public class ZamowienieActivityFragment extends Activity
         }
 //
         TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
-        zamowienieSzacowanaWartosc.setText(Long.toString(myObject.dataClass.wartosc_szacowana));
+        zamowienieSzacowanaWartosc.setText(Double.toString(myObject.dataClass.wartosc_szacowana));
 
         TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
-        zamowienieCenaWybranejOferty.setText(Long.toString(myObject.dataClass.wartosc_cena));
+        zamowienieCenaWybranejOferty.setText(Double.toString(myObject.dataClass.wartosc_cena));
 
         TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
         zamowienieNajtanszaOferta.setText(myObject.dataClass.wartosc_cena_min.toString());
 
         TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
-        zamowienieNajdrozszaOferta.setText(Long.toString(myObject.dataClass.wartosc_cena_max));
+        zamowienieNajdrozszaOferta.setText(Double.toString(myObject.dataClass.wartosc_cena_max));
 
         TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
         textViewZamowienieNazwaLabel.setVisibility(View.GONE);

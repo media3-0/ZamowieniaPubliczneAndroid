@@ -53,11 +53,15 @@ public class WykresyActivity extends ActionBarActivity {
         final ArrayList<String> labels = new ArrayList<String>();
         final BarChart chart = new BarChart(context);
 
+
+        //
+
+
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         final ProgressDialog dialog =
                 ProgressDialog.show(this, "Trwa wczytywanie danych", "Please Wait...");
-        service.najwiekszeZamowienia(new Callback<BaseListClass>() {
+        service.najwiekszeZamowienia(RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), new Callback<BaseListClass>() {
             @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
             @Override
             public void success(BaseListClass baseListClass, Response response) {
