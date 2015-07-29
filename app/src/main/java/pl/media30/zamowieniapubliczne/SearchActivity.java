@@ -20,6 +20,7 @@ public class SearchActivity extends Activity {
 
     EditText editText;
     EditText editText2;
+    EditText editText3;
     Button button;
 
 
@@ -41,6 +42,7 @@ public class SearchActivity extends Activity {
         Intent intent = new Intent();
         intent.putExtra("wartoscPobrana", "*");
         intent.putExtra("woj","*");
+        intent.putExtra("kodPoczt", "*");
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -52,6 +54,7 @@ public class SearchActivity extends Activity {
         setContentView(R.layout.activity_search);
         editText = (EditText) findViewById(R.id.editText);
         editText2 = (EditText) findViewById(R.id.editText2);
+        editText3 = (EditText) findViewById(R.id.editText3);
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(myhandler1);
     }
@@ -72,6 +75,13 @@ public class SearchActivity extends Activity {
                 Toast.makeText(getApplicationContext(), editText2.getText().toString(), Toast.LENGTH_SHORT).show();
             } else {
                 intent.putExtra("woj","*");
+            }
+
+            if (!(editText3.getText().toString().equals(""))) {
+                intent.putExtra("kodPoczt", (editText3.getText().toString()));
+                Toast.makeText(getApplicationContext(), editText3.getText().toString(), Toast.LENGTH_SHORT).show();
+            } else {
+                intent.putExtra("kodPoczt","*");
             }
             setResult(RESULT_OK, intent);
             finish();

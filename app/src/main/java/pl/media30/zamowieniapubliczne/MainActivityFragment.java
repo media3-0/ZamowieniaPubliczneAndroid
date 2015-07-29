@@ -68,6 +68,12 @@ public class MainActivityFragment extends Fragment {
                 bundle.putString("woj", parametr);
                 RepositoryClass.getInstance().setWyszukiwanieWojew(parametr);
 
+                parametr = data.getStringExtra("kodPoczt");
+                if (parametr.equals("*"))
+                    parametr = null;
+                bundle.putString("kodPoczt", parametr);
+                RepositoryClass.getInstance().setWyszukiwanieKodowPoczt(parametr);
+
                 RepositoryClass.getInstance().deleteDataObjectList();
                 Intent intent = getActivity().getIntent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
@@ -82,6 +88,7 @@ public class MainActivityFragment extends Fragment {
                 //parametr = "*";
                 RepositoryClass.getInstance().setParametrDoWyszukiwania(null);//("*");
                 RepositoryClass.getInstance().setWyszukiwanieWojew(null);//("*");
+                RepositoryClass.getInstance().setWyszukiwanieKodowPoczt(null);
                 Log.d("OOOO", e.getMessage());
             }
         }
@@ -105,6 +112,8 @@ public class MainActivityFragment extends Fragment {
                 RepositoryClass.getInstance().setParametrDoWyszukiwania(null);
             if(savedInstanceState.getString("woj").equals("*"))
                 RepositoryClass.getInstance().setParametrDoWyszukiwania(null);
+            if(savedInstanceState.getString("kodPoczt").equals("*"))
+                RepositoryClass.getInstance().setWyszukiwanieKodowPoczt(null);
             wczytane=false;
         } catch (Exception e) {
         }
@@ -165,7 +174,7 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onLoadMore(int current_page) {
                 dialog.show();
-                if((RepositoryClass.getInstance().getParametrDoWyszukiwania() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null)){
+                if((RepositoryClass.getInstance().getParametrDoWyszukiwania() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null)){
                     service.listOrders(strona, new Callback<BaseListClass>() {
                         @Override
                         public void success(BaseListClass blc, Response response) {
@@ -186,7 +195,7 @@ public class MainActivityFragment extends Fragment {
                     });
                 } else {
                     dialog.show();
-                    service.listOrdersWithParameter(strona,RepositoryClass.getInstance().getParametrDoWyszukiwania(), RepositoryClass.getInstance().getWyszukiwanieWojew(), null , new Callback<BaseListClass>() {
+                    service.listOrdersWithParameter(strona,RepositoryClass.getInstance().getParametrDoWyszukiwania(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() , new Callback<BaseListClass>() {
                         @Override
                         public void success(BaseListClass blc, Response response) {
                             int rozmiar = mAdapter.getItemCount();
@@ -213,7 +222,7 @@ public class MainActivityFragment extends Fragment {
         if (wczytane == false) {
             dialog.show();
             RepositoryClass.getInstance();
-            if((RepositoryClass.getInstance().getParametrDoWyszukiwania() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null)){
+            if((RepositoryClass.getInstance().getParametrDoWyszukiwania() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) &&(RepositoryClass.getInstance().getWyszukiwanieKodowPoczt()==null)){
                 service.listOrders(1, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
@@ -232,7 +241,7 @@ public class MainActivityFragment extends Fragment {
                     }
                 });
             } else {
-                service.listOrdersWithParameter(1, RepositoryClass.getInstance().getParametrDoWyszukiwania(), RepositoryClass.getInstance().getWyszukiwanieWojew(), null, new Callback<BaseListClass>() {
+                service.listOrdersWithParameter(1, RepositoryClass.getInstance().getParametrDoWyszukiwania(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().deleteDataObjectList();
