@@ -8,8 +8,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
@@ -18,6 +21,9 @@ import android.widget.Toast;
 public class SearchActivity extends Activity {
 
 
+    String[] wojewodztwa = {"Ignoruj kryterium","dolnośląskie", "kujawsko-pomorskie", "lubelskie", "lubuskie", "łódzkie", "małopolskie", "mazowieckie", "opolskie", "podkarpackie", "podlaskie", "pomorskie", "śląskie", "świętokrzyskie", "warmińsko-mazurskie", "wielkopolskie", "zachodniopomorskie"};
+
+    Spinner spinner;
     EditText editText;
     EditText editText2;
     EditText editText3;
@@ -54,8 +60,25 @@ public class SearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, wojewodztwa);
+        spinner = (Spinner)findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,
+                                       int id, long position) {
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+
+            }
+        });
+
         editText = (EditText) findViewById(R.id.editText);
-        editText2 = (EditText) findViewById(R.id.editText2);
         editText3 = (EditText) findViewById(R.id.editText3);
         editText4 = (EditText) findViewById(R.id.editText4);
         button = (Button) findViewById(R.id.button);
@@ -73,9 +96,9 @@ public class SearchActivity extends Activity {
                 intent.putExtra("wartoscPobrana", "*");
             }
 
-            if (!(editText2.getText().toString().equals(""))) {
-                intent.putExtra("woj", (editText2.getText().toString()));
-                Toast.makeText(getApplicationContext(), editText2.getText().toString(), Toast.LENGTH_SHORT).show();
+            if (!(spinner.getSelectedItem().toString().equals("Ignoruj kryterium"))) {
+                intent.putExtra("woj", (spinner.getSelectedItem().toString()));
+                Toast.makeText(getApplicationContext(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
             } else {
                 intent.putExtra("woj","*");
             }

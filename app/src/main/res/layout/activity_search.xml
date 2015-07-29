@@ -31,17 +31,10 @@
             android:id="@+id/editText"
             android:layout_gravity="center_horizontal" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Zamawiający Województwo"
-            android:id="@+id/textView5" />
-
-        <EditText
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText2"
-            android:layout_gravity="right" />
+            android:id="@+id/spinner" />
 
         <TextView
             android:layout_width="wrap_content"
