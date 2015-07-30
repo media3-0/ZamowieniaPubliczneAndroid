@@ -92,7 +92,6 @@ public class RepositoryClass {
         return wyszukiwanieZamawREGON;
     }
 
-
     public void setWyszukiwanieZamawWWW(String wyszukiwanieZamawWWW){
         this.wyszukiwanieZamawWWW=wyszukiwanieZamawWWW;
     }

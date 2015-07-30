@@ -2,12 +2,10 @@ package pl.media30.zamowieniapubliczne;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
+
 import com.squareup.otto.Subscribe;
 
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
@@ -114,6 +113,9 @@ public class MainActivityFragment extends Fragment {
                 RepositoryClass.getInstance().setWyszukiwanieWojew(null);
                 RepositoryClass.getInstance().setWyszukiwanieKodowPoczt(null);
                 RepositoryClass.getInstance().setWyszukiwanieZamawNazwa(null);
+                RepositoryClass.getInstance().setWyszukiwanieZamawREGON(null);
+                RepositoryClass.getInstance().setWyszukiwanieZamawWWW(null);
+                RepositoryClass.getInstance().setWyszukiwanieZamawEmail(null);
             }
         }
     }
@@ -155,11 +157,6 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
-        if (bundle.getInt("getPos") == -1) {
-            bundle.putInt("getPos", 0);
-        }
-        mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
     }
 
     @Override
@@ -173,6 +170,10 @@ public class MainActivityFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        try {
+            String strtext = getArguments().getString("query");
+        }catch(Exception e){
+        }
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
@@ -181,6 +182,23 @@ public class MainActivityFragment extends Fragment {
         super.onStart();
         ActivityResultBus.getInstance().register(mActivityResultSubscriber);
 
+        mRecyclerView = (UltimateRecyclerView) getView().findViewById(R.id.ultimate_recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this.getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
+        Log.d("pozyc w start", bundle.getInt("getPos") + "");
+        mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
+            @Override
+            public void onLoadMore(int current_page) {
+                wczytajDane();
+            }
+        });
+        if (bundle.getBoolean("getWczytaj") == false)
+            wczytajDane();
+    }
+    void wczytajDane(){
         final ProgressDialog dialog =
                 ProgressDialog.show(this.getActivity().getWindow().getContext(), "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
         dialog.dismiss();
@@ -189,105 +207,63 @@ public class MainActivityFragment extends Fragment {
                 .build();
         final MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
 
-        mRecyclerView = (UltimateRecyclerView) getView().findViewById(R.id.ultimate_recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        // use a linear layout manager
-        mLayoutManager = new LinearLayoutManager(this.getActivity());
-        mRecyclerView.setLayoutManager(mLayoutManager);
-
-        mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
-            @Override
-            public void onLoadMore(int current_page) {
-                bundle.putInt("getPos", mLayoutManager.findFirstCompletelyVisibleItemPosition());
-                //Toast.makeText(getActivity(),position,Toast.LENGTH_SHORT).show();
-                dialog.show();
-                if((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawREGON() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawWWW() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawEmail() == null)){
-                    service.listOrders(strona, new Callback<BaseListClass>() {
-                        @Override
-                        public void success(BaseListClass blc, Response response) {
-                            int rozmiar = mAdapter.getItemCount();
-                            RepositoryClass.getInstance().setBaseListClass(blc);
-                            mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
-                            mRecyclerView.setAdapter(mAdapter);
-                            strona++;
-                            mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-                            dialog.dismiss();
-                            Log.d("Strona", " bez param strona loadmore: " + strona);
-                        }
-                        @Override
-                        public void failure(RetrofitError retrofitError) {
-                            dialog.dismiss();
-                            Toast.makeText(getActivity(),"Błąd. Sprawdź połączenie z internetem",Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                } else {
-                    dialog.show();
-                    service.listOrdersWithParameter(strona,RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), new Callback<BaseListClass>() {
-                        @Override
-                        public void success(BaseListClass blc, Response response) {
-                            int rozmiar = mAdapter.getItemCount();
-                            RepositoryClass.getInstance().setBaseListClass(blc);
-                            mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
-                            mRecyclerView.setAdapter(mAdapter);
-                            strona++;
-                            mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-                            dialog.dismiss();
-                            Log.d("Strona", "param strona loadmore: " + strona);
-                            Log.d("dddd", "ptessxt: " + RepositoryClass.getInstance().getWyszukiwanieMiasta());
-                        }
-                        @Override
-                        public void failure(RetrofitError retrofitError) {
-                            dialog.dismiss();
-                            Toast.makeText(getActivity(),"Błąd. Sprawdź połączenie z internetem",Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            }
-        });
-
         wczytane = bundle.getBoolean("getWczytaj");
-        if (wczytane == false) {
+        if (wczytane == false)
+        {
+            strona=1;
+            bundle.putBoolean("getWczytaj", true);
+            if (RepositoryClass.getInstance().getDataObjectList()!=null)
+                RepositoryClass.getInstance().deleteDataObjectList();
+        }
+            try {
+                bundle.putInt("getPos", mLayoutManager.findFirstCompletelyVisibleItemPosition());
+            }catch(Exception e){
+                bundle.putInt("getPos", 0);
+            }
+            //Toast.makeText(getActivity(),position,Toast.LENGTH_SHORT).show();
             dialog.show();
-            RepositoryClass.getInstance();
-            if((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt()==null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() ==null) && (RepositoryClass.getInstance().getWyszukiwanieZamawREGON() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawWWW() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawEmail() == null)){
-                service.listOrders(1, new Callback<BaseListClass>() {
+            if ((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawREGON() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawWWW() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawEmail() == null)) {
+                service.listOrders(strona, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
-                        if (RepositoryClass.getInstance().getDataObjectList()!=null)
-                            RepositoryClass.getInstance().deleteDataObjectList();
                         RepositoryClass.getInstance().setBaseListClass(blc);
                         mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                         mRecyclerView.setAdapter(mAdapter);
-                        Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz/czyste");
-                        wczytane = true;
+                        strona++;
+                        mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
                         dialog.dismiss();
+                        Log.d("Strona", " bez param strona loadmore: " + strona);
                     }
                     @Override
                     public void failure(RetrofitError retrofitError) {
                         dialog.dismiss();
-                        Toast.makeText(getActivity(),"Błąd. Sprawdź połączenie z internetem",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
-                service.listOrdersWithParameter(1, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), new Callback<BaseListClass>() {
+                dialog.show();
+                service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
-                        RepositoryClass.getInstance().deleteDataObjectList();
                         RepositoryClass.getInstance().setBaseListClass(blc);
                         mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                         mRecyclerView.setAdapter(mAdapter);
-                        Log.d("1-sze wczytanie", "To powinno byc tylko 1 raz/z param");
-                        wczytane = true;
+                        strona++;
+                        mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
                         dialog.dismiss();
-                        Log.d("Strona", "param n strona: " + strona);
+                        Log.d("Strona", "param strona loadmore: " + strona);
                     }
+
                     @Override
                     public void failure(RetrofitError retrofitError) {
                         dialog.dismiss();
-                        Toast.makeText(getActivity(),"Błąd. Sprawdź połączenie z internetem",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
-        }
+    }
+    public String hello(String text){
+        Log.d("Bravo:", text);
+        return text;
     }
 }
