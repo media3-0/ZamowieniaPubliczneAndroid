@@ -266,7 +266,7 @@ public class ZamowienieActivityFragment extends Activity
 
         TextView zamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
         zamowienieDataPublikacji.setText(myObject.dataClass.data_publikacji.toString());
-//
+
         TextView zamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
         if(tryParseInt(myObject.dataClass.zamowienie_ue))
         {
@@ -286,18 +286,19 @@ public class ZamowienieActivityFragment extends Activity
         {
             zamowienieUE.setText(myObject.dataClass.zamowienie_ue.toString());
         }
-//
+
         TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
-        zamowienieSzacowanaWartosc.setText(Double.toString(myObject.dataClass.wartosc_szacowana));
+        zamowienieSzacowanaWartosc.setText(Double.toString(myObject.dataClass.wartosc_szacowana) + " PLN");
 
         TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
-        zamowienieCenaWybranejOferty.setText(Double.toString(myObject.dataClass.wartosc_cena));
+        zamowienieCenaWybranejOferty.setText(Double.toString(myObject.dataClass.wartosc_cena) + " PLN");
 
         TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
-        zamowienieNajtanszaOferta.setText(myObject.dataClass.wartosc_cena_min.toString());
+        double temp = (Double.parseDouble(myObject.dataClass.wartosc_cena_min));
+        zamowienieNajtanszaOferta.setText(Double.toString(temp) + " PLN");
 
         TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
-        zamowienieNajdrozszaOferta.setText(Double.toString(myObject.dataClass.wartosc_cena_max));
+        zamowienieNajdrozszaOferta.setText(Double.toString(myObject.dataClass.wartosc_cena_max) + " PLN");
 
         TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
         textViewZamowienieNazwaLabel.setVisibility(View.GONE);
@@ -585,42 +586,6 @@ public class ZamowienieActivityFragment extends Activity
 //ENDREGION
 //REGION CHOWANIE 2 STOPNIEN
 
-    public void zadzwon(View v){
-
-        try {
-            String number = "tel:" + textViewZamawiajacyTelefon.getText().toString().trim();
-            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
-            startActivity(callIntent);
-        }catch(Exception e){
-            Log.d("zadzwon", e.getMessage());
-        }
-    }
-
-    public void otworzStrone(View v){
-        try {
-            String www = "http://"+textViewZamawiajacyWWW.getText().toString().trim();
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(www));
-            startActivity(browserIntent);
-        }catch(Exception e){
-            Log.d("otworzStrone", e.getMessage());
-        }
-    }
-
-    public void napiszEmail(View v){
-        try {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.setType("plain/text");
-            String email = textViewZamawiajacyEmail.getText().toString().trim();
-            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
-            intent.putExtra(Intent.EXTRA_SUBJECT, "");
-            intent.putExtra(Intent.EXTRA_TEXT, "");
-            startActivity(Intent.createChooser(intent, ""));
-        }catch(Exception e){
-            Log.d("napiszEmail", e.getMessage());
-        }
-    }
-
-
     public void chowanieZamowieniePrzedmiot(View v)
     {
         TextView textViewZamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
@@ -658,6 +623,53 @@ public class ZamowienieActivityFragment extends Activity
     }
 
 //ENDREGION
+
+    public void zadzwon(View v)
+    {
+        try
+        {
+            String number = "tel:" + textViewZamawiajacyTelefon.getText().toString().trim();
+            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
+            startActivity(callIntent);
+        }
+        catch(Exception e)
+        {
+            Log.d("zadzwon", e.getMessage());
+        }
+    }
+
+    public void otworzStrone(View v)
+    {
+        try
+        {
+            String www = "http://"+textViewZamawiajacyWWW.getText().toString().trim();
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(www));
+            startActivity(browserIntent);
+        }
+        catch(Exception e)
+        {
+            Log.d("otworzStrone", e.getMessage());
+        }
+    }
+
+    public void napiszEmail(View v)
+    {
+        try
+        {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("plain/text");
+            String email = textViewZamawiajacyEmail.getText().toString().trim();
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+            intent.putExtra(Intent.EXTRA_SUBJECT, "");
+            intent.putExtra(Intent.EXTRA_TEXT, "");
+            startActivity(Intent.createChooser(intent, ""));
+        }
+        catch(Exception e)
+        {
+            Log.d("napiszEmail", e.getMessage());
+        }
+    }
+
 }
 
 

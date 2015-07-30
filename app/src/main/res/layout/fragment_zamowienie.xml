@@ -823,7 +823,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wiedza:"
+            android:text="Wiedza i doświadczenie:"
             android:clickable="true"
             android:onClick="chowanieZamowienieWiedza"
             android:id="@+id/textViewZamowienieWiedzaLabel"
@@ -849,7 +849,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Potencjał:"
+            android:text="Potencjał techniczny:"
             android:clickable="true"
             android:onClick="chowanieZamowieniePotencjal"
             android:id="@+id/textViewZamowieniePotencjalLabel"
@@ -875,7 +875,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Osoby zdolne:"
+            android:text="Osoby zdolne do wykonania zamówienia:"
             android:clickable="true"
             android:onClick="chowanieZamowienieOsobyZdolne"
             android:id="@+id/textViewZamowienieOsobyZdolneLabel"
@@ -901,7 +901,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sytuacja ekonomiczna:"
+            android:text="Sytuacja ekonomiczna i finansowa wykonawcy:"
             android:clickable="true"
             android:onClick="chowanieZamowienieSytuacjaEkonomiczna"
             android:id="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
