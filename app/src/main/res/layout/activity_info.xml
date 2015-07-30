@@ -8,4 +8,11 @@
         android:layout_height="wrap_content"
         android:text="BEST APP EVER"
         android:id="@+id/textView" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/logo_fundacja"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
