@@ -35,7 +35,6 @@ public class MainActivityFragment extends Fragment {
     MyAdapter mAdapter;
     int strona = 2;
     boolean wczytane = false;
-  //  int position = -1;
     Bundle bundle = new Bundle();
 
     public MainActivityFragment() {
@@ -101,22 +100,18 @@ public class MainActivityFragment extends Fragment {
         }
     }
 
-
-
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         try {
             if (savedInstanceState.getInt("getPos") == -1) {
-                bundle.putInt("getPos", 1);
+                bundle.putInt("getPos", 0);
             } else {
                 bundle.putInt("getPos", savedInstanceState.getInt("getPos"));
             }
         } catch (Exception e) {
-            bundle.putInt("getPos",1);
+            bundle.putInt("getPos",0);
         }
-
         try {
             if(savedInstanceState.getString("wartoscMiasto").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieMiasta(null);
@@ -129,9 +124,7 @@ public class MainActivityFragment extends Fragment {
             wczytane=false;
         } catch (Exception e) {
         }
-
         mLayoutManager = new LinearLayoutManager(this.getActivity());
-       // position = mLayoutManager.findFirstVisibleItemPosition();
         mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
     }
 
@@ -140,7 +133,7 @@ public class MainActivityFragment extends Fragment {
         super.onResume();
 
         if (bundle.getInt("getPos") == -1) {
-            bundle.putInt("getPos", 1);
+            bundle.putInt("getPos", 0);
         }
         mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
     }
@@ -149,9 +142,7 @@ public class MainActivityFragment extends Fragment {
     public void onStop() {
         super.onStop();
         ActivityResultBus.getInstance().unregister(mActivityResultSubscriber);
-        //position = mLayoutManager.findFirstVisibleItemPosition();// findLastCompletelyVisibleItemPosition();//mAdapter.getPos();
-
-        bundle.putInt("getPos", mLayoutManager.findLastCompletelyVisibleItemPosition());
+        bundle.putInt("getPos", mLayoutManager.findFirstVisibleItemPosition());
         bundle.putBoolean("getWczytaj", wczytane);
     }
 
