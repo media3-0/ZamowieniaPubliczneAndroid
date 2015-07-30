@@ -55,12 +55,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
+
     public MyAdapter(List<DataObjectClass> myDataset) {
         mDataset = myDataset;
     }
 
-    // Create new views (invoked by the layout manager)
+
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
@@ -79,14 +79,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-
         TextView textViewName = holder.textViewName;
         TextView textViewCity = holder.textViewCity;
 
-
-
-        textViewName.setText((position+1) + ". " + mDataset.get(position).dataClass.nazwa+"\n");
-        textViewCity.setText(mDataset.get(position).dataClass.zamawiajacy_miejscowosc+"\n");
+        textViewName.setText("\n"+ mDataset.get(position).dataClass.nazwa+"\n");
+        textViewCity.setText((position+1) + ". "+mDataset.get(position).dataClass.zamawiajacy_miejscowosc);
     }
     public int getPos(){
         return position;

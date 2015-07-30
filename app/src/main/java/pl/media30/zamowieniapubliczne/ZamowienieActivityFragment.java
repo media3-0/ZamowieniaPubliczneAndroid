@@ -61,7 +61,7 @@ public class ZamowienieActivityFragment extends Activity
         //dostep do layers
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-        final ProgressDialog dialog = ProgressDialog.show(this, "Trwa wczytywanie danych", "Please Wait...");
+        final ProgressDialog dialog = ProgressDialog.show(this, "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
         service.singleOrder(parseInt(myObject.id), new Callback<BaseClass>()
                 {
                     @Override

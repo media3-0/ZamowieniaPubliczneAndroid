@@ -55,7 +55,7 @@ public class WykresyActivity extends ActionBarActivity {
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         final ProgressDialog dialog =
-                ProgressDialog.show(this, "Trwa wczytywanie danych", "Please Wait...");
+                ProgressDialog.show(this, "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
         service.najwiekszeZamowienia(RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), new Callback<BaseListClass>() {
             @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR1)
             @Override
