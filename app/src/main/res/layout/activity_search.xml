@@ -16,14 +16,19 @@
             android:text="@string/searchInfo"
             android:id="@+id/textView3"
             android:layout_gravity="center_horizontal"
-            android:textStyle="bold"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="#0288D1"
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Zamawiający Miejscowość"
-            android:id="@+id/textView4" />
+            android:id="@+id/textView4"
+            android:textColor="#0288D1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp" />
 
         <EditText
             android:layout_width="match_parent"
@@ -35,7 +40,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Zamawiający Województwo"
-            android:id="@+id/textView5" />
+            android:id="@+id/textView5"
+            android:textColor="#0288D1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -47,7 +56,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Zamawiający Kod Pocztowy"
-            android:id="@+id/textView6" />
+            android:id="@+id/textView6"
+            android:textColor="#0288D1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp" />
 
         <EditText
             android:layout_width="match_parent"
@@ -61,7 +74,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Zamawiający Nazwa"
-            android:id="@+id/textView7" />
+            android:id="@+id/textView7"
+            android:textColor="#0288D1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp" />
 
         <EditText
             android:layout_width="match_parent"
@@ -75,7 +92,8 @@
             android:text="@string/searchButton"
             android:id="@+id/button"
             android:onClick="onClick"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 
 
