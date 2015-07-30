@@ -42,4 +42,36 @@ public class CzesciClass {
     @SerializedName("kryteria")
     public List<KryteriaClass> kryteria;
 
+    @SerializedName("data_zam")
+    public String data_zam;
+
+    @SerializedName("liczba_ofert")
+    public String liczba_ofert;
+
+    @SerializedName("liczba_odrzuconych_ofert")
+    public String liczba_odrzuconych_ofert;
+
+    @SerializedName("liczba_wykonawcow")
+    public String liczba_wykonawcow;
+
+    @SerializedName("wartosc")
+    public String wartosc;
+
+    @SerializedName("cena")
+    public String cena;
+
+    @SerializedName("cena_min")
+    public String cena_min;
+
+    @SerializedName("cena_max")
+    public String cena_max;
+
+    @SerializedName("waluta")
+    public String waluta;
+
+    @SerializedName("wykonawcy")
+    public List<WykonawcaClass> wykonawcy;
+
+
+
 }
