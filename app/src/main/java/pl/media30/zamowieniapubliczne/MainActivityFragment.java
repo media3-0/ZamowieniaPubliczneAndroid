@@ -2,14 +2,17 @@ package pl.media30.zamowieniapubliczne;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.squareup.otto.Subscribe;
@@ -32,7 +35,7 @@ public class MainActivityFragment extends Fragment {
     MyAdapter mAdapter;
     int strona = 2;
     boolean wczytane = false;
-    int position = 10;
+  //  int position = -1;
     Bundle bundle = new Bundle();
 
     public MainActivityFragment() {
@@ -98,17 +101,20 @@ public class MainActivityFragment extends Fragment {
         }
     }
 
+
+
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         try {
             if (savedInstanceState.getInt("getPos") == -1) {
-                position = 1;
+                bundle.putInt("getPos", 1);
             } else {
-                position = savedInstanceState.getInt("getPos");
+                bundle.putInt("getPos", savedInstanceState.getInt("getPos"));
             }
         } catch (Exception e) {
-            position = 1;
+            bundle.putInt("getPos",1);
         }
 
         try {
@@ -125,7 +131,8 @@ public class MainActivityFragment extends Fragment {
         }
 
         mLayoutManager = new LinearLayoutManager(this.getActivity());
-        mLayoutManager.scrollToPosition(position);
+       // position = mLayoutManager.findFirstVisibleItemPosition();
+        mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
     }
 
     @Override
@@ -133,19 +140,18 @@ public class MainActivityFragment extends Fragment {
         super.onResume();
 
         if (bundle.getInt("getPos") == -1) {
-            position = 1;
-        } else {
-            position = bundle.getInt("getPos");
+            bundle.putInt("getPos", 1);
         }
-        mLayoutManager.scrollToPosition(position);
+        mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
     }
 
     @Override
     public void onStop() {
         super.onStop();
         ActivityResultBus.getInstance().unregister(mActivityResultSubscriber);
-        position = mAdapter.getPos();
-        bundle.putInt("getPos", position);
+        //position = mLayoutManager.findFirstVisibleItemPosition();// findLastCompletelyVisibleItemPosition();//mAdapter.getPos();
+
+        bundle.putInt("getPos", mLayoutManager.findLastCompletelyVisibleItemPosition());
         bundle.putBoolean("getWczytaj", wczytane);
     }
 
@@ -178,6 +184,8 @@ public class MainActivityFragment extends Fragment {
         mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
+                bundle.putInt("getPos", mLayoutManager.findFirstCompletelyVisibleItemPosition());
+                //Toast.makeText(getActivity(),position,Toast.LENGTH_SHORT).show();
                 dialog.show();
                 if((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null)){
                     service.listOrders(strona, new Callback<BaseListClass>() {
@@ -188,7 +196,7 @@ public class MainActivityFragment extends Fragment {
                             mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                             mRecyclerView.setAdapter(mAdapter);
                             strona++;
-                            mLayoutManager.scrollToPosition(rozmiar);
+                            mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
                             dialog.dismiss();
                             Log.d("Strona", " bez param strona loadmore: " + strona);
                         }
@@ -207,7 +215,7 @@ public class MainActivityFragment extends Fragment {
                             mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                             mRecyclerView.setAdapter(mAdapter);
                             strona++;
-                            mLayoutManager.scrollToPosition(rozmiar);
+                            mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
                             dialog.dismiss();
                             Log.d("Strona", "param strona loadmore: " + strona);
                             Log.d("dddd", "ptessxt: " + RepositoryClass.getInstance().getWyszukiwanieMiasta());

@@ -16,10 +16,10 @@ public class LayersClass {
 
     @SerializedName("sources")
     public List<SourcesClass> sources;
-/*
+
     @SerializedName("czesci")
-    public List<CzesciClass> czesci; //Narazie klasa jest pusta, poniewaz nie moge znalezc przetargu w ktorym jest to wypelnione
-*/
+    public List<CzesciClass> czesci;
+
     @SerializedName("dataset")
     public String dataset; // czy String
 
