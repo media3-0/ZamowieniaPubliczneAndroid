@@ -18,4 +18,6 @@
     <string name="searchInfo">Wpisz frazę do wyszukiwania</string>
     <string name="searchButton">Szukaj</string>
     <string name="title_activity_wykresy">WykresyActivity</string>
+    <string name="info">O aplikacji</string>
+    <string name="title_activity_info">O aplikacji</string>
 </resources>

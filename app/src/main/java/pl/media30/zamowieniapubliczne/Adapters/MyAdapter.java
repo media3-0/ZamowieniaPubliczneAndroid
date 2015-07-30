@@ -22,10 +22,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<DataObjectClass> mDataset;
     static int position;
 
-
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        // each data item is just a string in this case
+
        public TextView textViewName;
         public TextView textViewCity;
         public ViewHolder(View itemView) {
@@ -35,16 +33,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
             this.textViewCity = (TextView) itemView.findViewById(R.id.textViewCity);
         }
-
-
-
-
-
-
-
-
-
-
 
 
         @Override
@@ -76,13 +64,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
-        // create a new view
+
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.cards_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
-       ///// TextView tvn = (TextView)v.findViewById(android.R.id.text1);
-        //v.setOnClickListener((View.OnClickListener) this);
-    /////    TextView tvc =  (TextView)v.findViewById(android.R.id.text2);
+
         ViewHolder vh = new ViewHolder(v);
         position = vh.getPos();
         return vh;
