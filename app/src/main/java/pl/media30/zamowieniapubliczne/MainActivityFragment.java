@@ -53,7 +53,7 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d("onActResult","Zadzialalo");
+        Log.d("onActResult", "Zadzialalo");
 
         if (requestCode == 2) { //jak rozny od *
             try {
@@ -193,6 +193,7 @@ public class MainActivityFragment extends Fragment {
                         @Override
                         public void failure(RetrofitError retrofitError) {
                             dialog.dismiss();
+                            Toast.makeText(getActivity(),"Błąd. Sprawdź połączenie z internetem",Toast.LENGTH_SHORT).show();
                         }
                     });
                 } else {
@@ -213,6 +214,7 @@ public class MainActivityFragment extends Fragment {
                         @Override
                         public void failure(RetrofitError retrofitError) {
                             dialog.dismiss();
+                            Toast.makeText(getActivity(),"Błąd. Sprawdź połączenie z internetem",Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -239,6 +241,7 @@ public class MainActivityFragment extends Fragment {
                     @Override
                     public void failure(RetrofitError retrofitError) {
                         dialog.dismiss();
+                        Toast.makeText(getActivity(),"Błąd. Sprawdź połączenie z internetem",Toast.LENGTH_SHORT).show();
                     }
                 });
             } else {
@@ -257,6 +260,7 @@ public class MainActivityFragment extends Fragment {
                     @Override
                     public void failure(RetrofitError retrofitError) {
                         dialog.dismiss();
+                        Toast.makeText(getActivity(),"Błąd. Sprawdź połączenie z internetem",Toast.LENGTH_SHORT).show();
                     }
                 });
             }

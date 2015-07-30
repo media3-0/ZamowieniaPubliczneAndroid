@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.DecimalFormat;
 
 import com.google.gson.Gson;
@@ -114,6 +116,8 @@ public class ZamowienieActivityFragment extends Activity
                     public void failure(RetrofitError error)
                     {
                         Log.d("error: ", error.getMessage() + "");
+                        dialog.dismiss();
+                        Toast.makeText(getApplicationContext(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                     }
                 }
         );

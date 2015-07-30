@@ -52,11 +52,6 @@ public class WykresyActivity extends ActionBarActivity {
         final ArrayList<BarEntry> entries = new ArrayList<>();
         final ArrayList<String> labels = new ArrayList<String>();
         final BarChart chart = new BarChart(context);
-
-
-        //
-
-
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         final ProgressDialog dialog =
@@ -124,7 +119,11 @@ public class WykresyActivity extends ActionBarActivity {
             @Override
             public void failure(RetrofitError error) {
                 Log.d("ERROR", "ERROR w retroficie");
+                dialog.dismiss();
+                Toast.makeText(getApplicationContext(),"Błąd. Sprawdź połączenie z internetem",Toast.LENGTH_SHORT).show();
                 Log.d("Erroe to:", error.getMessage() + "");
+
+
             }
         });
 
