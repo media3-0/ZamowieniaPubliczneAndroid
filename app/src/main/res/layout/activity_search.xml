@@ -86,6 +86,42 @@
             android:id="@+id/editText4"
             android:layout_gravity="center_horizontal" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zamawiający REGON"
+            android:id="@+id/textView8" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextREGON"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zamawiający WWW"
+            android:id="@+id/textView10" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextWWW"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zamawiający e-mail"
+            android:id="@+id/textView11" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextEmail"
+            android:layout_gravity="center_horizontal" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

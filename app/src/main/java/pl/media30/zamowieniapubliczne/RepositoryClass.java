@@ -19,6 +19,9 @@ public class RepositoryClass {
     private String wyszukiwanieWojew=null;
     private String wyszukiwanieKodowPoczt = null;
     private String wyszukiwanieZamawNazwa = null;
+    private String wyszukiwanieZamawREGON = null;
+    private String wyszukiwanieZamawWWW = null;
+    private String wyszukiwanieZamawEmail = null;
 
     public boolean pobierzJedenRaz = true;
 
@@ -80,6 +83,28 @@ public class RepositoryClass {
     }
     public String getWyszukiwanieZamawNazwa(){
         return wyszukiwanieZamawNazwa;
+    }
+
+    public void setWyszukiwanieZamawREGON(String wyszukiwanieZamawREGON){
+        this.wyszukiwanieZamawREGON=wyszukiwanieZamawREGON;
+    }
+    public String getWyszukiwanieZamawREGON(){
+        return wyszukiwanieZamawREGON;
+    }
+
+
+    public void setWyszukiwanieZamawWWW(String wyszukiwanieZamawWWW){
+        this.wyszukiwanieZamawWWW=wyszukiwanieZamawWWW;
+    }
+    public String getWyszukiwanieZamawWWW(){
+        return wyszukiwanieZamawWWW;
+    }
+
+    public void setWyszukiwanieZamawEmail(String wyszukiwanieZamawEmail){
+        this.wyszukiwanieZamawEmail=wyszukiwanieZamawEmail;
+    }
+    public String getWyszukiwanieZamawEmail(){
+        return wyszukiwanieZamawEmail;
     }
 
     private RepositoryClass() {
