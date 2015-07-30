@@ -30,6 +30,9 @@ public class SearchActivity extends Activity {
     EditText editText;
     EditText editText3;
     EditText editText4;
+    EditText editTextREGON;
+    EditText editTextWWW;
+    EditText editTextEmail;
     Button button;
     boolean usuwanie = false;
 
@@ -50,6 +53,9 @@ public class SearchActivity extends Activity {
         intent.putExtra("wartoscWoj", "*");
         intent.putExtra("wartoscKod", "*");
         intent.putExtra("wartoscNazwa", "*");
+        intent.putExtra("wartoscREGON", "*");
+        intent.putExtra("wartoscWWW", "*");
+        intent.putExtra("wartoscEmail", "*");
         setResult(RESULT_OK, intent);
         finish();
     }
@@ -78,8 +84,12 @@ public class SearchActivity extends Activity {
 
         editText = (EditText) findViewById(R.id.editText);
         editText3 = (EditText) findViewById(R.id.editText3);
-
         editText4 = (EditText) findViewById(R.id.editText4);
+
+        editTextREGON = (EditText) findViewById(R.id.editTextREGON);
+        editTextWWW = (EditText) findViewById(R.id.editTextWWW);
+        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(myhandler1);
 
@@ -87,12 +97,10 @@ public class SearchActivity extends Activity {
         editText3.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -103,19 +111,12 @@ public class SearchActivity extends Activity {
                     usuwanie = true;
                 }else if (editText3.length()  == 2 ){
                     usuwanie = false;
-                  //  String text = editText3.getText().toString();
                     editText3.setText(editText3.getText().toString().substring(0, editText3.length()-1));
                     editText3.setSelection(1);
-
                 }
             }
         });
-
-
-
     }
-
-
 
     View.OnClickListener myhandler1 = new View.OnClickListener() {
         public void onClick(View v) {
@@ -138,14 +139,33 @@ public class SearchActivity extends Activity {
                 intent.putExtra("wartoscKod","*");
             }
 
-
-
-
             if (!(editText4.getText().toString().equals(""))) {
                 intent.putExtra("wartoscNazwa", (editText4.getText().toString()));
             } else {
                 intent.putExtra("wartoscNazwa","*");
             }
+
+
+
+
+            if (!(editTextREGON.getText().toString().equals(""))) {
+                intent.putExtra("wartoscREGON", (editTextREGON.getText().toString()));
+            } else {
+                intent.putExtra("wartoscREGON","*");
+            }
+
+            if (!(editTextWWW.getText().toString().equals(""))) {
+                intent.putExtra("wartoscWWW", (editTextWWW.getText().toString()));
+            } else {
+                intent.putExtra("wartoscWWW","*");
+            }
+
+            if (!(editTextEmail.getText().toString().equals(""))) {
+                intent.putExtra("wartoscEmail", (editTextEmail.getText().toString()));
+            } else {
+                intent.putExtra("wartoscEmail","*");
+            }
+
             setResult(RESULT_OK, intent);
             finish();
         }
