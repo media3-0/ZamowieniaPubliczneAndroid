@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import java.util.List;
 
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
+import pl.media30.zamowieniapubliczne.R;
 import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -22,17 +23,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     static int position;
 
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // each data item is just a string in this case
-        public TextView mTextView;
-        public ViewHolder(View v, TextView vh) {
-            super(v);
-            v.setOnClickListener((View.OnClickListener) this);
-            mTextView = vh;
+       public TextView textViewName;
+        public TextView textViewCity;
+        public ViewHolder(View itemView) {
+            super(itemView);
+
+            itemView.setOnClickListener((View.OnClickListener) this);
+            this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
+            this.textViewCity = (TextView) itemView.findViewById(R.id.textViewCity);
         }
+
+
+
+
+
+
+
+
+
+
+
+
         @Override
         public void onClick(View view) {
 
@@ -64,24 +78,35 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                                                    int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(android.R.layout.simple_list_item_1, parent, false);
+                .inflate(R.layout.cards_layout, parent, false);
         // set the view's size, margins, paddings and layout parameters
-        TextView tv = (TextView)v.findViewById(android.R.id.text1);
-        ViewHolder vh = new ViewHolder(v, tv);
+       ///// TextView tvn = (TextView)v.findViewById(android.R.id.text1);
+        //v.setOnClickListener((View.OnClickListener) this);
+    /////    TextView tvc =  (TextView)v.findViewById(android.R.id.text2);
+        ViewHolder vh = new ViewHolder(v);
         position = vh.getPos();
         return vh;
     }
-    // Replace the contents of a view (invoked by the layout manager)
+
+
+
+
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        holder.mTextView.setText((position+1) + ". " + mDataset.get(position).dataClass.nazwa+"\n");
+
+
+        TextView textViewName = holder.textViewName;
+        TextView textViewCity = holder.textViewCity;
+
+
+
+        textViewName.setText((position+1) + ". " + mDataset.get(position).dataClass.nazwa+"\n");
+        textViewCity.setText(mDataset.get(position).dataClass.zamawiajacy_miejscowosc+"\n");
     }
     public int getPos(){
         return position;
     }
-    // Return the size of your dataset (invoked by the layout manager)
+
     @Override
     public int getItemCount() {
         return  mDataset.size();

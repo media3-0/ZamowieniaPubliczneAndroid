@@ -158,7 +158,7 @@ public class MainActivityFragment extends Fragment {
         ActivityResultBus.getInstance().register(mActivityResultSubscriber);
 
         final ProgressDialog dialog =
-                ProgressDialog.show(this.getActivity().getWindow().getContext(), "Trwa wczytywanie danych", "Please Wait...");
+                ProgressDialog.show(this.getActivity().getWindow().getContext(), "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
         dialog.dismiss();
         final RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://api.mojepanstwo.pl/dane/")
@@ -166,12 +166,11 @@ public class MainActivityFragment extends Fragment {
         final MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
 
         mRecyclerView = (UltimateRecyclerView) getView().findViewById(R.id.ultimate_recycler_view);
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+
         mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
