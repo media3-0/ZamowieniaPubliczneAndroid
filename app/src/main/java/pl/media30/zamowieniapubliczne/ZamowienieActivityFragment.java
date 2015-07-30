@@ -67,23 +67,71 @@ public class ZamowienieActivityFragment extends Activity
                     @Override
                     public void success(BaseClass baseClass, Response response)
                     {
-                        TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
-                        zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
+                        try
+                        {
+                            TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+                            zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
+                        }
+                        catch(NullPointerException e)
+                        {
+                            TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+                            zamowieniePrzedmiot.setText("Dane nie zosta造 wprowadzone");
+                        }
 
-                        TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
-                        zamowienieUprawnienie.setText(baseClass.objectClass.layers.detailsClass.uprawnienie.toString());
+                        try
+                        {
+                            TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+                            zamowienieUprawnienie.setText(baseClass.objectClass.layers.detailsClass.uprawnienie.toString());
+                        }
+                        catch(NullPointerException e)
+                        {
+                            TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+                            zamowienieUprawnienie.setText("Dane nie zosta造 wprowadzone");
+                        }
 
-                        TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
-                        zamowienieWiedza.setText(baseClass.objectClass.layers.detailsClass.wiedza.toString());
+                        try
+                        {
+                            TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+                            zamowienieWiedza.setText(baseClass.objectClass.layers.detailsClass.wiedza.toString());
+                        }
+                        catch(NullPointerException e)
+                        {
+                            TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+                            zamowienieWiedza.setText("Dane nie zosta造 wprowadzone");
+                        }
 
-                        TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
-                        zamowieniePotencjal.setText(baseClass.objectClass.layers.detailsClass.potencjal.toString());
+                        try
+                        {
+                            TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+                            zamowieniePotencjal.setText(baseClass.objectClass.layers.detailsClass.potencjal.toString());
+                        }
+                        catch(NullPointerException e)
+                        {
+                            TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+                            zamowieniePotencjal.setText("Dane nie zosta造 wprowadzone");
+                        }
 
-                        TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
-                        zamowienieOsobyZdolne.setText(baseClass.objectClass.layers.detailsClass.osoby_zdolne.toString());
+                        try
+                        {
+                            TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+                            zamowienieOsobyZdolne.setText(baseClass.objectClass.layers.detailsClass.osoby_zdolne.toString());
+                        }
+                        catch(NullPointerException e)
+                        {
+                            TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+                            zamowienieOsobyZdolne.setText("Dane nie zosta造 wprowadzone");
+                        }
 
-                        TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
-                        zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
+                        try
+                        {
+                            TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+                            zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
+                        }
+                        catch(NullPointerException e)
+                        {
+                            TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+                            zamowienieSytuacjaEkonomiczna.setText("Dane nie zosta造 wprowadzone");
+                        }
 /*
                         TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
                         zamowienieSzacowanaWartosc.setText

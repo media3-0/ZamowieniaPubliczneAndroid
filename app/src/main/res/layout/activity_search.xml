@@ -22,7 +22,8 @@
                 android:text="@string/searchInfo"
                 android:textColor="#0288D1"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginTop="5dp" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -32,7 +33,8 @@
                 android:text="Zamawiający Województwo"
                 android:textColor="#0288D1"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp" />
 
             <Spinner
                 android:id="@+id/spinner"
@@ -47,7 +49,8 @@
                 android:text="Zamawiający Miejscowość"
                 android:textColor="#0288D1"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp" />
 
             <EditText
                 android:id="@+id/editText"
@@ -64,7 +67,8 @@
                 android:text="Zamawiający Kod Pocztowy"
                 android:textColor="#0288D1"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp" />
 
             <EditText
                 android:id="@+id/editText3"
@@ -82,7 +86,8 @@
                 android:text="Zamawiający Nazwa"
                 android:textColor="#0288D1"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp" />
 
             <EditText
                 android:id="@+id/editText4"
@@ -98,7 +103,8 @@
                 android:text="Zamawiający REGON"
                 android:textColor="#0288D1"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp" />
 
             <EditText
                 android:id="@+id/editTextREGON"
@@ -114,7 +120,8 @@
                 android:text="Zamawiający WWW"
                 android:textColor="#0288D1"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp" />
 
             <EditText
                 android:id="@+id/editTextWWW"
@@ -130,7 +137,8 @@
                 android:text="Zamawiający e-mail"
                 android:textColor="#0288D1"
                 android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp" />
 
             <EditText
                 android:id="@+id/editTextEmail"
