@@ -70,67 +70,109 @@ public class ZamowienieActivityFragment extends Activity
                         try
                         {
                             TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
-                            zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
+                            if (baseClass.objectClass.layers.detailsClass.przedmiot == "")
+                            {
+                                zamowieniePrzedmiot.setText("Dane nie zostały wprowadzone");
+                            }
+                            else
+                            {
+                                zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
+                            }
                         }
                         catch(NullPointerException e)
                         {
                             TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
-                            zamowieniePrzedmiot.setText("Dane nie zosta�y wprowadzone");
+                            zamowieniePrzedmiot.setText("Dane nie zostały wprowadzone");
                         }
 
                         try
                         {
                             TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
-                            zamowienieUprawnienie.setText(baseClass.objectClass.layers.detailsClass.uprawnienie.toString());
+                            if (baseClass.objectClass.layers.detailsClass.uprawnienie == "")
+                            {
+                                zamowienieUprawnienie.setText("Dane nie zostały wprowadzone");
+                            }
+                            else
+                            {
+                                zamowienieUprawnienie.setText(baseClass.objectClass.layers.detailsClass.uprawnienie.toString());
+                            }
                         }
                         catch(NullPointerException e)
                         {
                             TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
-                            zamowienieUprawnienie.setText("Dane nie zosta�y wprowadzone");
+                            zamowienieUprawnienie.setText("Dane nie zostały wprowadzone");
                         }
 
                         try
                         {
                             TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
-                            zamowienieWiedza.setText(baseClass.objectClass.layers.detailsClass.wiedza.toString());
+                            if (baseClass.objectClass.layers.detailsClass.wiedza == "")
+                            {
+                                zamowienieWiedza.setText("Dane nie zostały wprowadzone");
+                            }
+                            else
+                            {
+                                zamowienieWiedza.setText(baseClass.objectClass.layers.detailsClass.wiedza.toString());
+                            }
                         }
                         catch(NullPointerException e)
                         {
                             TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
-                            zamowienieWiedza.setText("Dane nie zosta�y wprowadzone");
+                            zamowienieWiedza.setText("Dane nie zostały wprowadzone");
                         }
 
                         try
                         {
                             TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
-                            zamowieniePotencjal.setText(baseClass.objectClass.layers.detailsClass.potencjal.toString());
+                            if (baseClass.objectClass.layers.detailsClass.potencjal == "")
+                            {
+                                zamowieniePotencjal.setText("Dane nie zostały wprowadzone");
+                            }
+                            else
+                            {
+                                zamowieniePotencjal.setText(baseClass.objectClass.layers.detailsClass.potencjal.toString());
+                            }
                         }
                         catch(NullPointerException e)
                         {
                             TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
-                            zamowieniePotencjal.setText("Dane nie zosta�y wprowadzone");
+                            zamowieniePotencjal.setText("Dane nie zostały wprowadzone");
                         }
 
                         try
                         {
                             TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
-                            zamowienieOsobyZdolne.setText(baseClass.objectClass.layers.detailsClass.osoby_zdolne.toString());
+                            if (baseClass.objectClass.layers.detailsClass.osoby_zdolne == "")
+                            {
+                                zamowienieOsobyZdolne.setText("Dane nie zostały wprowadzone");
+                            }
+                            else
+                            {
+                                zamowienieOsobyZdolne.setText(baseClass.objectClass.layers.detailsClass.osoby_zdolne.toString());
+                            }
                         }
                         catch(NullPointerException e)
                         {
                             TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
-                            zamowienieOsobyZdolne.setText("Dane nie zosta�y wprowadzone");
+                            zamowienieOsobyZdolne.setText("Dane nie zostały wprowadzone");
                         }
 
                         try
                         {
                             TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
-                            zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
+                            if (baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna == "")
+                            {
+                                zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
+                            }
+                            else
+                            {
+                                zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
+                            }
                         }
                         catch(NullPointerException e)
                         {
                             TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
-                            zamowienieSytuacjaEkonomiczna.setText("Dane nie zosta�y wprowadzone");
+                            zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
                         }
 /*
                         TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
@@ -165,7 +207,7 @@ public class ZamowienieActivityFragment extends Activity
                     {
                         Log.d("error: ", error.getMessage() + "");
                         dialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "BĹ‚Ä…d. SprawdĹş poĹ‚Ä…czenie z internetem", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
