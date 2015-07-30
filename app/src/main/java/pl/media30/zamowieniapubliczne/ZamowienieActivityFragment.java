@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import java.text.DecimalFormat;
 
 import com.google.gson.Gson;
 
@@ -81,7 +82,31 @@ public class ZamowienieActivityFragment extends Activity
 
                         TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
                         zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
+/*
+                        TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
+                        zamowienieSzacowanaWartosc.setText
+                                (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).wartosc
+                                + " " +
+                                baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
 
+                        TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
+                        zamowienieCenaWybranejOferty.setText
+                                (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena
+                                + " " +
+                                baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
+
+                        TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
+                        zamowienieNajtanszaOferta.setText
+                                (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena_min
+                                + " " +
+                                baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
+
+                        TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
+                        zamowienieNajdrozszaOferta.setText
+                                (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena_max
+                                + " " +
+                                baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
+*/
                         dialog.dismiss();
                     }
 
@@ -287,18 +312,24 @@ public class ZamowienieActivityFragment extends Activity
             zamowienieUE.setText(myObject.dataClass.zamowienie_ue.toString());
         }
 
+        DecimalFormat df = new DecimalFormat("#");
+        df.setMaximumFractionDigits(2);
+
         TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
-        zamowienieSzacowanaWartosc.setText(Double.toString(myObject.dataClass.wartosc_szacowana) + " PLN");
+        double zamowienieSzacowanaWartoscD = (myObject.dataClass.wartosc_szacowana);
+        zamowienieSzacowanaWartosc.setText(df.format(zamowienieSzacowanaWartoscD) + " PLN");
 
         TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
-        zamowienieCenaWybranejOferty.setText(Double.toString(myObject.dataClass.wartosc_cena) + " PLN");
+        double zamowienieCenaWybranejOfertyD = (myObject.dataClass.wartosc_cena);
+        zamowienieCenaWybranejOferty.setText(df.format(zamowienieCenaWybranejOfertyD) + " PLN");
 
         TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
-        double temp = (Double.parseDouble(myObject.dataClass.wartosc_cena_min));
-        zamowienieNajtanszaOferta.setText(Double.toString(temp) + " PLN");
+        double zamowienieNajtanszaOfertaD = (Double.parseDouble(myObject.dataClass.wartosc_cena_min));
+        zamowienieNajtanszaOferta.setText(df.format(zamowienieNajtanszaOfertaD) + " PLN");
 
         TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
-        zamowienieNajdrozszaOferta.setText(Double.toString(myObject.dataClass.wartosc_cena_max) + " PLN");
+        double zamowienieNajdrozszaOfertaD = myObject.dataClass.wartosc_cena_max;
+        zamowienieNajdrozszaOferta.setText(df.format(zamowienieNajdrozszaOfertaD) + " PLN");
 
         TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
         textViewZamowienieNazwaLabel.setVisibility(View.GONE);
