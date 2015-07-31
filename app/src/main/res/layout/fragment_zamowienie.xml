@@ -67,9 +67,9 @@
             android:layout_below="@+id/card_viewIdentyfikatoryZamawiajacego"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp">
+            android:layout_marginRight="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,9 +117,9 @@
             android:layout_below="@+id/card_viewZamawiajacyNazwa"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp">
+            android:layout_marginRight="10dp">
 
 
             <LinearLayout
@@ -137,7 +137,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="15dp"
                     android:textStyle="bold"
                     android:textColor="#212121"
                     android:textSize="16sp"
@@ -168,9 +168,9 @@
             android:layout_below="@+id/card_viewZamawiajacyID"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp">
+            android:layout_marginRight="10dp">
 
 
             <LinearLayout
@@ -221,9 +221,9 @@
             android:layout_below="@+id/card_viewZamawiajacyRodzaj"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp">
+            android:layout_marginRight="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -260,205 +260,588 @@
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewDaneAdresoweZamawiajacego"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dane adresowe zamawiającego: "
-            android:id="@+id/textView9"
-            android:clickable="true"
-            android:onClick="chowanieDaneAdresowe"
             android:layout_below="@+id/card_viewZamawiajacyRegon"
-            android:layout_alignParentStart="false"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:textStyle="bold"
-            android:textColor="#212121"
-            android:layout_alignParentLeft="false"
-            android:layout_centerHorizontal="true"
-            android:textSize="17sp"/>
+            android:layout_marginRight="5dp">
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyMiejscowosc"
-             android:id="@+id/textViewZamawiajacyMiejscowosc"
-             android:layout_below="@+id/textViewZamawiajacyMiejscowoscLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#B3E5FC">
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyUlica"
-             android:id="@+id/textViewZamawiajacyUlica"
-             android:layout_below="@+id/textViewZamawiajacyUlicaLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dane adresowe zamawiającego: "
+                    android:id="@+id/textView9"
+                    android:clickable="true"
+                    android:onClick="chowanieDaneAdresowe"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_alignParentStart="false"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:layout_alignParentLeft="false"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="17sp"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Miejscowość: "
-             android:id="@+id/textViewZamawiajacyMiejscowoscLabel"
-             android:layout_below="@+id/textViewZamawiajacyIDGminy"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textStyle="bold"
-             android:textColor="#212121"
-             android:textSize="16sp" />
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyWojewodztwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewDaneAdresoweZamawiajacego"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Ulica: "
-             android:id="@+id/textViewZamawiajacyUlicaLabel"
-             android:layout_below="@+id/textViewZamawiajacyIDKoduPocztowego"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="false"
-             android:layout_marginTop="5dp"
-             android:textStyle="bold"
-             android:textColor="#212121"
-             android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Województwo: "
+                    android:id="@+id/textViewZamawiajacyWojewodztwoLabel"
+                    android:layout_below="@+id/card_viewDaneAdresoweZamawiajacego"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyWojewodztwo"
+                    android:id="@+id/textViewZamawiajacyWojewodztwo"
+                    android:layout_below="@+id/textViewZamawiajacyWojewodztwoLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyWojewodztwoID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyWojewodztwo"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID województwa: "
+                    android:id="@+id/textViewZamawiajacyIDWojewodztwaLabel"
+                    android:layout_below="@+id/card_viewZamawiajacyWojewodztwo"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:layout_marginTop="5dp"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyIDWojewodztwa"
+                    android:id="@+id/textViewZamawiajacyIDWojewodztwa"
+                    android:layout_below="@+id/textViewZamawiajacyIDWojewodztwaLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyPowiatID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyWojewodztwoID"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID powiatu: "
+                    android:id="@+id/textViewZamawiajacyIDPowiatuLabel"
+                    android:layout_below="@+id/card_viewZamawiajacyWojewodztwoID"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:layout_marginTop="5dp"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyIDPowiatu"
+                    android:id="@+id/textViewZamawiajacyIDPowiatu"
+                    android:layout_below="@+id/textViewZamawiajacyIDPowiatuLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:singleLine="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyGminaID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyPowiatID"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID gminy: "
+                    android:id="@+id/textViewZamawiajacyIDGminyLabel"
+                    android:layout_below="@+id/textViewZamawiajacyIDPowiatu"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:layout_marginTop="5dp"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyIDGminy"
+                    android:id="@+id/textViewZamawiajacyIDGminy"
+                    android:layout_below="@+id/textViewZamawiajacyIDGminyLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyMiejscowosc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyGminaID"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Miejscowość: "
+                    android:id="@+id/textViewZamawiajacyMiejscowoscLabel"
+                    android:layout_below="@+id/textViewZamawiajacyIDGminy"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyMiejscowosc"
+                    android:id="@+id/textViewZamawiajacyMiejscowosc"
+                    android:layout_below="@+id/textViewZamawiajacyMiejscowoscLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyKodPocztowy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyMiejscowosc"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kod pocztowy: "
+                    android:id="@+id/textViewZamawiajacyKodPocztowyLabel"
+                    android:layout_below="@+id/textViewZamawiajacyMiejscowosc"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyKodPocztowy"
+                    android:id="@+id/textViewZamawiajacyKodPocztowy"
+                    android:layout_below="@+id/textViewZamawiajacyKodPocztowyLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyKodPocztowyID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyKodPocztowy"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID Kodu pocztowego: "
+                    android:id="@+id/textViewZamawiajacyIDKoduPocztowegoLabel"
+                    android:layout_below="@+id/textViewZamawiajacyKodPocztowy"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyIDKoduPoczt"
+                    android:id="@+id/textViewZamawiajacyIDKoduPocztowego"
+                    android:layout_below="@+id/textViewZamawiajacyIDKoduPocztowegoLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyUlica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyKodPocztowyID"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ulica: "
+                    android:id="@+id/textViewZamawiajacyUlicaLabel"
+                    android:layout_below="@+id/textViewZamawiajacyIDKoduPocztowego"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyUlica"
+                    android:id="@+id/textViewZamawiajacyUlica"
+                    android:layout_below="@+id/textViewZamawiajacyUlicaLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyNrDomu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyUlica"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nr domu: "
+                    android:id="@+id/textViewZamawiajacyNrDomuLabel"
+                    android:layout_below="@+id/textViewZamawiajacyUlica"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyNrDomu"
+                    android:id="@+id/textViewZamawiajacyNrDomu"
+                    android:layout_below="@+id/textViewZamawiajacyNrDomuLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyNrMieszkania"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyNrDomu"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nr mieszkania: "
+                    android:id="@+id/textViewZamawiajacyNrMieszkaniaLabel"
+                    android:layout_below="@+id/textViewZamawiajacyNrDomu"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyNrMieszkania"
+                    android:id="@+id/textViewZamawiajacyNrMieszkania"
+                    android:layout_below="@+id/textViewZamawiajacyNrMieszkaniaLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewDaneKontaktoweZamawiajacego"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_viewZamawiajacyNrMieszkania"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp">
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#B3E5FC">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dane kontaktowe zamawiającego:"
+                    android:id="@+id/textViewDaneKontaktoweZamawiajacegoLabel"
+                    android:clickable="true"
+                    android:onClick="chowanieDaneKontaktowe"
+                    android:layout_alignParentLeft="false"
+                    android:layout_alignParentStart="false"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="17sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
 
 
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Województwo: "
-             android:id="@+id/textViewZamawiajacyWojewodztwoLabel"
-             android:layout_below="@+id/textView9"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textStyle="bold"
-             android:textColor="#212121"
-             android:textSize="16sp" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyWojewodztwo"
-             android:id="@+id/textViewZamawiajacyWojewodztwo"
-             android:layout_below="@+id/textViewZamawiajacyWojewodztwoLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
 
 
 
 
-
-
-
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Kod pocztowy: "
-             android:id="@+id/textViewZamawiajacyKodPocztowyLabel"
-             android:layout_below="@+id/textViewZamawiajacyMiejscowosc"
-             android:layout_marginTop="5dp"
-             android:textStyle="bold"
-             android:textColor="#212121"
-             android:textSize="16sp" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyKodPocztowy"
-             android:id="@+id/textViewZamawiajacyKodPocztowy"
-             android:layout_below="@+id/textViewZamawiajacyKodPocztowyLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ID Kodu pocztowego: "
-             android:id="@+id/textViewZamawiajacyIDKoduPocztowegoLabel"
-             android:layout_below="@+id/textViewZamawiajacyKodPocztowy"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textStyle="bold"
-             android:textColor="#212121"
-             android:textSize="16sp" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyIDKoduPoczt"
-             android:id="@+id/textViewZamawiajacyIDKoduPocztowego"
-             android:layout_below="@+id/textViewZamawiajacyIDKoduPocztowegoLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Nr domu: "
-             android:id="@+id/textViewZamawiajacyNrDomuLabel"
-             android:layout_below="@+id/textViewZamawiajacyUlica"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textStyle="bold"
-             android:textColor="#212121"
-             android:textSize="16sp" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyNrDomu"
-             android:id="@+id/textViewZamawiajacyNrDomu"
-             android:layout_below="@+id/textViewZamawiajacyNrDomuLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Nr mieszkania: "
-             android:id="@+id/textViewZamawiajacyNrMieszkaniaLabel"
-             android:layout_below="@+id/textViewZamawiajacyNrDomu"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textStyle="bold"
-             android:textColor="#212121"
-             android:textSize="16sp" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyNrMieszkania"
-             android:id="@+id/textViewZamawiajacyNrMieszkania"
-             android:layout_below="@+id/textViewZamawiajacyNrMieszkaniaLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Dane kontaktowe zamawiającego:"
-             android:id="@+id/textViewDaneKontaktoweZamawiajacegoLabel"
-             android:layout_below="@+id/textViewZamawiajacyNrMieszkania"
-             android:clickable="true"
-             android:onClick="chowanieDaneKontaktowe"
-             android:layout_alignParentLeft="false"
-             android:layout_alignParentStart="false"
-             android:layout_marginTop="5dp"
-             android:textStyle="bold"
-             android:textColor="#212121"
-             android:layout_centerHorizontal="true"
-             android:textSize="17sp"/>
 
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="Email: "
              android:id="@+id/textViewZamawiajacyEmailLabel"
-             android:layout_below="@+id/textViewDaneKontaktoweZamawiajacegoLabel"
+             android:layout_below="@+id/card_viewDaneKontaktoweZamawiajacego"
              android:layout_alignParentLeft="true"
              android:layout_alignParentStart="true"
              android:layout_marginTop="5dp"
@@ -546,81 +929,6 @@
              android:layout_below="@+id/textViewZamawiajacyWWWLabel"
              android:layout_marginTop="5dp"
              android:textColor="#727272" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ID powiatu: "
-            android:id="@+id/textViewZamawiajacyIDPowiatuLabel"
-            android:layout_below="@+id/textViewZamawiajacyIDWojewodztwa"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="bold"
-            android:textColor="#212121"
-            android:layout_marginTop="5dp"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamawiajacyIDPowiatu"
-            android:id="@+id/textViewZamawiajacyIDPowiatu"
-            android:layout_below="@+id/textViewZamawiajacyIDPowiatuLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp"
-            android:singleLine="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ID gminy: "
-            android:id="@+id/textViewZamawiajacyIDGminyLabel"
-            android:layout_below="@+id/textViewZamawiajacyIDPowiatu"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="bold"
-            android:textColor="#212121"
-            android:layout_marginTop="5dp"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamawiajacyIDGminy"
-            android:id="@+id/textViewZamawiajacyIDGminy"
-            android:layout_below="@+id/textViewZamawiajacyIDGminyLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ID województwa: "
-            android:id="@+id/textViewZamawiajacyIDWojewodztwaLabel"
-            android:layout_below="@+id/textViewZamawiajacyWojewodztwo"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="bold"
-            android:textColor="#212121"
-            android:layout_marginTop="5dp"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamawiajacyIDWojewodztwa"
-            android:id="@+id/textViewZamawiajacyIDWojewodztwa"
-            android:layout_below="@+id/textViewZamawiajacyIDWojewodztwaLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
-
-
 
         <TextView
             android:layout_width="wrap_content"
