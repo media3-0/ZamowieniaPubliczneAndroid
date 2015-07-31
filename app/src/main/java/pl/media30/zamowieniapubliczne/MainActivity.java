@@ -45,19 +45,24 @@ public class MainActivity extends AppCompatActivity  {
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchManager searchManager = (SearchManager) MainActivity.this.getSystemService(Context.SEARCH_SERVICE);
+
+
         SearchView searchView = null;
+
+
         if (searchItem != null) {
             searchView = (SearchView) searchItem.getActionView();
         }
         if (searchView != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(MainActivity.this.getComponentName()));
+            searchView.setQueryHint("Szukaj...");
         }
 
         assert searchView != null;
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //activityBundle.putString("query", "ll");
+
                 MainActivityFragment mainActivityFragment = new MainActivityFragment();
                 //mainActivityFragment.setArguments(activityBundle);
                 mainActivityFragment.hello(query);
