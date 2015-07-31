@@ -829,131 +829,255 @@
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-
-
-
-
-
-
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Email: "
-             android:id="@+id/textViewZamawiajacyEmailLabel"
-             android:layout_below="@+id/card_viewDaneKontaktoweZamawiajacego"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textColor="#212121"
-             android:textStyle="bold"
-             android:textSize="16sp" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyEmail"
-             android:onClick="napiszEmail"
-             android:clickable="true"
-             android:id="@+id/textViewZamawiajacyEmail"
-             android:layout_below="@+id/textViewZamawiajacyEmailLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Telefon: "
-             android:id="@+id/textViewZamawiajacyTelefonLabel"
-             android:layout_below="@+id/textViewZamawiajacyEmail"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textColor="#212121"
-             android:textStyle="bold"
-             android:textSize="16sp" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyTelefon"
-             android:onClick="zadzwon"
-             android:clickable="true"
-             android:id="@+id/textViewZamawiajacyTelefon"
-             android:layout_below="@+id/textViewZamawiajacyTelefonLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Fax: "
-             android:id="@+id/textViewZamawiajacyFaxLabel"
-             android:layout_below="@+id/textViewZamawiajacyTelefon"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textColor="#212121"
-             android:textStyle="bold"
-             android:textSize="16sp" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyFax"
-             android:id="@+id/textViewZamawiajacyFax"
-             android:layout_below="@+id/textViewZamawiajacyFaxLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="WWW: "
-             android:id="@+id/textViewZamawiajacyWWWLabel"
-             android:layout_below="@+id/textViewZamawiajacyFax"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textColor="#212121"
-             android:textStyle="bold"
-             android:textSize="16sp" />
-
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="ZamawiajacyWWW"
-             android:onClick="otworzStrone"
-             android:clickable="true"
-             android:id="@+id/textViewZamawiajacyWWW"
-             android:layout_below="@+id/textViewZamawiajacyWWWLabel"
-             android:layout_marginTop="5dp"
-             android:textColor="#727272" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyEmail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Informacje o zamówieniu:"
-            android:clickable="true"
-            android:onClick="chowanieInformacjeOZamowieniu"
-            android:id="@+id/textView"
-            android:layout_below="@+id/textViewZamawiajacyWWW"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentLeft="false"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewDaneKontaktoweZamawiajacego"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:textColor="#212121"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentRight="false"
-            android:textSize="17sp"/>
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email: "
+                    android:id="@+id/textViewZamawiajacyEmailLabel"
+                    android:layout_below="@+id/card_viewDaneKontaktoweZamawiajacego"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyEmail"
+                    android:onClick="napiszEmail"
+                    android:clickable="true"
+                    android:id="@+id/textViewZamawiajacyEmail"
+                    android:layout_below="@+id/textViewZamawiajacyEmailLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyTelefon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyEmail"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Telefon: "
+                    android:id="@+id/textViewZamawiajacyTelefonLabel"
+                    android:layout_below="@+id/textViewZamawiajacyEmail"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyTelefon"
+                    android:onClick="zadzwon"
+                    android:clickable="true"
+                    android:id="@+id/textViewZamawiajacyTelefon"
+                    android:layout_below="@+id/textViewZamawiajacyTelefonLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyFax"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyTelefon"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fax: "
+                    android:id="@+id/textViewZamawiajacyFaxLabel"
+                    android:layout_below="@+id/textViewZamawiajacyTelefon"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyFax"
+                    android:id="@+id/textViewZamawiajacyFax"
+                    android:layout_below="@+id/textViewZamawiajacyFaxLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamawiajacyWWW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamawiajacyFax"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WWW: "
+                    android:id="@+id/textViewZamawiajacyWWWLabel"
+                    android:layout_below="@+id/textViewZamawiajacyFax"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamawiajacyWWW"
+                    android:onClick="otworzStrone"
+                    android:clickable="true"
+                    android:id="@+id/textViewZamawiajacyWWW"
+                    android:layout_below="@+id/textViewZamawiajacyWWWLabel"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#727272"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewInformacjeOZamowieniu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_viewZamawiajacyWWW"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp">
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#B3E5FC">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informacje o zamówieniu:"
+                    android:clickable="true"
+                    android:onClick="chowanieInformacjeOZamowieniu"
+                    android:id="@+id/textView"
+                    android:layout_alignParentStart="false"
+                    android:layout_alignParentLeft="false"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignParentRight="false"
+                    android:textSize="17sp"
+                    android:layout_margin="5dp" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nazwa zamówienia: "
             android:id="@+id/textViewZamowienieNazwaLabel"
-            android:layout_below="@+id/textView"
+            android:layout_below="@+id/card_viewInformacjeOZamowieniu"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="5dp"

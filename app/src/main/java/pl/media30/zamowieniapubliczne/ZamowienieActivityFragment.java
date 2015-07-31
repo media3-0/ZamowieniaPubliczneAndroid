@@ -374,25 +374,33 @@ public class ZamowienieActivityFragment extends Activity
         TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
         zamawiajacyWWW.setText(myObject.dataClass.zamawiajacy_www.toString());
 
-        TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
-        textViewZamawiajacyEmailLabel.setVisibility(View.GONE);
-        textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
-        textViewZamawiajacyEmail.setVisibility(View.GONE);
+        //TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
+        //textViewZamawiajacyEmailLabel.setVisibility(View.GONE);
+        //textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
+        //textViewZamawiajacyEmail.setVisibility(View.GONE);
+        CardView cardViewZamawiajacyEmail = (CardView) findViewById(R.id.card_viewZamawiajacyEmail);
+        cardViewZamawiajacyEmail.setVisibility(View.GONE);
 
-        TextView textViewZamawiajacyTelefonLabel = (TextView) findViewById(R.id.textViewZamawiajacyTelefonLabel);
-        textViewZamawiajacyTelefonLabel.setVisibility(View.GONE);
-        textViewZamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
-        textViewZamawiajacyTelefon.setVisibility(View.GONE);
+        //TextView textViewZamawiajacyTelefonLabel = (TextView) findViewById(R.id.textViewZamawiajacyTelefonLabel);
+        //textViewZamawiajacyTelefonLabel.setVisibility(View.GONE);
+        //textViewZamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
+        //textViewZamawiajacyTelefon.setVisibility(View.GONE);
+        CardView cardViewZamawiajacyTelefon = (CardView) findViewById(R.id.card_viewZamawiajacyTelefon);
+        cardViewZamawiajacyTelefon.setVisibility(View.GONE);
 
-        TextView textViewZamawiajacyFaxLabel = (TextView) findViewById(R.id.textViewZamawiajacyFaxLabel);
-        textViewZamawiajacyFaxLabel.setVisibility(View.GONE);
-        TextView textViewZamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
-        textViewZamawiajacyFax.setVisibility(View.GONE);
+        //TextView textViewZamawiajacyFaxLabel = (TextView) findViewById(R.id.textViewZamawiajacyFaxLabel);
+        //textViewZamawiajacyFaxLabel.setVisibility(View.GONE);
+        //TextView textViewZamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
+        //textViewZamawiajacyFax.setVisibility(View.GONE);
+        CardView cardViewZamawiajacyFax = (CardView) findViewById(R.id.card_viewZamawiajacyFax);
+        cardViewZamawiajacyFax.setVisibility(View.GONE);
 
-        TextView textViewZamawiajacyWWWLabel = (TextView) findViewById(R.id.textViewZamawiajacyWWWLabel);
-        textViewZamawiajacyWWWLabel.setVisibility(View.GONE);
-        textViewZamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
-        textViewZamawiajacyWWW.setVisibility(View.GONE);
+        //TextView textViewZamawiajacyWWWLabel = (TextView) findViewById(R.id.textViewZamawiajacyWWWLabel);
+        //textViewZamawiajacyWWWLabel.setVisibility(View.GONE);
+        //textViewZamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
+        //textViewZamawiajacyWWW.setVisibility(View.GONE);
+        CardView cardViewZamawiajacyWWW = (CardView) findViewById(R.id.card_viewZamawiajacyWWW);
+        cardViewZamawiajacyWWW.setVisibility(View.GONE);
 
 //ENDREGION
 //REGION INFORMACJE O ZAMOWIENIU
@@ -653,25 +661,33 @@ public class ZamowienieActivityFragment extends Activity
 
     public void chowanieDaneKontaktowe(View v)
     {
-        TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
-        textViewZamawiajacyEmailLabel.setVisibility(textViewZamawiajacyEmailLabel.isShown() ? View.GONE : View.VISIBLE);
-        TextView textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
-        textViewZamawiajacyEmail.setVisibility(textViewZamawiajacyEmail.isShown() ? View.GONE : View.VISIBLE);
+        //TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
+        //textViewZamawiajacyEmailLabel.setVisibility(textViewZamawiajacyEmailLabel.isShown() ? View.GONE : View.VISIBLE);
+        //TextView textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
+        //textViewZamawiajacyEmail.setVisibility(textViewZamawiajacyEmail.isShown() ? View.GONE : View.VISIBLE);
+        CardView cardViewZamawiajacyEmail = (CardView) findViewById(R.id.card_viewZamawiajacyEmail);
+        cardViewZamawiajacyEmail.setVisibility(cardViewZamawiajacyEmail.isShown() ? View.GONE : View.VISIBLE);
 
-        TextView textViewZamawiajacyTelefonLabel = (TextView) findViewById(R.id.textViewZamawiajacyTelefonLabel);
-        textViewZamawiajacyTelefonLabel.setVisibility(textViewZamawiajacyTelefonLabel.isShown() ? View.GONE : View.VISIBLE);
-        TextView textViewZamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
-        textViewZamawiajacyTelefon.setVisibility(textViewZamawiajacyTelefon.isShown() ? View.GONE : View.VISIBLE);
+        //TextView textViewZamawiajacyTelefonLabel = (TextView) findViewById(R.id.textViewZamawiajacyTelefonLabel);
+        //textViewZamawiajacyTelefonLabel.setVisibility(textViewZamawiajacyTelefonLabel.isShown() ? View.GONE : View.VISIBLE);
+        //TextView textViewZamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
+        //textViewZamawiajacyTelefon.setVisibility(textViewZamawiajacyTelefon.isShown() ? View.GONE : View.VISIBLE);
+        CardView cardViewZamawiajacyTelefon = (CardView) findViewById(R.id.card_viewZamawiajacyTelefon);
+        cardViewZamawiajacyTelefon.setVisibility(cardViewZamawiajacyTelefon.isShown() ? View.GONE : View.VISIBLE);
 
-        TextView textViewZamawiajacyFaxLabel = (TextView) findViewById(R.id.textViewZamawiajacyFaxLabel);
-        textViewZamawiajacyFaxLabel.setVisibility(textViewZamawiajacyFaxLabel.isShown() ? View.GONE : View.VISIBLE);
-        TextView textViewZamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
-        textViewZamawiajacyFax.setVisibility(textViewZamawiajacyFax.isShown() ? View.GONE : View.VISIBLE);
+        //TextView textViewZamawiajacyFaxLabel = (TextView) findViewById(R.id.textViewZamawiajacyFaxLabel);
+        //textViewZamawiajacyFaxLabel.setVisibility(textViewZamawiajacyFaxLabel.isShown() ? View.GONE : View.VISIBLE);
+        //TextView textViewZamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
+        //textViewZamawiajacyFax.setVisibility(textViewZamawiajacyFax.isShown() ? View.GONE : View.VISIBLE);
+        CardView cardViewZamawiajacyFax = (CardView) findViewById(R.id.card_viewZamawiajacyFax);
+        cardViewZamawiajacyFax.setVisibility(cardViewZamawiajacyFax.isShown() ? View.GONE : View.VISIBLE);
 
-        TextView textViewZamawiajacyWWWLabel = (TextView) findViewById(R.id.textViewZamawiajacyWWWLabel);
-        textViewZamawiajacyWWWLabel.setVisibility(textViewZamawiajacyWWWLabel.isShown() ? View.GONE : View.VISIBLE);
-        TextView textViewZamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
-        textViewZamawiajacyWWW.setVisibility(textViewZamawiajacyWWW.isShown() ? View.GONE : View.VISIBLE);
+        //TextView textViewZamawiajacyWWWLabel = (TextView) findViewById(R.id.textViewZamawiajacyWWWLabel);
+        //textViewZamawiajacyWWWLabel.setVisibility(textViewZamawiajacyWWWLabel.isShown() ? View.GONE : View.VISIBLE);
+        //TextView textViewZamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
+        //textViewZamawiajacyWWW.setVisibility(textViewZamawiajacyWWW.isShown() ? View.GONE : View.VISIBLE);
+        CardView cardViewZamawiajacyWWW = (CardView) findViewById(R.id.card_viewZamawiajacyWWW);
+        cardViewZamawiajacyWWW.setVisibility(cardViewZamawiajacyWWW.isShown() ? View.GONE : View.VISIBLE);
     }
 
     public void chowanieInformacjeOZamowieniu(View v)
