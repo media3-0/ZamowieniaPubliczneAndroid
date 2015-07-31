@@ -156,6 +156,11 @@ public class MainActivityFragment extends Fragment {
 
     @Override
     public void onResume() {
+
+            for(int i =0;i<RepositoryClass.getInstance().getListaUlubionych().size();i++)
+                Log.d("Elem listy: ",RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.nazwa);
+
+        Log.d("OnResume",RepositoryClass.getInstance().getListaUlubionych().size()+"");
         super.onResume();
     }
 

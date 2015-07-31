@@ -1,6 +1,7 @@
 package pl.media30.zamowieniapubliczne;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +35,11 @@ public class ZamowienieActivityFragment extends Activity
     TextView textViewZamawiajacyTelefon;
     TextView textViewZamawiajacyWWW;
     TextView textViewZamawiajacyEmail;
+    Button button;
+    boolean ulubione = false;
+    int pozycjaUlub=-1;
+
+
     public boolean tryParseInt(String value)
     {
         try
@@ -59,6 +66,7 @@ public class ZamowienieActivityFragment extends Activity
             jsonMyObject = extras.getString("myObject");
         }
         DataObjectClass myObject = new Gson().fromJson(jsonMyObject, DataObjectClass.class);
+        button = (Button) findViewById(R.id.button2);
         //dostep do layers
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
@@ -66,8 +74,43 @@ public class ZamowienieActivityFragment extends Activity
         service.singleOrder(parseInt(myObject.id), new Callback<BaseClass>()
                 {
                     @Override
-                    public void success(BaseClass baseClass, Response response)
+                    public void success(final BaseClass baseClass, Response response)
                     {
+                        for(int i =0;i<RepositoryClass.getInstance().getListaUlubionych().size();i++){
+                            if(RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)){
+                                button.setText("Jest w ulub.");
+                                ulubione=true;
+                                break;
+                            }
+                        }
+                        if (ulubione==false)
+                            button.setText("Dodaj do ulub.");
+
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                boolean usunieto=false;
+                                for(int i =0;i<RepositoryClass.getInstance().getListaUlubionych().size();i++) {
+                                    if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)) {
+                                        RepositoryClass.getInstance().removeListaUlubionych(i);
+                                        usunieto = true;
+                                        button.setText("Dodaj do ulub.");
+                                        Log.d("ZAF", "usuwanie z ulub.");
+
+                                        break;
+                                    }
+                                }
+                                if (usunieto==false){
+                                    RepositoryClass.getInstance().addListaUlubionych(baseClass.objectClass);
+                                    Toast.makeText(getApplicationContext(), "Dodano do ulubionych", Toast.LENGTH_LONG);
+                                    button.setText("Usun z ulub.");
+                                    Log.d("ZAF", "Dodano do listy");
+
+                                }
+
+                            }
+                        });
+
                         try
                         {
                             TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
@@ -894,6 +937,7 @@ public class ZamowienieActivityFragment extends Activity
             Log.d("napiszEmail", e.getMessage());
         }
     }
+
 
 }
 

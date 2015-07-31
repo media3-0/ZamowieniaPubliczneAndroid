@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity  {
 
-    Bundle activityBundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

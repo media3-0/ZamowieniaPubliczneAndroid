@@ -1551,7 +1551,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="false"
                     android:textColor="#727272"
-                    android:layout_marginTop="5dp" />
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -1762,5 +1763,15 @@
             android:layout_alignParentStart="false"
             android:textColor="#727272"
             android:layout_marginTop="5dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button2"
+            android:layout_below="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
+            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
+
 </ScrollView>
