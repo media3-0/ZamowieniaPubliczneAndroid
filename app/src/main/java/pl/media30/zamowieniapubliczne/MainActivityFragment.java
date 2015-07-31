@@ -264,14 +264,17 @@ public class MainActivityFragment extends Fragment {
     }
     public void glownaWyszukiwarka(String query){
         Log.d("Bravo:", query);
-        if (query.length()>=1){
+        if (query.length()>=1 && !query.equals("*")){
             RepositoryClass.getInstance().setGlowneZapyt(query);
             strona=1;
-            //bundle.putBoolean("getWczytaj", false);
             RepositoryClass.getInstance().deleteDataObjectList();
             wczytajDane();
-        }else if(query.toString().equals("all")){
+        }else if(query.toString().equals("*")){
             RepositoryClass.getInstance().setGlowneZapyt(null);
+            RepositoryClass.getInstance().deleteDataObjectList();
+            strona=1;
+            wczytajDane();
         }
     }
+
 }
