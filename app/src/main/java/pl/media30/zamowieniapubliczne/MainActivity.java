@@ -62,10 +62,8 @@ public class MainActivity extends AppCompatActivity  {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
-                MainActivityFragment mainActivityFragment = new MainActivityFragment();
-                //mainActivityFragment.setArguments(activityBundle);
-                mainActivityFragment.hello(query);
+                MainActivityFragment fragment = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
+                fragment.glownaWyszukiwarka(query);
                 return true;
             }
             @Override
