@@ -220,13 +220,15 @@ public class MainActivityFragment extends Fragment {
             }catch(Exception e){
                 bundle.putInt("getPos", 0);
             }
-            //Toast.makeText(getActivity(),position,Toast.LENGTH_SHORT).show();
+
             dialog.show();
             if ((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawREGON() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawWWW() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawEmail() == null)&& (RepositoryClass.getInstance().getGlowneZapyt() == null)) {
                 service.listOrders(strona, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().setBaseListClass(blc);
+                       Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
+
                         mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                         mRecyclerView.setAdapter(mAdapter);
                         strona++;
@@ -246,6 +248,8 @@ public class MainActivityFragment extends Fragment {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().setBaseListClass(blc);
+                        Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
+
                         mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                         mRecyclerView.setAdapter(mAdapter);
                         strona++;

@@ -24,8 +24,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-       public TextView textViewName;
+        public TextView textViewName;
         public TextView textViewCity;
+
         public ViewHolder(View itemView) {
             super(itemView);
 
@@ -41,7 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
             DataObjectClass dataObjectClass = mDataset.get(getAdapterPosition());
-            String objToStr= new Gson().toJson(dataObjectClass);
+            String objToStr = new Gson().toJson(dataObjectClass);
             Bundle objClass = new Bundle();
             objClass.putString("myObject", objToStr);
             intent.putExtras(objClass);
@@ -50,7 +51,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         }
 
-        public int getPos(){
+        public int getPos() {
             return getAdapterPosition();
         }
     }
@@ -74,23 +75,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
 
-
-
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         TextView textViewName = holder.textViewName;
         TextView textViewCity = holder.textViewCity;
 
-        textViewName.setText("\n"+ mDataset.get(position).dataClass.nazwa+"\n");
-        textViewCity.setText((position+1) + ". "+mDataset.get(position).dataClass.zamawiajacy_miejscowosc);
+        textViewName.setText("\n" + mDataset.get(position).dataClass.nazwa + "\n");
+        textViewCity.setText((position + 1) + ". " + mDataset.get(position).dataClass.zamawiajacy_miejscowosc);
     }
-    public int getPos(){
+
+    public int getPos() {
         return position;
     }
 
     @Override
     public int getItemCount() {
-        return  mDataset.size();
+        return mDataset.size();
     }
 }

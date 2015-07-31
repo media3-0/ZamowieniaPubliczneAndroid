@@ -36,6 +36,11 @@ public class RepositoryClass {
                 }
             }
     }
+
+    public int getCount(){
+        return baseListClass.getSearchClass().paginationClass.total;
+    }
+
     public BaseListClass getBaseListClass() {
         return baseListClass;
     }
