@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -227,10 +228,18 @@ public class ZamowienieActivityFragment extends Activity
         TextView zamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
         zamawiajacyRegon.setText(myObject.dataClass.zamawiajacy_regon.toString());
 
+
+
+
         TextView textViewZamawiajacyNazwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNazwaLabel);
         textViewZamawiajacyNazwaLabel.setVisibility(View.GONE);
         TextView textViewZamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
         textViewZamawiajacyNazwa.setVisibility(View.GONE);
+        CardView cardViewZamawiajacyNazwa = (CardView) findViewById(R.id.card_viewZamawiajacyNazwa);
+        cardViewZamawiajacyNazwa.setVisibility(View.GONE);
+
+
+
 
         TextView textViewZamawiajacyIDLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDLabel);
         textViewZamawiajacyIDLabel.setVisibility(View.GONE);
@@ -524,6 +533,10 @@ public class ZamowienieActivityFragment extends Activity
         textViewZamawiajacyNazwaLabel.setVisibility(textViewZamawiajacyNazwaLabel.isShown() ? View.GONE : View.VISIBLE);
         TextView textViewZamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
         textViewZamawiajacyNazwa.setVisibility(textViewZamawiajacyNazwa.isShown() ? View.GONE : View.VISIBLE);
+        CardView cardViewZamawiajacyNazwa = (CardView) findViewById(R.id.card_viewZamawiajacyNazwa);
+        cardViewZamawiajacyNazwa.setVisibility(cardViewZamawiajacyNazwa.isShown() ? View.GONE : View.VISIBLE);
+
+        
 
         TextView textViewZamawiajacyIDLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDLabel);
         textViewZamawiajacyIDLabel.setVisibility(textViewZamawiajacyIDLabel.isShown() ? View.GONE : View.VISIBLE);
