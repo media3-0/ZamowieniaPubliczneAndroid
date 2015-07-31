@@ -14,8 +14,10 @@
 
     <item android:id="@+id/info" android:title="@string/info"
         android:orderInCategory="100" app:showAsAction="never" />
+
     <item android:id="@+id/action_search"
         android:title="action_search"
+        android:icon="@drawable/ic_search_black_48dp"
         yourapp:showAsAction="ifRoom|collapseActionView"
         yourapp:actionViewClass="android.support.v7.widget.SearchView" />
 

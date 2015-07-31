@@ -222,7 +222,7 @@ public class MainActivityFragment extends Fragment {
             }
             //Toast.makeText(getActivity(),position,Toast.LENGTH_SHORT).show();
             dialog.show();
-            if ((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawREGON() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawWWW() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawEmail() == null)) {
+            if ((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawREGON() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawWWW() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawEmail() == null)&& (RepositoryClass.getInstance().getGlowneZapyt() == null)) {
                 service.listOrders(strona, new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
@@ -242,7 +242,7 @@ public class MainActivityFragment extends Fragment {
                 });
             } else {
                 dialog.show();
-                service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), new Callback<BaseListClass>() {
+                service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), RepositoryClass.getInstance().getGlowneZapyt(), new Callback<BaseListClass>() {
                     @Override
                     public void success(BaseListClass blc, Response response) {
                         RepositoryClass.getInstance().setBaseListClass(blc);
@@ -262,8 +262,16 @@ public class MainActivityFragment extends Fragment {
                 });
             }
     }
-    public String hello(String text){
-        Log.d("Bravo:", text);
-        return text;
+    public void glownaWyszukiwarka(String query){
+        Log.d("Bravo:", query);
+        if (query.length()>=1){
+            RepositoryClass.getInstance().setGlowneZapyt(query);
+            strona=1;
+            //bundle.putBoolean("getWczytaj", false);
+            RepositoryClass.getInstance().deleteDataObjectList();
+            wczytajDane();
+        }else if(query.toString().equals("all")){
+            RepositoryClass.getInstance().setGlowneZapyt(null);
+        }
     }
 }

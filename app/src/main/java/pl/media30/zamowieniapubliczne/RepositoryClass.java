@@ -22,6 +22,7 @@ public class RepositoryClass {
     private String wyszukiwanieZamawREGON = null;
     private String wyszukiwanieZamawWWW = null;
     private String wyszukiwanieZamawEmail = null;
+    private String glowneZapyt = null;
 
     public boolean pobierzJedenRaz = true;
 
@@ -97,6 +98,13 @@ public class RepositoryClass {
     }
     public String getWyszukiwanieZamawWWW(){
         return wyszukiwanieZamawWWW;
+    }
+
+    public void setGlowneZapyt(String glowneZapyt){
+        this.glowneZapyt=glowneZapyt;
+    }
+    public String getGlowneZapyt(){
+        return glowneZapyt;
     }
 
     public void setWyszukiwanieZamawEmail(String wyszukiwanieZamawEmail){
