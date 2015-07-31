@@ -1065,294 +1065,547 @@
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-
-
-
-
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieNazwa"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nazwa zamówienia: "
-            android:id="@+id/textViewZamowienieNazwaLabel"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
             android:layout_below="@+id/card_viewInformacjeOZamowieniu"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieNazwa"
-            android:id="@+id/textViewZamowienieNazwa"
-            android:layout_below="@+id/textViewZamowienieNazwaLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nazwa zamówienia: "
+                    android:id="@+id/textViewZamowienieNazwaLabel"
+                    android:layout_below="@+id/card_viewInformacjeOZamowieniu"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieNazwa"
+                    android:id="@+id/textViewZamowienieNazwa"
+                    android:layout_below="@+id/textViewZamowienieNazwaLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieTyp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Typ zamówienia:"
-            android:id="@+id/textViewZamowienieTypLabel"
-            android:layout_below="@+id/textViewZamowienieNr"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieNazwa"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieTyp"
-            android:id="@+id/textViewZamowienieTyp"
-            android:layout_below="@+id/textViewZamowienieTypLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Typ zamówienia:"
+                    android:id="@+id/textViewZamowienieTypLabel"
+                    android:layout_below="@+id/textViewZamowienieNr"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieTyp"
+                    android:id="@+id/textViewZamowienieTyp"
+                    android:layout_below="@+id/textViewZamowienieTypLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieTypSymbol"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Symbol typu zamówienia:"
-            android:id="@+id/textViewZamowienieTypSymbolLabel"
-            android:layout_below="@+id/textViewZamowienieTyp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieTyp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Symbol typu zamówienia:"
+                    android:id="@+id/textViewZamowienieTypSymbolLabel"
+                    android:layout_below="@+id/textViewZamowienieTyp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieTypSymbol"
+                    android:id="@+id/textViewZamowienieTypSymbol"
+                    android:layout_below="@+id/textViewZamowienieTypSymbolLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieRodzaj"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nr zamówienia:"
-            android:id="@+id/textViewZamowienieNrLabel"
-            android:layout_below="@+id/textViewZamowienieNazwa"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textStyle="bold"
-            android:textColor="#212121"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieTypSymbol"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieNr"
-            android:id="@+id/textViewZamowienieNr"
-            android:layout_below="@+id/textViewZamowienieNrLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rodzaj zamówienia:"
+                    android:id="@+id/textViewZamowienieRodzajLabel"
+                    android:layout_below="@+id/textViewZamowienieTypSymbol"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieTypSymbol"
-            android:id="@+id/textViewZamowienieTypSymbol"
-            android:layout_below="@+id/textViewZamowienieTypSymbolLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieRodzaj"
+                    android:id="@+id/textViewZamowienieRodzaj"
+                    android:layout_below="@+id/textViewZamowienieRodzajLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieDataPublikacji"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rodzaj zamówienia:"
-            android:id="@+id/textViewZamowienieRodzajLabel"
-            android:layout_below="@+id/textViewZamowienieTypSymbol"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieRodzaj"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieRodzaj"
-            android:id="@+id/textViewZamowienieRodzaj"
-            android:layout_below="@+id/textViewZamowienieRodzajLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Data publikacji:"
+                    android:id="@+id/textViewZamowienieDataPublikacjiLabel"
+                    android:layout_below="@+id/textViewZamowienieRodzaj"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieDataPublikacji"
+                    android:id="@+id/textViewZamowienieDataPublikacji"
+                    android:layout_below="@+id/textViewZamowienieDataPublikacjiLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieUE"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Data publikacji:"
-            android:id="@+id/textViewZamowienieDataPublikacjiLabel"
-            android:layout_below="@+id/textViewZamowienieRodzaj"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieDataPublikacji"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieDataPublikacji"
-            android:id="@+id/textViewZamowienieDataPublikacji"
-            android:layout_below="@+id/textViewZamowienieDataPublikacjiLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Finansowanie ze środków UE:"
+                    android:id="@+id/textViewZamowienieUELabel"
+                    android:layout_below="@+id/textViewZamowienieDataPublikacji"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieSzacowanaWartosc"
+                    android:id="@+id/textViewZamowienieUE"
+                    android:layout_below="@+id/textViewZamowienieUELabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieSzacowanaWartosc"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Finansowanie ze środków UE:"
-            android:id="@+id/textViewZamowienieUELabel"
-            android:layout_below="@+id/textViewZamowienieDataPublikacji"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieUE"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Szacowana wartość zamówienia:"
+                    android:id="@+id/textViewZamowienieSzacowanaWartoscLabel"
+                    android:layout_below="@+id/textViewZamowienieUE"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieSzacowanaWartosc"
+                    android:id="@+id/textViewZamowienieSzacowanaWartosc"
+                    android:layout_below="@+id/textViewZamowienieSzacowanaWartoscLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieCenaWybranejOferty"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ZamowienieSzacowanaWartosc"
-            android:id="@+id/textViewZamowienieUE"
-            android:layout_below="@+id/textViewZamowienieUELabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
-
-        <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Szacowana wartość zamówienia:"
-             android:id="@+id/textViewZamowienieSzacowanaWartoscLabel"
-             android:layout_below="@+id/textViewZamowienieUE"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentStart="true"
-             android:layout_marginTop="5dp"
-             android:textColor="#212121"
-             android:textStyle="bold"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieSzacowanaWartosc"
-            android:id="@+id/textViewZamowienieSzacowanaWartosc"
-            android:layout_below="@+id/textViewZamowienieSzacowanaWartoscLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cena wybranej oferty:"
-            android:id="@+id/textViewZamowienieCenaWybranejOfertyLabel"
-            android:layout_below="@+id/textViewZamowienieSzacowanaWartosc"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieSzacowanaWartosc"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieCenaWybranejOferty"
-            android:id="@+id/textViewZamowienieCenaWybranejOferty"
-            android:layout_below="@+id/textViewZamowienieCenaWybranejOfertyLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cena wybranej oferty:"
+                    android:id="@+id/textViewZamowienieCenaWybranejOfertyLabel"
+                    android:layout_below="@+id/textViewZamowienieSzacowanaWartosc"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieCenaWybranejOferty"
+                    android:id="@+id/textViewZamowienieCenaWybranejOferty"
+                    android:layout_below="@+id/textViewZamowienieCenaWybranejOfertyLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieNajtanszaOferta"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Najtańsza oferta:"
-            android:id="@+id/textViewZamowienieNajtanszaOfertaLabel"
-            android:layout_below="@+id/textViewZamowienieCenaWybranejOferty"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieCenaWybranejOferty"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieNajtanszaOferta"
-            android:id="@+id/textViewZamowienieNajtanszaOferta"
-            android:layout_below="@+id/textViewZamowienieNajtanszaOfertaLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Najtańsza oferta:"
+                    android:id="@+id/textViewZamowienieNajtanszaOfertaLabel"
+                    android:layout_below="@+id/textViewZamowienieCenaWybranejOferty"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieNajtanszaOferta"
+                    android:id="@+id/textViewZamowienieNajtanszaOferta"
+                    android:layout_below="@+id/textViewZamowienieNajtanszaOfertaLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieNajdrozszaOferta"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Najdroższa oferta:"
-            android:id="@+id/textViewZamowienieNajdrozszaOfertaLabel"
-            android:layout_below="@+id/textViewZamowienieNajtanszaOferta"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieNajtanszaOferta"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieNajdrozszaOferta"
-            android:id="@+id/textViewZamowienieNajdrozszaOferta"
-            android:layout_below="@+id/textViewZamowienieNajdrozszaOfertaLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Najdroższa oferta:"
+                    android:id="@+id/textViewZamowienieNajdrozszaOfertaLabel"
+                    android:layout_below="@+id/textViewZamowienieNajtanszaOferta"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieNajdrozszaOferta"
+                    android:id="@+id/textViewZamowienieNajdrozszaOferta"
+                    android:layout_below="@+id/textViewZamowienieNajdrozszaOfertaLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginTop="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewSzczegolyZamowienia"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Szczegóły zamówienia:"
-            android:clickable="true"
-            android:onClick="chowanieSzczegolowZamowienia"
-            android:id="@+id/textViewSzczegolyZamowienia"
-            android:layout_below="@+id/textViewZamowienieNajdrozszaOferta"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentLeft="false"
+            android:layout_below="@+id/card_viewZamowienieNajdrozszaOferta"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:textColor="#212121"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentRight="false"
-            android:textSize="17sp"/>
+            android:layout_marginRight="5dp">
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#B3E5FC">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Szczegóły zamówienia:"
+                    android:clickable="true"
+                    android:onClick="chowanieSzczegolowZamowienia"
+                    android:id="@+id/textViewSzczegolyZamowienia"
+                    android:layout_alignParentStart="false"
+                    android:layout_alignParentLeft="false"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:layout_alignParentEnd="false"
+                    android:layout_alignParentRight="false"
+                    android:textSize="17sp"
+                    android:layout_margin="5dp" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -1361,7 +1614,7 @@
             android:clickable="true"
             android:onClick="chowanieZamowieniePrzedmiot"
             android:id="@+id/textViewZamowieniePrzedmiotLabel"
-            android:layout_below="@+id/textViewSzczegolyZamowienia"
+            android:layout_below="@+id/card_viewSzczegolyZamowienia"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="5dp"
