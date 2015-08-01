@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/navigation_item_1"
-            android:checked="true"
-            android:icon="@mipmap/ic_launcher"
-            android:title="test 1" />
-        <item
-            android:id="@+id/navigation_item_2"
-            android:icon="@mipmap/ic_launcher"
-            android:title="test 2" />
-    </group>
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search_black_48dp"
+        android:title="Szukaj" />
+    <item
+        android:id="@+id/show"
+        android:icon="@drawable/ic_visibility_black_48dp"
+        android:title="Obserwowane" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_assessment_black_48dp"
+        android:title="Wykres" />
+    <item
+        android:id="@+id/info"
+        android:icon="@drawable/ic_help_black_48dp"
+        android:title="O aplikacji" />
+
 </menu>
