@@ -31,14 +31,12 @@ import static java.lang.Integer.parseInt;
  */
 public class ZamowienieActivityFragment extends Activity
 {
-
     TextView textViewZamawiajacyTelefon;
     TextView textViewZamawiajacyWWW;
     TextView textViewZamawiajacyEmail;
     Button button;
     boolean ulubione = false;
     int pozycjaUlub=-1;
-
 
     public boolean tryParseInt(String value)
     {
@@ -72,188 +70,191 @@ public class ZamowienieActivityFragment extends Activity
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         final ProgressDialog dialog = ProgressDialog.show(this, "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
         service.singleOrder(parseInt(myObject.id), new Callback<BaseClass>()
+            {
+                @Override
+                public void success(final BaseClass baseClass, Response response)
                 {
-                    @Override
-                    public void success(final BaseClass baseClass, Response response)
+                    for(int i =0;i<RepositoryClass.getInstance().getListaUlubionych().size();i++){
+                        if(RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)){
+                            button.setText("Jest w ulub.");
+                            ulubione=true;
+                            break;
+                        }
+                    }
+                    if (ulubione==false)
+                        button.setText("Dodaj do ulub.");
+
+                    button.setOnClickListener(new View.OnClickListener()
                     {
-                        for(int i =0;i<RepositoryClass.getInstance().getListaUlubionych().size();i++){
-                            if(RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)){
-                                button.setText("Jest w ulub.");
-                                ulubione=true;
-                                break;
+                        @Override
+                        public void onClick(View v)
+                        {
+                            boolean usunieto=false;
+                            for(int i =0;i<RepositoryClass.getInstance().getListaUlubionych().size();i++)
+                            {
+                                if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id))
+                                {
+                                    RepositoryClass.getInstance().removeListaUlubionych(i);
+                                    usunieto = true;
+                                    button.setText("Dodaj do ulub.");
+                                    Log.d("ZAF", "usuwanie z ulub.");
+
+                                    break;
+                                }
+                            }
+                            if (usunieto==false)
+                            {
+                                RepositoryClass.getInstance().addListaUlubionych(baseClass.objectClass);
+                                Toast.makeText(getApplicationContext(), "Dodano do ulubionych", Toast.LENGTH_LONG);
+                                button.setText("Usun z ulub.");
+                                Log.d("ZAF", "Dodano do listy");
                             }
                         }
-                        if (ulubione==false)
-                            button.setText("Dodaj do ulub.");
+                    });
 
-                        button.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                boolean usunieto=false;
-                                for(int i =0;i<RepositoryClass.getInstance().getListaUlubionych().size();i++) {
-                                    if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)) {
-                                        RepositoryClass.getInstance().removeListaUlubionych(i);
-                                        usunieto = true;
-                                        button.setText("Dodaj do ulub.");
-                                        Log.d("ZAF", "usuwanie z ulub.");
-
-                                        break;
-                                    }
-                                }
-                                if (usunieto==false){
-                                    RepositoryClass.getInstance().addListaUlubionych(baseClass.objectClass);
-                                    Toast.makeText(getApplicationContext(), "Dodano do ulubionych", Toast.LENGTH_LONG);
-                                    button.setText("Usun z ulub.");
-                                    Log.d("ZAF", "Dodano do listy");
-
-                                }
-
-                            }
-                        });
-
-                        try
+                    try
+                    {
+                        TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+                        if (baseClass.objectClass.layers.detailsClass.przedmiot == "")
                         {
-                            TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
-                            if (baseClass.objectClass.layers.detailsClass.przedmiot == "")
-                            {
-                                zamowieniePrzedmiot.setText("Dane nie zostały wprowadzone");
-                            }
-                            else
-                            {
-                                zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
-                            }
-                        }
-                        catch(NullPointerException e)
-                        {
-                            TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
                             zamowieniePrzedmiot.setText("Dane nie zostały wprowadzone");
                         }
-
-                        try
+                        else
                         {
-                            TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
-                            if (baseClass.objectClass.layers.detailsClass.uprawnienie == "")
-                            {
-                                zamowienieUprawnienie.setText("Dane nie zostały wprowadzone");
-                            }
-                            else
-                            {
-                                zamowienieUprawnienie.setText(baseClass.objectClass.layers.detailsClass.uprawnienie.toString());
-                            }
+                            zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
                         }
-                        catch(NullPointerException e)
+                    }
+                    catch(NullPointerException e)
+                    {
+                        TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+                        zamowieniePrzedmiot.setText("Dane nie zostały wprowadzone");
+                    }
+
+                    try
+                    {
+                        TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+                        if (baseClass.objectClass.layers.detailsClass.uprawnienie == "")
                         {
-                            TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
                             zamowienieUprawnienie.setText("Dane nie zostały wprowadzone");
                         }
-
-                        try
+                        else
                         {
-                            TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
-                            if (baseClass.objectClass.layers.detailsClass.wiedza == "")
-                            {
-                                zamowienieWiedza.setText("Dane nie zostały wprowadzone");
-                            }
-                            else
-                            {
-                                zamowienieWiedza.setText(baseClass.objectClass.layers.detailsClass.wiedza.toString());
-                            }
+                            zamowienieUprawnienie.setText(baseClass.objectClass.layers.detailsClass.uprawnienie.toString());
                         }
-                        catch(NullPointerException e)
+                    }
+                    catch(NullPointerException e)
+                    {
+                        TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+                        zamowienieUprawnienie.setText("Dane nie zostały wprowadzone");
+                    }
+
+                    try
+                    {
+                        TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+                        if (baseClass.objectClass.layers.detailsClass.wiedza == "")
                         {
-                            TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
                             zamowienieWiedza.setText("Dane nie zostały wprowadzone");
                         }
-
-                        try
+                        else
                         {
-                            TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
-                            if (baseClass.objectClass.layers.detailsClass.potencjal == "")
-                            {
-                                zamowieniePotencjal.setText("Dane nie zostały wprowadzone");
-                            }
-                            else
-                            {
-                                zamowieniePotencjal.setText(baseClass.objectClass.layers.detailsClass.potencjal.toString());
-                            }
+                            zamowienieWiedza.setText(baseClass.objectClass.layers.detailsClass.wiedza.toString());
                         }
-                        catch(NullPointerException e)
+                    }
+                    catch(NullPointerException e)
+                    {
+                        TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+                        zamowienieWiedza.setText("Dane nie zostały wprowadzone");
+                    }
+
+                    try
+                    {
+                        TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+                        if (baseClass.objectClass.layers.detailsClass.potencjal == "")
                         {
-                            TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
                             zamowieniePotencjal.setText("Dane nie zostały wprowadzone");
                         }
-
-                        try
+                        else
                         {
-                            TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
-                            if (baseClass.objectClass.layers.detailsClass.osoby_zdolne == "")
-                            {
-                                zamowienieOsobyZdolne.setText("Dane nie zostały wprowadzone");
-                            }
-                            else
-                            {
-                                zamowienieOsobyZdolne.setText(baseClass.objectClass.layers.detailsClass.osoby_zdolne.toString());
-                            }
+                            zamowieniePotencjal.setText(baseClass.objectClass.layers.detailsClass.potencjal.toString());
                         }
-                        catch(NullPointerException e)
+                    }
+                    catch(NullPointerException e)
+                    {
+                        TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+                        zamowieniePotencjal.setText("Dane nie zostały wprowadzone");
+                    }
+
+                    try
+                    {
+                        TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+                        if (baseClass.objectClass.layers.detailsClass.osoby_zdolne == "")
                         {
-                            TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
                             zamowienieOsobyZdolne.setText("Dane nie zostały wprowadzone");
                         }
-
-                        try
+                        else
                         {
-                            TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
-                            if (baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna == "")
-                            {
-                                zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
-                            }
-                            else
-                            {
-                                zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
-                            }
+                            zamowienieOsobyZdolne.setText(baseClass.objectClass.layers.detailsClass.osoby_zdolne.toString());
                         }
-                        catch(NullPointerException e)
+                    }
+                    catch(NullPointerException e)
+                    {
+                        TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+                        zamowienieOsobyZdolne.setText("Dane nie zostały wprowadzone");
+                    }
+
+                    try
+                    {
+                        TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+                        if (baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna == "")
                         {
-                            TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
                             zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
                         }
-/*
-                        TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
-                        zamowienieSzacowanaWartosc.setText
-                                (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).wartosc
-                                + " " +
-                                baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
-
-                        TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
-                        zamowienieCenaWybranejOferty.setText
-                                (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena
-                                + " " +
-                                baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
-
-                        TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
-                        zamowienieNajtanszaOferta.setText
-                                (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena_min
-                                + " " +
-                                baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
-
-                        TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
-                        zamowienieNajdrozszaOferta.setText
-                                (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena_max
-                                + " " +
-                                baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
-*/
-                        dialog.dismiss();
+                        else
+                        {
+                            zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
+                        }
                     }
-
-                    @Override
-                    public void failure(RetrofitError error)
+                    catch(NullPointerException e)
                     {
-                        Log.d("error: ", error.getMessage() + "");
-                        dialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "BĹ‚Ä…d. SprawdĹş poĹ‚Ä…czenie z internetem", Toast.LENGTH_SHORT).show();
+                        TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+                        zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
                     }
+/*
+                    TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
+                    zamowienieSzacowanaWartosc.setText
+                            (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).wartosc
+                            + " " +
+                            baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
+
+                    TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
+                    zamowienieCenaWybranejOferty.setText
+                            (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena
+                            + " " +
+                            baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
+
+                    TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
+                    zamowienieNajtanszaOferta.setText
+                            (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena_min
+                            + " " +
+                            baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
+
+                    TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
+                    zamowienieNajdrozszaOferta.setText
+                            (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena_max
+                            + " " +
+                            baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
+*/
+                    dialog.dismiss();
                 }
+
+                @Override
+                public void failure(RetrofitError error)
+                {
+                    Log.d("error: ", error.getMessage() + "");
+                    dialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "BĹ‚Ä…d. SprawdĹş poĹ‚Ä…czenie z internetem", Toast.LENGTH_SHORT).show();
+                }
+            }
         );
         //koniec dostepu do layers
 

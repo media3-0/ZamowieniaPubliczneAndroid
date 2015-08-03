@@ -1924,7 +1924,6 @@
             android:layout_below="@+id/card_viewZamowienieSytuacjaEkonomiczna"
             android:layout_centerHorizontal="true" />
 
-
     </RelativeLayout>
 
 </ScrollView>
