@@ -22,6 +22,8 @@ public class UlubioneActivity extends ActionBarActivity {
     UltimateRecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
     UlubioneAdapter mAdapter;
+    Bundle bundle = new Bundle();
+
 
 
     private Object mActivityResultSubscriber = new Object() {
@@ -46,13 +48,26 @@ public class UlubioneActivity extends ActionBarActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
        // mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-        //Log.d("pozyc w start", bundle.getInt("getPos") + "");
         try{
             mAdapter = new UlubioneAdapter(RepositoryClass.getInstance().getListaUlubionych());
             mRecyclerView.setAdapter(mAdapter);
         }catch(Exception e){}
 
     }
+    @Override
+    public void onStop() {
+        super.onStop();
+        ActivityResultBus.getInstance().unregister(mActivityResultSubscriber);
+        bundle.putInt("getPosUlub", mLayoutManager.findFirstVisibleItemPosition());
+        Log.d("STOP", mLayoutManager.findFirstVisibleItemPosition() + "");
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("uPozycja",bundle.getInt("getPosUlub")+"");
+        mLayoutManager.scrollToPosition(bundle.getInt("getPosUlub"));
+    }
+
 
 
 

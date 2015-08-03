@@ -33,12 +33,13 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
         public TextView textViewName;
         public TextView textViewCity;
 
+
         public ViewHolder(View itemView) {
             super(itemView);
 
             itemView.setOnClickListener((View.OnClickListener) this);
             this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
-            //this.textViewCity = (TextView) itemView.findViewById(R.id.textViewCity);
+            this.textViewCity = (TextView) itemView.findViewById(R.id.textViewCity);
         }
 
 
@@ -95,7 +96,7 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
         TextView textViewCity = holder.textViewCity;
 
         textViewName.setText("\n" + mDataset.get(position).dataClass.nazwa + "\n");
-//        textViewCity.setText((position + 1) + ". " + mDataset.get(position).dataClass.zamawiajacy_miejscowosc);
+        textViewCity.setText((position + 1) + ". " + mDataset.get(position).dataClass.zamawiajacy_miejscowosc);
     }
 
     public int getPos() {
