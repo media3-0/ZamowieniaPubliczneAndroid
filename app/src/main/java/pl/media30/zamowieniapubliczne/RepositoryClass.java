@@ -29,6 +29,7 @@ public class RepositoryClass {
     private String wyszukiwanieZamawEmail = null;
     private String glowneZapyt = null;
     private  List<ObjectClass> listaUlubionych = new ArrayList<ObjectClass>();
+    private int stronaUlub;
 
     public boolean pobierzJedenRaz = true;
 
@@ -131,6 +132,14 @@ public class RepositoryClass {
     public void removeListaUlubionych(int i){
         listaUlubionych.remove(i);
     }
+
+    public void setStronaUlub(int stronaUlub){
+        this.stronaUlub=stronaUlub;
+    }
+    public int getStronaUlub(){
+        return stronaUlub;
+    }
+
     public List<ObjectClass> getListaUlubionych(){
         return listaUlubionych;
     }

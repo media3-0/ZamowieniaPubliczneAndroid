@@ -5,8 +5,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.squareup.otto.Subscribe;
@@ -35,8 +37,9 @@ public class UlubioneActivity extends ActionBarActivity {
     @Override
     public void onStart() {
         super.onStart();
-        ActivityResultBus.getInstance().register(mActivityResultSubscriber);
-
+        try {
+            ActivityResultBus.getInstance().register(mActivityResultSubscriber);
+        }catch(Exception e){}
         mRecyclerView = (UltimateRecyclerView)  findViewById(R.id.ultimate_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         // use a linear layout manager
@@ -49,17 +52,6 @@ public class UlubioneActivity extends ActionBarActivity {
             mRecyclerView.setAdapter(mAdapter);
         }catch(Exception e){}
 
-
-
-        mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
-            @Override
-            public void onLoadMore(int current_page) {
-
-                //wczytajDane();
-            }
-        });
-        //if (bundle.getBoolean("getWczytaj") == false)
-       //    wczytajDane();
     }
 
 
@@ -90,5 +82,13 @@ public class UlubioneActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

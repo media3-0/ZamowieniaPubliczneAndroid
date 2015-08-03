@@ -36,7 +36,7 @@ public class ZamowienieActivityFragment extends Activity
     TextView textViewZamawiajacyEmail;
     Button button;
     boolean ulubione = false;
-    int pozycjaUlub=-1;
+    int id;
 
     public boolean tryParseInt(String value)
     {
@@ -64,12 +64,18 @@ public class ZamowienieActivityFragment extends Activity
             jsonMyObject = extras.getString("myObject");
         }
         DataObjectClass myObject = new Gson().fromJson(jsonMyObject, DataObjectClass.class);
+        int stronaUlub = RepositoryClass.getInstance().getStronaUlub();
+        if (stronaUlub>=0){
+            id = parseInt(RepositoryClass.getInstance().getListaUlubionych().get(stronaUlub).dataClass.id);
+        }else {
+            id = parseInt(myObject.id);
+        }
         button = (Button) findViewById(R.id.button2);
         //dostep do layers
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         final ProgressDialog dialog = ProgressDialog.show(this, "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
-        service.singleOrder(parseInt(myObject.id), new Callback<BaseClass>()
+        service.singleOrder(id, new Callback<BaseClass>()
             {
                 @Override
                 public void success(final BaseClass baseClass, Response response)

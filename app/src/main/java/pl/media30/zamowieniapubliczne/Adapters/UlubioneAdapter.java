@@ -3,6 +3,7 @@ package pl.media30.zamowieniapubliczne.Adapters;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import java.util.List;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 import pl.media30.zamowieniapubliczne.R;
+import pl.media30.zamowieniapubliczne.RepositoryClass;
 import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 
 /**
@@ -24,6 +26,7 @@ import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHolder> {
     private List<ObjectClass> mDataset;
     static int position;
+
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -53,9 +56,10 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
             MyAdapter.position = getAdapterPosition();
 /*/
             Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
+            RepositoryClass.getInstance().setStronaUlub(getAdapterPosition());
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
-           // view.getContext().startActivity(intent);
-           // MyAdapter.position = getAdapterPosition();
+            view.getContext().startActivity(intent);
+            MyAdapter.position = getAdapterPosition();
 
         }
 

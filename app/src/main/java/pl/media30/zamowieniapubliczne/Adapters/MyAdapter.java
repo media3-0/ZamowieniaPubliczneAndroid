@@ -17,6 +17,7 @@ import java.util.List;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 import pl.media30.zamowieniapubliczne.R;
+import pl.media30.zamowieniapubliczne.RepositoryClass;
 import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -41,12 +42,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public void onClick(View view) {
 
             Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
+            RepositoryClass.getInstance().setStronaUlub(-1);
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
             DataObjectClass dataObjectClass = mDataset.get(getAdapterPosition());
             String objToStr = new Gson().toJson(dataObjectClass);
             Bundle objClass = new Bundle();
             objClass.putString("myObject", objToStr);
             intent.putExtras(objClass);
+
             view.getContext().startActivity(intent);
             MyAdapter.position = getAdapterPosition();
 
@@ -61,7 +64,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public MyAdapter(List<DataObjectClass> myDataset) {
         mDataset = myDataset;
     }
-
 
 
     @Override
