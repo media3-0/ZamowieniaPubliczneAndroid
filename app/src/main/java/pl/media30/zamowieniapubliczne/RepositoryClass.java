@@ -1,9 +1,13 @@
 package pl.media30.zamowieniapubliczne;
 
+import android.app.ListActivity;
+
+import java.util.ArrayList;
 import java.util.List;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 
 
 /**
@@ -15,6 +19,7 @@ public class RepositoryClass {
     private List<DataObjectClass> dataObjectList;
     private BaseListClass baseListClass;
     private BaseClass baseClass;
+    private String mString;
     private String wyszukiwanieMiasta=null;
     private String wyszukiwanieWojew=null;
     private String wyszukiwanieKodowPoczt = null;
@@ -23,6 +28,7 @@ public class RepositoryClass {
     private String wyszukiwanieZamawWWW = null;
     private String wyszukiwanieZamawEmail = null;
     private String glowneZapyt = null;
+    private  List<ObjectClass> listaUlubionych = new ArrayList<ObjectClass>();
 
     public boolean pobierzJedenRaz = true;
 
@@ -119,6 +125,16 @@ public class RepositoryClass {
         return wyszukiwanieZamawEmail;
     }
 
+    public void addListaUlubionych(ObjectClass oblectClass){
+        listaUlubionych.add(oblectClass);
+    }
+    public void removeListaUlubionych(int i){
+        listaUlubionych.remove(i);
+    }
+    public List<ObjectClass> getListaUlubionych(){
+        return listaUlubionych;
+    }
+
     private RepositoryClass() {
     }
 
@@ -127,6 +143,14 @@ public class RepositoryClass {
             mInstance = new RepositoryClass();
         }
         return mInstance;
+    }
+
+    public void setString(String value){
+        mString = value;
+    }
+
+    public String getString(){
+        return this.mString;
     }
 }
 

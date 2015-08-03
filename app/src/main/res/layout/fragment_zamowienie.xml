@@ -1926,5 +1926,28 @@
 
 
 
+<<<<<<< HEAD
+=======
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ZamowienieSytuacjaEkonomiczna"
+            android:id="@+id/textViewZamowienieSytuacjaEkonomiczna"
+            android:layout_below="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="false"
+            android:textColor="#727272"
+            android:layout_marginTop="5dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button2"
+            android:layout_below="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
+            android:layout_centerHorizontal="true" />
+
+>>>>>>> origin/master
     </RelativeLayout>
+
 </ScrollView>

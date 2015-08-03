@@ -6,15 +6,24 @@
 
 
 
-    <item android:id="@+id/search" android:title="@string/search"
-        android:orderInCategory="100" app:showAsAction="never" />
 
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-    android:orderInCategory="100" app:showAsAction="never" />
+        <item
+            android:id="@+id/search"
+            android:icon="@drawable/ic_search_black_48dp"
+            android:title="Szukaj" />
+        <item
+            android:id="@+id/show"
+            android:icon="@drawable/ic_visibility_black_48dp"
+            android:title="Pokaż obserwowane" />
 
-    <item android:id="@+id/info" android:title="@string/info"
-        android:orderInCategory="100" app:showAsAction="never" />
-
+        <item
+            android:id="@+id/action_settings"
+            android:icon="@drawable/ic_assessment_black_48dp"
+            android:title="Największe zamówienia" />
+        <item
+            android:id="@+id/info"
+            android:icon="@drawable/ic_help_black_48dp"
+            android:title="O aplikacji" />
     <item android:id="@+id/action_search"
         android:title="action_search"
         android:icon="@drawable/ic_search_black_48dp"
