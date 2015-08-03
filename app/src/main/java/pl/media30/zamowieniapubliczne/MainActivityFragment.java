@@ -130,24 +130,24 @@ public class MainActivityFragment extends Fragment {
                 bundle.putInt("getPos", savedInstanceState.getInt("getPos"));
             }
         } catch (Exception e) {
-            bundle.putInt("getPos",0);
+            bundle.putInt("getPos", 0);
         }
         try {
-            if(savedInstanceState.getString("wartoscMiasto").equals("*"))
+            if (savedInstanceState.getString("wartoscMiasto").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieMiasta(null);
-            if(savedInstanceState.getString("wartoscWoj").equals("*"))
+            if (savedInstanceState.getString("wartoscWoj").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieMiasta(null);
-            if(savedInstanceState.getString("wartoscKod").equals("*"))
+            if (savedInstanceState.getString("wartoscKod").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieKodowPoczt(null);
-            if(savedInstanceState.getString("wartoscNazwa").equals("*"))
+            if (savedInstanceState.getString("wartoscNazwa").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieZamawNazwa(null);
-            if(savedInstanceState.getString("wartoscREGON").equals("*"))
+            if (savedInstanceState.getString("wartoscREGON").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieZamawREGON(null);
-            if(savedInstanceState.getString("wartoscWWW").equals("*"))
+            if (savedInstanceState.getString("wartoscWWW").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieZamawWWW(null);
-            if(savedInstanceState.getString("wartoscEmail").equals("*"))
+            if (savedInstanceState.getString("wartoscEmail").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieZamawEmail(null);
-            wczytane=false;
+            wczytane = false;
         } catch (Exception e) {
         }
         mLayoutManager = new LinearLayoutManager(this.getActivity());
@@ -157,10 +157,10 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onResume() {
 
-            for(int i =0;i<RepositoryClass.getInstance().getListaUlubionych().size();i++)
-                Log.d("Elem listy: ",RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.nazwa);
+        for (int i = 0; i < RepositoryClass.getInstance().getListaUlubionych().size(); i++)
+            Log.d("Elem listy: ", RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.nazwa);
 
-        Log.d("OnResume",RepositoryClass.getInstance().getListaUlubionych().size()+"");
+        Log.d("OnResume", RepositoryClass.getInstance().getListaUlubionych().size() + "");
         super.onResume();
     }
 
@@ -177,7 +177,7 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         try {
             String strtext = getArguments().getString("query");
-        }catch(Exception e){
+        } catch (Exception e) {
         }
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
@@ -203,7 +203,8 @@ public class MainActivityFragment extends Fragment {
         if (bundle.getBoolean("getWczytaj") == false)
             wczytajDane();
     }
-    void wczytajDane(){
+
+    void wczytajDane() {
         final ProgressDialog dialog =
                 ProgressDialog.show(this.getActivity().getWindow().getContext(), "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
         dialog.dismiss();
@@ -213,75 +214,82 @@ public class MainActivityFragment extends Fragment {
         final MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
 
         wczytane = bundle.getBoolean("getWczytaj");
-        if (wczytane == false)
-        {
-            strona=1;
+        if (wczytane == false) {
+            strona = 1;
             bundle.putBoolean("getWczytaj", true);
-            if (RepositoryClass.getInstance().getDataObjectList()!=null)
+            if (RepositoryClass.getInstance().getDataObjectList() != null)
                 RepositoryClass.getInstance().deleteDataObjectList();
         }
-            try {
-                bundle.putInt("getPos", mLayoutManager.findFirstCompletelyVisibleItemPosition());
-            }catch(Exception e){
-                bundle.putInt("getPos", 0);
-            }
+        try {
+            bundle.putInt("getPos", mLayoutManager.findFirstCompletelyVisibleItemPosition());
+        } catch (Exception e) {
+            bundle.putInt("getPos", 0);
+        }
 
-            dialog.show();
-            if ((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawREGON() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawWWW() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawEmail() == null)&& (RepositoryClass.getInstance().getGlowneZapyt() == null)) {
-                service.listOrders(strona, new Callback<BaseListClass>() {
-                    @Override
-                    public void success(BaseListClass blc, Response response) {
-                        RepositoryClass.getInstance().setBaseListClass(blc);
-                       Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
-
-                        mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
-                        mRecyclerView.setAdapter(mAdapter);
-                        strona++;
-                        mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-                        dialog.dismiss();
-                        Log.d("Strona", " bez param strona loadmore: " + strona);
-                    }
-                    @Override
-                    public void failure(RetrofitError retrofitError) {
-                        dialog.dismiss();
-                        Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } else {
-                dialog.show();
-                service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), RepositoryClass.getInstance().getGlowneZapyt(), new Callback<BaseListClass>() {
-                    @Override
-                    public void success(BaseListClass blc, Response response) {
-                        RepositoryClass.getInstance().setBaseListClass(blc);
+        dialog.show();
+        if ((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawREGON() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawWWW() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawEmail() == null) && (RepositoryClass.getInstance().getGlowneZapyt() == null)) {
+            service.listOrders(strona, new Callback<BaseListClass>() {
+                @Override
+                public void success(BaseListClass blc, Response response) {
+                    RepositoryClass.getInstance().setBaseListClass(blc);
+                    try {
                         Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
-
-                        mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
-                        mRecyclerView.setAdapter(mAdapter);
-                        strona++;
-                        mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-                        dialog.dismiss();
-                        Log.d("Strona", "param strona loadmore: " + strona);
+                    } catch (NullPointerException e) {
                     }
 
-                    @Override
-                    public void failure(RetrofitError retrofitError) {
-                        dialog.dismiss();
-                        Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
+                            mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
+                    mRecyclerView.setAdapter(mAdapter);
+                    strona++;
+                    mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
+                    dialog.dismiss();
+                    Log.d("Strona", " bez param strona loadmore: " + strona);
+                }
+
+                @Override
+                public void failure(RetrofitError retrofitError) {
+                    dialog.dismiss();
+                    Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            dialog.show();
+            service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), RepositoryClass.getInstance().getGlowneZapyt(), new Callback<BaseListClass>() {
+                @Override
+                public void success(BaseListClass blc, Response response) {
+                    RepositoryClass.getInstance().setBaseListClass(blc);
+                    try {
+                        Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
+                    }catch(NullPointerException e){
+
                     }
-                });
-            }
+                    mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
+                    mRecyclerView.setAdapter(mAdapter);
+                    strona++;
+                    mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
+                    dialog.dismiss();
+                    Log.d("Strona", "param strona loadmore: " + strona);
+                }
+
+                @Override
+                public void failure(RetrofitError retrofitError) {
+                    dialog.dismiss();
+                    Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
-    public void glownaWyszukiwarka(String query){
+
+    public void glownaWyszukiwarka(String query) {
         Log.d("Bravo:", query);
-        if (query.length()>=1 && !query.equals("*")){
+        if (query.length() >= 1 && !query.equals("*")) {
             RepositoryClass.getInstance().setGlowneZapyt(query);
-            strona=1;
+            strona = 1;
             RepositoryClass.getInstance().deleteDataObjectList();
             wczytajDane();
-        }else if(query.toString().equals("*")){
+        } else if (query.toString().equals("*")) {
             RepositoryClass.getInstance().setGlowneZapyt(null);
             RepositoryClass.getInstance().deleteDataObjectList();
-            strona=1;
+            strona = 1;
             wczytajDane();
         }
     }
