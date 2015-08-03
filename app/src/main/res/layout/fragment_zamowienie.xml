@@ -34,14 +34,14 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#B3E5FC">
+                android:background="#B3E5FC"
+                android:clickable="true"
+                android:onClick="chowanieIdentyfikatory">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Identyfikatory zamawiającego:"
-                    android:clickable="true"
-                    android:onClick="chowanieIdentyfikatory"
                     android:id="@+id/textView2"
                     android:layout_marginTop="5dp"
                     android:textColor="#212121"
@@ -137,7 +137,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="5dp"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="5dp"
                     android:textStyle="bold"
                     android:textColor="#212121"
                     android:textSize="16sp"
@@ -280,15 +280,15 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#B3E5FC">
+                android:background="#B3E5FC"
+                android:clickable="true"
+                android:onClick="chowanieDaneAdresowe">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dane adresowe zamawiającego: "
                     android:id="@+id/textView9"
-                    android:clickable="true"
-                    android:onClick="chowanieDaneAdresowe"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
@@ -807,15 +807,15 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#B3E5FC">
+                android:background="#B3E5FC"
+                android:clickable="true"
+                android:onClick="chowanieDaneKontaktowe">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Dane kontaktowe zamawiającego:"
                     android:id="@+id/textViewDaneKontaktoweZamawiajacegoLabel"
-                    android:clickable="true"
-                    android:onClick="chowanieDaneKontaktowe"
                     android:layout_alignParentLeft="false"
                     android:layout_alignParentStart="false"
                     android:layout_marginTop="5dp"
@@ -862,7 +862,7 @@
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp" />
+                    android:layout_marginRight="5dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1043,14 +1043,14 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#B3E5FC">
+                android:background="#B3E5FC"
+                android:clickable="true"
+                android:onClick="chowanieInformacjeOZamowieniu">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Informacje o zamówieniu:"
-                    android:clickable="true"
-                    android:onClick="chowanieInformacjeOZamowieniu"
                     android:id="@+id/textView"
                     android:layout_alignParentStart="false"
                     android:layout_alignParentLeft="false"
@@ -1551,7 +1551,8 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="false"
                     android:textColor="#727272"
-                    android:layout_marginTop="5dp" />
+                    android:layout_marginTop="5dp"
+                    android:layout_margin="5dp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -1575,14 +1576,14 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#B3E5FC">
+                android:background="#B3E5FC"
+                android:clickable="true"
+                android:onClick="chowanieSzczegolowZamowienia">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Szczegóły zamówienia:"
-                    android:clickable="true"
-                    android:onClick="chowanieSzczegolowZamowienia"
                     android:id="@+id/textViewSzczegolyZamowienia"
                     android:layout_alignParentStart="false"
                     android:layout_alignParentLeft="false"
@@ -1597,170 +1598,333 @@
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
-
-
-
-
-
-
-
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowieniePrzedmiot"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Przedmiot zamówienia:"
-            android:clickable="true"
-            android:onClick="chowanieZamowieniePrzedmiot"
-            android:id="@+id/textViewZamowieniePrzedmiotLabel"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
             android:layout_below="@+id/card_viewSzczegolyZamowienia"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:onClick="chowanieZamowieniePrzedmiot">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowieniePrzedmiot"
-            android:id="@+id/textViewZamowieniePrzedmiot"
-            android:layout_below="@+id/textViewZamowieniePrzedmiotLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Przedmiot zamówienia:"
+                    android:id="@+id/textViewZamowieniePrzedmiotLabel"
+                    android:layout_below="@+id/card_viewSzczegolyZamowienia"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowieniePrzedmiot"
+                    android:id="@+id/textViewZamowieniePrzedmiot"
+                    android:layout_below="@+id/textViewZamowieniePrzedmiotLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieUprawnienia"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Uprawnienia:"
-            android:clickable="true"
-            android:onClick="chowanieZamowienieUprawnienie"
-            android:id="@+id/textViewZamowienieUprawnienieLabel"
-            android:layout_below="@+id/textViewZamowieniePrzedmiot"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowieniePrzedmiot"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:onClick="chowanieZamowienieUprawnienie">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieUprawnienie"
-            android:id="@+id/textViewZamowienieUprawnienie"
-            android:layout_below="@+id/textViewZamowienieUprawnienieLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Uprawnienia:"
+                    android:id="@+id/textViewZamowienieUprawnienieLabel"
+                    android:layout_below="@+id/textViewZamowieniePrzedmiot"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieUprawnienie"
+                    android:id="@+id/textViewZamowienieUprawnienie"
+                    android:layout_below="@+id/textViewZamowienieUprawnienieLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieWiedza"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Wiedza i doświadczenie:"
-            android:clickable="true"
-            android:onClick="chowanieZamowienieWiedza"
-            android:id="@+id/textViewZamowienieWiedzaLabel"
-            android:layout_below="@+id/textViewZamowienieUprawnienie"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieUprawnienia"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:onClick="chowanieZamowienieWiedza">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieWiedza"
-            android:id="@+id/textViewZamowienieWiedza"
-            android:layout_below="@+id/textViewZamowienieWiedzaLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wiedza i doświadczenie:"
+                    android:id="@+id/textViewZamowienieWiedzaLabel"
+                    android:layout_below="@+id/textViewZamowienieUprawnienie"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_margin="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieWiedza"
+                    android:id="@+id/textViewZamowienieWiedza"
+                    android:layout_below="@+id/textViewZamowienieWiedzaLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowieniePotencjal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Potencjał techniczny:"
-            android:clickable="true"
-            android:onClick="chowanieZamowieniePotencjal"
-            android:id="@+id/textViewZamowieniePotencjalLabel"
-            android:layout_below="@+id/textViewZamowienieWiedza"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieWiedza"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:onClick="chowanieZamowieniePotencjal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowieniePotencjal"
-            android:id="@+id/textViewZamowieniePotencjal"
-            android:layout_below="@+id/textViewZamowieniePotencjalLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Potencjał techniczny:"
+                    android:id="@+id/textViewZamowieniePotencjalLabel"
+                    android:layout_below="@+id/textViewZamowienieWiedza"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowieniePotencjal"
+                    android:id="@+id/textViewZamowieniePotencjal"
+                    android:layout_below="@+id/textViewZamowieniePotencjalLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieOsobyZdolne"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Osoby zdolne do wykonania zamówienia:"
-            android:clickable="true"
-            android:onClick="chowanieZamowienieOsobyZdolne"
-            android:id="@+id/textViewZamowienieOsobyZdolneLabel"
-            android:layout_below="@+id/textViewZamowieniePotencjal"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowieniePotencjal"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:onClick="chowanieZamowienieOsobyZdolne">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieOsobyZdolne"
-            android:id="@+id/textViewZamowienieOsobyZdolne"
-            android:layout_below="@+id/textViewZamowienieOsobyZdolneLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Osoby zdolne do wykonania zamówienia:"
+                    android:id="@+id/textViewZamowienieOsobyZdolneLabel"
+                    android:layout_below="@+id/textViewZamowieniePotencjal"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieOsobyZdolne"
+                    android:id="@+id/textViewZamowienieOsobyZdolne"
+                    android:layout_below="@+id/textViewZamowienieOsobyZdolneLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_viewZamowienieSytuacjaEkonomiczna"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sytuacja ekonomiczna i finansowa wykonawcy:"
-            android:clickable="true"
-            android:onClick="chowanieZamowienieSytuacjaEkonomiczna"
-            android:id="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
-            android:layout_below="@+id/textViewZamowienieOsobyZdolne"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            card_view:cardBackgroundColor="@color/background_material_light"
+            card_view:cardCornerRadius="15dp"
+            card_view:cardElevation="5dp"
+            android:layout_below="@+id/card_viewZamowienieOsobyZdolne"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:textColor="#212121"
-            android:textStyle="bold"
-            android:textSize="16sp" />
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#B3E5FC"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:onClick="chowanieZamowienieSytuacjaEkonomiczna">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ZamowienieSytuacjaEkonomiczna"
-            android:id="@+id/textViewZamowienieSytuacjaEkonomiczna"
-            android:layout_below="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:textColor="#727272"
-            android:layout_marginTop="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sytuacja ekonomiczna i finansowa wykonawcy:"
+                    android:id="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
+                    android:layout_below="@+id/textViewZamowienieOsobyZdolne"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ZamowienieSytuacjaEkonomiczna"
+                    android:id="@+id/textViewZamowienieSytuacjaEkonomiczna"
+                    android:layout_below="@+id/textViewZamowienieSytuacjaEkonomicznaLabel"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="false"
+                    android:textColor="#727272"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+
+
+
     </RelativeLayout>
 </ScrollView>
