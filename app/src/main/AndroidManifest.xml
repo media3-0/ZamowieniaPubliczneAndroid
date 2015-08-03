@@ -3,7 +3,7 @@
     package="pl.media30.zamowieniapubliczne" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -45,6 +45,10 @@
         <activity
             android:name=".WykresyActivity"
             android:label="@string/title_activity_wykresy" >
+        </activity>
+        <activity
+            android:name=".UlubioneActivity"
+            android:label="@string/title_activity_ulubione" >
         </activity>
     </application>
 

@@ -1,6 +1,5 @@
 package pl.media30.zamowieniapubliczne.Adapters;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -19,8 +18,11 @@ import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 import pl.media30.zamowieniapubliczne.R;
 import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private List<DataObjectClass> mDataset;
+/**
+ * Created by Adrian on 2015-08-03.
+ */
+public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHolder> {
+    private List<ObjectClass> mDataset;
     static int position;
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -33,22 +35,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
             itemView.setOnClickListener((View.OnClickListener) this);
             this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
-            this.textViewCity = (TextView) itemView.findViewById(R.id.textViewCity);
+            //this.textViewCity = (TextView) itemView.findViewById(R.id.textViewCity);
         }
 
 
         @Override
         public void onClick(View view) {
-
+/**
             Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
-            DataObjectClass dataObjectClass = mDataset.get(getAdapterPosition());
-            String objToStr = new Gson().toJson(dataObjectClass);
+            o
+            String objToStr = new Gson().toJson(objectClass);
             Bundle objClass = new Bundle();
             objClass.putString("myObject", objToStr);
             intent.putExtras(objClass);
             view.getContext().startActivity(intent);
             MyAdapter.position = getAdapterPosition();
+/*/
+            Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
+           // view.getContext().startActivity(intent);
+           // MyAdapter.position = getAdapterPosition();
 
         }
 
@@ -58,15 +65,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
 
-    public MyAdapter(List<DataObjectClass> myDataset) {
+    public UlubioneAdapter(List<ObjectClass> myDataset) {
         mDataset = myDataset;
     }
 
 
 
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent,
+                                         int viewType) {
 
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.cards_layout, parent, false);
@@ -84,7 +91,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         TextView textViewCity = holder.textViewCity;
 
         textViewName.setText("\n" + mDataset.get(position).dataClass.nazwa + "\n");
-        textViewCity.setText((position + 1) + ". " + mDataset.get(position).dataClass.zamawiajacy_miejscowosc);
+//        textViewCity.setText((position + 1) + ". " + mDataset.get(position).dataClass.zamawiajacy_miejscowosc);
     }
 
     public int getPos() {

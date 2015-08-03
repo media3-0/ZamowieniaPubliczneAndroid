@@ -101,6 +101,11 @@ public class MainActivity extends AppCompatActivity  {
             startActivity(intent);
             return true;
         }
+        if (id == R.id.show) {
+            Intent intent = new Intent(getApplicationContext(), UlubioneActivity.class);
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
