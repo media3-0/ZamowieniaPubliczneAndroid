@@ -112,6 +112,129 @@ public class ZamowienieActivityFragment extends Activity
                         }
                     });
 
+                    TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
+                    zamawiajacyNazwa.setText(baseClass.objectClass.dataClass.zamawiajacy_nazwa.toString());
+
+                    TextView zamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
+                    zamawiajacyID.setText(baseClass.objectClass.dataClass.zamawiajacy_id.toString());
+
+                    TextView zamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
+                    zamawiajacyRodzaj.setText(baseClass.objectClass.dataClass.zamawiajacy_rodzaj.toString());
+
+                    TextView zamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
+                    zamawiajacyRegon.setText(baseClass.objectClass.dataClass.zamawiajacy_regon.toString());
+
+
+
+
+
+
+                    TextView zamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
+                    zamawiajacyWojewodztwo.setText(baseClass.objectClass.dataClass.zamawiajacy_wojewodztwo.toString());
+
+                    TextView zamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
+                    zamawiajacyIDWojewodztwa.setText(baseClass.objectClass.dataClass.wojewodztwo_id.toString());
+
+                    TextView zamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
+                    zamawiajacyIDPowiatu.setText(baseClass.objectClass.dataClass.powiat_id.toString());
+
+                    TextView zamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
+                    zamawiajacyIDGminy.setText(baseClass.objectClass.dataClass.gmina_id.toString());
+
+                    TextView zamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
+                    zamawiajacyMiejscowosc.setText(baseClass.objectClass.dataClass.zamawiajacy_miejscowosc.toString());
+
+                    TextView zamawiajacyKodPocztowy = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowy);
+                    zamawiajacyKodPocztowy.setText(baseClass.objectClass.dataClass.zamawiajacy_kod_poczt.toString());
+
+                    TextView zamawiajacyIDKoduPocztowego = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowego);
+                    zamawiajacyIDKoduPocztowego.setText(baseClass.objectClass.dataClass.zamawiajacyKod_pocztowy_id.toString());
+
+                    TextView zamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
+                    zamawiajacyUlica.setText(baseClass.objectClass.dataClass.zamawiajacy_ulica.toString());
+
+                    TextView zamawiajacyNrDomu = (TextView) findViewById(R.id.textViewZamawiajacyNrDomu);
+                    zamawiajacyNrDomu.setText(baseClass.objectClass.dataClass.zamawiajacy_nr_domu.toString());
+
+                    TextView zamawiajacyNrMIeszkania = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkania);
+                    zamawiajacyNrMIeszkania.setText(baseClass.objectClass.dataClass.zamawiajacy_nr_miesz.toString());
+
+
+
+
+
+                    TextView zamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
+                    zamawiajacyEmail.setText(baseClass.objectClass.dataClass.zamawiajacy_email.toString());
+
+                    TextView zamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
+                    zamawiajacyTelefon.setText(baseClass.objectClass.dataClass.zamawiajacy_tel.toString());
+
+                    TextView zamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
+                    zamawiajacyFax.setText(baseClass.objectClass.dataClass.zamawiajacy_fax.toString());
+
+                    TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
+                    zamawiajacyWWW.setText(baseClass.objectClass.dataClass.zamawiajacy_www.toString());
+
+
+
+
+                    TextView zamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
+                    zamowienieNazwa.setText(baseClass.objectClass.dataClass.nazwa.toString());
+
+                    TextView zamowienieTyp = (TextView) findViewById(R.id.textViewZamowienieTyp);
+                    zamowienieTyp.setText(baseClass.objectClass.dataClass.typyNazwa.toString());
+
+                    TextView zamowienieTypSymbol = (TextView) findViewById(R.id.textViewZamowienieTypSymbol);
+                    zamowienieTypSymbol.setText(baseClass.objectClass.dataClass.typySymbol.toString());
+
+                    TextView zamowienieRodzaj = (TextView) findViewById(R.id.textViewZamowienieRodzaj);
+                    zamowienieRodzaj.setText(baseClass.objectClass.dataClass.rodzajeNazwa.toString());
+
+                    TextView zamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
+                    zamowienieDataPublikacji.setText(baseClass.objectClass.dataClass.data_publikacji.toString());
+
+                    TextView zamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
+                    if(tryParseInt(baseClass.objectClass.dataClass.zamowienie_ue))
+                    {
+                        switch(Integer.parseInt(baseClass.objectClass.dataClass.zamowienie_ue))
+                        {
+                            case 0:
+                                zamowienieUE.setText("Nie");
+                                break;
+                            case 1:
+                                zamowienieUE.setText("Tak");
+                                break;
+                            default:
+                                zamowienieUE.setText(baseClass.objectClass.dataClass.zamowienie_ue.toString());
+                        }
+                    }
+                    else
+                    {
+                        zamowienieUE.setText(baseClass.objectClass.dataClass.zamowienie_ue.toString());
+                    }
+
+                    DecimalFormat df = new DecimalFormat("#");
+                    df.setMaximumFractionDigits(2);
+
+                    TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
+                    double zamowienieSzacowanaWartoscD = (baseClass.objectClass.dataClass.wartosc_szacowana);
+                    zamowienieSzacowanaWartosc.setText(df.format(zamowienieSzacowanaWartoscD) + " PLN");
+
+                    TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
+                    double zamowienieCenaWybranejOfertyD = (baseClass.objectClass.dataClass.wartosc_cena);
+                    zamowienieCenaWybranejOferty.setText(df.format(zamowienieCenaWybranejOfertyD) + " PLN");
+
+                    TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
+                    double zamowienieNajtanszaOfertaD = (Double.parseDouble(baseClass.objectClass.dataClass.wartosc_cena_min));
+                    zamowienieNajtanszaOferta.setText(df.format(zamowienieNajtanszaOfertaD) + " PLN");
+
+                    TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
+                    double zamowienieNajdrozszaOfertaD = (baseClass.objectClass.dataClass.wartosc_cena_max);
+                    zamowienieNajdrozszaOferta.setText(df.format(zamowienieNajdrozszaOfertaD) + " PLN");
+
+
+
+
                     try
                     {
                         TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
@@ -260,17 +383,7 @@ public class ZamowienieActivityFragment extends Activity
 
 //REGION IDENTYFIKATORY ZAMAWIAJACEGO
 
-        TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
-        zamawiajacyNazwa.setText(myObject.dataClass.zamawiajacy_nazwa.toString());
 
-        TextView zamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
-        zamawiajacyID.setText(myObject.dataClass.zamawiajacy_id.toString());
-
-        TextView zamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
-        zamawiajacyRodzaj.setText(myObject.dataClass.zamawiajacy_rodzaj.toString());
-
-        TextView zamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
-        zamawiajacyRegon.setText(myObject.dataClass.zamawiajacy_regon.toString());
 
         //TextView textViewZamawiajacyNazwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNazwaLabel);
         //textViewZamawiajacyNazwaLabel.setVisibility(View.GONE);
@@ -303,35 +416,7 @@ public class ZamowienieActivityFragment extends Activity
 //ENDREGION
 //REGION DANE ADRESOWE ZAMAWIAJACEGO
 
-        TextView zamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
-        zamawiajacyWojewodztwo.setText(myObject.dataClass.zamawiajacy_wojewodztwo.toString());
 
-        TextView zamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
-        zamawiajacyIDWojewodztwa.setText(myObject.dataClass.wojewodztwo_id.toString());
-
-        TextView zamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
-        zamawiajacyIDPowiatu.setText(myObject.dataClass.powiat_id.toString());
-
-        TextView zamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
-        zamawiajacyIDGminy.setText(myObject.dataClass.gmina_id.toString());
-
-        TextView zamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
-        zamawiajacyMiejscowosc.setText(myObject.dataClass.zamawiajacy_miejscowosc.toString());
-
-        TextView zamawiajacyKodPocztowy = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowy);
-        zamawiajacyKodPocztowy.setText(myObject.dataClass.zamawiajacy_kod_poczt.toString());
-
-        TextView zamawiajacyIDKoduPocztowego = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowego);
-        zamawiajacyIDKoduPocztowego.setText(myObject.dataClass.zamawiajacyKod_pocztowy_id.toString());
-
-        TextView zamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
-        zamawiajacyUlica.setText(myObject.dataClass.zamawiajacy_ulica.toString());
-
-        TextView zamawiajacyNrDomu = (TextView) findViewById(R.id.textViewZamawiajacyNrDomu);
-        zamawiajacyNrDomu.setText(myObject.dataClass.zamawiajacy_nr_domu.toString());
-
-        TextView zamawiajacyNrMIeszkania = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkania);
-        zamawiajacyNrMIeszkania.setText(myObject.dataClass.zamawiajacy_nr_miesz.toString());
 
         //TextView textViewZamawiajacyWojewodztwoLabel = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwoLabel);
         //textViewZamawiajacyWojewodztwoLabel.setVisibility(View.GONE);
@@ -406,17 +491,7 @@ public class ZamowienieActivityFragment extends Activity
 //ENDREGION
 //REGION DANE KONTAKTOWE ZAMAWIAJACEGO
 
-        TextView zamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
-        zamawiajacyEmail.setText(myObject.dataClass.zamawiajacy_email.toString());
 
-        TextView zamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
-        zamawiajacyTelefon.setText(myObject.dataClass.zamawiajacy_tel.toString());
-
-        TextView zamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
-        zamawiajacyFax.setText(myObject.dataClass.zamawiajacy_fax.toString());
-
-        TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
-        zamawiajacyWWW.setText(myObject.dataClass.zamawiajacy_www.toString());
 
         //TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
         //textViewZamawiajacyEmailLabel.setVisibility(View.GONE);
@@ -449,59 +524,7 @@ public class ZamowienieActivityFragment extends Activity
 //ENDREGION
 //REGION INFORMACJE O ZAMOWIENIU
 
-        TextView zamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
-        zamowienieNazwa.setText(myObject.dataClass.nazwa.toString());
 
-        TextView zamowienieTyp = (TextView) findViewById(R.id.textViewZamowienieTyp);
-        zamowienieTyp.setText(myObject.dataClass.typyNazwa.toString());
-
-        TextView zamowienieTypSymbol = (TextView) findViewById(R.id.textViewZamowienieTypSymbol);
-        zamowienieTypSymbol.setText(myObject.dataClass.typySymbol.toString());
-
-        TextView zamowienieRodzaj = (TextView) findViewById(R.id.textViewZamowienieRodzaj);
-        zamowienieRodzaj.setText(myObject.dataClass.rodzajeNazwa.toString());
-
-        TextView zamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
-        zamowienieDataPublikacji.setText(myObject.dataClass.data_publikacji.toString());
-
-        TextView zamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
-        if(tryParseInt(myObject.dataClass.zamowienie_ue))
-        {
-            switch(Integer.parseInt(myObject.dataClass.zamowienie_ue))
-            {
-                case 0:
-                    zamowienieUE.setText("Nie");
-                    break;
-                case 1:
-                    zamowienieUE.setText("Tak");
-                    break;
-                default:
-                    zamowienieUE.setText(myObject.dataClass.zamowienie_ue.toString());
-            }
-        }
-        else
-        {
-            zamowienieUE.setText(myObject.dataClass.zamowienie_ue.toString());
-        }
-
-        DecimalFormat df = new DecimalFormat("#");
-        df.setMaximumFractionDigits(2);
-
-        TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
-        double zamowienieSzacowanaWartoscD = (myObject.dataClass.wartosc_szacowana);
-        zamowienieSzacowanaWartosc.setText(df.format(zamowienieSzacowanaWartoscD) + " PLN");
-
-        TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
-        double zamowienieCenaWybranejOfertyD = (myObject.dataClass.wartosc_cena);
-        zamowienieCenaWybranejOferty.setText(df.format(zamowienieCenaWybranejOfertyD) + " PLN");
-
-        TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
-        double zamowienieNajtanszaOfertaD = (Double.parseDouble(myObject.dataClass.wartosc_cena_min));
-        zamowienieNajtanszaOferta.setText(df.format(zamowienieNajtanszaOfertaD) + " PLN");
-
-        TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
-        double zamowienieNajdrozszaOfertaD = myObject.dataClass.wartosc_cena_max;
-        zamowienieNajdrozszaOferta.setText(df.format(zamowienieNajdrozszaOfertaD) + " PLN");
 
         //TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
         //textViewZamowienieNazwaLabel.setVisibility(View.GONE);
