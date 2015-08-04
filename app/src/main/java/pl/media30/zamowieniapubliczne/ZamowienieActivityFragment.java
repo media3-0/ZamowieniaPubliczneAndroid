@@ -3,6 +3,7 @@ package pl.media30.zamowieniapubliczne;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,12 +14,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.text.DecimalFormat;
+import java.util.List;
 
 import com.google.gson.Gson;
 
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -29,8 +34,7 @@ import static java.lang.Integer.parseInt;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ZamowienieActivityFragment extends Activity
-{
+public class ZamowienieActivityFragment extends Activity {
     TextView textViewZamawiajacyTelefon;
     TextView textViewZamawiajacyWWW;
     TextView textViewZamawiajacyEmail;
@@ -44,36 +48,54 @@ public class ZamowienieActivityFragment extends Activity
     boolean ulubione = false;
     int id;
 
-    public boolean tryParseInt(String value)
-    {
-        try
-        {
+    public boolean writeRecordsToFile(List<ObjectClass> records) {
+        FileOutputStream fos;
+        ObjectOutputStream oos = null;
+        try {
+            fos = getApplicationContext().openFileOutput("media30", Context.MODE_PRIVATE);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(records);
+            oos.close();
+            return true;
+        } catch (Exception e) {
+            Log.e("Dont work", "Cant save records" + e.getMessage());
+            return false;
+        } finally {
+            if (oos != null)
+                try {
+                    oos.close();
+                } catch (Exception e) {
+                    Log.e("dont work", "Error while closing stream " + e.getMessage());
+                }
+        }
+    }
+
+    public boolean tryParseInt(String value) {
+        try {
             Integer.parseInt(value);
             return true;
-        }
-        catch(NumberFormatException nfe)
-        {
+        } catch (NumberFormatException nfe) {
             return false;
         }
     }
 
-    public ZamowienieActivityFragment(){}
+    public ZamowienieActivityFragment() {
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_zamowienie);
         String jsonMyObject = "";
         Bundle extras = getIntent().getExtras();
-        if (extras != null)
-        {
+        if (extras != null) {
             jsonMyObject = extras.getString("myObject");
         }
         DataObjectClass myObject = new Gson().fromJson(jsonMyObject, DataObjectClass.class);
         int stronaUlub = RepositoryClass.getInstance().getStronaUlub();
-        if (stronaUlub>=0){
+        if (stronaUlub >= 0) {
             id = parseInt(RepositoryClass.getInstance().getListaUlubionych().get(stronaUlub).dataClass.id);
-        }else {
+        } else {
             id = parseInt(myObject.id);
         }
         button = (Button) findViewById(R.id.button2);
@@ -81,276 +103,230 @@ public class ZamowienieActivityFragment extends Activity
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         final ProgressDialog dialog = ProgressDialog.show(this, "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
-        service.singleOrder(id, new Callback<BaseClass>()
-            {
-                @Override
-                public void success(final BaseClass baseClass, Response response)
-                {
-                    for(int i =0;i<RepositoryClass.getInstance().getListaUlubionych().size();i++){
-                        if(RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)){
-                            button.setText("Jest w ulub.");
-                            ulubione=true;
-                            break;
+        service.singleOrder(id, new Callback<BaseClass>() {
+                    @Override
+                    public void success(final BaseClass baseClass, Response response) {
+                        for (int i = 0; i < RepositoryClass.getInstance().getListaUlubionych().size(); i++) {
+                            if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)) {
+                                button.setText("Jest w ulub.");
+                                ulubione = true;
+                                break;
+                            }
                         }
-                    }
-                    if (ulubione==false)
-                        button.setText("Dodaj do ulub.");
+                        if (ulubione == false)
+                            button.setText("Dodaj do ulub.");
 
-                    button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            boolean usunieto = false;
-                            for (int i = 0; i < RepositoryClass.getInstance().getListaUlubionych().size(); i++) {
-                                if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)) {
-                                    RepositoryClass.getInstance().removeListaUlubionych(i);
-                                    usunieto = true;
-                                    button.setText("Dodaj do ulub.");
-                                    Log.d("ZAF", "usuwanie z ulub.");
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                boolean usunieto = false;
+                                for (int i = 0; i < RepositoryClass.getInstance().getListaUlubionych().size(); i++) {
+                                    if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)) {
+                                        RepositoryClass.getInstance().removeListaUlubionych(i);
+                                        usunieto = true;
+                                        button.setText("Dodaj do ulub.");
+                                        Log.d("ZAF", "usuwanie z ulub.");
 
-                                    break;
+                                        break;
+                                    }
                                 }
+                                if (usunieto == false) {
+                                    RepositoryClass.getInstance().addListaUlubionych(baseClass.objectClass);
+                                    Toast.makeText(getApplicationContext(), "Dodano do ulubionych", Toast.LENGTH_LONG);
+                                    button.setText("Usun z ulub.");
+                                    Log.d("ZAF", "Dodano do listy");
+                                }
+                                try {
+                                    writeRecordsToFile(RepositoryClass.getInstance().getListaUlubionych());
+                                }catch(Exception e){
+
+                                }
+
                             }
-                            if (usunieto == false) {
-                                RepositoryClass.getInstance().addListaUlubionych(baseClass.objectClass);
-                                Toast.makeText(getApplicationContext(), "Dodano do ulubionych", Toast.LENGTH_LONG);
-                                button.setText("Usun z ulub.");
-                                Log.d("ZAF", "Dodano do listy");
+                        });
+
+                        TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
+                        zamawiajacyNazwa.setText(baseClass.objectClass.dataClass.zamawiajacy_nazwa.toString());
+
+                        TextView zamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
+                        zamawiajacyID.setText(baseClass.objectClass.dataClass.zamawiajacy_id.toString());
+
+                        TextView zamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
+                        zamawiajacyRodzaj.setText(baseClass.objectClass.dataClass.zamawiajacy_rodzaj.toString());
+
+                        TextView zamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
+                        zamawiajacyRegon.setText(baseClass.objectClass.dataClass.zamawiajacy_regon.toString());
+
+
+                        TextView zamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
+                        zamawiajacyWojewodztwo.setText(baseClass.objectClass.dataClass.zamawiajacy_wojewodztwo.toString());
+
+                        TextView zamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
+                        zamawiajacyIDWojewodztwa.setText(baseClass.objectClass.dataClass.wojewodztwo_id.toString());
+
+                        TextView zamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
+                        zamawiajacyIDPowiatu.setText(baseClass.objectClass.dataClass.powiat_id.toString());
+
+                        TextView zamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
+                        zamawiajacyIDGminy.setText(baseClass.objectClass.dataClass.gmina_id.toString());
+
+                        TextView zamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
+                        zamawiajacyMiejscowosc.setText(baseClass.objectClass.dataClass.zamawiajacy_miejscowosc.toString());
+
+                        TextView zamawiajacyKodPocztowy = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowy);
+                        zamawiajacyKodPocztowy.setText(baseClass.objectClass.dataClass.zamawiajacy_kod_poczt.toString());
+
+                        TextView zamawiajacyIDKoduPocztowego = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowego);
+                        zamawiajacyIDKoduPocztowego.setText(baseClass.objectClass.dataClass.zamawiajacyKod_pocztowy_id.toString());
+
+                        TextView zamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
+                        zamawiajacyUlica.setText(baseClass.objectClass.dataClass.zamawiajacy_ulica.toString());
+
+                        TextView zamawiajacyNrDomu = (TextView) findViewById(R.id.textViewZamawiajacyNrDomu);
+                        zamawiajacyNrDomu.setText(baseClass.objectClass.dataClass.zamawiajacy_nr_domu.toString());
+
+                        TextView zamawiajacyNrMIeszkania = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkania);
+                        zamawiajacyNrMIeszkania.setText(baseClass.objectClass.dataClass.zamawiajacy_nr_miesz.toString());
+
+
+                        TextView zamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
+                        zamawiajacyEmail.setText(baseClass.objectClass.dataClass.zamawiajacy_email.toString());
+                        mail = baseClass.objectClass.dataClass.zamawiajacy_email.toString().trim();
+
+                        TextView zamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
+                        zamawiajacyTelefon.setText(baseClass.objectClass.dataClass.zamawiajacy_tel.toString());
+                        telefon = baseClass.objectClass.dataClass.zamawiajacy_tel.toString().trim();
+
+                        TextView zamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
+                        zamawiajacyFax.setText(baseClass.objectClass.dataClass.zamawiajacy_fax.toString());
+
+                        TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
+                        zamawiajacyWWW.setText(baseClass.objectClass.dataClass.zamawiajacy_www.toString());
+                        www = baseClass.objectClass.dataClass.zamawiajacy_www.toString().trim();
+
+
+                        TextView zamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
+                        zamowienieNazwa.setText(baseClass.objectClass.dataClass.nazwa.toString());
+
+                        TextView zamowienieTyp = (TextView) findViewById(R.id.textViewZamowienieTyp);
+                        zamowienieTyp.setText(baseClass.objectClass.dataClass.typyNazwa.toString());
+
+                        TextView zamowienieTypSymbol = (TextView) findViewById(R.id.textViewZamowienieTypSymbol);
+                        zamowienieTypSymbol.setText(baseClass.objectClass.dataClass.typySymbol.toString());
+
+                        TextView zamowienieRodzaj = (TextView) findViewById(R.id.textViewZamowienieRodzaj);
+                        zamowienieRodzaj.setText(baseClass.objectClass.dataClass.rodzajeNazwa.toString());
+
+                        TextView zamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
+                        zamowienieDataPublikacji.setText(baseClass.objectClass.dataClass.data_publikacji.toString());
+
+                        TextView zamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
+                        if (tryParseInt(baseClass.objectClass.dataClass.zamowienie_ue)) {
+                            switch (Integer.parseInt(baseClass.objectClass.dataClass.zamowienie_ue)) {
+                                case 0:
+                                    zamowienieUE.setText("Nie");
+                                    break;
+                                case 1:
+                                    zamowienieUE.setText("Tak");
+                                    break;
+                                default:
+                                    zamowienieUE.setText(baseClass.objectClass.dataClass.zamowienie_ue.toString());
                             }
+                        } else {
+                            zamowienieUE.setText(baseClass.objectClass.dataClass.zamowienie_ue.toString());
                         }
-                    });
 
-                    TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
-                    zamawiajacyNazwa.setText(baseClass.objectClass.dataClass.zamawiajacy_nazwa.toString());
+                        DecimalFormat df = new DecimalFormat("#");
+                        df.setMaximumFractionDigits(2);
 
-                    TextView zamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
-                    zamawiajacyID.setText(baseClass.objectClass.dataClass.zamawiajacy_id.toString());
+                        TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
+                        double zamowienieSzacowanaWartoscD = (baseClass.objectClass.dataClass.wartosc_szacowana);
+                        zamowienieSzacowanaWartosc.setText(df.format(zamowienieSzacowanaWartoscD) + " PLN");
 
-                    TextView zamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
-                    zamawiajacyRodzaj.setText(baseClass.objectClass.dataClass.zamawiajacy_rodzaj.toString());
+                        TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
+                        double zamowienieCenaWybranejOfertyD = (baseClass.objectClass.dataClass.wartosc_cena);
+                        zamowienieCenaWybranejOferty.setText(df.format(zamowienieCenaWybranejOfertyD) + " PLN");
 
-                    TextView zamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
-                    zamawiajacyRegon.setText(baseClass.objectClass.dataClass.zamawiajacy_regon.toString());
+                        TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
+                        double zamowienieNajtanszaOfertaD = (Double.parseDouble(baseClass.objectClass.dataClass.wartosc_cena_min));
+                        zamowienieNajtanszaOferta.setText(df.format(zamowienieNajtanszaOfertaD) + " PLN");
 
-
-
-
-
-
-                    TextView zamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
-                    zamawiajacyWojewodztwo.setText(baseClass.objectClass.dataClass.zamawiajacy_wojewodztwo.toString());
-
-                    TextView zamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
-                    zamawiajacyIDWojewodztwa.setText(baseClass.objectClass.dataClass.wojewodztwo_id.toString());
-
-                    TextView zamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
-                    zamawiajacyIDPowiatu.setText(baseClass.objectClass.dataClass.powiat_id.toString());
-
-                    TextView zamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
-                    zamawiajacyIDGminy.setText(baseClass.objectClass.dataClass.gmina_id.toString());
-
-                    TextView zamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
-                    zamawiajacyMiejscowosc.setText(baseClass.objectClass.dataClass.zamawiajacy_miejscowosc.toString());
-
-                    TextView zamawiajacyKodPocztowy = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowy);
-                    zamawiajacyKodPocztowy.setText(baseClass.objectClass.dataClass.zamawiajacy_kod_poczt.toString());
-
-                    TextView zamawiajacyIDKoduPocztowego = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowego);
-                    zamawiajacyIDKoduPocztowego.setText(baseClass.objectClass.dataClass.zamawiajacyKod_pocztowy_id.toString());
-
-                    TextView zamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
-                    zamawiajacyUlica.setText(baseClass.objectClass.dataClass.zamawiajacy_ulica.toString());
-
-                    TextView zamawiajacyNrDomu = (TextView) findViewById(R.id.textViewZamawiajacyNrDomu);
-                    zamawiajacyNrDomu.setText(baseClass.objectClass.dataClass.zamawiajacy_nr_domu.toString());
-
-                    TextView zamawiajacyNrMIeszkania = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkania);
-                    zamawiajacyNrMIeszkania.setText(baseClass.objectClass.dataClass.zamawiajacy_nr_miesz.toString());
+                        TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
+                        double zamowienieNajdrozszaOfertaD = (baseClass.objectClass.dataClass.wartosc_cena_max);
+                        zamowienieNajdrozszaOferta.setText(df.format(zamowienieNajdrozszaOfertaD) + " PLN");
 
 
-
-
-
-                    TextView zamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
-                    zamawiajacyEmail.setText(baseClass.objectClass.dataClass.zamawiajacy_email.toString());
-                    mail = baseClass.objectClass.dataClass.zamawiajacy_email.toString().trim();
-
-                    TextView zamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
-                    zamawiajacyTelefon.setText(baseClass.objectClass.dataClass.zamawiajacy_tel.toString());
-                    telefon = baseClass.objectClass.dataClass.zamawiajacy_tel.toString().trim();
-
-                    TextView zamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
-                    zamawiajacyFax.setText(baseClass.objectClass.dataClass.zamawiajacy_fax.toString());
-
-                    TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
-                    zamawiajacyWWW.setText(baseClass.objectClass.dataClass.zamawiajacy_www.toString());
-                    www = baseClass.objectClass.dataClass.zamawiajacy_www.toString().trim();
-
-
-
-                    TextView zamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
-                    zamowienieNazwa.setText(baseClass.objectClass.dataClass.nazwa.toString());
-
-                    TextView zamowienieTyp = (TextView) findViewById(R.id.textViewZamowienieTyp);
-                    zamowienieTyp.setText(baseClass.objectClass.dataClass.typyNazwa.toString());
-
-                    TextView zamowienieTypSymbol = (TextView) findViewById(R.id.textViewZamowienieTypSymbol);
-                    zamowienieTypSymbol.setText(baseClass.objectClass.dataClass.typySymbol.toString());
-
-                    TextView zamowienieRodzaj = (TextView) findViewById(R.id.textViewZamowienieRodzaj);
-                    zamowienieRodzaj.setText(baseClass.objectClass.dataClass.rodzajeNazwa.toString());
-
-                    TextView zamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
-                    zamowienieDataPublikacji.setText(baseClass.objectClass.dataClass.data_publikacji.toString());
-
-                    TextView zamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
-                    if(tryParseInt(baseClass.objectClass.dataClass.zamowienie_ue))
-                    {
-                        switch(Integer.parseInt(baseClass.objectClass.dataClass.zamowienie_ue))
-                        {
-                            case 0:
-                                zamowienieUE.setText("Nie");
-                                break;
-                            case 1:
-                                zamowienieUE.setText("Tak");
-                                break;
-                            default:
-                                zamowienieUE.setText(baseClass.objectClass.dataClass.zamowienie_ue.toString());
-                        }
-                    }
-                    else
-                    {
-                        zamowienieUE.setText(baseClass.objectClass.dataClass.zamowienie_ue.toString());
-                    }
-
-                    DecimalFormat df = new DecimalFormat("#");
-                    df.setMaximumFractionDigits(2);
-
-                    TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
-                    double zamowienieSzacowanaWartoscD = (baseClass.objectClass.dataClass.wartosc_szacowana);
-                    zamowienieSzacowanaWartosc.setText(df.format(zamowienieSzacowanaWartoscD) + " PLN");
-
-                    TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
-                    double zamowienieCenaWybranejOfertyD = (baseClass.objectClass.dataClass.wartosc_cena);
-                    zamowienieCenaWybranejOferty.setText(df.format(zamowienieCenaWybranejOfertyD) + " PLN");
-
-                    TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
-                    double zamowienieNajtanszaOfertaD = (Double.parseDouble(baseClass.objectClass.dataClass.wartosc_cena_min));
-                    zamowienieNajtanszaOferta.setText(df.format(zamowienieNajtanszaOfertaD) + " PLN");
-
-                    TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
-                    double zamowienieNajdrozszaOfertaD = (baseClass.objectClass.dataClass.wartosc_cena_max);
-                    zamowienieNajdrozszaOferta.setText(df.format(zamowienieNajdrozszaOfertaD) + " PLN");
-
-
-
-
-                    try
-                    {
-                        TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
-                        if (baseClass.objectClass.layers.detailsClass.przedmiot == "")
-                        {
+                        try {
+                            TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+                            if (baseClass.objectClass.layers.detailsClass.przedmiot == "") {
+                                zamowieniePrzedmiot.setText("Dane nie zostały wprowadzone");
+                            } else {
+                                zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
+                            }
+                        } catch (NullPointerException e) {
+                            TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
                             zamowieniePrzedmiot.setText("Dane nie zostały wprowadzone");
                         }
-                        else
-                        {
-                            zamowieniePrzedmiot.setText(baseClass.objectClass.layers.detailsClass.przedmiot.toString());
-                        }
-                    }
-                    catch(NullPointerException e)
-                    {
-                        TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
-                        zamowieniePrzedmiot.setText("Dane nie zostały wprowadzone");
-                    }
 
-                    try
-                    {
-                        TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
-                        if (baseClass.objectClass.layers.detailsClass.uprawnienie == "")
-                        {
+                        try {
+                            TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+                            if (baseClass.objectClass.layers.detailsClass.uprawnienie == "") {
+                                zamowienieUprawnienie.setText("Dane nie zostały wprowadzone");
+                            } else {
+                                zamowienieUprawnienie.setText(baseClass.objectClass.layers.detailsClass.uprawnienie.toString());
+                            }
+                        } catch (NullPointerException e) {
+                            TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
                             zamowienieUprawnienie.setText("Dane nie zostały wprowadzone");
                         }
-                        else
-                        {
-                            zamowienieUprawnienie.setText(baseClass.objectClass.layers.detailsClass.uprawnienie.toString());
-                        }
-                    }
-                    catch(NullPointerException e)
-                    {
-                        TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
-                        zamowienieUprawnienie.setText("Dane nie zostały wprowadzone");
-                    }
 
-                    try
-                    {
-                        TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
-                        if (baseClass.objectClass.layers.detailsClass.wiedza == "")
-                        {
+                        try {
+                            TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+                            if (baseClass.objectClass.layers.detailsClass.wiedza == "") {
+                                zamowienieWiedza.setText("Dane nie zostały wprowadzone");
+                            } else {
+                                zamowienieWiedza.setText(baseClass.objectClass.layers.detailsClass.wiedza.toString());
+                            }
+                        } catch (NullPointerException e) {
+                            TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
                             zamowienieWiedza.setText("Dane nie zostały wprowadzone");
                         }
-                        else
-                        {
-                            zamowienieWiedza.setText(baseClass.objectClass.layers.detailsClass.wiedza.toString());
-                        }
-                    }
-                    catch(NullPointerException e)
-                    {
-                        TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
-                        zamowienieWiedza.setText("Dane nie zostały wprowadzone");
-                    }
 
-                    try
-                    {
-                        TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
-                        if (baseClass.objectClass.layers.detailsClass.potencjal == "")
-                        {
+                        try {
+                            TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+                            if (baseClass.objectClass.layers.detailsClass.potencjal == "") {
+                                zamowieniePotencjal.setText("Dane nie zostały wprowadzone");
+                            } else {
+                                zamowieniePotencjal.setText(baseClass.objectClass.layers.detailsClass.potencjal.toString());
+                            }
+                        } catch (NullPointerException e) {
+                            TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
                             zamowieniePotencjal.setText("Dane nie zostały wprowadzone");
                         }
-                        else
-                        {
-                            zamowieniePotencjal.setText(baseClass.objectClass.layers.detailsClass.potencjal.toString());
-                        }
-                    }
-                    catch(NullPointerException e)
-                    {
-                        TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
-                        zamowieniePotencjal.setText("Dane nie zostały wprowadzone");
-                    }
 
-                    try
-                    {
-                        TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
-                        if (baseClass.objectClass.layers.detailsClass.osoby_zdolne == "")
-                        {
+                        try {
+                            TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+                            if (baseClass.objectClass.layers.detailsClass.osoby_zdolne == "") {
+                                zamowienieOsobyZdolne.setText("Dane nie zostały wprowadzone");
+                            } else {
+                                zamowienieOsobyZdolne.setText(baseClass.objectClass.layers.detailsClass.osoby_zdolne.toString());
+                            }
+                        } catch (NullPointerException e) {
+                            TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
                             zamowienieOsobyZdolne.setText("Dane nie zostały wprowadzone");
                         }
-                        else
-                        {
-                            zamowienieOsobyZdolne.setText(baseClass.objectClass.layers.detailsClass.osoby_zdolne.toString());
-                        }
-                    }
-                    catch(NullPointerException e)
-                    {
-                        TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
-                        zamowienieOsobyZdolne.setText("Dane nie zostały wprowadzone");
-                    }
 
-                    try
-                    {
-                        TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
-                        if (baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna == "")
-                        {
+                        try {
+                            TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+                            if (baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna == "") {
+                                zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
+                            } else {
+                                zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
+                            }
+                        } catch (NullPointerException e) {
+                            TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
                             zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
                         }
-                        else
-                        {
-                            zamowienieSytuacjaEkonomiczna.setText(baseClass.objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
-                        }
-                    }
-                    catch(NullPointerException e)
-                    {
-                        TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
-                        zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
-                    }
 /*
                     TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
                     zamowienieSzacowanaWartosc.setText
@@ -376,22 +352,20 @@ public class ZamowienieActivityFragment extends Activity
                             + " " +
                             baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
 */
-                    dialog.dismiss();
-                }
+                        dialog.dismiss();
+                    }
 
-                @Override
-                public void failure(RetrofitError error)
-                {
-                    Log.d("error: ", error.getMessage() + "");
-                    dialog.dismiss();
-                    Toast.makeText(getApplicationContext(), "BĹ‚Ä…d. SprawdĹş poĹ‚Ä…czenie z internetem", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Log.d("error: ", error.getMessage() + "");
+                        dialog.dismiss();
+                        Toast.makeText(getApplicationContext(), "BĹ‚Ä…d. SprawdĹş poĹ‚Ä…czenie z internetem", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
         );
         //koniec dostepu do layers
 
 //REGION IDENTYFIKATORY ZAMAWIAJACEGO
-
 
 
         //TextView textViewZamawiajacyNazwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNazwaLabel);
@@ -424,7 +398,6 @@ public class ZamowienieActivityFragment extends Activity
 
 //ENDREGION
 //REGION DANE ADRESOWE ZAMAWIAJACEGO
-
 
 
         //TextView textViewZamawiajacyWojewodztwoLabel = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwoLabel);
@@ -501,7 +474,6 @@ public class ZamowienieActivityFragment extends Activity
 //REGION DANE KONTAKTOWE ZAMAWIAJACEGO
 
 
-
         //TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
         //textViewZamawiajacyEmailLabel.setVisibility(View.GONE);
         //textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
@@ -532,7 +504,6 @@ public class ZamowienieActivityFragment extends Activity
 
 //ENDREGION
 //REGION INFORMACJE O ZAMOWIENIU
-
 
 
         //TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
@@ -576,7 +547,7 @@ public class ZamowienieActivityFragment extends Activity
         //textViewZamowienieUE.setVisibility(View.GONE);
         CardView cardViewZamowienieUE = (CardView) findViewById(R.id.card_viewZamowienieUE);
         cardViewZamowienieUE.setVisibility(View.GONE);
-        
+
         //TextView textViewZamowienieSzacowanaWartoscLabel = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartoscLabel);
         //textViewZamowienieSzacowanaWartoscLabel.setVisibility(View.GONE);
         //TextView textViewZamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
@@ -649,14 +620,13 @@ public class ZamowienieActivityFragment extends Activity
         textViewZamowienieSytuacjaEkonomiczna.setVisibility(View.GONE);
         CardView cardViewZamowienieSytuacjaEkonomiczna = (CardView) findViewById(R.id.card_viewZamowienieSytuacjaEkonomiczna);
         cardViewZamowienieSytuacjaEkonomiczna.setVisibility(View.GONE);
-        
+
 //ENDREGION
     }
 
 //REGION CHOWANIE 1 STOPIEN
-    
-    public void chowanieIdentyfikatory(View v)
-    {
+
+    public void chowanieIdentyfikatory(View v) {
         //TextView textViewZamawiajacyNazwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNazwaLabel);
         //textViewZamawiajacyNazwaLabel.setVisibility(textViewZamawiajacyNazwaLabel.isShown() ? View.GONE : View.VISIBLE);
         //TextView textViewZamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
@@ -686,8 +656,7 @@ public class ZamowienieActivityFragment extends Activity
         cardViewZamawiajacyRegon.setVisibility(cardViewZamawiajacyRegon.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieDaneAdresowe(View v)
-    {
+    public void chowanieDaneAdresowe(View v) {
         //TextView textViewZamawiajacyWojewodztwoLabel = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwoLabel);
         //textViewZamawiajacyWojewodztwoLabel.setVisibility(textViewZamawiajacyWojewodztwoLabel.isShown() ? View.GONE : View.VISIBLE);
         //TextView textViewZamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
@@ -759,8 +728,7 @@ public class ZamowienieActivityFragment extends Activity
         cardViewZamawiajacyNrMieszkania.setVisibility(cardViewZamawiajacyNrMieszkania.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieDaneKontaktowe(View v)
-    {
+    public void chowanieDaneKontaktowe(View v) {
         //TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
         //textViewZamawiajacyEmailLabel.setVisibility(textViewZamawiajacyEmailLabel.isShown() ? View.GONE : View.VISIBLE);
         //TextView textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
@@ -790,8 +758,7 @@ public class ZamowienieActivityFragment extends Activity
         cardViewZamawiajacyWWW.setVisibility(cardViewZamawiajacyWWW.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieInformacjeOZamowieniu(View v)
-    {
+    public void chowanieInformacjeOZamowieniu(View v) {
         //TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
         //textViewZamowienieNazwaLabel.setVisibility(textViewZamowienieNazwaLabel.isShown() ? View.GONE : View.VISIBLE);
         //TextView textViewZamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
@@ -862,9 +829,8 @@ public class ZamowienieActivityFragment extends Activity
         CardView cardViewZamowienieNajdrozszaOferta = (CardView) findViewById(R.id.card_viewZamowienieNajdrozszaOferta);
         cardViewZamowienieNajdrozszaOferta.setVisibility(cardViewZamowienieNajdrozszaOferta.isShown() ? View.GONE : View.VISIBLE);
     }
-    
-    public void chowanieSzczegolowZamowienia(View v)
-    {
+
+    public void chowanieSzczegolowZamowienia(View v) {
         TextView textViewZamowieniePrzedmiotLabel = (TextView) findViewById(R.id.textViewZamowieniePrzedmiotLabel);
         textViewZamowieniePrzedmiotLabel.setVisibility(textViewZamowieniePrzedmiotLabel.isShown() ? View.GONE : View.VISIBLE);
         TextView textViewZamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
@@ -911,48 +877,42 @@ public class ZamowienieActivityFragment extends Activity
 //ENDREGION
 //REGION CHOWANIE 2 STOPNIEN
 
-    public void chowanieZamowieniePrzedmiot(View v)
-    {
+    public void chowanieZamowieniePrzedmiot(View v) {
         TextView textViewZamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
         textViewZamowieniePrzedmiot.setVisibility(textViewZamowieniePrzedmiot.isShown() ? View.GONE : View.VISIBLE);
         //CardView cardViewZamowieniePrzedmiot = (CardView) findViewById(R.id.card_viewZamowieniePrzedmiot);
         //cardViewZamowieniePrzedmiot.setVisibility(cardViewZamowieniePrzedmiot.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieZamowienieUprawnienie(View v)
-    {
+    public void chowanieZamowienieUprawnienie(View v) {
         TextView textViewZamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
         textViewZamowienieUprawnienie.setVisibility(textViewZamowienieUprawnienie.isShown() ? View.GONE : View.VISIBLE);
         //CardView cardViewZamowienieUprawnienia = (CardView) findViewById(R.id.card_viewZamowienieUprawnienia);
         //cardViewZamowienieUprawnienia.setVisibility(cardViewZamowienieUprawnienia.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieZamowienieWiedza(View v)
-    {
+    public void chowanieZamowienieWiedza(View v) {
         TextView textViewZamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
         textViewZamowienieWiedza.setVisibility(textViewZamowienieWiedza.isShown() ? View.GONE : View.VISIBLE);
         //CardView cardViewZamowienieWiedza = (CardView) findViewById(R.id.card_viewZamowienieWiedza);
         //cardViewZamowienieWiedza.setVisibility(cardViewZamowienieWiedza.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieZamowieniePotencjal(View v)
-    {
+    public void chowanieZamowieniePotencjal(View v) {
         TextView textViewZamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
         textViewZamowieniePotencjal.setVisibility(textViewZamowieniePotencjal.isShown() ? View.GONE : View.VISIBLE);
         //CardView cardViewZamowieniePotencjal = (CardView) findViewById(R.id.card_viewZamowieniePotencjal);
         //cardViewZamowieniePotencjal.setVisibility(cardViewZamowieniePotencjal.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieZamowienieOsobyZdolne(View v)
-    {
+    public void chowanieZamowienieOsobyZdolne(View v) {
         TextView textViewZamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
         textViewZamowienieOsobyZdolne.setVisibility(textViewZamowienieOsobyZdolne.isShown() ? View.GONE : View.VISIBLE);
         //CardView cardViewZamowienieOsobyZdolne = (CardView) findViewById(R.id.card_viewZamowienieOsobyZdolne);
         //cardViewZamowienieOsobyZdolne.setVisibility(cardViewZamowienieOsobyZdolne.isShown() ? View.GONE : View.VISIBLE);
     }
 
-    public void chowanieZamowienieSytuacjaEkonomiczna(View v)
-    {
+    public void chowanieZamowienieSytuacjaEkonomiczna(View v) {
         TextView textViewZamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
         textViewZamowienieSytuacjaEkonomiczna.setVisibility(textViewZamowienieSytuacjaEkonomiczna.isShown() ? View.GONE : View.VISIBLE);
         //CardView cardViewZamowienieSytuacjaEkonomiczna = (CardView) findViewById(R.id.card_viewZamowienieSytuacjaEkonomiczna);
@@ -961,38 +921,28 @@ public class ZamowienieActivityFragment extends Activity
 
 //ENDREGION
 
-    public void zadzwon(View v)
-    {
-        try
-        {
+    public void zadzwon(View v) {
+        try {
             String number = "tel:" + telefon;
             Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
             startActivity(callIntent);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             Log.d("zadzwon", e.getMessage());
         }
     }
 
-    public void otworzStrone(View v)
-    {
-        try
-        {
-            String strona = "http://"+www;
+    public void otworzStrone(View v) {
+        try {
+            String strona = "http://" + www;
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(strona));
             startActivity(browserIntent);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             Log.d("otworzStrone", e.getMessage());
         }
     }
 
-    public void napiszEmail(View v)
-    {
-        try
-        {
+    public void napiszEmail(View v) {
+        try {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("plain/text");
             String email = mail;
@@ -1000,9 +950,7 @@ public class ZamowienieActivityFragment extends Activity
             intent.putExtra(Intent.EXTRA_SUBJECT, "");
             intent.putExtra(Intent.EXTRA_TEXT, "");
             startActivity(Intent.createChooser(intent, ""));
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             Log.d("napiszEmail", e.getMessage());
         }
     }

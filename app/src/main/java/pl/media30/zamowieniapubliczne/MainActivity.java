@@ -10,13 +10,42 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity  {
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.List;
 
+import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
+
+public class MainActivity extends AppCompatActivity {
+
+    private List<ObjectClass> readRecordsFromFile() {
+        FileInputStream fin;
+        ObjectInputStream ois = null;
+        try {
+            fin = getApplicationContext().openFileInput("media30");
+            ois = new ObjectInputStream(fin);
+            List<ObjectClass> records = (List<ObjectClass>) ois.readObject();
+            ois.close();
+            Log.v("work", "Records read successfully");
+            return records;
+        } catch (Exception e) {
+            Log.e("dont work", "Cant read saved records" + e.getMessage());
+            return null;
+        } finally {
+            if (ois != null)
+                try {
+                    ois.close();
+                } catch (Exception e) {
+                    Log.e("dont work", "Error in closing stream while reading records" + e.getMessage());
+                }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +54,12 @@ public class MainActivity extends AppCompatActivity  {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        try {
+            RepositoryClass.getInstance().setListaUlubionych(readRecordsFromFile());
+        } catch (Exception e) {
+        }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -38,7 +72,7 @@ public class MainActivity extends AppCompatActivity  {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         // Inflate the menu; this adds items to the action bar if it is present.
-       // getMenuInflater().inflate(R.menu.menu_main, menu);
+        // getMenuInflater().inflate(R.menu.menu_main, menu);
         //------------------------------
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_main, menu);
@@ -67,6 +101,7 @@ public class MainActivity extends AppCompatActivity  {
                 fragment.glownaWyszukiwarka(query);
                 return true;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 return true;
@@ -86,13 +121,13 @@ public class MainActivity extends AppCompatActivity  {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(getApplicationContext(), WykresyActivity.class);
-            startActivityForResult(intent,1);
+            startActivityForResult(intent, 1);
             return true;
         }
 
         if (id == R.id.search) {
             Intent intent = new Intent(getApplicationContext(), SearchActivity.class);
-            startActivityForResult(intent,2);
+            startActivityForResult(intent, 2);
             return true;
         }
 

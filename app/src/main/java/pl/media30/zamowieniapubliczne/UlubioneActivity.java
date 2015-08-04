@@ -34,54 +34,7 @@ public class UlubioneActivity extends ActionBarActivity {
     LinearLayoutManager mLayoutManager;
     UlubioneAdapter mAdapter;
     Bundle bundle = new Bundle();
-    Button button, button2;
-
-
-    public boolean writeRecordsToFile(List<ObjectClass> records) {
-        FileOutputStream fos;
-        ObjectOutputStream oos = null;
-        try {
-            fos = getApplicationContext().openFileOutput("media30", Context.MODE_PRIVATE);
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(records);
-            oos.close();
-            return true;
-        } catch (Exception e) {
-            Log.e("Dont work", "Cant save records" + e.getMessage());
-            return false;
-        } finally {
-            if (oos != null)
-                try {
-                    oos.close();
-                } catch (Exception e) {
-                    Log.e("dont work", "Error while closing stream " + e.getMessage());
-                }
-        }
-    }
-
-
-    private List<ObjectClass> readRecordsFromFile() {
-        FileInputStream fin;
-        ObjectInputStream ois = null;
-        try {
-            fin = getApplicationContext().openFileInput("media30");
-            ois = new ObjectInputStream(fin);
-            List<ObjectClass> records = (List<ObjectClass>) ois.readObject();
-            ois.close();
-            Log.v("work", "Records read successfully");
-            return records;
-        } catch (Exception e) {
-            Log.e("dont work", "Cant read saved records" + e.getMessage());
-            return null;
-        } finally {
-            if (ois != null)
-                try {
-                    ois.close();
-                } catch (Exception e) {
-                    Log.e("dont work", "Error in closing stream while reading records" + e.getMessage());
-                }
-        }
-    }
+    Button button;
 
 
     private Object mActivityResultSubscriber = new Object() {
@@ -135,27 +88,6 @@ public class UlubioneActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ulubione);
-
-        button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                writeRecordsToFile(RepositoryClass.getInstance().getListaUlubionych());
-            }
-        });
-
-        button2 = (Button) findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                try {
-                    RepositoryClass.getInstance().setListaUlubionych(readRecordsFromFile());
-                } catch (Exception e) {
-                }
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
-            }
-        });
 
 
     }
