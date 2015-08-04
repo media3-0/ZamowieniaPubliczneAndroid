@@ -34,6 +34,12 @@ public class ZamowienieActivityFragment extends Activity
     TextView textViewZamawiajacyTelefon;
     TextView textViewZamawiajacyWWW;
     TextView textViewZamawiajacyEmail;
+    CardView cardViewZamawiajacyTelefon;
+
+    String telefon;
+    String mail;
+    String www;
+
     Button button;
     boolean ulubione = false;
     int id;
@@ -90,16 +96,12 @@ public class ZamowienieActivityFragment extends Activity
                     if (ulubione==false)
                         button.setText("Dodaj do ulub.");
 
-                    button.setOnClickListener(new View.OnClickListener()
-                    {
+                    button.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(View v)
-                        {
-                            boolean usunieto=false;
-                            for(int i =0;i<RepositoryClass.getInstance().getListaUlubionych().size();i++)
-                            {
-                                if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id))
-                                {
+                        public void onClick(View v) {
+                            boolean usunieto = false;
+                            for (int i = 0; i < RepositoryClass.getInstance().getListaUlubionych().size(); i++) {
+                                if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)) {
                                     RepositoryClass.getInstance().removeListaUlubionych(i);
                                     usunieto = true;
                                     button.setText("Dodaj do ulub.");
@@ -108,8 +110,7 @@ public class ZamowienieActivityFragment extends Activity
                                     break;
                                 }
                             }
-                            if (usunieto==false)
-                            {
+                            if (usunieto == false) {
                                 RepositoryClass.getInstance().addListaUlubionych(baseClass.objectClass);
                                 Toast.makeText(getApplicationContext(), "Dodano do ulubionych", Toast.LENGTH_LONG);
                                 button.setText("Usun z ulub.");
@@ -171,16 +172,18 @@ public class ZamowienieActivityFragment extends Activity
 
                     TextView zamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
                     zamawiajacyEmail.setText(baseClass.objectClass.dataClass.zamawiajacy_email.toString());
+                    mail = baseClass.objectClass.dataClass.zamawiajacy_email.toString().trim();
 
                     TextView zamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
                     zamawiajacyTelefon.setText(baseClass.objectClass.dataClass.zamawiajacy_tel.toString());
+                    telefon = baseClass.objectClass.dataClass.zamawiajacy_tel.toString().trim();
 
                     TextView zamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
                     zamawiajacyFax.setText(baseClass.objectClass.dataClass.zamawiajacy_fax.toString());
 
                     TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
                     zamawiajacyWWW.setText(baseClass.objectClass.dataClass.zamawiajacy_www.toString());
-
+                    www = baseClass.objectClass.dataClass.zamawiajacy_www.toString().trim();
 
 
 
@@ -510,7 +513,7 @@ public class ZamowienieActivityFragment extends Activity
         //textViewZamawiajacyTelefonLabel.setVisibility(View.GONE);
         //textViewZamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
         //textViewZamawiajacyTelefon.setVisibility(View.GONE);
-        CardView cardViewZamawiajacyTelefon = (CardView) findViewById(R.id.card_viewZamawiajacyTelefon);
+        cardViewZamawiajacyTelefon = (CardView) findViewById(R.id.card_viewZamawiajacyTelefon);
         cardViewZamawiajacyTelefon.setVisibility(View.GONE);
 
         //TextView textViewZamawiajacyFaxLabel = (TextView) findViewById(R.id.textViewZamawiajacyFaxLabel);
@@ -769,7 +772,7 @@ public class ZamowienieActivityFragment extends Activity
         //textViewZamawiajacyTelefonLabel.setVisibility(textViewZamawiajacyTelefonLabel.isShown() ? View.GONE : View.VISIBLE);
         //TextView textViewZamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
         //textViewZamawiajacyTelefon.setVisibility(textViewZamawiajacyTelefon.isShown() ? View.GONE : View.VISIBLE);
-        CardView cardViewZamawiajacyTelefon = (CardView) findViewById(R.id.card_viewZamawiajacyTelefon);
+        cardViewZamawiajacyTelefon = (CardView) findViewById(R.id.card_viewZamawiajacyTelefon);
         cardViewZamawiajacyTelefon.setVisibility(cardViewZamawiajacyTelefon.isShown() ? View.GONE : View.VISIBLE);
 
         //TextView textViewZamawiajacyFaxLabel = (TextView) findViewById(R.id.textViewZamawiajacyFaxLabel);
@@ -962,7 +965,7 @@ public class ZamowienieActivityFragment extends Activity
     {
         try
         {
-            String number = "tel:" + textViewZamawiajacyTelefon.getText().toString().trim();
+            String number = "tel:" + telefon;
             Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(number));
             startActivity(callIntent);
         }
@@ -976,8 +979,8 @@ public class ZamowienieActivityFragment extends Activity
     {
         try
         {
-            String www = "http://"+textViewZamawiajacyWWW.getText().toString().trim();
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(www));
+            String strona = "http://"+www;
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(strona));
             startActivity(browserIntent);
         }
         catch(Exception e)
@@ -992,7 +995,7 @@ public class ZamowienieActivityFragment extends Activity
         {
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("plain/text");
-            String email = textViewZamawiajacyEmail.getText().toString().trim();
+            String email = mail;
             intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
             intent.putExtra(Intent.EXTRA_SUBJECT, "");
             intent.putExtra(Intent.EXTRA_TEXT, "");

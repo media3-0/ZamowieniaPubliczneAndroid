@@ -27,10 +27,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ZamowienieActivity"
-            android:label="@string/title_activity_zamowienie" >
-        </activity>
-        <activity
             android:name=".InfoActivity"
             android:label="@string/title_activity_info" >
         </activity>

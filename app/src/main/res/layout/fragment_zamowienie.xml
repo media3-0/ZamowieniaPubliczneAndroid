@@ -883,6 +883,7 @@
             android:id="@+id/card_viewZamawiajacyTelefon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             card_view:cardBackgroundColor="@color/background_material_light"
             card_view:cardCornerRadius="5dp"
             card_view:cardElevation="5dp"
