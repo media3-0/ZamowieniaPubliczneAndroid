@@ -200,8 +200,11 @@ public class MainActivityFragment extends Fragment {
                 wczytajDane();
             }
         });
-        if (bundle.getBoolean("getWczytaj") == false)
+        if (bundle.getBoolean("getWczytaj") == false){
             wczytajDane();
+            wczytane=true;
+            bundle.putBoolean("getWczytaj",true);
+        }
     }
 
     void wczytajDane() {
