@@ -4,30 +4,28 @@
     xmlns:yourapp="http://schemas.android.com/apk/res-auto"
     tools:context="pl.media30.zamowieniapubliczne.MainActivity">
 
-
-
-
-        <item
-            android:id="@+id/search"
-            android:icon="@drawable/ic_search_black_48dp"
-            android:title="Szukaj" />
-        <item
-            android:id="@+id/show"
-            android:icon="@drawable/ic_visibility_black_48dp"
-            android:title="Pokaż obserwowane" />
-
-        <item
-            android:id="@+id/action_settings"
-            android:icon="@drawable/ic_assessment_black_48dp"
-            android:title="Największe zamówienia" />
-        <item
-            android:id="@+id/info"
-            android:icon="@drawable/ic_help_black_48dp"
-            android:title="O aplikacji" />
-    <item android:id="@+id/action_search"
-        android:title="action_search"
+    <item
+        android:id="@+id/search"
         android:icon="@drawable/ic_search_black_48dp"
-        yourapp:showAsAction="ifRoom|collapseActionView"
-        yourapp:actionViewClass="android.support.v7.widget.SearchView" />
+        android:title="Szukaj" />
+    <item
+        android:id="@+id/show"
+        android:icon="@drawable/ic_visibility_black_48dp"
+        android:title="Pokaż obserwowane" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_assessment_black_48dp"
+        android:title="Największe zamówienia" />
+    <item
+        android:id="@+id/info"
+        android:icon="@drawable/ic_help_black_48dp"
+        android:title="O aplikacji" />
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_black_48dp"
+        android:title="action_search"
+        yourapp:actionViewClass="android.support.v7.widget.SearchView"
+        yourapp:showAsAction="ifRoom|collapseActionView" />
 
 </menu>

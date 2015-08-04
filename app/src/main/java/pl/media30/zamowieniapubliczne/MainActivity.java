@@ -5,15 +5,20 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
@@ -23,6 +28,9 @@ import java.util.List;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 
 public class MainActivity extends AppCompatActivity {
+
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
 
     private List<ObjectClass> readRecordsFromFile() {
         FileInputStream fin;
@@ -58,6 +66,51 @@ public class MainActivity extends AppCompatActivity {
             RepositoryClass.getInstance().setListaUlubionych(readRecordsFromFile());
         } catch (Exception e) {
         }
+
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+
+        //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            // This method will trigger on item Click of navigation menu
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+
+                //Checking if the item is in checked state or not, if not make it in checked state
+                if(menuItem.isChecked()) menuItem.setChecked(false);
+                else menuItem.setChecked(true);
+
+                //Closing drawer on item click
+                drawerLayout.closeDrawers();
+                Intent intent;
+                //Check to see which item was being clicked and perform appropriate action
+                switch (menuItem.getItemId()){
+
+                    case R.id.search:
+                        intent = new Intent(getApplicationContext(), SearchActivity.class);
+                        startActivityForResult(intent, 2);
+                        return true;
+                    case R.id.show:
+                        intent = new Intent(getApplicationContext(), UlubioneActivity.class);
+                        startActivity(intent);
+                        return true;
+                    case R.id.action_settings:
+                        intent = new Intent(getApplicationContext(), WykresyActivity.class);
+                        startActivityForResult(intent, 1);
+                        return true;
+                    case R.id.info:
+                        intent = new Intent(getApplicationContext(), InfoActivity.class);
+                        startActivity(intent);
+                        return true;
+                    default:
+                        return true;
+                }
+            }
+        });
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+
     }
 
     @Override
@@ -71,19 +124,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        // Inflate the menu; this adds items to the action bar if it is present.
-        // getMenuInflater().inflate(R.menu.menu_main, menu);
-        //------------------------------
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_main, menu);
-
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchManager searchManager = (SearchManager) MainActivity.this.getSystemService(Context.SEARCH_SERVICE);
 
-
         SearchView searchView = null;
-
 
         if (searchItem != null) {
             searchView = (SearchView) searchItem.getActionView();
