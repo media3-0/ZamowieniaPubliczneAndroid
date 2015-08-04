@@ -2,10 +2,12 @@ package pl.media30.zamowieniapubliczne.Models.SingleElement;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Adrian on 2015-07-16.
  */
-public class DataClass {
+public class DataClass implements Serializable {
 
     
     @SerializedName("zamowienia_publiczne.kod_pocztowy_id")

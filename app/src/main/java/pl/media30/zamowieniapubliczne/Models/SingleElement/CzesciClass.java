@@ -2,12 +2,13 @@ package pl.media30.zamowieniapubliczne.Models.SingleElement;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Adrian on 2015-07-23.
  */
-public class CzesciClass {
+public class CzesciClass implements Serializable {
 
     @SerializedName("id")
     public int id;

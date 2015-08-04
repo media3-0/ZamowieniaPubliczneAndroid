@@ -1,5 +1,6 @@
 package pl.media30.zamowieniapubliczne;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,13 +9,23 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.squareup.otto.Subscribe;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.List;
+
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
 import pl.media30.zamowieniapubliczne.Adapters.UlubioneAdapter;
+import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 
 
 public class UlubioneActivity extends ActionBarActivity {
@@ -23,7 +34,54 @@ public class UlubioneActivity extends ActionBarActivity {
     LinearLayoutManager mLayoutManager;
     UlubioneAdapter mAdapter;
     Bundle bundle = new Bundle();
+    Button button, button2;
 
+
+    public boolean writeRecordsToFile(List<ObjectClass> records) {
+        FileOutputStream fos;
+        ObjectOutputStream oos = null;
+        try {
+            fos = getApplicationContext().openFileOutput("media30", Context.MODE_PRIVATE);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(records);
+            oos.close();
+            return true;
+        } catch (Exception e) {
+            Log.e("Dont work", "Cant save records" + e.getMessage());
+            return false;
+        } finally {
+            if (oos != null)
+                try {
+                    oos.close();
+                } catch (Exception e) {
+                    Log.e("dont work", "Error while closing stream " + e.getMessage());
+                }
+        }
+    }
+
+
+    private List<ObjectClass> readRecordsFromFile() {
+        FileInputStream fin;
+        ObjectInputStream ois = null;
+        try {
+            fin = getApplicationContext().openFileInput("media30");
+            ois = new ObjectInputStream(fin);
+            List<ObjectClass> records = (List<ObjectClass>) ois.readObject();
+            ois.close();
+            Log.v("work", "Records read successfully");
+            return records;
+        } catch (Exception e) {
+            Log.e("dont work", "Cant read saved records" + e.getMessage());
+            return null;
+        } finally {
+            if (ois != null)
+                try {
+                    ois.close();
+                } catch (Exception e) {
+                    Log.e("dont work", "Error in closing stream while reading records" + e.getMessage());
+                }
+        }
+    }
 
 
     private Object mActivityResultSubscriber = new Object() {
@@ -41,19 +99,22 @@ public class UlubioneActivity extends ActionBarActivity {
         super.onStart();
         try {
             ActivityResultBus.getInstance().register(mActivityResultSubscriber);
-        }catch(Exception e){}
-        mRecyclerView = (UltimateRecyclerView)  findViewById(R.id.ultimate_recycler_view);
+        } catch (Exception e) {
+        }
+        mRecyclerView = (UltimateRecyclerView) findViewById(R.id.ultimate_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-       // mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-        try{
+        // mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
+        try {
             mAdapter = new UlubioneAdapter(RepositoryClass.getInstance().getListaUlubionych());
             mRecyclerView.setAdapter(mAdapter);
-        }catch(Exception e){}
+        } catch (Exception e) {
+        }
 
     }
+
     @Override
     public void onStop() {
         super.onStop();
@@ -61,20 +122,42 @@ public class UlubioneActivity extends ActionBarActivity {
         bundle.putInt("getPosUlub", mLayoutManager.findFirstVisibleItemPosition());
         Log.d("STOP", mLayoutManager.findFirstVisibleItemPosition() + "");
     }
+
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("uPozycja",bundle.getInt("getPosUlub")+"");
+        Log.d("uPozycja", bundle.getInt("getPosUlub") + "");
         mLayoutManager.scrollToPosition(bundle.getInt("getPosUlub"));
     }
-
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ulubione);
+
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                writeRecordsToFile(RepositoryClass.getInstance().getListaUlubionych());
+            }
+        });
+
+        button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                try {
+                    RepositoryClass.getInstance().setListaUlubionych(readRecordsFromFile());
+                } catch (Exception e) {
+                }
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
@@ -98,8 +181,9 @@ public class UlubioneActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             finish();
             return true;
