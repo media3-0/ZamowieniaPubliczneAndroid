@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:text="Identyfikatory zamawiającego:"
                     android:id="@+id/textView2"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:textColor="#212121"
                     android:textStyle="bold"
                     android:layout_alignParentStart="false"
@@ -52,7 +52,7 @@
                     android:textSize="17sp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="15dp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
@@ -291,9 +291,9 @@
                     android:id="@+id/textView9"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="15dp"
                     android:layout_alignParentStart="false"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:textStyle="bold"
                     android:textColor="#212121"
                     android:layout_alignParentLeft="false"
@@ -818,14 +818,14 @@
                     android:id="@+id/textViewDaneKontaktoweZamawiajacegoLabel"
                     android:layout_alignParentLeft="false"
                     android:layout_alignParentStart="false"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:textStyle="bold"
                     android:textColor="#212121"
                     android:layout_centerHorizontal="true"
                     android:textSize="17sp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="15dp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
@@ -1055,14 +1055,16 @@
                     android:id="@+id/textView"
                     android:layout_alignParentStart="false"
                     android:layout_alignParentLeft="false"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:layout_centerHorizontal="true"
                     android:textStyle="bold"
                     android:textColor="#212121"
                     android:layout_alignParentEnd="false"
                     android:layout_alignParentRight="false"
                     android:textSize="17sp"
-                    android:layout_margin="5dp" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="15dp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
@@ -1588,14 +1590,16 @@
                     android:id="@+id/textViewSzczegolyZamowienia"
                     android:layout_alignParentStart="false"
                     android:layout_alignParentLeft="false"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:layout_centerHorizontal="true"
                     android:textStyle="bold"
                     android:textColor="#212121"
                     android:layout_alignParentEnd="false"
                     android:layout_alignParentRight="false"
                     android:textSize="17sp"
-                    android:layout_margin="5dp" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="15dp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
@@ -1629,13 +1633,13 @@
                     android:layout_below="@+id/card_viewSzczegolyZamowienia"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:textColor="#212121"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1648,7 +1652,8 @@
                     android:textColor="#727272"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="-10dp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -1682,13 +1687,13 @@
                     android:layout_below="@+id/textViewZamowieniePrzedmiot"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:textColor="#212121"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1701,7 +1706,8 @@
                     android:textColor="#727272"
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="-10dp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -1735,13 +1741,13 @@
                     android:layout_below="@+id/textViewZamowienieUprawnienie"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:textColor="#212121"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_margin="5dp" />
+                    android:layout_marginBottom="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1754,7 +1760,8 @@
                     android:textColor="#727272"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="-10dp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -1788,13 +1795,13 @@
                     android:layout_below="@+id/textViewZamowienieWiedza"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:textColor="#212121"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1807,7 +1814,8 @@
                     android:textColor="#727272"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="5dp" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="-10dp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -1841,13 +1849,13 @@
                     android:layout_below="@+id/textViewZamowieniePotencjal"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:textColor="#212121"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1860,7 +1868,8 @@
                     android:textColor="#727272"
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="-10dp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -1894,13 +1903,13 @@
                     android:layout_below="@+id/textViewZamowienieOsobyZdolne"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:textColor="#212121"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1913,7 +1922,8 @@
                     android:textColor="#727272"
                     android:layout_marginBottom="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="-10dp" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
