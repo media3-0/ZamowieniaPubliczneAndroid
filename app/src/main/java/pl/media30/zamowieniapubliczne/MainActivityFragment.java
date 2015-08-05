@@ -282,7 +282,11 @@ public class MainActivityFragment extends Fragment {
         if (query.length() >= 1 && !query.equals("*")) {
             RepositoryClass.getInstance().setGlowneZapyt(query);
             strona = 1;
-            RepositoryClass.getInstance().deleteDataObjectList();
+            try {
+                RepositoryClass.getInstance().deleteDataObjectList();
+            }catch (Exception e){
+
+            }
             wczytajDane();
         } else if (query.toString().equals("*")) {
             RepositoryClass.getInstance().setGlowneZapyt(null);

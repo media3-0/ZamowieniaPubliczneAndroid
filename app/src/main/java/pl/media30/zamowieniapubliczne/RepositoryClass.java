@@ -1,6 +1,7 @@
 package pl.media30.zamowieniapubliczne;
 
 import android.app.ListActivity;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +71,11 @@ public class RepositoryClass {
     }
 
     public void deleteDataObjectList() {
-        dataObjectList.clear();
+        try{
+            dataObjectList.clear();
+        }catch(Exception e){
+//            Log.d("Usuwanie", e.getMessage());
+        }
     }
 
     public void setWyszukiwanieMiasta(String wyszukiwanieMiasta) {
