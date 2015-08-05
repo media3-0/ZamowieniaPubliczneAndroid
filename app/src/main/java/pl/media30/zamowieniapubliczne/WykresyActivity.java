@@ -62,10 +62,14 @@ public class WykresyActivity extends ActionBarActivity {
                 } else {
                     final int wszystko = baseListClass.searchClass.paginationClass.total;
                     final int iloscElemNaStr = baseListClass.searchClass.paginationClass.count;
+                    int iloscZaladElem = RepositoryClass.getInstance().getDataObjectList().size();
+                    Log.d("Zaladowanych str: ", iloscZaladElem+"");
+
+
                     Log.d("wsz/str", wszystko + " " + iloscElemNaStr);
                     dataObjectList = baseListClass.searchClass.dataobjects;
                     dataObjectList.clear();
-                    for (int i = 0; i < Math.ceil(wszystko / iloscElemNaStr); i++) {
+                    for (int i = 0; i < Math.ceil((iloscZaladElem / iloscElemNaStr)+iloscZaladElem); i++) {
                         RestAdapter restAdapterX = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
                         MojePanstwoService serviceX = restAdapterX.create(MojePanstwoService.class);
                         BaseListClass baseListClass1 = serviceX.najwiekszeZamowienia(i, RepositoryClass.getInstance().getGlowneZapyt(), RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail());
