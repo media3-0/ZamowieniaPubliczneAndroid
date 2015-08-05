@@ -33,29 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-
-    public boolean writeRecordsToFile(List<ObjectClass> records) {
-        FileOutputStream fos;
-        ObjectOutputStream oos = null;
-        try {
-            fos = getApplicationContext().openFileOutput("media30", Context.MODE_PRIVATE);
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(records);
-            oos.close();
-            return true;
-        } catch (Exception e) {
-            Log.e("Dont work", "Cant save records" + e.getMessage());
-            return false;
-        } finally {
-            if (oos != null)
-                try {
-                    oos.close();
-                } catch (Exception e) {
-                    Log.e("dont work", "Error while closing stream " + e.getMessage());
-                }
-        }
-    }
-
+    
    private List<ObjectClass> readRecordsFromFile() {
         FileInputStream fin;
         ObjectInputStream ois = null;
