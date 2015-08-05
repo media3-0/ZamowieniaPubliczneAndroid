@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/ActivityResultBus.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/ActivityResultEvent.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/EndlessRecyclerOnScrollListener.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/InfoActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/MainActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/MainActivityFragment.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/DownloadList/BaseListClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/DownloadList/DataObjectClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/DownloadList/PaginationClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/DownloadList/PerformanceClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/DownloadList/SearchClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/SingleElement/BaseClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/SingleElement/CzesciClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/SingleElement/DataClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/SingleElement/DetailsClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/SingleElement/KryteriaClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/SingleElement/LayersClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/SingleElement/ObjectClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/SingleElement/SourcesClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/SingleElement/WykonawcaClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/MojePanstwoService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/RepositoryClass.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/UlubioneActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/WykresyActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/ZamowienieActivityFragment.java" charset="UTF-8" />
   </component>

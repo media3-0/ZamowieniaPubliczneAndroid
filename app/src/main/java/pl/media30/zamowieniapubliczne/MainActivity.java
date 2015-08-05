@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setLogo(R.drawable.ic_reorder_black_48dp);
         try {
             RepositoryClass.getInstance().setListaUlubionych(readRecordsFromFile());
         } catch (Exception e) {
@@ -75,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-
 
                 //Checking if the item is in checked state or not, if not make it in checked state
                 if(menuItem.isChecked()) menuItem.setChecked(false);
