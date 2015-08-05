@@ -42,5 +42,14 @@
             android:layout_gravity="center_horizontal"
             android:src="@drawable/logo_fundacja" />
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/logo_fundacja_epanstwo" />
+
     </android.support.v7.widget.CardView>
 </LinearLayout>
