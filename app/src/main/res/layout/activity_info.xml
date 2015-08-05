@@ -58,10 +58,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/logo_fundacja_epanstwo"
-                android:layout_marginTop="-80dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"/>
+                android:layout_marginTop="-10dp"
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

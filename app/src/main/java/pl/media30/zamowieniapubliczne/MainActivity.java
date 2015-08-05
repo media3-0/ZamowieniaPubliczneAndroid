@@ -22,7 +22,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
@@ -31,6 +33,28 @@ public class MainActivity extends AppCompatActivity {
 
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+
+    public boolean writeRecordsToFile(List<ObjectClass> records) {
+        FileOutputStream fos;
+        ObjectOutputStream oos = null;
+        try {
+            fos = getApplicationContext().openFileOutput("media30", Context.MODE_PRIVATE);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(records);
+            oos.close();
+            return true;
+        } catch (Exception e) {
+            Log.e("Dont work", "Cant save records" + e.getMessage());
+            return false;
+        } finally {
+            if (oos != null)
+                try {
+                    oos.close();
+                } catch (Exception e) {
+                    Log.e("dont work", "Error while closing stream " + e.getMessage());
+                }
+        }
+    }
 
    private List<ObjectClass> readRecordsFromFile() {
         FileInputStream fin;
@@ -64,8 +88,11 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setLogo(R.drawable.ic_reorder_black_48dp);
         try {
-           // RepositoryClass.getInstance().setListaUlubionych(readRecordsFromFile());
+           List <ObjectClass> lista =  readRecordsFromFile();
+            if (lista!=null)
+           RepositoryClass.getInstance().setListaUlubionych(lista);
         } catch (Exception e) {
+            Log.d("nie dziala", e.getMessage());
         }
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
