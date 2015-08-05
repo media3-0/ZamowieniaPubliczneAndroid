@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
 
-    private List<ObjectClass> readRecordsFromFile() {
+   private List<ObjectClass> readRecordsFromFile() {
         FileInputStream fin;
         ObjectInputStream ois = null;
         try {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setLogo(R.drawable.ic_reorder_black_48dp);
         try {
-            RepositoryClass.getInstance().setListaUlubionych(readRecordsFromFile());
+           // RepositoryClass.getInstance().setListaUlubionych(readRecordsFromFile());
         } catch (Exception e) {
         }
 

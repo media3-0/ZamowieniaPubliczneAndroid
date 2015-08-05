@@ -48,7 +48,7 @@ public class ZamowienieActivityFragment extends Activity {
     boolean ulubione = false;
     int id;
 
-    public boolean writeRecordsToFile(List<ObjectClass> records) {
+   /* public boolean writeRecordsToFile(List<ObjectClass> records) {
         FileOutputStream fos;
         ObjectOutputStream oos = null;
         try {
@@ -69,7 +69,7 @@ public class ZamowienieActivityFragment extends Activity {
                 }
         }
     }
-
+*/
     public boolean tryParseInt(String value) {
         try {
             Integer.parseInt(value);
@@ -140,7 +140,7 @@ public class ZamowienieActivityFragment extends Activity {
                                     Log.d("ZAF", "Dodano do listy");
                                 }
                                 try {
-                                    writeRecordsToFile(RepositoryClass.getInstance().getListaUlubionych());
+                                   // writeRecordsToFile(RepositoryClass.getInstance().getListaUlubionych());
                                 }catch(Exception e){
 
                                 }
