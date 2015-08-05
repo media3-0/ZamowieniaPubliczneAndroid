@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-    
+
    private List<ObjectClass> readRecordsFromFile() {
         FileInputStream fin;
         ObjectInputStream ois = null;
