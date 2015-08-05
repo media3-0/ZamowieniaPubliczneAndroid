@@ -46,6 +46,7 @@ public class WykresyActivity extends ActionBarActivity {
         final ArrayList<BarEntry> entries = new ArrayList<>();
         final ArrayList<String> labels = new ArrayList<String>();
         final BarChart chart = new BarChart(context);
+        RepositoryClass.getInstance().setStronaUlub(-1);
 
 
         final ProgressDialog dialog =
@@ -75,48 +76,36 @@ public class WykresyActivity extends ActionBarActivity {
         });
 
         t1.start();
-        try
-        {
+        try {
             t1.join();
-        } catch (
-                InterruptedException e
-                )
-
+        } catch (InterruptedException e)
         {
             e.printStackTrace();
         }
 
 
         Collections.sort(dataObjectList, new Comparator<DataObjectClass>()
-
                 {
                     @Override
                     public int compare(DataObjectClass lhs, DataObjectClass rhs) {
                         return Double.compare(rhs.dataClass.wartosc_cena, lhs.dataClass.wartosc_cena);
                     }
                 }
-
         );
 
 
+        int rozmiarWykresu = 50;
+        if (dataObjectList.size()<50)
+            rozmiarWykresu = dataObjectList.size();
 
-
-        Log.d("teraz","fffff");
-        for(
-                int i = 0;
-                i<dataObjectList.size();i++)
-
+        for (int i = 0;i < rozmiarWykresu; i++)
         {
             entries.add(new BarEntry((float) (dataObjectList.get(i).dataClass.wartosc_cena), i));
         }
 
         BarDataSet dataset = new BarDataSet(entries, "Najwieksze zamowienia");
-        for(
-                int i = 0;
-                i<dataObjectList.size();i++)
-
+        for (int i = 0; i < rozmiarWykresu; i++)
         {
-            //labels.add(dataObjectList.get(i).slug);
             labels.add(Integer.toString(i));
         }
 
@@ -125,104 +114,65 @@ public class WykresyActivity extends ActionBarActivity {
         BarData data = new BarData(labels, dataset);
         chart.setData(data);
         chart.setDescription("");
-        chart.setScaleMinima(5f,1f);
-        chart.animateXY(4,4);
+        chart.setScaleMinima(5f, 1f);
+        chart.animateXY(4, 4);
 
-        chart.setOnClickListener(new View.OnClickListener()
+        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+                                                  @Override
+                                                  public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+                                                      if (wczytajRaz == true) {
+                                                          //String info = "Nazwa: " + dataObjectList.get(e.getXIndex()).dataClass.nazwa;
+                                                          //Log.d("Nazwa prz: ", info);
 
-                                 {
-
-                                     @Override
-                                     public void onClick (View v){
-                                         Collections.sort(dataObjectList, new Comparator<DataObjectClass>() {
-                                             @Override
-                                             public int compare(DataObjectClass lhs, DataObjectClass rhs) {
-                                                 return Double.compare(rhs.dataClass.wartosc_cena, lhs.dataClass.wartosc_cena);//lhs.dataClass.wartosc_cena.  compareToIgnoreCase(rhs.dataClass.wartosc_cena);
-                                             }
-                                         });
-                                         // Toast.makeText(getApplicationContext(),"Element: "+ chart.getId(), Toast.LENGTH_SHORT).show();
-                                         for (int i = 0; i < dataObjectList.size(); i++) {
-                                             entries.add(new BarEntry((float) (dataObjectList.get(i).dataClass.wartosc_cena), i));
-                                         }
-
-                                         BarDataSet dataset = new BarDataSet(entries, "Najwieksze zamowienia");
-                                         for (int i = 0; i < dataObjectList.size(); i++) {
-                                             //labels.add(dataObjectList.get(i).slug);
-                                             labels.add(Integer.toString(i));
-                                         }
-                                         setContentView(chart);
-
-                                         BarData data = new BarData(labels, dataset);
-                                         chart.setData(data);
-                                         chart.setDescription("");
-                                         chart.setScaleMinima(5f, 1f);
-                                         chart.animateXY(4, 4);
-                                     }
-                                 }
-
-        );
-        chart.setOnChartValueSelectedListener(new
-
-                                                      OnChartValueSelectedListener() {
-                                                          @Override
-                                                          public void onValueSelected (Entry e,int dataSetIndex, Highlight h){
-                                                              if (wczytajRaz == true) {
-                                                                  String info = "Nazwa: " + dataObjectList.get(e.getXIndex()).dataClass.nazwa;
-                                                                  Log.d("Nazwa prz: ", info);
-
-                                                                  Toast.makeText(getApplicationContext(), info + "", Toast.LENGTH_SHORT).show();
-                                                                  //Toast.makeText(getApplicationContext(), "Element: " + e.getXIndex(), Toast.LENGTH_SHORT).show();
-                                                                  //  Toast.makeText(getApplicationContext(), "Element: " + e.getXIndex(), Toast.LENGTH_SHORT).show();
-                                                                  Intent intent = new Intent(context, ZamowienieActivityFragment.class);
-                                                                  DataObjectClass dataObjectClass = dataObjectList.get(e.getXIndex());
-                                                                  String objToStr = new Gson().toJson(dataObjectClass);
-                                                                  Bundle objClass = new Bundle();
-                                                                  objClass.putString("myObject", objToStr);
-                                                                  intent.putExtras(objClass);
-                                                                  startActivity(intent);
-                                                                  wczytajRaz = false;
-                                                                  chart.dispatchSetSelected(false);
+                                                          //Toast.makeText(getApplicationContext(), info + "", Toast.LENGTH_SHORT).show();
+                                                          //Toast.makeText(getApplicationContext(), "Element: " + e.getXIndex(), Toast.LENGTH_SHORT).show();
+                                                          //  Toast.makeText(getApplicationContext(), "Element: " + e.getXIndex(), Toast.LENGTH_SHORT).show();
+                                                          Intent intent = new Intent(context, ZamowienieActivityFragment.class);
+                                                          DataObjectClass dataObjectClass = dataObjectList.get(e.getXIndex());
+                                                          String objToStr = new Gson().toJson(dataObjectClass);
+                                                          Bundle objClass = new Bundle();
+                                                          objClass.putString("myObject", objToStr);
+                                                          intent.putExtras(objClass);
+                                                          startActivity(intent);
+                                                          wczytajRaz = false;
+                                                          chart.dispatchSetSelected(false);
 
 
-                                                              }
-                                                          }
-
-                                                          @Override
-                                                          public void onNothingSelected () {
-                                                          }
                                                       }
+                                                  }
+
+                                                  @Override
+                                                  public void onNothingSelected() {
+                                                  }
+                                              }
 
         );
         dialog.dismiss();
     }
 
 
-
-
-
-
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_wykresy,menu);
+        getMenuInflater().inflate(R.menu.menu_wykresy, menu);
         return true;
     }
+
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
-        wczytajRaz=true;
+        wczytajRaz = true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id=item.getItemId();
+        int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if(id==R.id.action_settings){
+        if (id == R.id.action_settings) {
             return true;
         }
 

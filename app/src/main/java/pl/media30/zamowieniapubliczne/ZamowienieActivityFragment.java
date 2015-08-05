@@ -106,13 +106,16 @@ public class ZamowienieActivityFragment extends Activity {
         service.singleOrder(id, new Callback<BaseClass>() {
                     @Override
                     public void success(final BaseClass baseClass, Response response) {
-                        for (int i = 0; i < RepositoryClass.getInstance().getListaUlubionych().size(); i++) {
-                            if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)) {
-                                button.setText("Jest w ulub.");
-                                ulubione = true;
-                                break;
+                        try{
+                            for (int i = 0; i < RepositoryClass.getInstance().getListaUlubionych().size(); i++) {
+                                if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)) {
+                                    button.setText("Jest w ulub.");
+                                    ulubione = true;
+                                    break;
+                                }
                             }
-                        }
+                        }catch(Exception e){}
+
                         if (ulubione == false)
                             button.setText("Dodaj do ulub.");
 
