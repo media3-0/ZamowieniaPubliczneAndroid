@@ -6,25 +6,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.List;
 
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
@@ -33,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
+    boolean searchAllow=true;
 
    private List<ObjectClass> readRecordsFromFile() {
         FileInputStream fin;
@@ -118,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -132,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_main, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+        final MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchManager searchManager = (SearchManager) MainActivity.this.getSystemService(Context.SEARCH_SERVICE);
 
         SearchView searchView = null;
@@ -149,14 +143,33 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                MainActivityFragment fragment = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
-                fragment.glownaWyszukiwarka(query);
-                return true;
+
+                if (searchAllow==true) {
+                    searchAllow=false;
+                    MainActivityFragment fragment = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
+                    fragment.nowePob=true;
+                    if (query.length() >= 1 && !query.equals("*")) {
+                        RepositoryClass.getInstance().setGlowneZapyt(query);
+                        fragment.strona = 1;
+                        Log.d("Jedno", "Stukniecie");
+                    } else if (query.toString().equals("*")) {
+                        RepositoryClass.getInstance().setGlowneZapyt(null);
+                        fragment.strona = 1;
+                    }
+                    RepositoryClass.getInstance().setGlowneZapyt(query);
+                    if (RepositoryClass.getInstance().getDataObjectList() != null)
+                        RepositoryClass.getInstance().deleteDataObjectList();
+                    fragment.query=query;
+                    fragment.onStop();
+                    fragment.onStart();
+                }
+                return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                return true;
+                searchAllow=true;
+                return false;
             }
         });
 

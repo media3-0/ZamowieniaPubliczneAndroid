@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,9 +33,12 @@ public class MainActivityFragment extends Fragment {
     UltimateRecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
     MyAdapter mAdapter;
-    int strona = 2;
-    boolean wczytane = false;
+    public int strona;// = 2;
     Bundle bundle = new Bundle();
+    int pastVisiblesItems, visibleItemCount, totalItemCount;
+    private boolean loading = true;
+    public String query="";
+    public boolean nowePob = false;
 
     public MainActivityFragment() {
     }
@@ -52,7 +56,7 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d("onActResult", "Zadzialalo");
+        Log.d("Metoda", "onActResult");
 
         if (requestCode == 2) { //jak rozny od *
             try {
@@ -147,11 +151,14 @@ public class MainActivityFragment extends Fragment {
                 RepositoryClass.getInstance().setWyszukiwanieZamawWWW(null);
             if (savedInstanceState.getString("wartoscEmail").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieZamawEmail(null);
-            wczytane = false;
+            bundle.putBoolean("getWczytaj", false);
+
+
         } catch (Exception e) {
         }
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
+        Log.d("Metoda", "onActivityCreated");
     }
 
     @Override
@@ -164,7 +171,8 @@ public class MainActivityFragment extends Fragment {
         super.onStop();
         ActivityResultBus.getInstance().unregister(mActivityResultSubscriber);
         bundle.putInt("getPos", mLayoutManager.findFirstVisibleItemPosition());
-        bundle.putBoolean("getWczytaj", wczytane);
+        Log.d("Metoda", "onStop");
+
     }
 
     @Override
@@ -182,23 +190,62 @@ public class MainActivityFragment extends Fragment {
         super.onStart();
         ActivityResultBus.getInstance().register(mActivityResultSubscriber);
 
+        if (query.length() >= 1 && !query.equals("*")) {
+            if (nowePob==true)
+                bundle.putBoolean("getWczytaj", false);
+        } else if (query.toString().equals("*")) {
+            if (nowePob==true)
+                bundle.putBoolean("getWczytaj", false);
+        }
+        nowePob=false;
+
+
+
         mRecyclerView = (UltimateRecyclerView) getView().findViewById(R.id.ultimate_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this.getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
+        if (bundle.getInt("getPos") == -1)
+            bundle.putInt("getPos", 0);
         mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
         Log.d("pozyc w start", bundle.getInt("getPos") + "");
-        mRecyclerView.setOnScrollListener(new EndlessRecyclerOnScrollListener(mLayoutManager) {
+        Log.d("Metoda", "onStart");
+
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+
+                visibleItemCount = mLayoutManager.getChildCount();
+                totalItemCount = mLayoutManager.getItemCount();
+                pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+
+                if (loading) {
+                    if ( (visibleItemCount+pastVisiblesItems) >= totalItemCount) {
+                        loading = false;
+                        wczytajDane();
+                        Log.d("LOADMORE", strona + "");
+
+                    }
+                }
+
+
+            }
+        });
+                /*
+        new EndlessRecyclerOnScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
                 wczytajDane();
+                Log.d("LOADMORE", strona + "");
             }
-        });
+        });*/
         if (bundle.getBoolean("getWczytaj") == false){
             wczytajDane();
-            wczytane=true;
-            bundle.putBoolean("getWczytaj",true);
+            bundle.putBoolean("getWczytaj", true);
+
         }
     }
 
@@ -210,9 +257,8 @@ public class MainActivityFragment extends Fragment {
                 .setEndpoint("https://api.mojepanstwo.pl/dane/")
                 .build();
         final MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-
-        wczytane = bundle.getBoolean("getWczytaj");
-        if (wczytane == false) {
+        Log.d("Metoda","wczytajdane");
+        if ( bundle.getBoolean("getWczytaj")==false) {
             strona = 1;
             bundle.putBoolean("getWczytaj", true);
             if (RepositoryClass.getInstance().getDataObjectList() != null)
@@ -237,10 +283,12 @@ public class MainActivityFragment extends Fragment {
 
                             mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                     mRecyclerView.setAdapter(mAdapter);
-                    strona++;
+
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
                     dialog.dismiss();
                     Log.d("Strona", " bez param strona loadmore: " + strona);
+                    strona++;
+                    loading=true;
                 }
 
                 @Override
@@ -262,10 +310,13 @@ public class MainActivityFragment extends Fragment {
                     }
                     mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                     mRecyclerView.setAdapter(mAdapter);
-                    strona++;
+
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
                     dialog.dismiss();
                     Log.d("Strona", "param strona loadmore: " + strona);
+                    strona++;
+                    //RepositoryClass.getInstance().searchViewAllow=true;
+                    loading=true;
                 }
 
                 @Override
@@ -278,22 +329,26 @@ public class MainActivityFragment extends Fragment {
     }
 
     public void glownaWyszukiwarka(String query) {
+        /*
         Log.d("Bravo:", query);
+        bundle.putInt("getPos", 0);
+        bundle.putBoolean("getWczytaj", false);
+        ActivityResultBus.getInstance().unregister(mActivityResultSubscriber);
+        ActivityResultBus.getInstance().register(mActivityResultSubscriber);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
+
         if (query.length() >= 1 && !query.equals("*")) {
             RepositoryClass.getInstance().setGlowneZapyt(query);
             strona = 1;
-            try {
-                RepositoryClass.getInstance().deleteDataObjectList();
-            }catch (Exception e){
-
-            }
-            wczytajDane();
+        Log.d("Jedno","Stukniecie");
+           wczytajDane();
         } else if (query.toString().equals("*")) {
             RepositoryClass.getInstance().setGlowneZapyt(null);
-            RepositoryClass.getInstance().deleteDataObjectList();
+            //RepositoryClass.getInstance().deleteDataObjectList();
             strona = 1;
-            wczytajDane();
         }
+        bundle.putBoolean("getWczytaj", true);
+        */
     }
-
 }
