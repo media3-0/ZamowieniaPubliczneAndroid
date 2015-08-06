@@ -156,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
                         RepositoryClass.getInstance().setGlowneZapyt(null);
                         fragment.strona = 1;
                     }
-                    RepositoryClass.getInstance().setGlowneZapyt(query);
                     if (RepositoryClass.getInstance().getDataObjectList() != null)
                         RepositoryClass.getInstance().deleteDataObjectList();
                     fragment.query=query;

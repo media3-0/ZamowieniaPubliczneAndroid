@@ -221,9 +221,11 @@ public class MainActivityFragment extends Fragment {
                 visibleItemCount = mLayoutManager.getChildCount();
                 totalItemCount = mLayoutManager.getItemCount();
                 pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+                int wszystkieElem = RepositoryClass.getInstance().getBaseListClass().searchClass.paginationClass.total;
+                Log.d("stronka", "visibleItemCount: "+visibleItemCount+" totalItemCount: "+totalItemCount+" pastVisiblesItems: "+pastVisiblesItems);
 
                 if (loading) {
-                    if ( (visibleItemCount+pastVisiblesItems) >= totalItemCount) {
+                    if ( (visibleItemCount+pastVisiblesItems) >= totalItemCount && (totalItemCount!=wszystkieElem)) {
                         loading = false;
                         wczytajDane();
                         Log.d("LOADMORE", strona + "");

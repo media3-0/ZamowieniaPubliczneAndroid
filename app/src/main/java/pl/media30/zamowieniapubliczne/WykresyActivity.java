@@ -63,18 +63,12 @@ public class WykresyActivity extends ActionBarActivity {
                     final int wszystko = baseListClass.searchClass.paginationClass.total;
                     final int iloscElemNaStr = baseListClass.searchClass.paginationClass.count;
                     int iloscZaladElem = RepositoryClass.getInstance().getDataObjectList().size();
-                    Log.d("Zaladowanych str: ", iloscZaladElem+"");
-                    Log.d("x/y",(iloscZaladElem / iloscElemNaStr)+"" );
-
-
-                    Log.d("wsz/str", wszystko + " " + iloscElemNaStr);
                     dataObjectList = baseListClass.searchClass.dataobjects;
                     dataObjectList.clear();
-                    for (int i = 0; i < Math.ceil((iloscZaladElem / iloscElemNaStr)); i++) {
-                        Log.d("Petla", "lld "+i);
+                    for (int i = 0; i < (Math.ceil((double)iloscZaladElem / (double)iloscElemNaStr)); i++) {
                         RestAdapter restAdapterX = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
                         MojePanstwoService serviceX = restAdapterX.create(MojePanstwoService.class);
-                        BaseListClass baseListClass1 = serviceX.najwiekszeZamowienia(i, RepositoryClass.getInstance().getGlowneZapyt(), RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail());
+                        BaseListClass baseListClass1 = serviceX.najwiekszeZamowienia(i+1, RepositoryClass.getInstance().getGlowneZapyt(), RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail());
                         dataObjectList.addAll(baseListClass1.searchClass.dataobjects);
                     }
                 }
@@ -84,14 +78,12 @@ public class WykresyActivity extends ActionBarActivity {
         t1.start();
         try {
             t1.join();
-        } catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
 
-        Collections.sort(dataObjectList, new Comparator<DataObjectClass>()
-                {
+        Collections.sort(dataObjectList, new Comparator<DataObjectClass>() {
                     @Override
                     public int compare(DataObjectClass lhs, DataObjectClass rhs) {
                         return Double.compare(rhs.dataClass.wartosc_cena, lhs.dataClass.wartosc_cena);
@@ -101,18 +93,19 @@ public class WykresyActivity extends ActionBarActivity {
 
 
         int rozmiarWykresu = 50;
-        if (dataObjectList.size()<50)
+        if (dataObjectList.size() < 50)
             rozmiarWykresu = dataObjectList.size();
 
-        for (int i = 0;i < rozmiarWykresu; i++)
-        {
+        for (int i = 0; i < rozmiarWykresu; i++) {
             entries.add(new BarEntry((float) (dataObjectList.get(i).dataClass.wartosc_cena), i));
         }
-
-        BarDataSet dataset = new BarDataSet(entries, "Najwieksze zamowienia");
-        for (int i = 0; i < rozmiarWykresu; i++)
-        {
-            labels.add(Integer.toString(i));
+        BarDataSet dataset;
+        if(RepositoryClass.getInstance().getGlowneZapyt() == null)
+            dataset = new BarDataSet(entries, "Najwieksze zamowienia");
+        else
+            dataset = new BarDataSet(entries, "Aktualnie załadowane najwieksze zamowienia");
+        for (int i = 0; i < rozmiarWykresu; i++) {
+            labels.add(Integer.toString(i+1));
         }
 
         setContentView(chart);
@@ -122,6 +115,7 @@ public class WykresyActivity extends ActionBarActivity {
         chart.setDescription("");
         chart.setScaleMinima(5f, 1f);
         chart.animateXY(4, 4);
+
 
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
                                                   @Override
