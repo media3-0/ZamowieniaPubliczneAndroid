@@ -12,9 +12,12 @@ import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.List;
@@ -57,7 +60,20 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setLogo(R.drawable.ic_reorder_black_48dp);
+       // getSupportActionBar().setLogo(R.drawable.ic_reorder_black_48dp);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_reorder_black_48dp));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(Gravity.LEFT);
+            }
+        });
+
         try {
            List <ObjectClass> lista =  readRecordsFromFile();
             if (lista!=null)
@@ -66,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("nie dziala", e.getMessage());
         }
 
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
+
 
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -84,7 +100,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent;
                 //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()){
-
+                    case android.R.id.home:
+                       // drawerLayout.openDrawer();
+                    return true;
                     case R.id.search:
                         intent = new Intent(getApplicationContext(), SearchActivity.class);
                         startActivityForResult(intent, 2);
@@ -107,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+
 
     }
 
