@@ -585,7 +585,7 @@ public class ZamowienieActivityFragment extends Activity {
                                 zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
                             }
                         }else{
-                            Toast.makeText(getApplicationContext(), "BĹ‚Ä…d. SprawdĹş poĹ‚Ä…czenie z internetem", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

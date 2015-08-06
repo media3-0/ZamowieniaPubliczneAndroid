@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/ActivityResultBus.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/ActivityResultEvent.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Adapters/UlubioneAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/EndlessRecyclerOnScrollListener.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/InfoActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/MainActivity.java" charset="UTF-8" />
