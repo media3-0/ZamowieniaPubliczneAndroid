@@ -59,8 +59,11 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
             Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
             RepositoryClass.getInstance().setStronaUlub(getAdapterPosition());
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
+            intent.putExtra("Activity","Ulubione");
+            intent.putExtra("strona",Integer.toString(getAdapterPosition()));
             view.getContext().startActivity(intent);
             MyAdapter.position = getAdapterPosition();
+
 
         }
 

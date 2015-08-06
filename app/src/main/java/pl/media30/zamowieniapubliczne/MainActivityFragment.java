@@ -199,8 +199,6 @@ public class MainActivityFragment extends Fragment {
         }
         nowePob=false;
 
-
-
         mRecyclerView = (UltimateRecyclerView) getView().findViewById(R.id.ultimate_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         // use a linear layout manager

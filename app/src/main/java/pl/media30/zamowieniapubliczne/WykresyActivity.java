@@ -55,50 +55,57 @@ public class WykresyActivity extends ActionBarActivity {
             public void run() {
                 RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
                 MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-                BaseListClass baseListClass = service.najwiekszeZamowienia(1, RepositoryClass.getInstance().getGlowneZapyt(), RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail());
+                try {
+                    BaseListClass baseListClass = service.najwiekszeZamowienia(1, RepositoryClass.getInstance().getGlowneZapyt(), RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail());
 
-                if (RepositoryClass.getInstance().getGlowneZapyt() == null) {
-                    dataObjectList = baseListClass.searchClass.dataobjects;
-                } else {
-                    final int wszystko = baseListClass.searchClass.paginationClass.total;
-                    final int iloscElemNaStr = baseListClass.searchClass.paginationClass.count;
-                    int iloscZaladElem = RepositoryClass.getInstance().getDataObjectList().size();
-                    dataObjectList = baseListClass.searchClass.dataobjects;
-                    dataObjectList.clear();
-                    for (int i = 0; i < (Math.ceil((double)iloscZaladElem / (double)iloscElemNaStr)); i++) {
-                        RestAdapter restAdapterX = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
-                        MojePanstwoService serviceX = restAdapterX.create(MojePanstwoService.class);
-                        BaseListClass baseListClass1 = serviceX.najwiekszeZamowienia(i+1, RepositoryClass.getInstance().getGlowneZapyt(), RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail());
-                        dataObjectList.addAll(baseListClass1.searchClass.dataobjects);
+                    if (RepositoryClass.getInstance().getGlowneZapyt() == null) {
+                        dataObjectList = baseListClass.searchClass.dataobjects;
+                    } else {
+                        final int wszystko = baseListClass.searchClass.paginationClass.total;
+                        final int iloscElemNaStr = baseListClass.searchClass.paginationClass.count;
+                        int iloscZaladElem = RepositoryClass.getInstance().getDataObjectList().size();
+                        dataObjectList = baseListClass.searchClass.dataobjects;
+                        dataObjectList.clear();
+                        for (int i = 0; i < (Math.ceil((double) iloscZaladElem / (double) iloscElemNaStr)); i++) {
+                            RestAdapter restAdapterX = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
+                            MojePanstwoService serviceX = restAdapterX.create(MojePanstwoService.class);
+                            BaseListClass baseListClass1 = serviceX.najwiekszeZamowienia(i + 1, RepositoryClass.getInstance().getGlowneZapyt(), RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail());
+                            dataObjectList.addAll(baseListClass1.searchClass.dataobjects);
+                        }
                     }
-                }
+                }catch(Exception e){}
             }
         });
 
-        t1.start();
+        int rozmiarWykresu = 0;
         try {
+            t1.start();
             t1.join();
+            Collections.sort(dataObjectList, new Comparator<DataObjectClass>() {
+                        @Override
+                        public int compare(DataObjectClass lhs, DataObjectClass rhs) {
+                            return Double.compare(rhs.dataClass.wartosc_cena, lhs.dataClass.wartosc_cena);
+                        }
+                    }
+            );
+            rozmiarWykresu = 50;
+            if (dataObjectList.size() < 50)
+                rozmiarWykresu = dataObjectList.size();
+
+            for (int i = 0; i < rozmiarWykresu; i++) {
+                entries.add(new BarEntry((float) (dataObjectList.get(i).dataClass.wartosc_cena), i));
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }catch(NullPointerException e){
+
         }
 
 
-        Collections.sort(dataObjectList, new Comparator<DataObjectClass>() {
-                    @Override
-                    public int compare(DataObjectClass lhs, DataObjectClass rhs) {
-                        return Double.compare(rhs.dataClass.wartosc_cena, lhs.dataClass.wartosc_cena);
-                    }
-                }
-        );
 
 
-        int rozmiarWykresu = 50;
-        if (dataObjectList.size() < 50)
-            rozmiarWykresu = dataObjectList.size();
 
-        for (int i = 0; i < rozmiarWykresu; i++) {
-            entries.add(new BarEntry((float) (dataObjectList.get(i).dataClass.wartosc_cena), i));
-        }
+
         BarDataSet dataset;
         if(RepositoryClass.getInstance().getGlowneZapyt() == null)
             dataset = new BarDataSet(entries, "Najwieksze zamowienia");

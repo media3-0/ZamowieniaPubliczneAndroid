@@ -48,7 +48,7 @@ public class ZamowienieActivityFragment extends Activity {
     boolean ulubione = false;
     int id;
 
-   public boolean writeRecordsToFile(List<ObjectClass> records) {
+    public boolean writeRecordsToFile(List<ObjectClass> records) {
         FileOutputStream fos;
         ObjectOutputStream oos = null;
         try {
@@ -80,6 +80,13 @@ public class ZamowienieActivityFragment extends Activity {
     }
 
     public ZamowienieActivityFragment() {
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        Log.d("ddf", getIntent().getStringExtra("Activity")+"");
     }
 
     @Override
@@ -360,9 +367,226 @@ public class ZamowienieActivityFragment extends Activity {
 
                     @Override
                     public void failure(RetrofitError error) {
-                        Log.d("error: ", error.getMessage() + "");
                         dialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "BĹ‚Ä…d. SprawdĹş poĹ‚Ä…czenie z internetem", Toast.LENGTH_SHORT).show();
+                        if (getIntent().getStringExtra("Activity").equals("Ulubione")) {
+                            Log.d("Stronabun", Integer.parseInt(getIntent().getStringExtra("strona")) + "");
+                            final ObjectClass objectClass =
+                                    RepositoryClass.getInstance().getListaUlubionych().get(Integer.parseInt(getIntent().getStringExtra("strona")));
+                            button.setText("Jest w ulub.");
+
+                            button.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    boolean usunieto = false;
+                                    for (int i = 0; i < RepositoryClass.getInstance().getListaUlubionych().size(); i++) {
+                                        if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(objectClass.dataClass.id)) {
+                                            RepositoryClass.getInstance().removeListaUlubionych(i);
+                                            usunieto = true;
+                                            button.setText("Dodaj do ulub.");
+                                            Log.d("ZAF", "usuwanie z ulub.");
+
+                                            break;
+                                        }
+                                    }
+                                    if (usunieto == false) {
+                                        RepositoryClass.getInstance().addListaUlubionych(objectClass);
+                                        Toast.makeText(getApplicationContext(), "Dodano do ulubionych", Toast.LENGTH_LONG);
+                                        button.setText("Usun z ulub.");
+                                        Log.d("ZAF", "Dodano do listy");
+                                    }
+                                    try {
+                                        writeRecordsToFile(RepositoryClass.getInstance().getListaUlubionych());
+                                    } catch (Exception e) {
+
+                                    }
+
+                                }
+                            });
+                            TextView zamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
+                            zamawiajacyNazwa.setText(objectClass.dataClass.zamawiajacy_nazwa.toString());
+
+                            TextView zamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
+                            zamawiajacyID.setText(objectClass.dataClass.zamawiajacy_id.toString());
+
+                            TextView zamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
+                            zamawiajacyRodzaj.setText(objectClass.dataClass.zamawiajacy_rodzaj.toString());
+
+                            TextView zamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
+                            zamawiajacyRegon.setText(objectClass.dataClass.zamawiajacy_regon.toString());
+
+
+                            TextView zamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
+                            zamawiajacyWojewodztwo.setText(objectClass.dataClass.zamawiajacy_wojewodztwo.toString());
+
+                            TextView zamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
+                            zamawiajacyIDWojewodztwa.setText(objectClass.dataClass.wojewodztwo_id.toString());
+
+                            TextView zamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
+                            zamawiajacyIDPowiatu.setText(objectClass.dataClass.powiat_id.toString());
+
+                            TextView zamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
+                            zamawiajacyIDGminy.setText(objectClass.dataClass.gmina_id.toString());
+
+                            TextView zamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
+                            zamawiajacyMiejscowosc.setText(objectClass.dataClass.zamawiajacy_miejscowosc.toString());
+
+                            TextView zamawiajacyKodPocztowy = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowy);
+                            zamawiajacyKodPocztowy.setText(objectClass.dataClass.zamawiajacy_kod_poczt.toString());
+
+                            TextView zamawiajacyIDKoduPocztowego = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowego);
+                            zamawiajacyIDKoduPocztowego.setText(objectClass.dataClass.zamawiajacyKod_pocztowy_id.toString());
+
+                            TextView zamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
+                            zamawiajacyUlica.setText(objectClass.dataClass.zamawiajacy_ulica.toString());
+
+                            TextView zamawiajacyNrDomu = (TextView) findViewById(R.id.textViewZamawiajacyNrDomu);
+                            zamawiajacyNrDomu.setText(objectClass.dataClass.zamawiajacy_nr_domu.toString());
+
+                            TextView zamawiajacyNrMIeszkania = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkania);
+                            zamawiajacyNrMIeszkania.setText(objectClass.dataClass.zamawiajacy_nr_miesz.toString());
+
+
+                            TextView zamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
+                            zamawiajacyEmail.setText(objectClass.dataClass.zamawiajacy_email.toString());
+                            mail = objectClass.dataClass.zamawiajacy_email.toString().trim();
+
+                            TextView zamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
+                            zamawiajacyTelefon.setText(objectClass.dataClass.zamawiajacy_tel.toString());
+                            telefon = objectClass.dataClass.zamawiajacy_tel.toString().trim();
+
+                            TextView zamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
+                            zamawiajacyFax.setText(objectClass.dataClass.zamawiajacy_fax.toString());
+
+                            TextView zamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
+                            zamawiajacyWWW.setText(objectClass.dataClass.zamawiajacy_www.toString());
+                            www = objectClass.dataClass.zamawiajacy_www.toString().trim();
+
+
+                            TextView zamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
+                            zamowienieNazwa.setText(objectClass.dataClass.nazwa.toString());
+
+                            TextView zamowienieTyp = (TextView) findViewById(R.id.textViewZamowienieTyp);
+                            zamowienieTyp.setText(objectClass.dataClass.typyNazwa.toString());
+
+                            TextView zamowienieTypSymbol = (TextView) findViewById(R.id.textViewZamowienieTypSymbol);
+                            zamowienieTypSymbol.setText(objectClass.dataClass.typySymbol.toString());
+
+                            TextView zamowienieRodzaj = (TextView) findViewById(R.id.textViewZamowienieRodzaj);
+                            zamowienieRodzaj.setText(objectClass.dataClass.rodzajeNazwa.toString());
+
+                            TextView zamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
+                            zamowienieDataPublikacji.setText(objectClass.dataClass.data_publikacji.toString());
+
+                            TextView zamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
+                            if (tryParseInt(objectClass.dataClass.zamowienie_ue)) {
+                                switch (Integer.parseInt(objectClass.dataClass.zamowienie_ue)) {
+                                    case 0:
+                                        zamowienieUE.setText("Nie");
+                                        break;
+                                    case 1:
+                                        zamowienieUE.setText("Tak");
+                                        break;
+                                    default:
+                                        zamowienieUE.setText(objectClass.dataClass.zamowienie_ue.toString());
+                                }
+                            } else {
+                                zamowienieUE.setText(objectClass.dataClass.zamowienie_ue.toString());
+                            }
+
+                            DecimalFormat df = new DecimalFormat("#");
+                            df.setMaximumFractionDigits(2);
+
+                            TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
+                            double zamowienieSzacowanaWartoscD = (objectClass.dataClass.wartosc_szacowana);
+                            zamowienieSzacowanaWartosc.setText(df.format(zamowienieSzacowanaWartoscD) + " PLN");
+
+                            TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
+                            double zamowienieCenaWybranejOfertyD = (objectClass.dataClass.wartosc_cena);
+                            zamowienieCenaWybranejOferty.setText(df.format(zamowienieCenaWybranejOfertyD) + " PLN");
+
+                            TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
+                            double zamowienieNajtanszaOfertaD = (Double.parseDouble(objectClass.dataClass.wartosc_cena_min));
+                            zamowienieNajtanszaOferta.setText(df.format(zamowienieNajtanszaOfertaD) + " PLN");
+
+                            TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
+                            double zamowienieNajdrozszaOfertaD = (objectClass.dataClass.wartosc_cena_max);
+                            zamowienieNajdrozszaOferta.setText(df.format(zamowienieNajdrozszaOfertaD) + " PLN");
+
+
+                            try {
+                                TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+                                if (objectClass.layers.detailsClass.przedmiot == "") {
+                                    zamowieniePrzedmiot.setText("Dane nie zostały wprowadzone");
+                                } else {
+                                    zamowieniePrzedmiot.setText(objectClass.layers.detailsClass.przedmiot.toString());
+                                }
+                            } catch (NullPointerException e) {
+                                TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
+                                zamowieniePrzedmiot.setText("Dane nie zostały wprowadzone");
+                            }
+
+                            try {
+                                TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+                                if (objectClass.layers.detailsClass.uprawnienie == "") {
+                                    zamowienieUprawnienie.setText("Dane nie zostały wprowadzone");
+                                } else {
+                                    zamowienieUprawnienie.setText(objectClass.layers.detailsClass.uprawnienie.toString());
+                                }
+                            } catch (NullPointerException e) {
+                                TextView zamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
+                                zamowienieUprawnienie.setText("Dane nie zostały wprowadzone");
+                            }
+
+                            try {
+                                TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+                                if (objectClass.layers.detailsClass.wiedza == "") {
+                                    zamowienieWiedza.setText("Dane nie zostały wprowadzone");
+                                } else {
+                                    zamowienieWiedza.setText(objectClass.layers.detailsClass.wiedza.toString());
+                                }
+                            } catch (NullPointerException e) {
+                                TextView zamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
+                                zamowienieWiedza.setText("Dane nie zostały wprowadzone");
+                            }
+
+                            try {
+                                TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+                                if (objectClass.layers.detailsClass.potencjal == "") {
+                                    zamowieniePotencjal.setText("Dane nie zostały wprowadzone");
+                                } else {
+                                    zamowieniePotencjal.setText(objectClass.layers.detailsClass.potencjal.toString());
+                                }
+                            } catch (NullPointerException e) {
+                                TextView zamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
+                                zamowieniePotencjal.setText("Dane nie zostały wprowadzone");
+                            }
+
+                            try {
+                                TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+                                if (objectClass.layers.detailsClass.osoby_zdolne == "") {
+                                    zamowienieOsobyZdolne.setText("Dane nie zostały wprowadzone");
+                                } else {
+                                    zamowienieOsobyZdolne.setText(objectClass.layers.detailsClass.osoby_zdolne.toString());
+                                }
+                            } catch (NullPointerException e) {
+                                TextView zamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
+                                zamowienieOsobyZdolne.setText("Dane nie zostały wprowadzone");
+                            }
+
+                            try {
+                                TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+                                if (objectClass.layers.detailsClass.sytuacja_ekonomiczna == "") {
+                                    zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
+                                } else {
+                                    zamowienieSytuacjaEkonomiczna.setText(objectClass.layers.detailsClass.sytuacja_ekonomiczna.toString());
+                                }
+                            } catch (NullPointerException e) {
+                                TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
+                                zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
+                            }
+                        }else{
+                            Toast.makeText(getApplicationContext(), "BĹ‚Ä…d. SprawdĹş poĹ‚Ä…czenie z internetem", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
         );

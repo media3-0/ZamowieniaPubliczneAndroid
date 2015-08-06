@@ -37,6 +37,7 @@ public class UlubioneActivity extends ActionBarActivity {
     Button button;
 
 
+
     private Object mActivityResultSubscriber = new Object() {
         @Subscribe
         public void onActivityResultReceived(ActivityResultEvent event) {

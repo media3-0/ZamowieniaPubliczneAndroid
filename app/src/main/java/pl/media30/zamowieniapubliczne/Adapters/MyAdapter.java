@@ -49,6 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             Bundle objClass = new Bundle();
             objClass.putString("myObject", objToStr);
             intent.putExtras(objClass);
+            intent.putExtra("Activity","Main");
 
             view.getContext().startActivity(intent);
             MyAdapter.position = getAdapterPosition();
