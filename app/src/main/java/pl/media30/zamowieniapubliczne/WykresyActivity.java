@@ -101,11 +101,6 @@ public class WykresyActivity extends ActionBarActivity {
 
         }
 
-
-
-
-
-
         BarDataSet dataset;
         if(RepositoryClass.getInstance().getGlowneZapyt() == null)
             dataset = new BarDataSet(entries, "Najwieksze zamowienia");
@@ -128,12 +123,6 @@ public class WykresyActivity extends ActionBarActivity {
                                                   @Override
                                                   public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
                                                       if (wczytajRaz == true) {
-                                                          //String info = "Nazwa: " + dataObjectList.get(e.getXIndex()).dataClass.nazwa;
-                                                          //Log.d("Nazwa prz: ", info);
-
-                                                          //Toast.makeText(getApplicationContext(), info + "", Toast.LENGTH_SHORT).show();
-                                                          //Toast.makeText(getApplicationContext(), "Element: " + e.getXIndex(), Toast.LENGTH_SHORT).show();
-                                                          //  Toast.makeText(getApplicationContext(), "Element: " + e.getXIndex(), Toast.LENGTH_SHORT).show();
                                                           Intent intent = new Intent(context, ZamowienieActivityFragment.class);
                                                           DataObjectClass dataObjectClass = dataObjectList.get(e.getXIndex());
                                                           String objToStr = new Gson().toJson(dataObjectClass);

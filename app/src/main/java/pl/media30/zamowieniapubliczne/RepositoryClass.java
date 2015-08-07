@@ -74,7 +74,7 @@ public class RepositoryClass {
         try{
             dataObjectList.clear();
         }catch(Exception e){
-//            Log.d("Usuwanie", e.getMessage());
+
         }
     }
 

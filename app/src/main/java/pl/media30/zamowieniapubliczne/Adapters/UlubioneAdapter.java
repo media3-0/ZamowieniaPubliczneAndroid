@@ -45,25 +45,13 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
-/**
-            Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
-            o
-            String objToStr = new Gson().toJson(objectClass);
-            Bundle objClass = new Bundle();
-            objClass.putString("myObject", objToStr);
-            intent.putExtras(objClass);
-            view.getContext().startActivity(intent);
-            MyAdapter.position = getAdapterPosition();
-/*/
-            Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
+
             RepositoryClass.getInstance().setStronaUlub(getAdapterPosition());
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
             intent.putExtra("Activity","Ulubione");
             intent.putExtra("strona",Integer.toString(getAdapterPosition()));
             view.getContext().startActivity(intent);
             MyAdapter.position = getAdapterPosition();
-
 
         }
 

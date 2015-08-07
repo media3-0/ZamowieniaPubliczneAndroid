@@ -234,14 +234,7 @@ public class MainActivityFragment extends Fragment {
 
             }
         });
-                /*
-        new EndlessRecyclerOnScrollListener(mLayoutManager) {
-            @Override
-            public void onLoadMore(int current_page) {
-                wczytajDane();
-                Log.d("LOADMORE", strona + "");
-            }
-        });*/
+
         if (bundle.getBoolean("getWczytaj") == false){
             wczytajDane();
             bundle.putBoolean("getWczytaj", true);

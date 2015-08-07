@@ -41,7 +41,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         @Override
         public void onClick(View view) {
 
-            Toast.makeText(view.getContext(), "position = " + getAdapterPosition(), Toast.LENGTH_SHORT).show();
             RepositoryClass.getInstance().setStronaUlub(-1);
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
             DataObjectClass dataObjectClass = mDataset.get(getAdapterPosition());

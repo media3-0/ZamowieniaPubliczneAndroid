@@ -60,7 +60,6 @@ public class UlubioneActivity extends ActionBarActivity {
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        // mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
         try {
             mAdapter = new UlubioneAdapter(RepositoryClass.getInstance().getListaUlubionych());
             mRecyclerView.setAdapter(mAdapter);

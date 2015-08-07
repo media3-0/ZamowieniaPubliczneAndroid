@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       // getSupportActionBar().setLogo(R.drawable.ic_reorder_black_48dp);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
