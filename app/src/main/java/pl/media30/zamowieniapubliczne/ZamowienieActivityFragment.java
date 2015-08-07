@@ -342,31 +342,7 @@ public class ZamowienieActivityFragment extends Activity {
                             TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
                             zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
                         }
-/*
-                    TextView zamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
-                    zamowienieSzacowanaWartosc.setText
-                            (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).wartosc
-                            + " " +
-                            baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
 
-                    TextView zamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
-                    zamowienieCenaWybranejOferty.setText
-                            (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena
-                            + " " +
-                            baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
-
-                    TextView zamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
-                    zamowienieNajtanszaOferta.setText
-                            (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena_min
-                            + " " +
-                            baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
-
-                    TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
-                    zamowienieNajdrozszaOferta.setText
-                            (baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).cena_max
-                            + " " +
-                            baseClass.objectClass.layers.czesci.get(baseClass.objectClass.layers.czesci.size() - 1).waluta);
-*/
                         dialog.dismiss();
                     }
 
@@ -595,221 +571,93 @@ public class ZamowienieActivityFragment extends Activity {
                     }
                 }
         );
-        //koniec dostepu do layers
 
-//REGION IDENTYFIKATORY ZAMAWIAJACEGO
-
-
-        //TextView textViewZamawiajacyNazwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNazwaLabel);
-        //textViewZamawiajacyNazwaLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
-        //textViewZamawiajacyNazwa.setVisibility(View.GONE);
         CardView cardViewZamawiajacyNazwa = (CardView) findViewById(R.id.card_viewZamawiajacyNazwa);
         cardViewZamawiajacyNazwa.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyIDLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDLabel);
-        //textViewZamawiajacyIDLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
-        //textViewZamawiajacyID.setVisibility(View.GONE);
         CardView cardViewZamawiajacyID = (CardView) findViewById(R.id.card_viewZamawiajacyID);
         cardViewZamawiajacyID.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyRodzajLabel = (TextView) findViewById(R.id.textViewZamawiajacyRodzajLabel);
-        //textViewZamawiajacyRodzajLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
-        //textViewZamawiajacyRodzaj.setVisibility(View.GONE);
         CardView cardViewZamawiajacyRodzaj = (CardView) findViewById(R.id.card_viewZamawiajacyRodzaj);
         cardViewZamawiajacyRodzaj.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyRegonLabel = (TextView) findViewById(R.id.textViewZamawiajacyRegonLabel);
-        //textViewZamawiajacyRegonLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
-        //textViewZamawiajacyRegon.setVisibility(View.GONE);
         CardView cardViewZamawiajacyRegon = (CardView) findViewById(R.id.card_viewZamawiajacyRegon);
         cardViewZamawiajacyRegon.setVisibility(View.GONE);
 
-//ENDREGION
-//REGION DANE ADRESOWE ZAMAWIAJACEGO
 
-
-        //TextView textViewZamawiajacyWojewodztwoLabel = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwoLabel);
-        //textViewZamawiajacyWojewodztwoLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
-        //textViewZamawiajacyWojewodztwo.setVisibility(View.GONE);
         CardView cardViewZamawiajacyWojewodztwo = (CardView) findViewById(R.id.card_viewZamawiajacyWojewodztwo);
         cardViewZamawiajacyWojewodztwo.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyIDWojewodztwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwaLabel);
-        //textViewZamawiajacyIDWojewodztwaLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
-        //textViewZamawiajacyIDWojewodztwa.setVisibility(View.GONE);
         CardView cardViewZamawiajacyWojewodztwoID = (CardView) findViewById(R.id.card_viewZamawiajacyWojewodztwoID);
         cardViewZamawiajacyWojewodztwoID.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyIDPowiatuLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatuLabel);
-        //textViewZamawiajacyIDPowiatuLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
-        //textViewZamawiajacyIDPowiatu.setVisibility(View.GONE);
         CardView cardViewZamawiajacyPowiatID = (CardView) findViewById(R.id.card_viewZamawiajacyPowiatID);
         cardViewZamawiajacyPowiatID.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyIDGminyLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDGminyLabel);
-        //textViewZamawiajacyIDGminyLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
-        //textViewZamawiajacyIDGminy.setVisibility(View.GONE);
         CardView cardViewZamawiajacyGminaID = (CardView) findViewById(R.id.card_viewZamawiajacyGminaID);
         cardViewZamawiajacyGminaID.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyMiejscowoscLabel = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowoscLabel);
-        //textViewZamawiajacyMiejscowoscLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
-        //textViewZamawiajacyMiejscowosc.setVisibility(View.GONE);
         CardView cardViewZamawiajacyMiejscowosc = (CardView) findViewById(R.id.card_viewZamawiajacyMiejscowosc);
         cardViewZamawiajacyMiejscowosc.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyKodPocztowyLabel = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowyLabel);
-        //textViewZamawiajacyKodPocztowyLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyKodPocztowy = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowy);
-        //textViewZamawiajacyKodPocztowy.setVisibility(View.GONE);
         CardView cardViewZamawiajacyKodPocztowy = (CardView) findViewById(R.id.card_viewZamawiajacyKodPocztowy);
         cardViewZamawiajacyKodPocztowy.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyIDKoduPocztowegoLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowegoLabel);
-        //textViewZamawiajacyIDKoduPocztowegoLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyIDKoduPocztowego = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowego);
-        //textViewZamawiajacyIDKoduPocztowego.setVisibility(View.GONE);
         CardView cardViewZamawiajacyKodPocztowyID = (CardView) findViewById(R.id.card_viewZamawiajacyKodPocztowyID);
         cardViewZamawiajacyKodPocztowyID.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyUlicaLabel = (TextView) findViewById(R.id.textViewZamawiajacyUlicaLabel);
-        //textViewZamawiajacyUlicaLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
-        //textViewZamawiajacyUlica.setVisibility(View.GONE);
         CardView cardViewZamawiajacyUlica = (CardView) findViewById(R.id.card_viewZamawiajacyUlica);
         cardViewZamawiajacyUlica.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyNrDomuLabel = (TextView) findViewById(R.id.textViewZamawiajacyNrDomuLabel);
-        //textViewZamawiajacyNrDomuLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyNrDomu = (TextView) findViewById(R.id.textViewZamawiajacyNrDomu);
-        //textViewZamawiajacyNrDomu.setVisibility(View.GONE);
         CardView cardViewZamawiajacyNrDomu = (CardView) findViewById(R.id.card_viewZamawiajacyNrDomu);
         cardViewZamawiajacyNrDomu.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyNrMieszkaniaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkaniaLabel);
-        //textViewZamawiajacyNrMieszkaniaLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyNrMieszkania = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkania);
-        //textViewZamawiajacyNrMieszkania.setVisibility(View.GONE);
         CardView cardViewZamawiajacyNrMieszkania = (CardView) findViewById(R.id.card_viewZamawiajacyNrMieszkania);
         cardViewZamawiajacyNrMieszkania.setVisibility(View.GONE);
 
-//ENDREGION
-//REGION DANE KONTAKTOWE ZAMAWIAJACEGO
-
-
-        //TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
-        //textViewZamawiajacyEmailLabel.setVisibility(View.GONE);
-        //textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
-        //textViewZamawiajacyEmail.setVisibility(View.GONE);
         CardView cardViewZamawiajacyEmail = (CardView) findViewById(R.id.card_viewZamawiajacyEmail);
         cardViewZamawiajacyEmail.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyTelefonLabel = (TextView) findViewById(R.id.textViewZamawiajacyTelefonLabel);
-        //textViewZamawiajacyTelefonLabel.setVisibility(View.GONE);
-        //textViewZamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
-        //textViewZamawiajacyTelefon.setVisibility(View.GONE);
         cardViewZamawiajacyTelefon = (CardView) findViewById(R.id.card_viewZamawiajacyTelefon);
         cardViewZamawiajacyTelefon.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyFaxLabel = (TextView) findViewById(R.id.textViewZamawiajacyFaxLabel);
-        //textViewZamawiajacyFaxLabel.setVisibility(View.GONE);
-        //TextView textViewZamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
-        //textViewZamawiajacyFax.setVisibility(View.GONE);
         CardView cardViewZamawiajacyFax = (CardView) findViewById(R.id.card_viewZamawiajacyFax);
         cardViewZamawiajacyFax.setVisibility(View.GONE);
 
-        //TextView textViewZamawiajacyWWWLabel = (TextView) findViewById(R.id.textViewZamawiajacyWWWLabel);
-        //textViewZamawiajacyWWWLabel.setVisibility(View.GONE);
-        //textViewZamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
-        //textViewZamawiajacyWWW.setVisibility(View.GONE);
         CardView cardViewZamawiajacyWWW = (CardView) findViewById(R.id.card_viewZamawiajacyWWW);
         cardViewZamawiajacyWWW.setVisibility(View.GONE);
 
-//ENDREGION
-//REGION INFORMACJE O ZAMOWIENIU
 
-
-        //TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
-        //textViewZamowienieNazwaLabel.setVisibility(View.GONE);
-        //TextView textViewZamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
-        //textViewZamowienieNazwa.setVisibility(View.GONE);
         CardView cardViewZamowienieNazwa = (CardView) findViewById(R.id.card_viewZamowienieNazwa);
         cardViewZamowienieNazwa.setVisibility(View.GONE);
 
-        //TextView textViewZamowienieTypLabel = (TextView) findViewById(R.id.textViewZamowienieTypLabel);
-        //textViewZamowienieTypLabel.setVisibility(View.GONE);
-        //TextView textViewZamowienieTyp = (TextView) findViewById(R.id.textViewZamowienieTyp);
-        //textViewZamowienieTyp.setVisibility(View.GONE);
         CardView cardViewZamowienieTyp = (CardView) findViewById(R.id.card_viewZamowienieTyp);
         cardViewZamowienieTyp.setVisibility(View.GONE);
 
-        //TextView textViewZamowienieTypSymbolLabel = (TextView) findViewById(R.id.textViewZamowienieTypSymbolLabel);
-        //textViewZamowienieTypSymbolLabel.setVisibility(View.GONE);
-        //TextView textViewZamowienieTypSymbol = (TextView) findViewById(R.id.textViewZamowienieTypSymbol);
-        //textViewZamowienieTypSymbol.setVisibility(View.GONE);
         CardView cardViewZamowienieTypSymbol = (CardView) findViewById(R.id.card_viewZamowienieTypSymbol);
         cardViewZamowienieTypSymbol.setVisibility(View.GONE);
 
-        //TextView textViewZamowienieRodzajLabel = (TextView) findViewById(R.id.textViewZamowienieRodzajLabel);
-        //textViewZamowienieRodzajLabel.setVisibility(View.GONE);
-        //TextView textViewZamowienieRodzaj = (TextView) findViewById(R.id.textViewZamowienieRodzaj);
-        //textViewZamowienieRodzaj.setVisibility(View.GONE);
         CardView cardViewZamowienieRodzaj = (CardView) findViewById(R.id.card_viewZamowienieRodzaj);
         cardViewZamowienieRodzaj.setVisibility(View.GONE);
 
-        //TextView textViewZamowienieDataPublikacjiLabel = (TextView) findViewById(R.id.textViewZamowienieDataPublikacjiLabel);
-        //textViewZamowienieDataPublikacjiLabel.setVisibility(View.GONE);
-        //TextView textViewZamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
-        //textViewZamowienieDataPublikacji.setVisibility(View.GONE);
         CardView cardViewZamowienieDataPublikacji = (CardView) findViewById(R.id.card_viewZamowienieDataPublikacji);
         cardViewZamowienieDataPublikacji.setVisibility(View.GONE);
 
-        //TextView textViewZamowienieUELabel = (TextView) findViewById(R.id.textViewZamowienieUELabel);
-        //textViewZamowienieUELabel.setVisibility(View.GONE);
-        //TextView textViewZamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
-        //textViewZamowienieUE.setVisibility(View.GONE);
         CardView cardViewZamowienieUE = (CardView) findViewById(R.id.card_viewZamowienieUE);
         cardViewZamowienieUE.setVisibility(View.GONE);
 
-        //TextView textViewZamowienieSzacowanaWartoscLabel = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartoscLabel);
-        //textViewZamowienieSzacowanaWartoscLabel.setVisibility(View.GONE);
-        //TextView textViewZamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
-        //textViewZamowienieSzacowanaWartosc.setVisibility(View.GONE);
         CardView cardViewZamowienieSzacowanaWartosc = (CardView) findViewById(R.id.card_viewZamowienieSzacowanaWartosc);
         cardViewZamowienieSzacowanaWartosc.setVisibility(View.GONE);
 
-        //TextView textViewZamowienieCenaWybranejOfertyLabel = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOfertyLabel);
-        //textViewZamowienieCenaWybranejOfertyLabel.setVisibility(View.GONE);
-        //TextView textViewZamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
-        //textViewZamowienieCenaWybranejOferty.setVisibility(View.GONE);
         CardView cardViewZamowienieCenaWybranejOferty = (CardView) findViewById(R.id.card_viewZamowienieCenaWybranejOferty);
         cardViewZamowienieCenaWybranejOferty.setVisibility(View.GONE);
 
-        //TextView textViewZamowienieNajtanszaOfertaLabel = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOfertaLabel);
-        //textViewZamowienieNajtanszaOfertaLabel.setVisibility(View.GONE);
-        //TextView textViewZamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
-        //textViewZamowienieNajtanszaOferta.setVisibility(View.GONE);
         CardView cardViewZamowienieNajtanszaOferta = (CardView) findViewById(R.id.card_viewZamowienieNajtanszaOferta);
         cardViewZamowienieNajtanszaOferta.setVisibility(View.GONE);
 
-        //TextView textViewZamowienieNajdrozszaOfertaLabel = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOfertaLabel);
-        //textViewZamowienieNajdrozszaOfertaLabel.setVisibility(View.GONE);
-        //TextView textViewZamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
-        //textViewZamowienieNajdrozszaOferta.setVisibility(View.GONE);
         CardView cardViewZamowienieNajdrozszaOferta = (CardView) findViewById(R.id.card_viewZamowienieNajdrozszaOferta);
         cardViewZamowienieNajdrozszaOferta.setVisibility(View.GONE);
 
-//ENDREGION
-//REGION CHOWANIE SZCZEGOLOW ZAMOWIENIA
 
         TextView textViewZamowieniePrzedmiotLabel = (TextView) findViewById(R.id.textViewZamowieniePrzedmiotLabel);
         textViewZamowieniePrzedmiotLabel.setVisibility(View.GONE);
@@ -853,211 +701,97 @@ public class ZamowienieActivityFragment extends Activity {
         CardView cardViewZamowienieSytuacjaEkonomiczna = (CardView) findViewById(R.id.card_viewZamowienieSytuacjaEkonomiczna);
         cardViewZamowienieSytuacjaEkonomiczna.setVisibility(View.GONE);
 
-//ENDREGION
     }
 
-//REGION CHOWANIE 1 STOPIEN
 
     public void chowanieIdentyfikatory(View v) {
-        //TextView textViewZamawiajacyNazwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNazwaLabel);
-        //textViewZamawiajacyNazwaLabel.setVisibility(textViewZamawiajacyNazwaLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyNazwa = (TextView) findViewById(R.id.textViewZamawiajacyNazwa);
-        //textViewZamawiajacyNazwa.setVisibility(textViewZamawiajacyNazwa.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyNazwa = (CardView) findViewById(R.id.card_viewZamawiajacyNazwa);
         cardViewZamawiajacyNazwa.setVisibility(cardViewZamawiajacyNazwa.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyIDLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDLabel);
-        //textViewZamawiajacyIDLabel.setVisibility(textViewZamawiajacyIDLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyID = (TextView) findViewById(R.id.textViewZamawiajacyID);
-        //textViewZamawiajacyID.setVisibility(textViewZamawiajacyID.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyID = (CardView) findViewById(R.id.card_viewZamawiajacyID);
         cardViewZamawiajacyID.setVisibility(cardViewZamawiajacyID.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyRodzajLabel = (TextView) findViewById(R.id.textViewZamawiajacyRodzajLabel);
-        //textViewZamawiajacyRodzajLabel.setVisibility(textViewZamawiajacyRodzajLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyRodzaj = (TextView) findViewById(R.id.textViewZamawiajacyRodzaj);
-        //textViewZamawiajacyRodzaj.setVisibility(textViewZamawiajacyRodzaj.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyRodzaj = (CardView) findViewById(R.id.card_viewZamawiajacyRodzaj);
         cardViewZamawiajacyRodzaj.setVisibility(cardViewZamawiajacyRodzaj.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyRegonLabel = (TextView) findViewById(R.id.textViewZamawiajacyRegonLabel);
-        //textViewZamawiajacyRegonLabel.setVisibility(textViewZamawiajacyRegonLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyRegon = (TextView) findViewById(R.id.textViewZamawiajacyRegon);
-        //textViewZamawiajacyRegon.setVisibility(textViewZamawiajacyRegon.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyRegon = (CardView) findViewById(R.id.card_viewZamawiajacyRegon);
         cardViewZamawiajacyRegon.setVisibility(cardViewZamawiajacyRegon.isShown() ? View.GONE : View.VISIBLE);
     }
 
     public void chowanieDaneAdresowe(View v) {
-        //TextView textViewZamawiajacyWojewodztwoLabel = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwoLabel);
-        //textViewZamawiajacyWojewodztwoLabel.setVisibility(textViewZamawiajacyWojewodztwoLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyWojewodztwo = (TextView) findViewById(R.id.textViewZamawiajacyWojewodztwo);
-        //textViewZamawiajacyWojewodztwo.setVisibility(textViewZamawiajacyWojewodztwo.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyWojewodztwo = (CardView) findViewById(R.id.card_viewZamawiajacyWojewodztwo);
         cardViewZamawiajacyWojewodztwo.setVisibility(cardViewZamawiajacyWojewodztwo.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyIDWojewodztwaLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwaLabel);
-        //textViewZamawiajacyIDWojewodztwaLabel.setVisibility(textViewZamawiajacyIDWojewodztwaLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyIDWojewodztwa = (TextView) findViewById(R.id.textViewZamawiajacyIDWojewodztwa);
-        //textViewZamawiajacyIDWojewodztwa.setVisibility(textViewZamawiajacyIDWojewodztwa.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyWojewodztwoID = (CardView) findViewById(R.id.card_viewZamawiajacyWojewodztwoID);
         cardViewZamawiajacyWojewodztwoID.setVisibility(cardViewZamawiajacyWojewodztwoID.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyIDPowiatuLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatuLabel);
-        //textViewZamawiajacyIDPowiatuLabel.setVisibility(textViewZamawiajacyIDPowiatuLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyIDPowiatu = (TextView) findViewById(R.id.textViewZamawiajacyIDPowiatu);
-        //textViewZamawiajacyIDPowiatu.setVisibility(textViewZamawiajacyIDPowiatu.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyPowiatID = (CardView) findViewById(R.id.card_viewZamawiajacyPowiatID);
         cardViewZamawiajacyPowiatID.setVisibility(cardViewZamawiajacyPowiatID.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyIDGminyLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDGminyLabel);
-        //textViewZamawiajacyIDGminyLabel.setVisibility(textViewZamawiajacyIDGminyLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyIDGminy = (TextView) findViewById(R.id.textViewZamawiajacyIDGminy);
-        //textViewZamawiajacyIDGminy.setVisibility(textViewZamawiajacyIDGminy.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyGminaID = (CardView) findViewById(R.id.card_viewZamawiajacyGminaID);
         cardViewZamawiajacyGminaID.setVisibility(cardViewZamawiajacyGminaID.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyMiejscowoscLabel = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowoscLabel);
-        //textViewZamawiajacyMiejscowoscLabel.setVisibility(textViewZamawiajacyMiejscowoscLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyMiejscowosc = (TextView) findViewById(R.id.textViewZamawiajacyMiejscowosc);
-        //textViewZamawiajacyMiejscowosc.setVisibility(textViewZamawiajacyMiejscowosc.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyMiejscowosc = (CardView) findViewById(R.id.card_viewZamawiajacyMiejscowosc);
         cardViewZamawiajacyMiejscowosc.setVisibility(cardViewZamawiajacyMiejscowosc.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyKodPocztowyLabel = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowyLabel);
-        //textViewZamawiajacyKodPocztowyLabel.setVisibility(textViewZamawiajacyKodPocztowyLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyKodPocztowy = (TextView) findViewById(R.id.textViewZamawiajacyKodPocztowy);
-        //textViewZamawiajacyKodPocztowy.setVisibility(textViewZamawiajacyKodPocztowy.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyKodPocztowy = (CardView) findViewById(R.id.card_viewZamawiajacyKodPocztowy);
         cardViewZamawiajacyKodPocztowy.setVisibility(cardViewZamawiajacyKodPocztowy.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyIDKoduPocztowegoLabel = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowegoLabel);
-        //textViewZamawiajacyIDKoduPocztowegoLabel.setVisibility(textViewZamawiajacyIDKoduPocztowegoLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyIDKoduPocztowego = (TextView) findViewById(R.id.textViewZamawiajacyIDKoduPocztowego);
-        //textViewZamawiajacyIDKoduPocztowego.setVisibility(textViewZamawiajacyIDKoduPocztowego.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyKodPocztowyID = (CardView) findViewById(R.id.card_viewZamawiajacyKodPocztowyID);
         cardViewZamawiajacyKodPocztowyID.setVisibility(cardViewZamawiajacyKodPocztowyID.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyUlicaLabel = (TextView) findViewById(R.id.textViewZamawiajacyUlicaLabel);
-        //textViewZamawiajacyUlicaLabel.setVisibility(textViewZamawiajacyUlicaLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyUlica = (TextView) findViewById(R.id.textViewZamawiajacyUlica);
-        //textViewZamawiajacyUlica.setVisibility(textViewZamawiajacyUlica.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyUlica = (CardView) findViewById(R.id.card_viewZamawiajacyUlica);
         cardViewZamawiajacyUlica.setVisibility(cardViewZamawiajacyUlica.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyNrDomuLabel = (TextView) findViewById(R.id.textViewZamawiajacyNrDomuLabel);
-        //textViewZamawiajacyNrDomuLabel.setVisibility(textViewZamawiajacyNrDomuLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyNrDomu = (TextView) findViewById(R.id.textViewZamawiajacyNrDomu);
-        //textViewZamawiajacyNrDomu.setVisibility(textViewZamawiajacyNrDomu.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyNrDomu = (CardView) findViewById(R.id.card_viewZamawiajacyNrDomu);
         cardViewZamawiajacyNrDomu.setVisibility(cardViewZamawiajacyNrDomu.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyNrMieszkaniaLabel = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkaniaLabel);
-        //textViewZamawiajacyNrMieszkaniaLabel.setVisibility(textViewZamawiajacyNrMieszkaniaLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyNrMieszkania = (TextView) findViewById(R.id.textViewZamawiajacyNrMieszkania);
-        //textViewZamawiajacyNrMieszkania.setVisibility(textViewZamawiajacyNrMieszkania.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyNrMieszkania = (CardView) findViewById(R.id.card_viewZamawiajacyNrMieszkania);
         cardViewZamawiajacyNrMieszkania.setVisibility(cardViewZamawiajacyNrMieszkania.isShown() ? View.GONE : View.VISIBLE);
     }
 
     public void chowanieDaneKontaktowe(View v) {
-        //TextView textViewZamawiajacyEmailLabel = (TextView) findViewById(R.id.textViewZamawiajacyEmailLabel);
-        //textViewZamawiajacyEmailLabel.setVisibility(textViewZamawiajacyEmailLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyEmail = (TextView) findViewById(R.id.textViewZamawiajacyEmail);
-        //textViewZamawiajacyEmail.setVisibility(textViewZamawiajacyEmail.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyEmail = (CardView) findViewById(R.id.card_viewZamawiajacyEmail);
         cardViewZamawiajacyEmail.setVisibility(cardViewZamawiajacyEmail.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyTelefonLabel = (TextView) findViewById(R.id.textViewZamawiajacyTelefonLabel);
-        //textViewZamawiajacyTelefonLabel.setVisibility(textViewZamawiajacyTelefonLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyTelefon = (TextView) findViewById(R.id.textViewZamawiajacyTelefon);
-        //textViewZamawiajacyTelefon.setVisibility(textViewZamawiajacyTelefon.isShown() ? View.GONE : View.VISIBLE);
         cardViewZamawiajacyTelefon = (CardView) findViewById(R.id.card_viewZamawiajacyTelefon);
         cardViewZamawiajacyTelefon.setVisibility(cardViewZamawiajacyTelefon.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyFaxLabel = (TextView) findViewById(R.id.textViewZamawiajacyFaxLabel);
-        //textViewZamawiajacyFaxLabel.setVisibility(textViewZamawiajacyFaxLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyFax = (TextView) findViewById(R.id.textViewZamawiajacyFax);
-        //textViewZamawiajacyFax.setVisibility(textViewZamawiajacyFax.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyFax = (CardView) findViewById(R.id.card_viewZamawiajacyFax);
         cardViewZamawiajacyFax.setVisibility(cardViewZamawiajacyFax.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamawiajacyWWWLabel = (TextView) findViewById(R.id.textViewZamawiajacyWWWLabel);
-        //textViewZamawiajacyWWWLabel.setVisibility(textViewZamawiajacyWWWLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamawiajacyWWW = (TextView) findViewById(R.id.textViewZamawiajacyWWW);
-        //textViewZamawiajacyWWW.setVisibility(textViewZamawiajacyWWW.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamawiajacyWWW = (CardView) findViewById(R.id.card_viewZamawiajacyWWW);
         cardViewZamawiajacyWWW.setVisibility(cardViewZamawiajacyWWW.isShown() ? View.GONE : View.VISIBLE);
     }
 
     public void chowanieInformacjeOZamowieniu(View v) {
-        //TextView textViewZamowienieNazwaLabel = (TextView) findViewById(R.id.textViewZamowienieNazwaLabel);
-        //textViewZamowienieNazwaLabel.setVisibility(textViewZamowienieNazwaLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamowienieNazwa = (TextView) findViewById(R.id.textViewZamowienieNazwa);
-        //textViewZamowienieNazwa.setVisibility(textViewZamowienieNazwa.isShown() ? View.GONE : View.VISIBLE);
+
         CardView cardViewZamowienieNazwa = (CardView) findViewById(R.id.card_viewZamowienieNazwa);
         cardViewZamowienieNazwa.setVisibility(cardViewZamowienieNazwa.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamowienieTypLabel = (TextView) findViewById(R.id.textViewZamowienieTypLabel);
-        //textViewZamowienieTypLabel.setVisibility(textViewZamowienieTypLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamowienieTyp = (TextView) findViewById(R.id.textViewZamowienieTyp);
-        //textViewZamowienieTyp.setVisibility(textViewZamowienieTyp.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamowienieTyp = (CardView) findViewById(R.id.card_viewZamowienieTyp);
         cardViewZamowienieTyp.setVisibility(cardViewZamowienieTyp.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamowienieTypSymbolLabel = (TextView) findViewById(R.id.textViewZamowienieTypSymbolLabel);
-        //textViewZamowienieTypSymbolLabel.setVisibility(textViewZamowienieTypSymbolLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamowienieTypSymbol = (TextView) findViewById(R.id.textViewZamowienieTypSymbol);
-        //textViewZamowienieTypSymbol.setVisibility(textViewZamowienieTypSymbol.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamowienieTypSymbol = (CardView) findViewById(R.id.card_viewZamowienieTypSymbol);
         cardViewZamowienieTypSymbol.setVisibility(cardViewZamowienieTypSymbol.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamowienieRodzajLabel = (TextView) findViewById(R.id.textViewZamowienieRodzajLabel);
-        //textViewZamowienieRodzajLabel.setVisibility(textViewZamowienieRodzajLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamowienieRodzaj = (TextView) findViewById(R.id.textViewZamowienieRodzaj);
-        //textViewZamowienieRodzaj.setVisibility(textViewZamowienieRodzaj.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamowienieRodzaj = (CardView) findViewById(R.id.card_viewZamowienieRodzaj);
         cardViewZamowienieRodzaj.setVisibility(cardViewZamowienieRodzaj.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamowienieDataPublikacjiLabel = (TextView) findViewById(R.id.textViewZamowienieDataPublikacjiLabel);
-        //textViewZamowienieDataPublikacjiLabel.setVisibility(textViewZamowienieDataPublikacjiLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamowienieDataPublikacji = (TextView) findViewById(R.id.textViewZamowienieDataPublikacji);
-        //textViewZamowienieDataPublikacji.setVisibility(textViewZamowienieDataPublikacji.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamowienieDataPublikacji = (CardView) findViewById(R.id.card_viewZamowienieDataPublikacji);
         cardViewZamowienieDataPublikacji.setVisibility(cardViewZamowienieDataPublikacji.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamowienieUELabel = (TextView) findViewById(R.id.textViewZamowienieUELabel);
-        //textViewZamowienieUELabel.setVisibility(textViewZamowienieUELabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamowienieUE = (TextView) findViewById(R.id.textViewZamowienieUE);
-        //textViewZamowienieUE.setVisibility(textViewZamowienieUE.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamowienieUE = (CardView) findViewById(R.id.card_viewZamowienieUE);
         cardViewZamowienieUE.setVisibility(cardViewZamowienieUE.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamowienieSzacowanaWartoscLabel = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartoscLabel);
-        //textViewZamowienieSzacowanaWartoscLabel.setVisibility(textViewZamowienieSzacowanaWartoscLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamowienieSzacowanaWartosc = (TextView) findViewById(R.id.textViewZamowienieSzacowanaWartosc);
-        //textViewZamowienieSzacowanaWartosc.setVisibility(textViewZamowienieSzacowanaWartosc.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamowienieSzacowanaWartosc = (CardView) findViewById(R.id.card_viewZamowienieSzacowanaWartosc);
         cardViewZamowienieSzacowanaWartosc.setVisibility(cardViewZamowienieSzacowanaWartosc.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamowienieCenaWybranejOfertyLabel = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOfertyLabel);
-        //textViewZamowienieCenaWybranejOfertyLabel.setVisibility(textViewZamowienieCenaWybranejOfertyLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamowienieCenaWybranejOferty = (TextView) findViewById(R.id.textViewZamowienieCenaWybranejOferty);
-        //textViewZamowienieCenaWybranejOferty.setVisibility(textViewZamowienieCenaWybranejOferty.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamowienieCenaWybranejOferty = (CardView) findViewById(R.id.card_viewZamowienieCenaWybranejOferty);
         cardViewZamowienieCenaWybranejOferty.setVisibility(cardViewZamowienieCenaWybranejOferty.isShown() ? View.GONE : View.VISIBLE);
 
-        //TextView textViewZamowienieNajtanszaOfertaLabel = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOfertaLabel);
-        //textViewZamowienieNajtanszaOfertaLabel.setVisibility(textViewZamowienieNajtanszaOfertaLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamowienieNajtanszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajtanszaOferta);
-        //textViewZamowienieNajtanszaOferta.setVisibility(textViewZamowienieNajtanszaOferta.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamowienieNajtanszaOferta = (CardView) findViewById(R.id.card_viewZamowienieNajtanszaOferta);
         cardViewZamowienieNajtanszaOferta.setVisibility(cardViewZamowienieNajtanszaOferta.isShown() ? View.GONE : View.VISIBLE);
-
-        //TextView textViewZamowienieNajdrozszaOfertaLabel = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOfertaLabel);
-        //textViewZamowienieNajdrozszaOfertaLabel.setVisibility(textViewZamowienieNajdrozszaOfertaLabel.isShown() ? View.GONE : View.VISIBLE);
-        //TextView textViewZamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
-        //textViewZamowienieNajdrozszaOferta.setVisibility(textViewZamowienieNajdrozszaOferta.isShown() ? View.GONE : View.VISIBLE);
         CardView cardViewZamowienieNajdrozszaOferta = (CardView) findViewById(R.id.card_viewZamowienieNajdrozszaOferta);
         cardViewZamowienieNajdrozszaOferta.setVisibility(cardViewZamowienieNajdrozszaOferta.isShown() ? View.GONE : View.VISIBLE);
     }
@@ -1106,52 +840,36 @@ public class ZamowienieActivityFragment extends Activity {
         cardViewZamowienieSytuacjaEkonomiczna.setVisibility(cardViewZamowienieSytuacjaEkonomiczna.isShown() ? View.GONE : View.VISIBLE);
     }
 
-//ENDREGION
-//REGION CHOWANIE 2 STOPNIEN
 
     public void chowanieZamowieniePrzedmiot(View v) {
         TextView textViewZamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
         textViewZamowieniePrzedmiot.setVisibility(textViewZamowieniePrzedmiot.isShown() ? View.GONE : View.VISIBLE);
-        //CardView cardViewZamowieniePrzedmiot = (CardView) findViewById(R.id.card_viewZamowieniePrzedmiot);
-        //cardViewZamowieniePrzedmiot.setVisibility(cardViewZamowieniePrzedmiot.isShown() ? View.GONE : View.VISIBLE);
-    }
+       }
 
     public void chowanieZamowienieUprawnienie(View v) {
         TextView textViewZamowienieUprawnienie = (TextView) findViewById(R.id.textViewZamowienieUprawnienie);
         textViewZamowienieUprawnienie.setVisibility(textViewZamowienieUprawnienie.isShown() ? View.GONE : View.VISIBLE);
-        //CardView cardViewZamowienieUprawnienia = (CardView) findViewById(R.id.card_viewZamowienieUprawnienia);
-        //cardViewZamowienieUprawnienia.setVisibility(cardViewZamowienieUprawnienia.isShown() ? View.GONE : View.VISIBLE);
-    }
+        }
 
     public void chowanieZamowienieWiedza(View v) {
         TextView textViewZamowienieWiedza = (TextView) findViewById(R.id.textViewZamowienieWiedza);
         textViewZamowienieWiedza.setVisibility(textViewZamowienieWiedza.isShown() ? View.GONE : View.VISIBLE);
-        //CardView cardViewZamowienieWiedza = (CardView) findViewById(R.id.card_viewZamowienieWiedza);
-        //cardViewZamowienieWiedza.setVisibility(cardViewZamowienieWiedza.isShown() ? View.GONE : View.VISIBLE);
-    }
+      }
 
     public void chowanieZamowieniePotencjal(View v) {
         TextView textViewZamowieniePotencjal = (TextView) findViewById(R.id.textViewZamowieniePotencjal);
         textViewZamowieniePotencjal.setVisibility(textViewZamowieniePotencjal.isShown() ? View.GONE : View.VISIBLE);
-        //CardView cardViewZamowieniePotencjal = (CardView) findViewById(R.id.card_viewZamowieniePotencjal);
-        //cardViewZamowieniePotencjal.setVisibility(cardViewZamowieniePotencjal.isShown() ? View.GONE : View.VISIBLE);
     }
 
     public void chowanieZamowienieOsobyZdolne(View v) {
         TextView textViewZamowienieOsobyZdolne = (TextView) findViewById(R.id.textViewZamowienieOsobyZdolne);
         textViewZamowienieOsobyZdolne.setVisibility(textViewZamowienieOsobyZdolne.isShown() ? View.GONE : View.VISIBLE);
-        //CardView cardViewZamowienieOsobyZdolne = (CardView) findViewById(R.id.card_viewZamowienieOsobyZdolne);
-        //cardViewZamowienieOsobyZdolne.setVisibility(cardViewZamowienieOsobyZdolne.isShown() ? View.GONE : View.VISIBLE);
-    }
+     }
 
     public void chowanieZamowienieSytuacjaEkonomiczna(View v) {
         TextView textViewZamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
         textViewZamowienieSytuacjaEkonomiczna.setVisibility(textViewZamowienieSytuacjaEkonomiczna.isShown() ? View.GONE : View.VISIBLE);
-        //CardView cardViewZamowienieSytuacjaEkonomiczna = (CardView) findViewById(R.id.card_viewZamowienieSytuacjaEkonomiczna);
-        //cardViewZamowienieSytuacjaEkonomiczna.setVisibility(cardViewZamowienieSytuacjaEkonomiczna.isShown() ? View.GONE : View.VISIBLE);
-    }
-
-//ENDREGION
+       }
 
     public void zadzwon(View v) {
         try {
