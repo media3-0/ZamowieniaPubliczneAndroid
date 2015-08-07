@@ -116,7 +116,8 @@ public class ZamowienieActivityFragment extends Activity {
                         try{
                             for (int i = 0; i < RepositoryClass.getInstance().getListaUlubionych().size(); i++) {
                                 if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)) {
-                                    button.setText("Jest w ulub.");
+                                    button.setText("Usuń  z  obserwowanych");
+                                    button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_visibility_off_black_48dp, 0, 0, 0);
                                     ulubione = true;
                                     break;
                                 }
@@ -124,7 +125,9 @@ public class ZamowienieActivityFragment extends Activity {
                         }catch(Exception e){}
 
                         if (ulubione == false)
-                            button.setText("Dodaj do ulub.");
+                            button.setText("Dodaj do obserwowanych");
+                            button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_visibility_black_48dp, 0, 0, 0);
+
 
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -134,7 +137,8 @@ public class ZamowienieActivityFragment extends Activity {
                                     if (RepositoryClass.getInstance().getListaUlubionych().get(i).dataClass.id.equals(baseClass.objectClass.dataClass.id)) {
                                         RepositoryClass.getInstance().removeListaUlubionych(i);
                                         usunieto = true;
-                                        button.setText("Dodaj do ulub.");
+                                        button.setText("Dodaj do obserwowanych");
+                                        button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_visibility_black_48dp, 0, 0, 0);
                                         Log.d("ZAF", "usuwanie z ulub.");
 
                                         break;
@@ -142,8 +146,9 @@ public class ZamowienieActivityFragment extends Activity {
                                 }
                                 if (usunieto == false) {
                                     RepositoryClass.getInstance().addListaUlubionych(baseClass.objectClass);
-                                    Toast.makeText(getApplicationContext(), "Dodano do ulubionych", Toast.LENGTH_LONG);
-                                    button.setText("Usun z ulub.");
+                                    Toast.makeText(getApplicationContext(), "Dodano do obserwowanych", Toast.LENGTH_LONG);
+                                    button.setText("Usuń  z  obserwowanych");
+                                    button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_visibility_off_black_48dp, 0, 0, 0);
                                     Log.d("ZAF", "Dodano do listy");
                                 }
                                 try {

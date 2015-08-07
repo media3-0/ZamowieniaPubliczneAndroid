@@ -1930,9 +1930,10 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ulubione"
+            android:text="Dodaj do obserwowanych"
             android:id="@+id/button2"
             android:layout_below="@+id/card_viewZamowienieSytuacjaEkonomiczna"
+            android:drawableLeft="@drawable/ic_visibility_black_48dp"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
