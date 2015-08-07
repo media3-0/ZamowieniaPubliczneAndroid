@@ -5,12 +5,14 @@ import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.pnikosis.materialishprogress.ProgressWheel;
 
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
@@ -109,7 +112,14 @@ public class ZamowienieActivityFragment extends Activity {
         //dostep do layers
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-        final ProgressDialog dialog = ProgressDialog.show(this, "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
+        final ProgressWheel progressWheel = (ProgressWheel) findViewById(R.id.progress_wheel);
+        progressWheel.setBarColor(Color.BLACK);
+        progressWheel.spin();
+
+        final RelativeLayout mainRelativeLayout = (RelativeLayout) findViewById(R.id.MainRelativeLayout);
+        final RelativeLayout wheelRelativeLayout = (RelativeLayout) findViewById(R.id.WheelRelativeLayout);
+        mainRelativeLayout.setVisibility(View.GONE);
+
         service.singleOrder(id, new Callback<BaseClass>() {
                     @Override
                     public void success(final BaseClass baseClass, Response response) {
@@ -343,12 +353,14 @@ public class ZamowienieActivityFragment extends Activity {
                             zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
                         }
 
-                        dialog.dismiss();
+                        //progressWheel.stopSpinning();
+                        wheelRelativeLayout.setVisibility(View.GONE);
+                        mainRelativeLayout.setVisibility(View.VISIBLE);
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
-                        dialog.dismiss();
+                        //                 progressWheel.stopSpinning();
                         if (getIntent().getStringExtra("Activity").equals("Ulubione")) {
                             Log.d("Stronabun", Integer.parseInt(getIntent().getStringExtra("strona")) + "");
                             final ObjectClass objectClass =
@@ -565,9 +577,11 @@ public class ZamowienieActivityFragment extends Activity {
                                 TextView zamowienieSytuacjaEkonomiczna = (TextView) findViewById(R.id.textViewZamowienieSytuacjaEkonomiczna);
                                 zamowienieSytuacjaEkonomiczna.setText("Dane nie zostały wprowadzone");
                             }
+                            wheelRelativeLayout.setVisibility(View.GONE);
+                            mainRelativeLayout.setVisibility(View.VISIBLE);
                         }else{
                             Toast.makeText(getApplicationContext(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
-                        }
+                            wheelRelativeLayout.setVisibility(View.GONE);                        }
                     }
                 }
         );
