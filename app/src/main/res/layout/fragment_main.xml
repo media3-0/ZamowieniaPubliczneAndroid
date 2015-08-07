@@ -17,9 +17,6 @@
         app:recyclerviewClipToPadding="true"
         app:recyclerviewPadding="2dp">
 
-
-
-
     </com.marshalchen.ultimaterecyclerview.UltimateRecyclerView>
 
 </RelativeLayout>

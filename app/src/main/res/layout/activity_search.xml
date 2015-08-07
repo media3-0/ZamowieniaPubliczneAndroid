@@ -51,7 +51,9 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="5dp" />
+
                 </RelativeLayout>
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -103,7 +105,9 @@
                         android:layout_alignParentLeft="false"
                         android:layout_centerHorizontal="true"
                         android:textColor="@color/secondary_text"/>
+
                 </RelativeLayout>
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -156,7 +160,9 @@
                         android:layout_alignParentStart="false"
                         android:layout_alignParentLeft="false"
                         android:layout_centerHorizontal="true"/>
+
                 </RelativeLayout>
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -212,7 +218,9 @@
                         android:layout_alignParentStart="false"
                         android:layout_alignParentLeft="false"
                         android:layout_centerHorizontal="true"/>
+
                 </RelativeLayout>
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -265,7 +273,9 @@
                         android:layout_alignParentStart="false"
                         android:layout_alignParentLeft="false"
                         android:layout_centerHorizontal="true"/>
+
                 </RelativeLayout>
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -318,7 +328,9 @@
                         android:layout_alignParentStart="false"
                         android:layout_alignParentLeft="false"
                         android:layout_centerHorizontal="true"/>
+
                 </RelativeLayout>
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -371,7 +383,9 @@
                         android:layout_alignParentStart="false"
                         android:layout_alignParentLeft="false"
                         android:layout_centerHorizontal="true"/>
+
                 </RelativeLayout>
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -424,7 +438,9 @@
                         android:layout_alignParentStart="false"
                         android:layout_alignParentLeft="false"
                         android:layout_centerHorizontal="true"/>
+
                 </RelativeLayout>
+
             </android.support.v7.widget.CardView>
 
             <Button
@@ -435,6 +451,9 @@
                 android:layout_marginTop="5dp"
                 android:onClick="onClick"
                 android:text="@string/searchButton"/>
+
         </LinearLayout>
+
     </ScrollView>
+
 </android.support.v4.widget.DrawerLayout>
