@@ -2,6 +2,7 @@ package pl.media30.zamowieniapubliczne;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
+import com.pnikosis.materialishprogress.ProgressWheel;
 import com.squareup.otto.Subscribe;
 
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
@@ -243,9 +245,11 @@ public class MainActivityFragment extends Fragment {
     }
 
     void wczytajDane() {
-        final ProgressDialog dialog =
-                ProgressDialog.show(this.getActivity().getWindow().getContext(), "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
-        dialog.dismiss();
+        final ProgressWheel progressWheel = (ProgressWheel) getActivity().findViewById(R.id.progress_wheel);
+        progressWheel.setBarColor(Color.BLACK);
+        progressWheel.stopSpinning();
+
+
         final RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://api.mojepanstwo.pl/dane/")
                 .build();
@@ -263,7 +267,7 @@ public class MainActivityFragment extends Fragment {
             bundle.putInt("getPos", 0);
         }
 
-        dialog.show();
+        progressWheel.spin();
         if ((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawREGON() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawWWW() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawEmail() == null) && (RepositoryClass.getInstance().getGlowneZapyt() == null)) {
             service.listOrders(strona, new Callback<BaseListClass>() {
                 @Override
@@ -278,7 +282,7 @@ public class MainActivityFragment extends Fragment {
                     mRecyclerView.setAdapter(mAdapter);
 
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-                    dialog.dismiss();
+                    progressWheel.stopSpinning();
                     Log.d("Strona", " bez param strona loadmore: " + strona);
                     strona++;
                     loading=true;
@@ -286,12 +290,12 @@ public class MainActivityFragment extends Fragment {
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
-                    dialog.dismiss();
+                    progressWheel.stopSpinning();
                     Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            dialog.show();
+            progressWheel.spin();
             service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), RepositoryClass.getInstance().getGlowneZapyt(), new Callback<BaseListClass>() {
                 @Override
                 public void success(BaseListClass blc, Response response) {
@@ -305,7 +309,7 @@ public class MainActivityFragment extends Fragment {
                     mRecyclerView.setAdapter(mAdapter);
 
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-                    dialog.dismiss();
+                    progressWheel.stopSpinning();
                     Log.d("Strona", "param strona loadmore: " + strona);
                     strona++;
                     //RepositoryClass.getInstance().searchViewAllow=true;
@@ -314,34 +318,10 @@ public class MainActivityFragment extends Fragment {
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
-                    dialog.dismiss();
+                    progressWheel.stopSpinning();
                     Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                 }
             });
         }
-    }
-
-    public void glownaWyszukiwarka(String query) {
-        /*
-        Log.d("Bravo:", query);
-        bundle.putInt("getPos", 0);
-        bundle.putBoolean("getWczytaj", false);
-        ActivityResultBus.getInstance().unregister(mActivityResultSubscriber);
-        ActivityResultBus.getInstance().register(mActivityResultSubscriber);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-
-        if (query.length() >= 1 && !query.equals("*")) {
-            RepositoryClass.getInstance().setGlowneZapyt(query);
-            strona = 1;
-        Log.d("Jedno","Stukniecie");
-           wczytajDane();
-        } else if (query.toString().equals("*")) {
-            RepositoryClass.getInstance().setGlowneZapyt(null);
-            //RepositoryClass.getInstance().deleteDataObjectList();
-            strona = 1;
-        }
-        bundle.putBoolean("getWczytaj", true);
-        */
     }
 }
