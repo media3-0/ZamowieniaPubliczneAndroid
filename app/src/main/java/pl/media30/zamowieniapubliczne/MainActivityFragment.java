@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
@@ -222,10 +224,10 @@ public class MainActivityFragment extends Fragment {
                 totalItemCount = mLayoutManager.getItemCount();
                 pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
                 int wszystkieElem = RepositoryClass.getInstance().getBaseListClass().searchClass.paginationClass.total;
-                Log.d("stronka", "visibleItemCount: "+visibleItemCount+" totalItemCount: "+totalItemCount+" pastVisiblesItems: "+pastVisiblesItems);
+                Log.d("stronka", "visibleItemCount: " + visibleItemCount + " totalItemCount: " + totalItemCount + " pastVisiblesItems: " + pastVisiblesItems);
 
                 if (loading) {
-                    if ( (visibleItemCount+pastVisiblesItems) >= totalItemCount && (totalItemCount!=wszystkieElem)) {
+                    if ((visibleItemCount + pastVisiblesItems) >= totalItemCount && (totalItemCount != wszystkieElem)) {
                         loading = false;
                         wczytajDane();
                         Log.d("LOADMORE", strona + "");
@@ -246,8 +248,19 @@ public class MainActivityFragment extends Fragment {
 
     void wczytajDane() {
         final ProgressWheel progressWheel = (ProgressWheel) getActivity().findViewById(R.id.progress_wheel);
-        progressWheel.setBarColor(Color.BLACK);
+        progressWheel.setBarColor(Color.WHITE);
         progressWheel.stopSpinning();
+        progressWheel.spin();
+
+        final RelativeLayout mainRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.UltimateRecycleViewRelativeLayout);
+        final RelativeLayout wheelRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.WheelRelativeLayout);
+        mainRelativeLayout.setVisibility(View.GONE);
+        wheelRelativeLayout.setVisibility(View.VISIBLE);
+        //  final LinearLayout loadMoreLinearLayout = (LinearLayout) getActivity().findViewById(R.id.LoadMoreLinearLayout);
+      //  loadMoreLinearLayout.setVisibility(View.GONE);
+
+        ;//= (RelativeLayout) findViewById(R.id.MainRelativeLayout);
+
 
 
         final RestAdapter restAdapter = new RestAdapter.Builder()
@@ -278,14 +291,16 @@ public class MainActivityFragment extends Fragment {
                     } catch (NullPointerException e) {
                     }
 
-                            mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
+                    mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                     mRecyclerView.setAdapter(mAdapter);
 
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
                     progressWheel.stopSpinning();
                     Log.d("Strona", " bez param strona loadmore: " + strona);
                     strona++;
-                    loading=true;
+                    loading = true;
+                    wheelRelativeLayout.setVisibility(View.GONE);
+                    mainRelativeLayout.setVisibility(View.VISIBLE);
                 }
 
                 @Override
@@ -294,6 +309,8 @@ public class MainActivityFragment extends Fragment {
                     Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                 }
             });
+
+
         } else {
             progressWheel.spin();
             service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), RepositoryClass.getInstance().getGlowneZapyt(), new Callback<BaseListClass>() {

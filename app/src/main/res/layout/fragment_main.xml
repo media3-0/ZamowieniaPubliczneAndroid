@@ -11,22 +11,52 @@
     android:background="@color/primary_dark"
     tools:context="pl.media30.zamowieniapubliczne.MainActivityFragment">
 
-    <com.marshalchen.ultimaterecyclerview.UltimateRecyclerView
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/ultimate_recycler_view"
-        app:recyclerviewClipToPadding="true"
-        app:recyclerviewPadding="2dp">
+        android:id="@+id/UltimateRecycleViewRelativeLayout">
+        <com.marshalchen.ultimaterecyclerview.UltimateRecyclerView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/ultimate_recycler_view"
+            app:recyclerviewClipToPadding="true"
+            app:recyclerviewPadding="2dp">
+        </com.marshalchen.ultimaterecyclerview.UltimateRecyclerView>
+        <com.pnikosis.materialishprogress.ProgressWheel
+            android:id="@+id/progress_wheel_load_more"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="false"
+            android:layout_below="@+id/ultimate_recycler_view"
+            wheel:matProg_barColor="#5588FF"
+            wheel:matProg_progressIndeterminate="true" />
+    </RelativeLayout>
 
-    </com.marshalchen.ultimaterecyclerview.UltimateRecyclerView>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/WheelRelativeLayout">
+        <com.pnikosis.materialishprogress.ProgressWheel
+            android:id="@+id/progress_wheel"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            wheel:matProg_barColor="#5588FF"
+            wheel:matProg_progressIndeterminate="true" />
+    </RelativeLayout>
 
-    <com.pnikosis.materialishprogress.ProgressWheel
-        android:id="@+id/progress_wheel"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        wheel:matProg_barColor="#5588FF"
-        wheel:matProg_progressIndeterminate="true" />
+
+
+
+
+</LinearLayout>
+
+
 
 </RelativeLayout>
