@@ -13,6 +13,7 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -161,10 +162,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                if (searchAllow==true) {
-                    searchAllow=false;
+                if (searchAllow == true) {
+                    searchAllow = false;
                     MainActivityFragment fragment = (MainActivityFragment) getSupportFragmentManager().findFragmentById(R.id.fragment);
-                    fragment.nowePob=true;
+                    fragment.nowePob = true;
                     if (query.length() >= 1 && !query.equals("*")) {
                         RepositoryClass.getInstance().setGlowneZapyt(query);
                         fragment.strona = 1;
@@ -175,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     if (RepositoryClass.getInstance().getDataObjectList() != null)
                         RepositoryClass.getInstance().deleteDataObjectList();
-                    fragment.query=query;
+                    fragment.query = query;
                     fragment.onStop();
                     fragment.onStart();
                 }
@@ -184,13 +185,29 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                searchAllow=true;
+                searchAllow = true;
                 return false;
             }
         });
 
         return super.onCreateOptionsMenu(menu);
     }
+
+
+    @Override
+    public boolean onKeyDown(int keycode, KeyEvent e) {
+        switch(keycode) {
+            case KeyEvent.KEYCODE_MENU:
+                if (drawerLayout.isDrawerOpen(Gravity.LEFT))
+                    drawerLayout.closeDrawers();
+                else
+                    drawerLayout.openDrawer(Gravity.LEFT);
+                return true;
+        }
+
+        return super.onKeyDown(keycode, e);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

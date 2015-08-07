@@ -20,7 +20,7 @@
     <string name="title_activity_wykresy">WykresyActivity</string>
     <string name="info">O aplikacji</string>
     <string name="title_activity_info">O aplikacji</string>
-    <string name="show">Pokaż obserwowane</string>
+    <string name="show">Obserwowane</string>
     <string name="title_activity_ulubione">UlubioneActivity</string>
     <string name="about">Zamówienia Publiczne to bezpłatna aplikacja pozwalająca na szybkie zdobycie informacji dotyczących zamówień publicznych, dzięki czemu możemy być na bieżąco ze wszystkimi interesującymi nas wiadomościami.\n\nAplikacja tworzona jest jako projekt open source w serwisie github:\nhttps://github.com/media3-0/ZamowieniaPubliczneAndroid</string>
     <string name="obserwowane">Obserwowane zamówienia</string>

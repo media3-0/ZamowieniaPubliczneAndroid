@@ -11,12 +11,12 @@
     <item
         android:id="@+id/show"
         android:icon="@drawable/ic_visibility_black_48dp"
-        android:title="Pokaż obserwowane" />
+        android:title="Obserwowane" />
 
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_assessment_black_48dp"
-        android:title="Największe zamówienia" />
+        android:title="Wykres" />
     <item
         android:id="@+id/info"
         android:icon="@drawable/ic_help_black_48dp"
