@@ -252,10 +252,10 @@ public class MainActivityFragment extends Fragment {
         progressWheel.stopSpinning();
         progressWheel.spin();
 
-        final RelativeLayout mainRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.UltimateRecycleViewRelativeLayout);
-        final RelativeLayout wheelRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.WheelRelativeLayout);
-        mainRelativeLayout.setVisibility(View.GONE);
-        wheelRelativeLayout.setVisibility(View.VISIBLE);
+        //final RelativeLayout mainRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.UltimateRecycleViewRelativeLayout);
+        //final RelativeLayout wheelRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.WheelRelativeLayout);
+        //mainRelativeLayout.setVisibility(View.GONE);
+        //wheelRelativeLayout.setVisibility(View.VISIBLE);
         //  final LinearLayout loadMoreLinearLayout = (LinearLayout) getActivity().findViewById(R.id.LoadMoreLinearLayout);
       //  loadMoreLinearLayout.setVisibility(View.GONE);
 
@@ -299,8 +299,10 @@ public class MainActivityFragment extends Fragment {
                     Log.d("Strona", " bez param strona loadmore: " + strona);
                     strona++;
                     loading = true;
-                    wheelRelativeLayout.setVisibility(View.GONE);
-                    mainRelativeLayout.setVisibility(View.VISIBLE);
+                    //wheelRelativeLayout.setVisibility(View.GONE);
+                    //mainRelativeLayout.setVisibility(View.VISIBLE);
+                    LinearLayout mainLL = (LinearLayout) getActivity().findViewById(R.id.mainLL);
+                    mainLL.setWeightSum(8);
                 }
 
                 @Override
