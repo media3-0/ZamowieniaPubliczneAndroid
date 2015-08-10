@@ -22,7 +22,7 @@ public class LayersClass implements Serializable {
     public List<CzesciClass> czesci;
 
     @SerializedName("dataset")
-    public String dataset;
+    public String dataset; // czy String
 
 
 

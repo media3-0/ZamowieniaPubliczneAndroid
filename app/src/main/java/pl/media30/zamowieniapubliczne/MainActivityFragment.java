@@ -41,7 +41,7 @@ public class MainActivityFragment extends Fragment {
     Bundle bundle = new Bundle();
     int pastVisiblesItems, visibleItemCount, totalItemCount;
     private boolean loading = true;
-    public String query = "";
+    public String query="";
     public boolean nowePob = false;
 
     public MainActivityFragment() {
@@ -156,6 +156,8 @@ public class MainActivityFragment extends Fragment {
             if (savedInstanceState.getString("wartoscEmail").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieZamawEmail(null);
             bundle.putBoolean("getWczytaj", false);
+
+
         } catch (Exception e) {
         }
         mLayoutManager = new LinearLayoutManager(this.getActivity());
@@ -193,13 +195,13 @@ public class MainActivityFragment extends Fragment {
         ActivityResultBus.getInstance().register(mActivityResultSubscriber);
 
         if (query.length() >= 1 && !query.equals("*")) {
-            if (nowePob == true)
+            if (nowePob==true)
                 bundle.putBoolean("getWczytaj", false);
         } else if (query.toString().equals("*")) {
-            if (nowePob == true)
+            if (nowePob==true)
                 bundle.putBoolean("getWczytaj", false);
         }
-        nowePob = false;
+        nowePob=false;
 
         mRecyclerView = (UltimateRecyclerView) getView().findViewById(R.id.ultimate_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -217,6 +219,7 @@ public class MainActivityFragment extends Fragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
+
                 visibleItemCount = mLayoutManager.getChildCount();
                 totalItemCount = mLayoutManager.getItemCount();
                 pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
@@ -228,12 +231,15 @@ public class MainActivityFragment extends Fragment {
                         loading = false;
                         wczytajDane();
                         Log.d("LOADMORE", strona + "");
+
                     }
                 }
+
+
             }
         });
 
-        if (bundle.getBoolean("getWczytaj") == false) {
+        if (bundle.getBoolean("getWczytaj") == false){
             wczytajDane();
             bundle.putBoolean("getWczytaj", true);
 
@@ -246,13 +252,14 @@ public class MainActivityFragment extends Fragment {
         progressWheel.stopSpinning();
         progressWheel.spin();
 
-        final RelativeLayout mainRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.UltimateRecycleViewRelativeLayout);
-        final RelativeLayout wheelRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.WheelRelativeLayout);
+        //final RelativeLayout mainRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.UltimateRecycleViewRelativeLayout);
+        //final RelativeLayout wheelRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.WheelRelativeLayout);
+        //mainRelativeLayout.setVisibility(View.GONE);
+        //wheelRelativeLayout.setVisibility(View.VISIBLE);
+        //  final LinearLayout loadMoreLinearLayout = (LinearLayout) getActivity().findViewById(R.id.LoadMoreLinearLayout);
+      //  loadMoreLinearLayout.setVisibility(View.GONE);
 
-            if (strona < 2) {
-                mainRelativeLayout.setVisibility(View.GONE);
-                wheelRelativeLayout.setVisibility(View.VISIBLE);
-            }
+        ;//= (RelativeLayout) findViewById(R.id.MainRelativeLayout);
 
 
 
@@ -260,8 +267,8 @@ public class MainActivityFragment extends Fragment {
                 .setEndpoint("https://api.mojepanstwo.pl/dane/")
                 .build();
         final MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
-        Log.d("Metoda", "wczytajdane");
-        if (bundle.getBoolean("getWczytaj") == false) {
+        Log.d("Metoda","wczytajdane");
+        if ( bundle.getBoolean("getWczytaj")==false) {
             strona = 1;
             bundle.putBoolean("getWczytaj", true);
             if (RepositoryClass.getInstance().getDataObjectList() != null)
@@ -292,16 +299,16 @@ public class MainActivityFragment extends Fragment {
                     Log.d("Strona", " bez param strona loadmore: " + strona);
                     strona++;
                     loading = true;
-                    wheelRelativeLayout.setVisibility(View.GONE);
-                    mainRelativeLayout.setVisibility(View.VISIBLE);
+                    //wheelRelativeLayout.setVisibility(View.GONE);
+                    //mainRelativeLayout.setVisibility(View.VISIBLE);
+                    LinearLayout mainLL = (LinearLayout) getActivity().findViewById(R.id.mainLL);
+                    mainLL.setWeightSum(8);
                 }
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
                     progressWheel.stopSpinning();
                     Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
-                    wheelRelativeLayout.setVisibility(View.GONE);
-                    mainRelativeLayout.setVisibility(View.VISIBLE);
                 }
             });
 
@@ -314,7 +321,7 @@ public class MainActivityFragment extends Fragment {
                     RepositoryClass.getInstance().setBaseListClass(blc);
                     try {
                         Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
-                    } catch (NullPointerException e) {
+                    }catch(NullPointerException e){
 
                     }
                     mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
@@ -324,17 +331,14 @@ public class MainActivityFragment extends Fragment {
                     progressWheel.stopSpinning();
                     Log.d("Strona", "param strona loadmore: " + strona);
                     strona++;
-                    loading = true;
-                    wheelRelativeLayout.setVisibility(View.GONE);
-                    mainRelativeLayout.setVisibility(View.VISIBLE);
+                    //RepositoryClass.getInstance().searchViewAllow=true;
+                    loading=true;
                 }
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
                     progressWheel.stopSpinning();
                     Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
-                    wheelRelativeLayout.setVisibility(View.GONE);
-                    mainRelativeLayout.setVisibility(View.VISIBLE);
                 }
             });
         }

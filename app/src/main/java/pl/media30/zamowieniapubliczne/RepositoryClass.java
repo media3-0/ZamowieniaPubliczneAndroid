@@ -11,6 +11,7 @@ import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 
+
 /**
  * Created by Adrian on 2015-07-21.
  */

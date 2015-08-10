@@ -36,6 +36,8 @@ public class UlubioneActivity extends ActionBarActivity {
     Bundle bundle = new Bundle();
     Button button;
 
+
+
     private Object mActivityResultSubscriber = new Object() {
         @Subscribe
         public void onActivityResultReceived(ActivityResultEvent event) {
@@ -55,6 +57,7 @@ public class UlubioneActivity extends ActionBarActivity {
         }
         mRecyclerView = (UltimateRecyclerView) findViewById(R.id.ultimate_recycler_view);
         mRecyclerView.setHasFixedSize(true);
+        // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         try {
