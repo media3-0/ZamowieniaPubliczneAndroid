@@ -278,8 +278,14 @@ public class ZamowienieActivityFragment extends Activity {
 
                         TextView zamowienieNajdrozszaOferta = (TextView) findViewById(R.id.textViewZamowienieNajdrozszaOferta);
                         double zamowienieNajdrozszaOfertaD = (baseClass.objectClass.dataClass.wartosc_cena_max);
-                        zamowienieNajdrozszaOferta.setText(df.format(zamowienieNajdrozszaOfertaD) + " PLN");
-
+                        if (zamowienieNajdrozszaOfertaD == 0.0)
+                        {
+                            zamowienieNajdrozszaOferta.setText(df.format(zamowienieCenaWybranejOfertyD) + " PLN");
+                        }
+                        else
+                        {
+                            zamowienieNajdrozszaOferta.setText(df.format(zamowienieNajdrozszaOfertaD) + " PLN");
+                        }
 
                         try {
                             TextView zamowieniePrzedmiot = (TextView) findViewById(R.id.textViewZamowieniePrzedmiot);
