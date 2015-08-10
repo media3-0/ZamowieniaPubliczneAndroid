@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     boolean searchAllow = true;
+    MenuItem searchItem;
 
     private List<ObjectClass> readRecordsFromFile() {
         FileInputStream fin;
@@ -108,6 +109,12 @@ public class MainActivity extends AppCompatActivity {
                         intent = new Intent(getApplicationContext(), WykresyActivity.class);
                         startActivityForResult(intent, 1);
                         return true;
+                    case R.id.refresh:
+                        intent = new Intent(getApplicationContext(), MainActivity.class);
+                        RepositoryClass.getInstance().setGlowneZapyt("");
+                        finish();
+                        startActivity(intent);
+                        return true;
                     case R.id.info:
                         intent = new Intent(getApplicationContext(), InfoActivity.class);
                         startActivity(intent);
@@ -134,13 +141,14 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu_main, menu);
 
-        final MenuItem searchItem = menu.findItem(R.id.action_search);
+        searchItem = menu.findItem(R.id.action_search);
         SearchManager searchManager = (SearchManager) MainActivity.this.getSystemService(Context.SEARCH_SERVICE);
 
         SearchView searchView = null;
 
         if (searchItem != null) {
             searchView = (SearchView) searchItem.getActionView();
+
         }
         if (searchView != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(MainActivity.this.getComponentName()));
@@ -217,10 +225,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (id == R.id.info) {
+
             Intent intent = new Intent(getApplicationContext(), InfoActivity.class);
             startActivity(intent);
             return true;
         }
+
+        if (id == R.id.refresh) {
+
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            RepositoryClass.getInstance().setGlowneZapyt("");
+            finish();
+            startActivity(intent);
+            return true;
+        }
+
         if (id == R.id.show) {
             Intent intent = new Intent(getApplicationContext(), UlubioneActivity.class);
             startActivity(intent);
