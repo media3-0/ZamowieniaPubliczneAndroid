@@ -118,7 +118,6 @@ public class WykresyActivity extends ActionBarActivity {
         chart.setScaleMinima(5f, 1f);
         chart.animateXY(4, 4);
 
-
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
                                                   @Override
                                                   public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {

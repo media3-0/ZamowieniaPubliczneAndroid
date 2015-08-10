@@ -48,8 +48,8 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
 
             RepositoryClass.getInstance().setStronaUlub(getAdapterPosition());
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
-            intent.putExtra("Activity","Ulubione");
-            intent.putExtra("strona",Integer.toString(getAdapterPosition()));
+            intent.putExtra("Activity", "Ulubione");
+            intent.putExtra("strona", Integer.toString(getAdapterPosition()));
             view.getContext().startActivity(intent);
             MyAdapter.position = getAdapterPosition();
 
@@ -60,12 +60,9 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
         }
     }
 
-
     public UlubioneAdapter(List<ObjectClass> myDataset) {
         mDataset = myDataset;
     }
-
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,
@@ -78,7 +75,6 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
         position = vh.getPos();
         return vh;
     }
-
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {

@@ -23,7 +23,6 @@ import android.widget.Toast;
  */
 public class SearchActivity extends Activity {
 
-
     String[] wojewodztwa = {"ignoruj kryterium","dolnośląskie", "kujawsko-pomorskie", "lubelskie", "lubuskie", "łódzkie", "małopolskie", "mazowieckie", "opolskie", "podkarpackie", "podlaskie", "pomorskie", "śląskie", "świętokrzyskie", "warmińsko-mazurskie", "wielkopolskie", "zachodniopomorskie"};
 
     Spinner spinner;
@@ -93,7 +92,6 @@ public class SearchActivity extends Activity {
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(myhandler1);
 
-
         editText3.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -144,9 +142,6 @@ public class SearchActivity extends Activity {
             } else {
                 intent.putExtra("wartoscNazwa","*");
             }
-
-
-
 
             if (!(editTextREGON.getText().toString().equals(""))) {
                 intent.putExtra("wartoscREGON", (editTextREGON.getText().toString()));

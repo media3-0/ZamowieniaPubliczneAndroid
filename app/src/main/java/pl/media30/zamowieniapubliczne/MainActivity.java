@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
 
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-    boolean searchAllow=true;
+    boolean searchAllow = true;
 
-   private List<ObjectClass> readRecordsFromFile() {
+    private List<ObjectClass> readRecordsFromFile() {
         FileInputStream fin;
         ObjectInputStream ois = null;
         try {
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        
+
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_reorder_black_48dp));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,34 +75,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
         try {
-           List <ObjectClass> lista =  readRecordsFromFile();
-            if (lista!=null)
-           RepositoryClass.getInstance().setListaUlubionych(lista);
+            List<ObjectClass> lista = readRecordsFromFile();
+            if (lista != null)
+                RepositoryClass.getInstance().setListaUlubionych(lista);
         } catch (Exception e) {
             Log.d("nie dziala", e.getMessage());
         }
 
-
-
-        //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
-                //Checking if the item is in checked state or not, if not make it in checked state
-                if(menuItem.isChecked()) menuItem.setChecked(false);
+                if (menuItem.isChecked()) menuItem.setChecked(false);
                 else menuItem.setChecked(true);
 
-                //Closing drawer on item click
                 drawerLayout.closeDrawers();
                 Intent intent;
-                //Check to see which item was being clicked and perform appropriate action
-                switch (menuItem.getItemId()){
-                    case android.R.id.home:
-                       // drawerLayout.openDrawer();
-                    return true;
+
+                switch (menuItem.getItemId()) {
+
                     case R.id.search:
                         intent = new Intent(getApplicationContext(), SearchActivity.class);
                         startActivityForResult(intent, 2);
@@ -124,9 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
 
 
@@ -196,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keycode, KeyEvent e) {
-        switch(keycode) {
+        switch (keycode) {
             case KeyEvent.KEYCODE_MENU:
                 if (drawerLayout.isDrawerOpen(Gravity.LEFT))
                     drawerLayout.closeDrawers();
@@ -211,12 +201,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Intent intent = new Intent(getApplicationContext(), WykresyActivity.class);
             startActivityForResult(intent, 1);

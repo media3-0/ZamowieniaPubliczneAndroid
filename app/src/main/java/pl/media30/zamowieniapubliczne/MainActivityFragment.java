@@ -156,8 +156,6 @@ public class MainActivityFragment extends Fragment {
             if (savedInstanceState.getString("wartoscEmail").equals("*"))
                 RepositoryClass.getInstance().setWyszukiwanieZamawEmail(null);
             bundle.putBoolean("getWczytaj", false);
-
-
         } catch (Exception e) {
         }
         mLayoutManager = new LinearLayoutManager(this.getActivity());
@@ -219,7 +217,6 @@ public class MainActivityFragment extends Fragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-
                 visibleItemCount = mLayoutManager.getChildCount();
                 totalItemCount = mLayoutManager.getItemCount();
                 pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
@@ -231,11 +228,8 @@ public class MainActivityFragment extends Fragment {
                         loading = false;
                         wczytajDane();
                         Log.d("LOADMORE", strona + "");
-
                     }
                 }
-
-
             }
         });
 
@@ -256,12 +250,6 @@ public class MainActivityFragment extends Fragment {
         final RelativeLayout wheelRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.WheelRelativeLayout);
         mainRelativeLayout.setVisibility(View.GONE);
         wheelRelativeLayout.setVisibility(View.VISIBLE);
-        //  final LinearLayout loadMoreLinearLayout = (LinearLayout) getActivity().findViewById(R.id.LoadMoreLinearLayout);
-      //  loadMoreLinearLayout.setVisibility(View.GONE);
-
-        ;//= (RelativeLayout) findViewById(R.id.MainRelativeLayout);
-
-
 
         final RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://api.mojepanstwo.pl/dane/")
@@ -329,7 +317,6 @@ public class MainActivityFragment extends Fragment {
                     progressWheel.stopSpinning();
                     Log.d("Strona", "param strona loadmore: " + strona);
                     strona++;
-                    //RepositoryClass.getInstance().searchViewAllow=true;
                     loading=true;
                 }
 
