@@ -130,7 +130,7 @@ public class RepositoryClass {
         this.glowneZapyt = glowneZapyt;
     }
 
-    public void setWszystkieZapyt(String zapyt) {
+    public void czyscWszystkieZapyt() {
         wyszukiwanieMiasta = null;
         wyszukiwanieWojew = null;
         wyszukiwanieKodowPoczt = null;
@@ -138,7 +138,7 @@ public class RepositoryClass {
         wyszukiwanieZamawREGON = null;
         wyszukiwanieZamawWWW = null;
         wyszukiwanieZamawEmail = null;
-        glowneZapyt = zapyt;
+        glowneZapyt = "";
     }
 
     public String getGlowneZapyt() {
