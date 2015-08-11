@@ -1,15 +1,10 @@
-package pl.media30.zamowieniapubliczne;
+package pl.media30.zamowieniapubliczne.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -27,6 +22,9 @@ import java.util.List;
 
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
+import pl.media30.zamowieniapubliczne.MojePanstwoService;
+import pl.media30.zamowieniapubliczne.R;
+import pl.media30.zamowieniapubliczne.RepositoryClass;
 import retrofit.RestAdapter;
 
 

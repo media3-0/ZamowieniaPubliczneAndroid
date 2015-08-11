@@ -1,4 +1,4 @@
-package pl.media30.zamowieniapubliczne;
+package pl.media30.zamowieniapubliczne.Activities;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -27,6 +27,9 @@ import com.pnikosis.materialishprogress.ProgressWheel;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.BaseClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
+import pl.media30.zamowieniapubliczne.MojePanstwoService;
+import pl.media30.zamowieniapubliczne.R;
+import pl.media30.zamowieniapubliczne.RepositoryClass;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;

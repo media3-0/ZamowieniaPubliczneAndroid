@@ -1,4 +1,4 @@
-package pl.media30.zamowieniapubliczne;
+package pl.media30.zamowieniapubliczne.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import pl.media30.zamowieniapubliczne.R;
 
 /**
  * Created by Andreas on 2015-07-24.

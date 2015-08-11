@@ -1,7 +1,6 @@
-package pl.media30.zamowieniapubliczne;
+package pl.media30.zamowieniapubliczne.Activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -11,14 +10,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
-import com.pnikosis.materialishprogress.ProgressWheel;
 import com.squareup.otto.Subscribe;
-import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
+
+import pl.media30.zamowieniapubliczne.ResultBus;
+import pl.media30.zamowieniapubliczne.ResultEvent;
+import pl.media30.zamowieniapubliczne.Adapters.MainAdapter;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
+import pl.media30.zamowieniapubliczne.MojePanstwoService;
+import pl.media30.zamowieniapubliczne.R;
+import pl.media30.zamowieniapubliczne.RepositoryClass;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -32,7 +35,7 @@ public class MainActivityFragment extends Fragment {
 
     UltimateRecyclerView mRecyclerView;
     LinearLayoutManager mLayoutManager;
-    MyAdapter mAdapter;
+    MainAdapter mAdapter;
     public int strona;// = 2;
     Bundle bundle = new Bundle();
     int pastVisiblesItems, visibleItemCount, totalItemCount;
@@ -45,7 +48,7 @@ public class MainActivityFragment extends Fragment {
 
     private Object mActivityResultSubscriber = new Object() {
         @Subscribe
-        public void onActivityResultReceived(ActivityResultEvent event) {
+        public void onActivityResultReceived(ResultEvent event) {
             int requestCode = event.getRequestCode();
             int resultCode = event.getResultCode();
             Intent data = event.getData();
@@ -169,7 +172,7 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        ActivityResultBus.getInstance().unregister(mActivityResultSubscriber);
+        ResultBus.getInstance().unregister(mActivityResultSubscriber);
         bundle.putInt("getPos", mLayoutManager.findFirstVisibleItemPosition());
         Log.d("Metoda", "onStop");
 
@@ -188,7 +191,7 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        ActivityResultBus.getInstance().register(mActivityResultSubscriber);
+        ResultBus.getInstance().register(mActivityResultSubscriber);
 
         if (query.length() >= 1 && !query.equals("*")) {
             if (nowePob==true)
@@ -207,7 +210,6 @@ public class MainActivityFragment extends Fragment {
         if (bundle.getInt("getPos") == -1)
             bundle.putInt("getPos", 0);
         mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-        Log.d("pozyc w start", bundle.getInt("getPos") + "");
         Log.d("Metoda", "onStart");
 
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -219,14 +221,11 @@ public class MainActivityFragment extends Fragment {
                 totalItemCount = mLayoutManager.getItemCount();
                 pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
                 int wszystkieElem = RepositoryClass.getInstance().getBaseListClass().searchClass.paginationClass.total;
-                Log.d("stronka", "visibleItemCount: " + visibleItemCount + " totalItemCount: " + totalItemCount + " pastVisiblesItems: " + pastVisiblesItems);
-
                 if (loading) {
                     if ((visibleItemCount + pastVisiblesItems) >= totalItemCount && (totalItemCount != wszystkieElem)) {
                         loading = false;
                         wczytajDane();
                         Log.d("LOADMORE", strona + "");
-
                     }
                 }
             }
@@ -246,7 +245,6 @@ public class MainActivityFragment extends Fragment {
         if(strona<2){
             mainRelativeLayout.setVisibility(View.GONE);
             wheelRelativeLayout.setVisibility(View.VISIBLE);
-
         }
 
 
@@ -278,7 +276,7 @@ public class MainActivityFragment extends Fragment {
                         } catch (NullPointerException e) {
                         }
                     }
-                    mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
+                    mAdapter = new MainAdapter(RepositoryClass.getInstance().getDataObjectList());
                     mRecyclerView.setAdapter(mAdapter);
 
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
@@ -311,7 +309,7 @@ public class MainActivityFragment extends Fragment {
 
                         }
                     }
-                    mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
+                    mAdapter = new MainAdapter(RepositoryClass.getInstance().getDataObjectList());
                     mRecyclerView.setAdapter(mAdapter);
 
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));

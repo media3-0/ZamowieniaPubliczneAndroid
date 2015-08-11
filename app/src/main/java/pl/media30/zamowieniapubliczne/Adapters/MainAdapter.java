@@ -8,19 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
 import java.util.List;
 
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
-import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 import pl.media30.zamowieniapubliczne.R;
 import pl.media30.zamowieniapubliczne.RepositoryClass;
-import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
+import pl.media30.zamowieniapubliczne.Activities.ZamowienieActivityFragment;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     private List<DataObjectClass> mDataset;
     static int position;
 
@@ -51,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             intent.putExtra("Activity","Main");
 
             view.getContext().startActivity(intent);
-            MyAdapter.position = getAdapterPosition();
+            MainAdapter.position = getAdapterPosition();
 
         }
 
@@ -61,13 +59,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
 
-    public MyAdapter(List<DataObjectClass> myDataset) {
+    public MainAdapter(List<DataObjectClass> myDataset) {
         mDataset = myDataset;
     }
 
 
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+    public MainAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
 
         View v = LayoutInflater.from(parent.getContext())

@@ -1,4 +1,4 @@
-package pl.media30.zamowieniapubliczne;
+package pl.media30.zamowieniapubliczne.Activities;
 
 import android.annotation.TargetApi;
 import android.app.SearchManager;
@@ -23,7 +23,11 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.List;
 
+import pl.media30.zamowieniapubliczne.ResultBus;
+import pl.media30.zamowieniapubliczne.ResultEvent;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
+import pl.media30.zamowieniapubliczne.R;
+import pl.media30.zamowieniapubliczne.RepositoryClass;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,17 +44,14 @@ public class MainActivity extends AppCompatActivity {
             ois = new ObjectInputStream(fin);
             List<ObjectClass> records = (List<ObjectClass>) ois.readObject();
             ois.close();
-            Log.v("work", "Records read successfully");
             return records;
         } catch (Exception e) {
-            Log.e("dont work", "Cant read saved records" + e.getMessage());
             return null;
         } finally {
             if (ois != null)
                 try {
                     ois.close();
                 } catch (Exception e) {
-                    Log.e("dont work", "Error in closing stream while reading records" + e.getMessage());
                 }
         }
     }
@@ -80,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
             if (lista != null)
                 RepositoryClass.getInstance().setListaUlubionych(lista);
         } catch (Exception e) {
-            Log.d("nie dziala", e.getMessage());
         }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -130,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        ActivityResultBus.getInstance().postQueue(
-                new ActivityResultEvent(requestCode, resultCode, data));
+        ResultBus.getInstance().postQueue(
+                new ResultEvent(requestCode, resultCode, data));
     }
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -167,7 +167,6 @@ public class MainActivity extends AppCompatActivity {
                     if (query.length() >= 1 && !query.equals("*")) {
                         RepositoryClass.getInstance().setGlowneZapyt(query);
                         fragment.strona = 1;
-                        Log.d("Jedno", "Stukniecie");
                     } else if (query.toString().equals("*")) {
                         RepositoryClass.getInstance().setGlowneZapyt(null);
                         fragment.strona = 1;

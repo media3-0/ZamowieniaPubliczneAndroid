@@ -1,7 +1,9 @@
-package pl.media30.zamowieniapubliczne;
+package pl.media30.zamowieniapubliczne.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import pl.media30.zamowieniapubliczne.R;
 
 /**
  * Created by Andreas on 2015-07-30.

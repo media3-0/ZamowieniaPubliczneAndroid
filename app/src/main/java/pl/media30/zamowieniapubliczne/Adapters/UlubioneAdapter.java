@@ -1,24 +1,18 @@
 package pl.media30.zamowieniapubliczne.Adapters;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
 
 import java.util.List;
 
-import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 import pl.media30.zamowieniapubliczne.R;
 import pl.media30.zamowieniapubliczne.RepositoryClass;
-import pl.media30.zamowieniapubliczne.ZamowienieActivityFragment;
+import pl.media30.zamowieniapubliczne.Activities.ZamowienieActivityFragment;
 
 /**
  * Created by Adrian on 2015-08-03.
@@ -51,7 +45,7 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
             intent.putExtra("Activity","Ulubione");
             intent.putExtra("strona",Integer.toString(getAdapterPosition()));
             view.getContext().startActivity(intent);
-            MyAdapter.position = getAdapterPosition();
+            MainAdapter.position = getAdapterPosition();
 
         }
 

@@ -1,31 +1,21 @@
-package pl.media30.zamowieniapubliczne;
+package pl.media30.zamowieniapubliczne.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 import com.squareup.otto.Subscribe;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.List;
-
-import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
+import pl.media30.zamowieniapubliczne.ResultBus;
+import pl.media30.zamowieniapubliczne.ResultEvent;
 import pl.media30.zamowieniapubliczne.Adapters.UlubioneAdapter;
-import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
+import pl.media30.zamowieniapubliczne.R;
+import pl.media30.zamowieniapubliczne.RepositoryClass;
 
 
 public class UlubioneActivity extends ActionBarActivity {
@@ -40,7 +30,7 @@ public class UlubioneActivity extends ActionBarActivity {
 
     private Object mActivityResultSubscriber = new Object() {
         @Subscribe
-        public void onActivityResultReceived(ActivityResultEvent event) {
+        public void onActivityResultReceived(ResultEvent event) {
             int requestCode = event.getRequestCode();
             int resultCode = event.getResultCode();
             Intent data = event.getData();
@@ -52,7 +42,7 @@ public class UlubioneActivity extends ActionBarActivity {
     public void onStart() {
         super.onStart();
         try {
-            ActivityResultBus.getInstance().register(mActivityResultSubscriber);
+            ResultBus.getInstance().register(mActivityResultSubscriber);
         } catch (Exception e) {
         }
         mRecyclerView = (UltimateRecyclerView) findViewById(R.id.ultimate_recycler_view);
@@ -71,7 +61,7 @@ public class UlubioneActivity extends ActionBarActivity {
     @Override
     public void onStop() {
         super.onStop();
-        ActivityResultBus.getInstance().unregister(mActivityResultSubscriber);
+        ResultBus.getInstance().unregister(mActivityResultSubscriber);
         bundle.putInt("getPosUlub", mLayoutManager.findFirstVisibleItemPosition());
         Log.d("STOP", mLayoutManager.findFirstVisibleItemPosition() + "");
     }

@@ -9,13 +9,13 @@ import android.util.Log;
 /**
  * Created by nuuneoi on 3/12/2015.
  */
-public class ActivityResultEvent {
+public class ResultEvent {
 
     private int requestCode;
     private int resultCode;
     private Intent data;
 
-    public ActivityResultEvent(int requestCode, int resultCode, Intent data) {
+    public ResultEvent(int requestCode, int resultCode, Intent data) {
         this.requestCode = requestCode;
         this.resultCode = resultCode;
         this.data = data;
