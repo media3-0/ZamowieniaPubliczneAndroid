@@ -1,6 +1,5 @@
 package pl.media30.zamowieniapubliczne;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
@@ -15,12 +14,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
-
 import com.pnikosis.materialishprogress.ProgressWheel;
 import com.squareup.otto.Subscribe;
-
 import pl.media30.zamowieniapubliczne.Adapters.MyAdapter;
 import pl.media30.zamowieniapubliczne.Models.DownloadList.BaseListClass;
 import retrofit.Callback;
@@ -219,7 +215,6 @@ public class MainActivityFragment extends Fragment {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-
                 visibleItemCount = mLayoutManager.getChildCount();
                 totalItemCount = mLayoutManager.getItemCount();
                 pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
@@ -247,15 +242,19 @@ public class MainActivityFragment extends Fragment {
     }
 
     void wczytajDane() {
+        /*
         final ProgressWheel progressWheel = (ProgressWheel) getActivity().findViewById(R.id.progress_wheel);
         progressWheel.setBarColor(Color.WHITE);
         progressWheel.stopSpinning();
         progressWheel.spin();
+*/
+        final RelativeLayout mainRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.UltimateRecycleViewRelativeLayout);
+        final RelativeLayout wheelRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.WheelRelativeLayout);
+        if(strona<2){
+            mainRelativeLayout.setVisibility(View.GONE);
+            wheelRelativeLayout.setVisibility(View.VISIBLE);
+        }
 
-        //final RelativeLayout mainRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.UltimateRecycleViewRelativeLayout);
-        //final RelativeLayout wheelRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.WheelRelativeLayout);
-        //mainRelativeLayout.setVisibility(View.GONE);
-        //wheelRelativeLayout.setVisibility(View.VISIBLE);
         //  final LinearLayout loadMoreLinearLayout = (LinearLayout) getActivity().findViewById(R.id.LoadMoreLinearLayout);
       //  loadMoreLinearLayout.setVisibility(View.GONE);
 
@@ -280,7 +279,6 @@ public class MainActivityFragment extends Fragment {
             bundle.putInt("getPos", 0);
         }
 
-        progressWheel.spin();
         if ((RepositoryClass.getInstance().getWyszukiwanieMiasta() == null) && (RepositoryClass.getInstance().getWyszukiwanieWojew() == null) && (RepositoryClass.getInstance().getWyszukiwanieKodowPoczt() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawNazwa() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawREGON() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawWWW() == null) && (RepositoryClass.getInstance().getWyszukiwanieZamawEmail() == null) && (RepositoryClass.getInstance().getGlowneZapyt() == null)) {
             service.listOrders(strona, new Callback<BaseListClass>() {
                 @Override
@@ -295,26 +293,26 @@ public class MainActivityFragment extends Fragment {
                     mRecyclerView.setAdapter(mAdapter);
 
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-                    progressWheel.stopSpinning();
                     Log.d("Strona", " bez param strona loadmore: " + strona);
                     strona++;
                     loading = true;
-                    //wheelRelativeLayout.setVisibility(View.GONE);
-                    //mainRelativeLayout.setVisibility(View.VISIBLE);
-                    LinearLayout mainLL = (LinearLayout) getActivity().findViewById(R.id.mainLL);
-                    mainLL.setWeightSum(8);
+                    wheelRelativeLayout.setVisibility(View.GONE);
+                    mainRelativeLayout.setVisibility(View.VISIBLE);
+                    //LinearLayout mainLL = (LinearLayout) getActivity().findViewById(R.id.mainLL);
+                    //mainLL.setWeightSum(8);
                 }
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
-                    progressWheel.stopSpinning();
+                    //progressWheel.stopSpinning();
+                    wheelRelativeLayout.setVisibility(View.GONE);
                     Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                 }
             });
 
 
         } else {
-            progressWheel.spin();
+
             service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), RepositoryClass.getInstance().getGlowneZapyt(), new Callback<BaseListClass>() {
                 @Override
                 public void success(BaseListClass blc, Response response) {
@@ -328,17 +326,18 @@ public class MainActivityFragment extends Fragment {
                     mRecyclerView.setAdapter(mAdapter);
 
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
-                    progressWheel.stopSpinning();
                     Log.d("Strona", "param strona loadmore: " + strona);
                     strona++;
                     //RepositoryClass.getInstance().searchViewAllow=true;
                     loading=true;
+                    wheelRelativeLayout.setVisibility(View.GONE);
+                    mainRelativeLayout.setVisibility(View.VISIBLE);
                 }
 
                 @Override
                 public void failure(RetrofitError retrofitError) {
-                    progressWheel.stopSpinning();
-                    Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
+                    wheelRelativeLayout.setVisibility(View.GONE);
+                    //mainRelativeLayout.setVisibility(View.VISIBLE);                    Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                 }
             });
         }
