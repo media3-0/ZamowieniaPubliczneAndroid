@@ -1,5 +1,6 @@
 package pl.media30.zamowieniapubliczne.Activities;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -28,7 +29,7 @@ import pl.media30.zamowieniapubliczne.RepositoryClass;
 import retrofit.RestAdapter;
 
 
-public class WykresyActivity extends ActionBarActivity {
+public class WykresyActivity extends Activity {
 
     boolean wczytajRaz;
     List<DataObjectClass> dataObjectList;
@@ -45,7 +46,6 @@ public class WykresyActivity extends ActionBarActivity {
         final ArrayList<String> labels = new ArrayList<String>();
         final BarChart chart = new BarChart(context);
         RepositoryClass.getInstance().setStronaUlub(-1);
-
 
         final ProgressDialog dialog =
                 ProgressDialog.show(this, "Trwa wczytywanie danych", "Zaczekaj na wczytanie danych...");
@@ -71,7 +71,8 @@ public class WykresyActivity extends ActionBarActivity {
                             dataObjectList.addAll(baseListClass1.searchClass.dataobjects);
                         }
                     }
-                }catch(Exception e){}
+                } catch (Exception e) {
+                }
             }
         });
 
@@ -95,17 +96,17 @@ public class WykresyActivity extends ActionBarActivity {
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
 
         }
 
         BarDataSet dataset;
-        if(RepositoryClass.getInstance().getGlowneZapyt() == null)
+        if (RepositoryClass.getInstance().getGlowneZapyt() == null || RepositoryClass.getInstance().getGlowneZapyt() == "")
             dataset = new BarDataSet(entries, "Najwieksze zamowienia");
         else
             dataset = new BarDataSet(entries, "Aktualnie załadowane najwieksze zamowienia");
         for (int i = 0; i < rozmiarWykresu; i++) {
-            labels.add(Integer.toString(i+1));
+            labels.add(Integer.toString(i + 1));
         }
 
         setContentView(chart);
@@ -117,28 +118,26 @@ public class WykresyActivity extends ActionBarActivity {
         chart.animateXY(4, 4);
 
 
-        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-                                                  @Override
-                                                  public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
-                                                      if (wczytajRaz == true) {
-                                                          Intent intent = new Intent(context, ZamowienieActivityFragment.class);
-                                                          DataObjectClass dataObjectClass = dataObjectList.get(e.getXIndex());
-                                                          String objToStr = new Gson().toJson(dataObjectClass);
-                                                          Bundle objClass = new Bundle();
-                                                          objClass.putString("myObject", objToStr);
-                                                          intent.putExtras(objClass);
-                                                          startActivity(intent);
-                                                          wczytajRaz = false;
-                                                          chart.dispatchSetSelected(false);
-
-
-                                                      }
-                                                  }
-
-                                                  @Override
-                                                  public void onNothingSelected() {
-                                                  }
-                                              }
+        chart.setOnChartValueSelectedListener(
+                new OnChartValueSelectedListener() {
+                    @Override
+                    public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+                        if (wczytajRaz == true) {
+                            Intent intent = new Intent(context, ZamowienieActivityFragment.class);
+                            DataObjectClass dataObjectClass = dataObjectList.get(e.getXIndex());
+                            String objToStr = new Gson().toJson(dataObjectClass);
+                            Bundle objClass = new Bundle();
+                            objClass.putString("myObject", objToStr);
+                            intent.putExtras(objClass);
+                            startActivity(intent);
+                            wczytajRaz = false;
+                            chart.dispatchSetSelected(false);
+                        }
+                    }
+                    @Override
+                    public void onNothingSelected() {
+                    }
+                }
         );
         dialog.dismiss();
     }
@@ -148,5 +147,4 @@ public class WykresyActivity extends ActionBarActivity {
         super.onResume();
         wczytajRaz = true;
     }
-
 }
