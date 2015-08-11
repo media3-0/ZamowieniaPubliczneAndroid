@@ -229,8 +229,6 @@ public class MainActivityFragment extends Fragment {
 
                     }
                 }
-
-
             }
         });
 
@@ -242,24 +240,14 @@ public class MainActivityFragment extends Fragment {
     }
 
     void wczytajDane() {
-        /*
-        final ProgressWheel progressWheel = (ProgressWheel) getActivity().findViewById(R.id.progress_wheel);
-        progressWheel.setBarColor(Color.WHITE);
-        progressWheel.stopSpinning();
-        progressWheel.spin();
-*/
+
         final RelativeLayout mainRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.UltimateRecycleViewRelativeLayout);
         final RelativeLayout wheelRelativeLayout = (RelativeLayout) getActivity().findViewById(R.id.WheelRelativeLayout);
         if(strona<2){
             mainRelativeLayout.setVisibility(View.GONE);
             wheelRelativeLayout.setVisibility(View.VISIBLE);
+
         }
-
-        //  final LinearLayout loadMoreLinearLayout = (LinearLayout) getActivity().findViewById(R.id.LoadMoreLinearLayout);
-      //  loadMoreLinearLayout.setVisibility(View.GONE);
-
-        ;//= (RelativeLayout) findViewById(R.id.MainRelativeLayout);
-
 
 
         final RestAdapter restAdapter = new RestAdapter.Builder()
@@ -284,11 +272,12 @@ public class MainActivityFragment extends Fragment {
                 @Override
                 public void success(BaseListClass blc, Response response) {
                     RepositoryClass.getInstance().setBaseListClass(blc);
-                    try {
-                        Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
-                    } catch (NullPointerException e) {
+                    if (strona<2) {
+                        try {
+                            Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
+                        } catch (NullPointerException e) {
+                        }
                     }
-
                     mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                     mRecyclerView.setAdapter(mAdapter);
 
@@ -298,8 +287,6 @@ public class MainActivityFragment extends Fragment {
                     loading = true;
                     wheelRelativeLayout.setVisibility(View.GONE);
                     mainRelativeLayout.setVisibility(View.VISIBLE);
-                    //LinearLayout mainLL = (LinearLayout) getActivity().findViewById(R.id.mainLL);
-                    //mainLL.setWeightSum(8);
                 }
 
                 @Override
@@ -317,10 +304,12 @@ public class MainActivityFragment extends Fragment {
                 @Override
                 public void success(BaseListClass blc, Response response) {
                     RepositoryClass.getInstance().setBaseListClass(blc);
-                    try {
-                        Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
-                    }catch(NullPointerException e){
+                    if (strona<2) {
+                        try {
+                            Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
+                        } catch (NullPointerException e) {
 
+                        }
                     }
                     mAdapter = new MyAdapter(RepositoryClass.getInstance().getDataObjectList());
                     mRecyclerView.setAdapter(mAdapter);
@@ -328,8 +317,7 @@ public class MainActivityFragment extends Fragment {
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
                     Log.d("Strona", "param strona loadmore: " + strona);
                     strona++;
-                    //RepositoryClass.getInstance().searchViewAllow=true;
-                    loading=true;
+                    loading = true;
                     wheelRelativeLayout.setVisibility(View.GONE);
                     mainRelativeLayout.setVisibility(View.VISIBLE);
                 }
@@ -337,7 +325,6 @@ public class MainActivityFragment extends Fragment {
                 @Override
                 public void failure(RetrofitError retrofitError) {
                     wheelRelativeLayout.setVisibility(View.GONE);
-                    //mainRelativeLayout.setVisibility(View.VISIBLE);                    Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                 }
             });
         }
