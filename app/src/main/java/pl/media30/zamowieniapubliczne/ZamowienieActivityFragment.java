@@ -113,12 +113,12 @@ public class ZamowienieActivityFragment extends Activity {
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint("https://api.mojepanstwo.pl/dane/").build();
         MojePanstwoService service = restAdapter.create(MojePanstwoService.class);
         final ProgressWheel progressWheel = (ProgressWheel) findViewById(R.id.progress_wheel);
-        progressWheel.setBarColor(Color.BLACK);
         progressWheel.spin();
 
-        final RelativeLayout mainRelativeLayout = (RelativeLayout) findViewById(R.id.MainRelativeLayout);
-        final RelativeLayout wheelRelativeLayout = (RelativeLayout) findViewById(R.id.WheelRelativeLayout);
+        final RelativeLayout mainRelativeLayout = (RelativeLayout) findViewById(R.id.MainRelativeLayout_zam);
+        final RelativeLayout wheelRelativeLayout = (RelativeLayout) findViewById(R.id.WheelRelativeLayout_zam);
         mainRelativeLayout.setVisibility(View.GONE);
+        wheelRelativeLayout.setVisibility(View.VISIBLE);
 
         service.singleOrder(id, new Callback<BaseClass>() {
                     @Override
