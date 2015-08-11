@@ -10,6 +10,7 @@ import retrofit.http.Query;
 
 /**
  * Created by Adrian on 2015-07-16.
+ * Interfejs odpowiedzialny za przekazanie danych ze strony do retrofita.
  */
 public interface MojePanstwoService {
     /*

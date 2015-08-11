@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -28,6 +27,11 @@ import pl.media30.zamowieniapubliczne.ResultEvent;
 import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 import pl.media30.zamowieniapubliczne.R;
 import pl.media30.zamowieniapubliczne.RepositoryClass;
+
+/**
+ * Główna aktywność. Odpowiada za wczytanie listy obiektów obserwowanych oraz zawiera implementacje "szybkiego wyszukiwania".
+ * Dane są wyświetlane w fragmencie (MainFragmentActivity).
+ */
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,19 +88,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
             // This method will trigger on item Click of navigation menu
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-
                 if (menuItem.isChecked()) menuItem.setChecked(false);
                 else menuItem.setChecked(true);
-
                 drawerLayout.closeDrawers();
                 Intent intent;
-
                 switch (menuItem.getItemId()) {
-
                     case R.id.search:
                         intent = new Intent(getApplicationContext(), SearchActivity.class);
                         startActivityForResult(intent, 2);
@@ -179,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return false;
             }
-
             @Override
             public boolean onQueryTextChange(String newText) {
                 searchAllow = true;
@@ -189,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     public boolean onKeyDown(int keycode, KeyEvent e) {
@@ -204,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onKeyDown(keycode, e);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -244,7 +240,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

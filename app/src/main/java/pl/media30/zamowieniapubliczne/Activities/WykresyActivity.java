@@ -28,6 +28,10 @@ import pl.media30.zamowieniapubliczne.R;
 import pl.media30.zamowieniapubliczne.RepositoryClass;
 import retrofit.RestAdapter;
 
+/**
+ * Aktywność wyświetlająca wykres. W tej wersji wykres wyświetla największe zamówienia wg. podanych kryteriów.
+ */
+
 
 public class WykresyActivity extends Activity {
 

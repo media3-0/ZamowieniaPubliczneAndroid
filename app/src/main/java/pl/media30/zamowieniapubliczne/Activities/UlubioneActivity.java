@@ -17,6 +17,10 @@ import pl.media30.zamowieniapubliczne.Adapters.UlubioneAdapter;
 import pl.media30.zamowieniapubliczne.R;
 import pl.media30.zamowieniapubliczne.RepositoryClass;
 
+/**
+ * Aktywność zawierająca wszystkie elementy obserwowane. Obiekty są dostępne także w trybie offline.
+ */
+
 
 public class UlubioneActivity extends ActionBarActivity {
 
@@ -78,8 +82,6 @@ public class UlubioneActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ulubione);
-
-
     }
 
 

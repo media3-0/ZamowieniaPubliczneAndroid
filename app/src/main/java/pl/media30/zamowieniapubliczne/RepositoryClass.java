@@ -14,6 +14,7 @@ import pl.media30.zamowieniapubliczne.Models.SingleElement.ObjectClass;
 
 /**
  * Created by Adrian on 2015-07-21.
+ * Singleton. Klasa przechowywuje dane które zostają pobrane z internetu.
  */
 public class RepositoryClass {
 
@@ -32,8 +33,6 @@ public class RepositoryClass {
     private String glowneZapyt = null;
     private List<ObjectClass> listaUlubionych = new ArrayList<ObjectClass>();
     private int stronaUlub;
-
-    public boolean pobierzJedenRaz = true;
 
     public void setBaseListClass(BaseListClass baseListClass) {
         this.baseListClass = baseListClass;

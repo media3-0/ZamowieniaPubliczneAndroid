@@ -8,16 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.google.gson.Gson;
-
 import java.util.List;
-
 import pl.media30.zamowieniapubliczne.Models.DownloadList.DataObjectClass;
 import pl.media30.zamowieniapubliczne.R;
 import pl.media30.zamowieniapubliczne.RepositoryClass;
 import pl.media30.zamowieniapubliczne.Activities.ZamowienieActivityFragment;
-
+/**
+ * Głowny adapter. Odpowiada za komunikacje z UltimateRecycleView w głównym menu.
+ */
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     private List<DataObjectClass> mDataset;
     static int position;
@@ -47,10 +46,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             objClass.putString("myObject", objToStr);
             intent.putExtras(objClass);
             intent.putExtra("Activity","Main");
-
             view.getContext().startActivity(intent);
             MainAdapter.position = getAdapterPosition();
-
         }
 
         public int getPos() {
@@ -58,19 +55,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         }
     }
 
-
     public MainAdapter(List<DataObjectClass> myDataset) {
         mDataset = myDataset;
     }
 
-
     @Override
     public MainAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                    int viewType) {
-
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.cards_layout, parent, false);
-
         ViewHolder vh = new ViewHolder(v);
         position = vh.getPos();
         return vh;
@@ -79,7 +72,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
         TextView textViewName = holder.textViewName;
         TextView textViewCity = holder.textViewCity;
 

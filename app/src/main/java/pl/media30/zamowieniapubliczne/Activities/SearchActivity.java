@@ -22,6 +22,7 @@ import pl.media30.zamowieniapubliczne.R;
 
 /**
  * Created by Andreas on 2015-07-24.
+ * Aktywność umożliwiająca wyszukiwanie przetargów po podaniu szczegółowego kryterium.
  */
 public class SearchActivity extends Activity {
 

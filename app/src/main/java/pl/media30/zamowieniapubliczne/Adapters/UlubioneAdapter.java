@@ -16,17 +16,16 @@ import pl.media30.zamowieniapubliczne.Activities.ZamowienieActivityFragment;
 
 /**
  * Created by Adrian on 2015-08-03.
+ * Adapter wyświetlający dane w UltimateRecyclerView znajdującego się w oknie "Obserwowane".
  */
 public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHolder> {
     private List<ObjectClass> mDataset;
     static int position;
 
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView textViewName;
         public TextView textViewCity;
-
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -36,10 +35,8 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
             this.textViewCity = (TextView) itemView.findViewById(R.id.textViewCity);
         }
 
-
         @Override
         public void onClick(View view) {
-
             RepositoryClass.getInstance().setStronaUlub(getAdapterPosition());
             Intent intent = new Intent(view.getContext(), ZamowienieActivityFragment.class);
             intent.putExtra("Activity","Ulubione");
@@ -54,13 +51,9 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
         }
     }
 
-
     public UlubioneAdapter(List<ObjectClass> myDataset) {
         mDataset = myDataset;
     }
-
-
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,
                                          int viewType) {
@@ -72,7 +65,6 @@ public class UlubioneAdapter extends RecyclerView.Adapter<UlubioneAdapter.ViewHo
         position = vh.getPos();
         return vh;
     }
-
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {

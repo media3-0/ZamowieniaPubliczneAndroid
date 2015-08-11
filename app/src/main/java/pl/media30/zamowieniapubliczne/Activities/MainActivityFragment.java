@@ -29,7 +29,7 @@ import retrofit.client.Response;
 
 
 /**
- * A placeholder fragment containing a simple view.
+ * Fragment odpowiedzialny za wyświetlanie danych w UltimateRecycleView.
  */
 public class MainActivityFragment extends Fragment {
 
@@ -234,7 +234,6 @@ public class MainActivityFragment extends Fragment {
         if (bundle.getBoolean("getWczytaj") == false){
             wczytajDane();
             bundle.putBoolean("getWczytaj", true);
-
         }
     }
 
@@ -246,7 +245,6 @@ public class MainActivityFragment extends Fragment {
             mainRelativeLayout.setVisibility(View.GONE);
             wheelRelativeLayout.setVisibility(View.VISIBLE);
         }
-
 
         final RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("https://api.mojepanstwo.pl/dane/")
@@ -294,10 +292,7 @@ public class MainActivityFragment extends Fragment {
                     Toast.makeText(getActivity(), "Błąd. Sprawdź połączenie z internetem", Toast.LENGTH_SHORT).show();
                 }
             });
-
-
         } else {
-
             service.listOrdersWithParameter(strona, RepositoryClass.getInstance().getWyszukiwanieMiasta(), RepositoryClass.getInstance().getWyszukiwanieWojew(), RepositoryClass.getInstance().getWyszukiwanieKodowPoczt(), RepositoryClass.getInstance().getWyszukiwanieZamawNazwa(), RepositoryClass.getInstance().getWyszukiwanieZamawREGON(), RepositoryClass.getInstance().getWyszukiwanieZamawWWW(), RepositoryClass.getInstance().getWyszukiwanieZamawEmail(), RepositoryClass.getInstance().getGlowneZapyt(), new Callback<BaseListClass>() {
                 @Override
                 public void success(BaseListClass blc, Response response) {
@@ -305,13 +300,10 @@ public class MainActivityFragment extends Fragment {
                     if (strona<2) {
                         try {
                             Toast.makeText(getActivity(), "Znaleziono " + RepositoryClass.getInstance().getCount() + " elementów", Toast.LENGTH_SHORT).show();
-                        } catch (NullPointerException e) {
-
-                        }
+                        } catch (NullPointerException e) {}
                     }
                     mAdapter = new MainAdapter(RepositoryClass.getInstance().getDataObjectList());
                     mRecyclerView.setAdapter(mAdapter);
-
                     mLayoutManager.scrollToPosition(bundle.getInt("getPos"));
                     Log.d("Strona", "param strona loadmore: " + strona);
                     strona++;
