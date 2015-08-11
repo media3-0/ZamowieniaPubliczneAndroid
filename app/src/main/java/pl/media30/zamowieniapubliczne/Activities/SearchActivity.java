@@ -93,6 +93,7 @@ public class SearchActivity extends Activity {
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
 
         button = (Button) findViewById(R.id.button);
+        button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_search_black_48dp, 0, 0, 0);
         button.setOnClickListener(myhandler1);
 
 

@@ -8,7 +8,6 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Activities/WykresyActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Activities/ZamowienieActivityFragment.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Adapters/UlubioneAdapter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/EndlessRecyclerOnScrollListener.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/DownloadList/BaseListClass.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/DownloadList/DataObjectClass.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/pl/media30/zamowieniapubliczne/Models/DownloadList/PaginationClass.java" charset="UTF-8" />
