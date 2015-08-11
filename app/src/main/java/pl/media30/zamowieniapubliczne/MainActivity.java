@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.refresh:
                         intent = new Intent(getApplicationContext(), MainActivity.class);
-                        RepositoryClass.getInstance().setGlowneZapyt("");
+                        RepositoryClass.getInstance().setWszystkieZapyt("");
                         finish();
                         startActivity(intent);
                         return true;
@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.refresh) {
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            RepositoryClass.getInstance().setGlowneZapyt("");
+            RepositoryClass.getInstance().setWszystkieZapyt("");
             finish();
             startActivity(intent);
             return true;

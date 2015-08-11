@@ -71,9 +71,9 @@ public class RepositoryClass {
     }
 
     public void deleteDataObjectList() {
-        try{
+        try {
             dataObjectList.clear();
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
     }
@@ -128,6 +128,17 @@ public class RepositoryClass {
 
     public void setGlowneZapyt(String glowneZapyt) {
         this.glowneZapyt = glowneZapyt;
+    }
+
+    public void setWszystkieZapyt(String zapyt) {
+        wyszukiwanieMiasta = null;
+        wyszukiwanieWojew = null;
+        wyszukiwanieKodowPoczt = null;
+        wyszukiwanieZamawNazwa = null;
+        wyszukiwanieZamawREGON = null;
+        wyszukiwanieZamawWWW = null;
+        wyszukiwanieZamawEmail = null;
+        glowneZapyt = zapyt;
     }
 
     public String getGlowneZapyt() {
